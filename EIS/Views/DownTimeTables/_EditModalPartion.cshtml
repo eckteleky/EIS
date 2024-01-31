@@ -1,0 +1,327 @@
+﻿@using Microsoft.AspNetCore.Localization
+@model EIS.EISModels.Cttable
+@{
+    var data = (SelectList)ViewBag.DtGroupId;
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+<!-- Sweetalert2 -->
+<link rel="stylesheet" href="~/plugins/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<!-- SweetAlert2 -->
+<script src="~/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+<a hidden asp-controller="DownTimeTables" asp-action="GetTypeId" id="uplink"></a>
+<a hidden asp-controller="DownTimeTables" asp-action="GetTypeIdEn" id="uplinken"></a>
+<div class="modal fade" id="addEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addLabel">@EIS.Resources.Resource.ResourceManager.GetString("Downtime", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Edit", System.Globalization.CultureInfo.CurrentCulture)</h4>
+                <div class="modal-tools">
+                    <button type="button" class="btn btn-tool" data-dismiss="modal" id="X">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Edit" style="width: 100%">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="row">
+                        <div class="col-10" style="padding: 0">
+                            <table style="table-layout: fixed; padding: 0 0 5px 7.5px; margin-bottom: 15px">
+                                <thead>
+                                    <tr>
+                                        <th width="110px" style="text-align: left; padding-left: 9px">@EIS.Resources.Resource.ResourceManager.GetString("DTLine", System.Globalization.CultureInfo.CurrentCulture)</th>
+                                        <th width="110px" style="text-align: center">@EIS.Resources.Resource.ResourceManager.GetString("DTWorkDay", System.Globalization.CultureInfo.CurrentCulture)</th>
+                                        <th width="110px" style="text-align: center">@EIS.Resources.Resource.ResourceManager.GetString("DTShift", System.Globalization.CultureInfo.CurrentCulture)</th>
+                                        <th width="110px" style="text-align: center">@EIS.Resources.Resource.ResourceManager.GetString("DTTime", System.Globalization.CultureInfo.CurrentCulture)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: left;font-weight: bold;padding-left: 9px">@Model.LineId</td>
+                                        <td style="text-align: center; font-weight: bold">@Model.TimeStamp.ToString("yyyy-MM-dd")</td>
+                                        <td style="text-align: center; font-weight: bold;" width="25%">@Model.Muszak</td>
+                                        <td style="text-align: center; font-weight: bold;" width="25%">@Model.TimeStamp.ToString("HH:mm:ss")</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="text-align:left;">
+                                            <!-- SidebarSearch Form -->
+                                            <div class="form-inline" style="padding-top: 5px">
+                                                <div class="input-group" data-widget="sidebar-search" style="width: 438px; padding-left: 4px">
+                                                    <input id="ID" class="form-control form-control-sidebar" style="border-top-right-radius: 0; border-bottom-right-radius: 0" type="search" placeholder="@EIS.Resources.Resource.ResourceManager.GetString("DTSearch", System.Globalization.CultureInfo.CurrentCulture)" aria-label="Search" onchange="displayIDs()" oninput="displayIDs()">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-default" id="IDButton" disabled>
+                                                            <i class="fas fa-search fa-fw"></i>
+                                                        </button>
+                                                        <script>
+                                                            function displayIDs() {
+                                                                var SearchText = $("#ID")[0].value;
+                                                                var url = document.getElementById('uplink').href;
+                                                                $.ajax({
+                                                                    method: "POST",
+                                                                    dataType: "json",
+                                                                    url: url,
+                                                                    data: {
+                                                                        SearchText: SearchText
+                                                                    },
+                                                                    success: function (r) {
+                                                                        target = $('#KID');
+                                                                        $(target).empty();
+                                                                        var len = r.length;
+                                                                        var selected = false;
+                                                                        for (var i = 0; i < len; i++) {
+                                                                            if (typeof (r[i]) != "undefined") {
+                                                                                if (r[i].selected == true & !selected) {
+                                                                                    $('<option value="' + r[i].value.toString() + '"' + (r[i].selected == true ? ' selected' : '') + '>' + r[i].text + '</option>').appendTo(target);
+                                                                                    selected = true;
+                                                                                }
+                                                                                else {
+                                                                                    $('<option value="' + r[i].value.toString() + '">' + r[i].text + '</option>').appendTo(target);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        var indx = $("select#KID").find(":selected").index();
+                                                                        $('#KID').animate({
+                                                                            scrollTop: indx * 20
+                                                                        }, 500);
+                                                                    },
+                                                                    done: function (response) {
+                                                                        console.log(response);
+                                                                    }
+                                                                });
+                                                                var urlen = document.getElementById('uplinken').href;
+                                                                $.ajax({
+                                                                    method: "POST",
+                                                                    dataType: "json",
+                                                                    url: urlen,
+                                                                    data: {
+                                                                        SearchText: SearchText
+                                                                    },
+                                                                    success: function (r) {
+                                                                        target = $('#KIDEN');
+                                                                        $(target).empty();
+                                                                        var len = r.length;
+                                                                        var selected = false;
+                                                                        for (var i = 0; i < len; i++) {
+                                                                            if (typeof (r[i]) != "undefined") {
+                                                                                if (r[i].selected == true & !selected) {
+                                                                                    $('<option value="' + r[i].value.toString() + '"' + (r[i].selected == true ? ' selected' : '') + '>' + r[i].text + '</option>').appendTo(target);
+                                                                                    selected = true;
+                                                                                }
+                                                                                else {
+                                                                                    $('<option value="' + r[i].value.toString() + '">' + r[i].text + '</option>').appendTo(target);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        var indx = $("select#KIDEN").find(":selected").index();
+                                                                        $('#KIDEN').animate({
+                                                                            scrollTop: indx * 20
+                                                                        }, 500);
+                                                                    },
+                                                                    done: function (response) {
+                                                                        console.log(response);
+                                                                    }
+                                                                });
+                                                            }
+                                                        </script>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-auto" style="width: 88px; padding: 0">
+                            <table style="table-layout: fixed; padding: 0 7.5px 5px 0; margin-bottom: 15px">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 114px; text-align: center">@EIS.Resources.Resource.ResourceManager.GetString("DTDownTime", System.Globalization.CultureInfo.CurrentCulture)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        @{
+                                            TimeSpan ts = TimeSpan.FromSeconds(Model.Downtime.Value);
+                                        }
+                                        @if (Model.Downtime.Value > 3600)
+                                        {
+                                            <td style="height: 43px; text-align: center; font-size: 1.5rem; font-weight: bold; color: var(--eck-red);">@ts.ToString("hh':'mm':'ss")</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="height: 43px; text-align: center; font-size: 1.5rem; font-weight: bold; color: var(--eck-red);">@ts.ToString("mm':'ss")</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @if (@requestCulture.RequestCulture.UICulture.Name == "hu-HU")
+                                        {
+                                            @if (Model.Downtime.Value > 3600)
+                                            {
+                                                <td style="text-align: center; vertical-align: bottom">óó:pp:mp</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: center; vertical-align: bottom">pp:mp</td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @if (Model.Downtime.Value > 3600)
+                                            {
+                                                <td style="text-align: center; vertical-align: bottom">hh:mm:ss</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: center; vertical-align: bottom">mm:ss</td>
+                                            }
+                                        }
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="LineId" />
+                        <input type="hidden" asp-for="TimeStamp" />
+                        <input type="hidden" asp-for="Downtime" />
+                        <input type="hidden" asp-for="StartTime" />
+                        <input type="hidden" asp-for="Muszak" />
+                        @if (@requestCulture != null && @requestCulture.RequestCulture.UICulture.Name == "hu-HU")
+                        {
+                            <div class="form-group" style="border: 0; border-radius: 5px">
+                                <label asp-for="TypeId" class="control-label nowrapleft" style="padding: 5px; border: none">Állásidő okok</label>
+                                <select id="KID" asp-for="TypeId" class="form-control" asp-items="ViewBag.TypeId" size="10"></select>
+                                @*<span asp-validation-for="TypeId" class="text-danger"></span>*@
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group" style="border: 0; border-radius: 5px">
+                                <label asp-for="TypeId" class="control-label nowrapleft" style="padding: 5px; border: none">Downtime Reasons</label>
+                                <select id="KIDEN" asp-for="TypeId" class="form-control" asp-items="ViewBag.TypeIdEn" size="10"></select>
+                                @*<span asp-validation-for="TypeId" class="text-danger"></span>*@
+                            </div>
+                        }
+                </form>
+                <script>
+                    $(document).ready(function () {
+                        // $("#IDButton").on("click", function () {
+                        //    var SearchText = $("#ID")[0].value;
+                        //    var url = document.getElementById('uplink').href;
+                        //     $.ajax({
+                        //         method: "POST",
+                        //         dataType: "json",
+                        //         url: url,
+                        //         data: {
+                        //             SearchText: SearchText
+                        //         },
+                        //         success: function (r) {
+                        //            target = $('#KID');
+                        //             $(target).empty();
+                        //             var len = r.length;
+                        //             for (var i = 0; i < len; i++) {
+                        //                 if (typeof (r[i]) != "undefined") {
+                        //                     $('<option value="' + r[i].value.toString() + '"' + (r[i].selected == true ? ' selected' : '') + '>' + r[i].text + '</option>').appendTo(target);
+                        //                 }
+                        //             }
+                        //             var indx = $("select#KID").find(":selected").index();
+                        //             $('#KID').animate({
+                        //                 scrollTop: indx * 20
+                        //             }, 500);
+                        //         }
+                        //     });
+                        //    var urlen = document.getElementById('uplinken').href;
+                        //     $.ajax({
+                        //         method: "POST",
+                        //         dataType: "json",
+                        //         url: urlen,
+                        //         data: {
+                        //             SearchText: SearchText
+                        //         },
+                        //         success: function (r) {
+                        //             target = $('#KIDEN');
+                        //             $(target).empty();
+                        //             var len = r.length;
+                        //             for (var i = 0; i < len; i++) {
+                        //                 if (typeof (r[i]) != "undefined") {
+                        //                     $('<option value="' + r[i].value.toString() + '"' + (r[i].selected == true ? ' selected' : '') + '>' + r[i].text + '</option>').appendTo(target);
+                        //                 }
+                        //             }
+                        //             var indx = $("select#KIDEN").find(":selected").index();
+                        //             $('#KIDEN').animate({
+                        //                 scrollTop: indx * 20
+                        //             }, 500);
+                        //         }
+                        //     });
+                        // });
+                        $(document).ready(function () {
+                            var indx = $("select#KIDEN").find(":selected").index();
+                            $('#KIDEN').animate({
+                                scrollTop: indx * 20
+                            }, 500);
+                            var indx = $("select#KID").find(":selected").index();
+                            $('#KID').animate({
+                                scrollTop: indx * 20
+                            }, 500);
+                        });
+                    });
+                </script>
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex justify-content-between m-0" style="width: 100%">
+                    <div class="col-auto">
+                        <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="modal">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <div class="col-auto">
+                        <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="modal">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#save").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'success',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("SaveTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#close").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#X").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            //Initialize Select2 Elements
+                            // $('.myselect').select2({
+                            //     theme: 'bootstrap4',
+                            //     placeholder: 'This is my placeholder',
+                            //     allowClear: false
+                            // }).on('select2-focus', function () {
+                            //     $(this).select2('open');
+                            // });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

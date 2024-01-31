@@ -1,0 +1,26 @@
+﻿@page
+@model Disable2faModel
+@{
+    ViewData["Title"] = @EIS.Resources.Resource.ResourceManager.GetString("Disable two-factor authentication (2FA)", System.Globalization.CultureInfo.CurrentCulture);
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<partial name="_StatusMessage" for="StatusMessage" />
+<h2 style="color: rgba(0,0,0,.9);">@ViewData["Title"]</h2>
+
+<div class="alert alert-warning" role="alert" style="color: rgba(0,0,0,.9);">
+    <p>
+        <strong>@EIS.Resources.Resource.ResourceManager.GetString("This action only disables 2FA.", System.Globalization.CultureInfo.CurrentCulture)</strong>
+    </p>
+    <p>
+         
+        @EIS.Resources.Resource.ResourceManager.GetString("Disabling 2FA does not change the keys used in authenticator apps. If you wish to change the key used in an authenticator app you should", System.Globalization.CultureInfo.CurrentCulture)
+        <a asp-page="./ResetAuthenticator">@EIS.Resources.Resource.ResourceManager.GetString("reset your authenticator keys.", System.Globalization.CultureInfo.CurrentCulture)</a>
+    </p>
+</div>
+
+<div>
+    <form method="post" class="form-group" style="color: rgba(0,0,0,.9);">
+        <button class="btn btn-danger" type="submit">@EIS.Resources.Resource.ResourceManager.GetString("Disable 2FA", System.Globalization.CultureInfo.CurrentCulture)</button>
+    </form>
+</div>

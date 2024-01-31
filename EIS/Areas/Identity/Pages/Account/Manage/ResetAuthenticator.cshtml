@@ -1,0 +1,25 @@
+﻿@page
+@model ResetAuthenticatorModel
+@{
+    ViewData["Title"] = @EIS.Resources.Resource.ResourceManager.GetString("Reset authenticator key", System.Globalization.CultureInfo.CurrentCulture);
+
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<partial name="_StatusMessage" for="StatusMessage" />
+<h2 style="color: rgba(0,0,0,.9);">@ViewData["Title"]</h2>
+<div class="alert alert-warning" role="alert" style="color: rgba(0,0,0,.9);">
+    <p>
+        <span class="glyphicon glyphicon-warning-sign"></span>
+        <strong>@EIS.Resources.Resource.ResourceManager.GetString("If you reset your authenticator key your authenticator app will not work until you reconfigure it.", System.Globalization.CultureInfo.CurrentCulture)</strong>
+    </p>
+    <p>
+        @EIS.Resources.Resource.ResourceManager.GetString("This process disables 2FA until you verify your authenticator app.", System.Globalization.CultureInfo.CurrentCulture)
+        @EIS.Resources.Resource.ResourceManager.GetString("If you do not complete your authenticator app configuration you may lose access to your account.", System.Globalization.CultureInfo.CurrentCulture)
+    </p>
+</div>
+<div style="color: rgba(0,0,0,.9);">
+    <form id="reset-authenticator-form" method="post" class="form-group">
+        <button id="reset-authenticator-button" class="btn btn-danger" type="submit">@EIS.Resources.Resource.ResourceManager.GetString("Reset authenticator key", System.Globalization.CultureInfo.CurrentCulture)</button>
+    </form>
+</div>

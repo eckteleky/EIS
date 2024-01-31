@@ -1,0 +1,279 @@
+﻿@model IEnumerable<EIS.EISModels.Dtreport>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+<style>
+    p {
+        text-indent: 10px;
+    }
+</style>
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Downtime Report -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Dtreports", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixedno" class="table table-bordered text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LineID", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Datum", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Muszak", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("StartTime", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ItemNo", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Good", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Scrap", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Downtime", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model)
+                            {
+                                @for(int i = 0; i<Math.Min(item.TypeNumbers.Value,5); i++)
+                                {
+                                <tr class="tablebody">
+                                @if (i == 0)
+                                {
+                                    <td rowspan="@Math.Min(item.TypeNumbers.Value,5)">@Html.DisplayFor(modelItem => item.LineId)</td>
+                                    <td rowspan="@Math.Min(item.TypeNumbers.Value,5)">@item.StartTime.ToString("yyyy-MM-dd")</td>
+                                    <td rowspan="@Math.Min(item.TypeNumbers.Value,5)">@Html.DisplayFor(modelItem => item.Shift)</td>
+                                }
+                                else
+                                {
+                                    <td hidden>&nbsp;</td>
+                                    <td hidden>&nbsp;</td>
+                                    <td hidden>&nbsp;</td>
+                                }
+                                @* StartTime *@
+                                @if (item.TypeNumbers > 0 & i==0)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.ChangeTimeA)</td>
+                                }
+                                @if (item.TypeNumbers > 1 & i==1)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.ChangeTimeB)</td>
+                                }
+                                @if (item.TypeNumbers > 2 & i==2)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.ChangeTimeC)</td>
+                                }
+                                @if (item.TypeNumbers > 3 & i==3)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.ChangeTimeD)</td>
+                                }
+                                @if (item.TypeNumbers > 4 & i==4)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.ChangeTimeE)</td>
+                                }
+                                @* Type *@
+                                @if (item.TypeNumbers > 0 & i==0)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.TypeNameA)</td>
+                                }
+                                @if (item.TypeNumbers > 1 & i==1)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.TypeNameB)</td>
+                                }
+                                @if (item.TypeNumbers > 2 & i==2)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.TypeNameC)</td>
+                                }
+                                @if (item.TypeNumbers > 3 & i==3)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.TypeNameD)</td>
+                                }
+                                @if (item.TypeNumbers > 4 & i==4)
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.TypeNameE)</td>
+                                }
+                                @* Good *@
+                                @if (item.TypeNumbers > 0 & i==0)
+                                {
+                                    @if (item.CurrentKorrA.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentKorrA)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentfromSqla)</td>
+                                    }
+                                }
+                                @if (item.TypeNumbers > 1 & i==1)
+                                {
+                                    @if (item.CurrentKorrB.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentKorrB)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentfromSqlb)</td>
+                                    }
+                                }
+                                @if (item.TypeNumbers > 2 & i==2)
+                                {
+                                    @if (item.CurrentKorrC.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentKorrC)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentfromSqlc)</td>
+                                    }
+                                }
+                                @if (item.TypeNumbers > 3 & i==3)
+                                {
+                                    @if (item.CurrentKorrD.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentKorrD)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentfromSqld)</td>
+                                    }
+                                }
+                                @if (item.TypeNumbers > 4 & i==4)
+                                {
+                                    @if (item.CurrentKorrE.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentKorrE)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.CurrentfromSqle)</td>
+                                    }
+                                }
+                                @* Scrap *@
+                                @if (item.TypeNumbers > 0 & i==0)
+                                {
+                                    @if (item.EolkorrA.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolkorrA)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolfromSqla)</td>
+                                    }
+                                }
+                                @if (item.TypeNumbers > 1 & i==1)
+                                {
+                                    @if (item.EolkorrB.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolkorrB)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolfromSqlb)</td>
+                                    }
+                                }
+                                @if (item.TypeNumbers > 2 & i==2)
+                                {
+                                    @if (item.EolkorrC.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolkorrC)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolfromSqlc)</td>
+                                    }
+                                }
+                                @if (item.TypeNumbers > 3 & i==3)
+                                {
+                                    @if (item.EolkorrD.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolkorrD)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolfromSqld)</td>
+                                    }
+                                }
+                                @if (item.TypeNumbers > 4 & i==4)
+                                {
+                                    @if (item.EolkorrE.HasValue)
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolkorrE)</td>
+                                    }
+                                    else
+                                    {
+                                    <td>@Html.DisplayFor(modelItem => item.EolfromSqle)</td>
+                                    } 
+                                }
+                                @* DownTime *@
+                                @if (item.TypeNumbers > 0 & i==0)
+                                {
+                                    TimeSpan ts = TimeSpan.FromSeconds(item.LineId.Trim() != "GBM Line2" & item.LineId.Trim() != "DVE5 Line" ? item.DownTimefromSqla.Value * 60 : item.DownTimefromSqla.Value);
+                                    <td>@ts.ToString("hh':'mm':'ss")</td>
+                                }
+                                @if (item.TypeNumbers > 1 & i==1)
+                                {
+                                    TimeSpan ts = TimeSpan.FromSeconds(item.LineId.Trim() != "GBM Line2" & item.LineId.Trim() != "DVE5 Line" ? item.DownTimefromSqlb.Value * 60 : item.DownTimefromSqlb.Value);
+                                    <td>@ts.ToString("hh':'mm':'ss")</td>
+                                }
+                                @if (item.TypeNumbers > 2 & i == 2)
+                                {
+                                    TimeSpan ts = TimeSpan.FromSeconds(item.LineId.Trim() != "GBM Line2" & item.LineId.Trim() != "DVE5 Line" ? item.DownTimefromSqlc.Value * 60 : item.DownTimefromSqlc.Value);
+                                    <td>@ts.ToString("hh':'mm':'ss")</td>
+                                }
+                                @if (item.TypeNumbers > 3 & i==3)
+                                {
+                                    TimeSpan ts = TimeSpan.FromSeconds(item.LineId.Trim() != "GBM Line2" & item.LineId.Trim() != "DVE5 Line" ? item.DownTimefromSqld.Value * 60 : item.DownTimefromSqld.Value);
+                                    <td>@ts.ToString("hh':'mm':'ss")</td>
+                                }
+                                @if (item.TypeNumbers > 4 & i==4)
+                                {
+                                    TimeSpan ts = TimeSpan.FromSeconds(item.LineId.Trim() != "GBM Line2" & item.LineId.Trim() != "DVE5 Line" ? item.DownTimefromSqle.Value * 60 : item.DownTimefromSqle.Value);
+                                    <td>@ts.ToString("hh':'mm':'ss")</td>
+                                }
+                                </tr>
+                                }
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

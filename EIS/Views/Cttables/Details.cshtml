@@ -1,0 +1,205 @@
+﻿@model EIS.EISModels.Cttable
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Cttable</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StationId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StationId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ct)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ct)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Wt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Wt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Muszak)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Muszak)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LongCt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LongCt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LongStep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LongStep)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TesterId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TesterId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TesterSubId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TesterSubId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Xct)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Xct)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Xpt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Xpt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Xwt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Xwt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nok)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nok)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Wtnr)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Wtnr)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cutting)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cutting)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dummies)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dummies)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Leerfahren)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Leerfahren)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Modified)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Modified)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sent2Cloud)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sent2Cloud)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AlertLevel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AlertLevel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastAlertLevel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastAlertLevel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dtstatus)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dtstatus)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Downtime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Downtime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dttypes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dttypes.CodeId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

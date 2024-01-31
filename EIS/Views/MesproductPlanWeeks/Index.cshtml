@@ -1,0 +1,323 @@
+﻿@model IEnumerable<EIS.EISModels.MesproductPlanWeek>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+    string lineid = (string)ViewData["LineID"];
+    int year = (int)ViewData["Year"];
+    int week = (int)ViewData["Week"];
+    string st0 = ((DateTime)ViewData["ST"]).AddDays(0).ToString("yyyy-MM-dd");
+    string st1 = ((DateTime)ViewData["ST"]).AddDays(1).ToString("yyyy-MM-dd");
+    string st2 = ((DateTime)ViewData["ST"]).AddDays(2).ToString("yyyy-MM-dd");
+    string st3 = ((DateTime)ViewData["ST"]).AddDays(3).ToString("yyyy-MM-dd");
+    string st4 = ((DateTime)ViewData["ST"]).AddDays(4).ToString("yyyy-MM-dd");
+    string st5 = ((DateTime)ViewData["ST"]).AddDays(5).ToString("yyyy-MM-dd");
+    string st6 = ((DateTime)ViewData["ST"]).AddDays(6).ToString("yyyy-MM-dd");
+    string test = (string)ViewData["Test"];
+    string Mtype01 = (string)ViewData["Mtype01"];
+    string Mtype11 = (string)ViewData["Mtype11"];
+    string Mtype21 = (string)ViewData["Mtype21"];
+    string Mtype31 = (string)ViewData["Mtype31"];
+    string Mtype41 = (string)ViewData["Mtype41"];
+    string Mtype51 = (string)ViewData["Mtype51"];
+    string Mtype61 = (string)ViewData["Mtype61"];
+    string Mtype02 = (string)ViewData["Mtype02"];
+    string Mtype12 = (string)ViewData["Mtype12"];
+    string Mtype22 = (string)ViewData["Mtype22"];
+    string Mtype32 = (string)ViewData["Mtype32"];
+    string Mtype42 = (string)ViewData["Mtype42"];
+    string Mtype52 = (string)ViewData["Mtype52"];
+    string Mtype62 = (string)ViewData["Mtype62"];
+    string Mtype03 = (string)ViewData["Mtype03"];
+    string Mtype13 = (string)ViewData["Mtype13"];
+    string Mtype23 = (string)ViewData["Mtype23"];
+    string Mtype33 = (string)ViewData["Mtype33"];
+    string Mtype43 = (string)ViewData["Mtype43"];
+    string Mtype53 = (string)ViewData["Mtype53"];
+    string Mtype63 = (string)ViewData["Mtype63"];
+    string WorkerId011 = (string)ViewData["WorkerId011"];
+    string WorkerId012 = (string)ViewData["WorkerId012"];
+    string WorkerId111 = (string)ViewData["WorkerId111"];
+    string WorkerId112 = (string)ViewData["WorkerId112"];
+    string WorkerId211 = (string)ViewData["WorkerId211"];
+    string WorkerId212 = (string)ViewData["WorkerId212"];
+    string WorkerId311 = (string)ViewData["WorkerId311"];
+    string WorkerId312 = (string)ViewData["WorkerId312"];
+    string WorkerId411 = (string)ViewData["WorkerId411"];
+    string WorkerId412 = (string)ViewData["WorkerId412"];
+    string WorkerId511 = (string)ViewData["WorkerId511"];
+    string WorkerId512 = (string)ViewData["WorkerId512"];
+    string WorkerId611 = (string)ViewData["WorkerId611"];
+    string WorkerId612 = (string)ViewData["WorkerId612"];
+    string WorkerId021 = (string)ViewData["WorkerId021"];
+    string WorkerId022 = (string)ViewData["WorkerId022"];
+    string WorkerId121 = (string)ViewData["WorkerId121"];
+    string WorkerId122 = (string)ViewData["WorkerId122"];
+    string WorkerId221 = (string)ViewData["WorkerId221"];
+    string WorkerId222 = (string)ViewData["WorkerId222"];
+    string WorkerId321 = (string)ViewData["WorkerId321"];
+    string WorkerId322 = (string)ViewData["WorkerId322"];
+    string WorkerId421 = (string)ViewData["WorkerId421"];
+    string WorkerId422 = (string)ViewData["WorkerId422"];
+    string WorkerId521 = (string)ViewData["WorkerId521"];
+    string WorkerId522 = (string)ViewData["WorkerId522"];
+    string WorkerId621 = (string)ViewData["WorkerId621"];
+    string WorkerId622 = (string)ViewData["WorkerId622"];
+    string WorkerId031 = (string)ViewData["WorkerId031"];
+    string WorkerId032 = (string)ViewData["WorkerId032"];
+    string WorkerId131 = (string)ViewData["WorkerId131"];
+    string WorkerId132 = (string)ViewData["WorkerId132"];
+    string WorkerId231 = (string)ViewData["WorkerId231"];
+    string WorkerId232 = (string)ViewData["WorkerId232"];
+    string WorkerId331 = (string)ViewData["WorkerId331"];
+    string WorkerId332 = (string)ViewData["WorkerId332"];
+    string WorkerId431 = (string)ViewData["WorkerId431"];
+    string WorkerId432 = (string)ViewData["WorkerId432"];
+    string WorkerId531 = (string)ViewData["WorkerId531"];
+    string WorkerId532 = (string)ViewData["WorkerId532"];
+    string WorkerId631 = (string)ViewData["WorkerId631"];
+    string WorkerId632 = (string)ViewData["WorkerId632"];
+}
+<style>
+    .check-box {
+        margin-top: -2px;
+        width: 12px;
+        max-width: 12px;
+        height: 12px;
+        max-height: 12px;
+        background-color: transparent;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 2px solid #ddd;
+        appearance: none;
+        -webkit-appearance: none;
+        outline: 1px solid #222;
+        cursor: pointer;
+    }
+
+    .check-box:checked {
+        background-color: #444;
+    }
+</style>
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+         <div class="row" style="margin: 0px 5px">
+            <!-- ShiftPlanner -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("MESProductPlanWeek", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <h5 style="text-align:right">
+                            @lineid&nbsp;|&nbsp;@year.ToString("d4")&nbsp;CW&nbsp;@week.ToString("d2")&nbsp;|&nbsp;<a asp-controller="MESWorkers" asp-action="Index"><i class="fa-solid fa-toolbox" data-toggle="tooltip" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("MESWorkers", System.Globalization.CultureInfo.CurrentCulture))"></i></a>&nbsp;|&nbsp;<a asp-controller="MESProductPlanTypes" asp-action="Index"><i class="fa-solid fa-screwdriver-wrench" data-toggle="tooltip" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("MESProductPlanTypes", System.Globalization.CultureInfo.CurrentCulture))"></i></a>
+                        </h5>
+                        <table class="table table-bordered table-hover table-head-fixed text-nowrap table-sm" style="width: 100%; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LineId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Year)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Week)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Vasárnap")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Hétfő")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Kedd")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Szerda")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Csütörtök")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Péntek")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Szombat")
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="tablebody">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LineId)
+                                        </td>
+                                        <td>
+                                            <a asp-controller="MesproductPlanWeeks" asp-action="Index" asp-route-Year="@(year-1)" asp-route-Week="@(week)"><i class="fa fa-arrow-left"></i></a>
+                                            @Html.DisplayFor(modelItem => item.Year)
+                                            <a asp-controller="MesproductPlanWeeks" asp-action="Index" asp-route-Year="@(year+1)" asp-route-Week="@(week)"><i class="fa fa-arrow-right"></i></a>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="MesproductPlanWeeks" asp-action="Index" asp-route-Year="@(year)" asp-route-Week="@(week-1)"><i class="fa fa-arrow-left"></i></a>
+                                            @Html.DisplayFor(modelItem => item.Week)
+                                            <a asp-controller="MesproductPlanWeeks" asp-action="Index" asp-route-Year="@(year)" asp-route-Week="@(week+1)"><i class="fa fa-arrow-right"></i></a>
+                                        </td>
+                                        <td>
+                                            @st0<hr style="margin: 0px;">
+                                            Reggeli műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active01)<br>
+                                            Karbantartás: @Mtype01 (@Html.DisplayFor(modelItem => item.From01)-@Html.DisplayFor(modelItem => item.To01))<br>
+                                            Sorvezető: @WorkerId011<br>
+                                            Sorvezető: @WorkerId012<hr style="margin: 0px;">
+                                            Délutáni műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active02)<br>
+                                            Karbantartás: @Mtype02 (@Html.DisplayFor(modelItem => item.From02)-@Html.DisplayFor(modelItem => item.To02))<br>
+                                            Sorvezető: @WorkerId021<br>
+                                            Sorvezető: @WorkerId022<hr style="margin: 0px;">
+                                            Éjszakai műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active03)<br>
+                                            Karbantartás: @Mtype03 (@Html.DisplayFor(modelItem => item.From03)-@Html.DisplayFor(modelItem => item.To03))<br>
+                                            Sorvezető: @WorkerId031<br>
+                                            Sorvezető: @WorkerId032<hr style="margin: 0px;">
+                                        </td>
+                                        <td>
+                                            @st1<hr style="margin: 0px;">
+                                            Reggeli műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active11)<br>
+                                            Karbantartás: @Mtype11 (@Html.DisplayFor(modelItem => item.From11)-@Html.DisplayFor(modelItem => item.To11))<br>
+                                            Sorvezető: @WorkerId111<br>
+                                            Sorvezető: @WorkerId112<hr style="margin: 0px;">
+                                            Délutáni műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active12)<br>
+                                            Karbantartás: @Mtype12 (@Html.DisplayFor(modelItem => item.From12)-@Html.DisplayFor(modelItem => item.To12))<br>
+                                            Sorvezető: @WorkerId121<br>
+                                            Sorvezető: @WorkerId122<hr style="margin: 0px;">
+                                            Éjszakai műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active13)<br>
+                                            Karbantartás: @Mtype13 (@Html.DisplayFor(modelItem => item.From13)-@Html.DisplayFor(modelItem => item.To13))<br>
+                                            Sorvezető: @WorkerId131<br>
+                                            Sorvezető: @WorkerId132<hr style="margin: 0px;">
+                                        </td>
+                                        <td>
+                                            @st2<hr style="margin: 0px;">
+                                            Reggeli műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active21)<br>
+                                            Karbantartás: @Mtype21 (@Html.DisplayFor(modelItem => item.From21)-@Html.DisplayFor(modelItem => item.To21))<br>
+                                            Sorvezető: @WorkerId211<br>
+                                            Sorvezető: @WorkerId212<hr style="margin: 0px;">
+                                            Délutáni műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active22)<br>
+                                            Karbantartás: @Mtype22 (@Html.DisplayFor(modelItem => item.From22)-@Html.DisplayFor(modelItem => item.To22))<br>
+                                            Sorvezető: @WorkerId221<br>
+                                            Sorvezető: @WorkerId222<hr style="margin: 0px;">
+                                            Éjszakai műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active23)<br>
+                                            Karbantartás: @Mtype23 (@Html.DisplayFor(modelItem => item.From23)-@Html.DisplayFor(modelItem => item.To23))<br>
+                                            Sorvezető: @WorkerId231<br>
+                                            Sorvezető: @WorkerId232<hr style="margin: 0px;">
+                                        </td>
+                                        <td>
+                                            @st3<hr style="margin: 0px;">
+                                            Reggeli műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active31)<br>
+                                            Karbantartás: @Mtype31 (@Html.DisplayFor(modelItem => item.From31)-@Html.DisplayFor(modelItem => item.To31))<br>
+                                            Sorvezető: @WorkerId311<br>
+                                            Sorvezető: @WorkerId312<hr style="margin: 0px;">
+                                            Délutáni műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active32)<br>
+                                            Karbantartás: @Mtype32 (@Html.DisplayFor(modelItem => item.From32)-@Html.DisplayFor(modelItem => item.To32))<br>
+                                            Sorvezető: @WorkerId321<br>
+                                            Sorvezető: @WorkerId322<hr style="margin: 0px;">
+                                            Éjszakai műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active33)<br>
+                                            Karbantartás: @Mtype33 (@Html.DisplayFor(modelItem => item.From33)-@Html.DisplayFor(modelItem => item.To33))<br>
+                                            Sorvezető: @WorkerId331<br>
+                                            Sorvezető: @WorkerId332<hr style="margin: 0px;">
+                                        </td>
+                                        <td>
+                                            @st4<hr style="margin: 0px;">
+                                            Reggeli műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active41)<br>
+                                            Karbantartás: @Mtype41 (@Html.DisplayFor(modelItem => item.From41)-@Html.DisplayFor(modelItem => item.To41))<br>
+                                            Sorvezető: @WorkerId411<br>
+                                            Sorvezető: @WorkerId412<hr style="margin: 0px;">
+                                            Délutáni műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active42)<br>
+                                            Karbantartás: @Mtype42 (@Html.DisplayFor(modelItem => item.From42)-@Html.DisplayFor(modelItem => item.To42))<br>
+                                            Sorvezető: @WorkerId421<br>
+                                            Sorvezető: @WorkerId422<hr style="margin: 0px;">
+                                            Éjszakai műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active43)<br>
+                                            Karbantartás: @Mtype43 (@Html.DisplayFor(modelItem => item.From43)-@Html.DisplayFor(modelItem => item.To43))<br>
+                                            Sorvezető: @WorkerId431<br>
+                                            Sorvezető: @WorkerId432<hr style="margin: 0px;">
+                                        </td>
+                                        <td>
+                                            @st5<hr style="margin: 0px;">
+                                            Reggeli műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active51)<br>
+                                            Karbantartás: @Mtype51 (@Html.DisplayFor(modelItem => item.From51)-@Html.DisplayFor(modelItem => item.To51))<br>
+                                            Sorvezető: @WorkerId511<br>
+                                            Sorvezető: @WorkerId512<hr style="margin: 0px;">
+                                            Délutáni műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active52)<br>
+                                            Karbantartás: @Mtype52 (@Html.DisplayFor(modelItem => item.From52)-@Html.DisplayFor(modelItem => item.To52))<br>
+                                            Sorvezető: @WorkerId521<br>
+                                            Sorvezető: @WorkerId522<hr style="margin: 0px;">
+                                            Éjszakai műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active53)<br>
+                                            Karbantartás: @Mtype53 (@Html.DisplayFor(modelItem => item.From53)-@Html.DisplayFor(modelItem => item.To53))<br>
+                                            Sorvezető: @WorkerId531<br>
+                                            Sorvezető: @WorkerId532<hr style="margin: 0px;">
+                                        </td>
+                                        <td>
+                                            @st6<hr style="margin: 0px;">
+                                            Reggeli műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active61)<br>
+                                            Karbantartás: @Mtype61 (@Html.DisplayFor(modelItem => item.From61)-@Html.DisplayFor(modelItem => item.To61))<br>
+                                            Sorvezető: @WorkerId611<br>
+                                            Sorvezető: @WorkerId612<hr style="margin: 0px;">
+                                            Délutáni műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active62)<br>
+                                            Karbantartás: @Mtype62 (@Html.DisplayFor(modelItem => item.From62)-@Html.DisplayFor(modelItem => item.To62))<br>
+                                            Sorvezető: @WorkerId621<br>
+                                            Sorvezető: @WorkerId622<hr style="margin: 0px;">
+                                            Éjszakai műszak<hr style="margin: 0px;">
+                                            Aktív: @Html.DisplayFor(modelItem => item.Active63)<br>
+                                            Karbantartás: @Mtype63 (@Html.DisplayFor(modelItem => item.From63)-@Html.DisplayFor(modelItem => item.To63))<br>
+                                            Sorvezető: @WorkerId631<br>
+                                            Sorvezető: @WorkerId632<hr style="margin: 0px;">
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-link tablebutton" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

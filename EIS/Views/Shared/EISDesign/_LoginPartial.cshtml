@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Localization
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<style>
+.container {
+  position: relative;
+  text-align: center;
+  /*background-color: rgba(0,0,0,.9);*/
+  color: white;
+}
+
+.bottom-right {
+  position: absolute;
+  top: 34px;
+  right: 0px;
+}
+</style>
+
+@{
+    var name =  User.Identity.Name.Split('.'); 
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var username = "Manage: " + @name[0].Substring(0, 1).ToUpper() + @name[0].Substring(1);
+    if (@requestCulture.RequestCulture.UICulture.Name == "hu-HU")
+    {
+        username = @name[0].Substring(0, 1).ToUpper() + @name[0].Substring(1) + " beállításai";
+    }
+    if (name.Count() > 1)
+    {
+        username = "Manage: " + @name[0].Substring(0, 1).ToUpper() + @name[0].Substring(1) + " " + @name[1].Substring(0, 1).ToUpper() + @name[1].Substring(1);
+        if (@requestCulture.RequestCulture.UICulture.Name == "hu-HU")
+        {
+            username = @name[1].Substring(0, 1).ToUpper() + @name[1].Substring(1) + " " + @name[0].Substring(0, 1).ToUpper() + @name[0].Substring(1) + " beállításai";
+        }
+    }
+}
+<div class="w-100" style="text-align: center; padding: 8px 0px 10px 0px">
+    @if (SignInManager.IsSignedIn(User))
+    {                        
+        @*<li class="nav-item" style="align-self: center;width: 44px;height: 44px;">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="@username">
+                <div class="container" style="width: 44px; height: 44px; margin: 4px 0px 4px 0px; padding: 0px;">                   
+                    @if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
+                    {
+                        <img style="width:44px;height:44px; object-fit:cover; border-radius:44px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
+                    }
+                    else
+                    {
+                        <img style="width:44px;height:44px; object-fit:cover; border-radius:44px" src="~/images/avatar.png"/>                    
+                    }
+                    <div class="bottom-right" style="top: 30px">
+                        @if(User.IsInRole("SuperAdmin")){<small style="background-color: red;">S</small>}
+                        @if(User.IsInRole("Admin")){<small style="background-color: red;">A</small>}
+                        @if(User.IsInRole("Moderator")){<small style="background-color: brown;">M</small>}
+                        @if(User.IsInRole("Basic")){<small style="background-color: rgba(0,0,0,.9);">B</small>}
+                    </div>
+                </div>
+            </a>
+        </li>*@
+        <a asp-area="Identity" asp-page="/Account/Manage/Index" title="@username">
+            @if (UserManager.GetUserAsync(User).Result.ProfilePicture != null)
+            {
+                <img style="width: 24px; height: 24px; object-fit: scale-down; border-radius:62px; font-size: 1.5rem" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))">
+            }
+            else
+            {
+                <i class="fa-regular fa-circle-user" style="font-size: 1.5rem"></i>
+            }
+        </a>
+    }
+    else
+    {
+        <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Login", System.Globalization.CultureInfo.CurrentCulture)">
+            <i class="fa-regular fa-circle-user" style="font-size: 1.6rem;height: 26px; width: 26px; margin: 0px 0px 0px 12px"></i>
+        </a>
+    }
+</div>

@@ -1,0 +1,141 @@
+﻿@model IEnumerable<EIS.EISModels.Cttable>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Downtime Report -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Downtime", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LineID", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("TimeStamp", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Downtime", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("StartTime", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Muszak", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("AlertLevel", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    @{
+                                        var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+                                    }
+                                    @if (@requestCulture.RequestCulture.UICulture.Name == "hu-HU")
+                                    {
+                                        <th>
+                                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Decription", System.Globalization.CultureInfo.CurrentCulture))
+                                        </th>
+                                    }
+                                    else
+                                    {
+                                        <th>
+                                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DecriptionEn", System.Globalization.CultureInfo.CurrentCulture))
+                                        </th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="tablebody">
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.LineId)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.TimeStamp)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            @{
+                                                TimeSpan ts = TimeSpan.FromSeconds(item.Downtime.Value);
+                                            }
+                                            @if (item.Downtime.Value > 3600)
+                                            {
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit?/{item.Id}")">@ts.ToString("hh':'mm':'ss")</button>
+                                            }
+                                            else
+                                            {
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">@ts.ToString("mm':'ss")</button>
+                                            }
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.StartTime)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Muszak)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.AlertLevel)
+                                            </button>
+                                        </td>
+                                        @if (@requestCulture.RequestCulture.UICulture.Name == "hu-HU")
+                                        {
+                                            <td>
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                    @Html.DisplayFor(modelItem => item.Dttypes.Description)
+                                                </button>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                    @Html.DisplayFor(modelItem => item.Dttypes.DescriptionEn)
+                                                </button>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

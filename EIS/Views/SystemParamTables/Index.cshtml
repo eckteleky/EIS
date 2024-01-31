@@ -1,0 +1,141 @@
+﻿@model IEnumerable<EIS.EISModels.SystemParamTable>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Downtime Report -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("SystemParamTables", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LineID", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Cycletime", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Minpercent", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Meanpercent", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("M1start", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("M1end", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("M2start", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("M2end", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("M3start", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("M3end", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Wasterate", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="tablebody">
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.LineId)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Cycletime)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Minpercent)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Meanpercent)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.M1start)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.M1end)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.M2start)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.M2end)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.M3start)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.M3end)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Wasterate)
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

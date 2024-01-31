@@ -1,0 +1,239 @@
+﻿@model EIS.EISModels.Kpivalues
+<!-- Sweetalert2 -->
+<link rel="stylesheet" href="~/plugins/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<!-- SweetAlert2 -->
+<script src="~/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+<div class="modal fade" id="addCreate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addLabel">@EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Create", System.Globalization.CultureInfo.CurrentCulture)</h4>
+                <div class="modal-tools">
+                    <button type="button" class="btn btn-tool" data-dismiss="modal" id="X">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Year" class="control-label"></label>
+                        <input asp-for="Year" class="form-control" />
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="KpiheaderId" class="control-label"></label>
+                        <select asp-for="KpiheaderId" class="form-control" asp-items="ViewBag.KpiheaderId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TargetPrev" class="control-label"></label>
+                        <input asp-for="TargetPrev" class="form-control" />
+                        <span asp-validation-for="TargetPrev" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target01" class="control-label"></label>
+                        <input asp-for="Target01" class="form-control" />
+                        <span asp-validation-for="Target01" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target02" class="control-label"></label>
+                        <input asp-for="Target02" class="form-control" />
+                        <span asp-validation-for="Target02" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target03" class="control-label"></label>
+                        <input asp-for="Target03" class="form-control" />
+                        <span asp-validation-for="Target03" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target04" class="control-label"></label>
+                        <input asp-for="Target04" class="form-control" />
+                        <span asp-validation-for="Target04" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target05" class="control-label"></label>
+                        <input asp-for="Target05" class="form-control" />
+                        <span asp-validation-for="Target05" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target06" class="control-label"></label>
+                        <input asp-for="Target06" class="form-control" />
+                        <span asp-validation-for="Target06" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target07" class="control-label"></label>
+                        <input asp-for="Target07" class="form-control" />
+                        <span asp-validation-for="Target07" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target08" class="control-label"></label>
+                        <input asp-for="Target08" class="form-control" />
+                        <span asp-validation-for="Target08" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target09" class="control-label"></label>
+                        <input asp-for="Target09" class="form-control" />
+                        <span asp-validation-for="Target09" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target10" class="control-label"></label>
+                        <input asp-for="Target10" class="form-control" />
+                        <span asp-validation-for="Target10" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target11" class="control-label"></label>
+                        <input asp-for="Target11" class="form-control" />
+                        <span asp-validation-for="Target11" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Target12" class="control-label"></label>
+                        <input asp-for="Target12" class="form-control" />
+                        <span asp-validation-for="Target12" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TargetNext" class="control-label"></label>
+                        <input asp-for="TargetNext" class="form-control" />
+                        <span asp-validation-for="TargetNext" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ValuePrev" class="control-label"></label>
+                        <input asp-for="ValuePrev" class="form-control" />
+                        <span asp-validation-for="ValuePrev" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value01" class="control-label"></label>
+                        <input asp-for="Value01" class="form-control" />
+                        <span asp-validation-for="Value01" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value02" class="control-label"></label>
+                        <input asp-for="Value02" class="form-control" />
+                        <span asp-validation-for="Value02" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value03" class="control-label"></label>
+                        <input asp-for="Value03" class="form-control" />
+                        <span asp-validation-for="Value03" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value04" class="control-label"></label>
+                        <input asp-for="Value04" class="form-control" />
+                        <span asp-validation-for="Value04" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value05" class="control-label"></label>
+                        <input asp-for="Value05" class="form-control" />
+                        <span asp-validation-for="Value05" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value06" class="control-label"></label>
+                        <input asp-for="Value06" class="form-control" />
+                        <span asp-validation-for="Value06" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value07" class="control-label"></label>
+                        <input asp-for="Value07" class="form-control" />
+                        <span asp-validation-for="Value07" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value08" class="control-label"></label>
+                        <input asp-for="Value08" class="form-control" />
+                        <span asp-validation-for="Value08" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value09" class="control-label"></label>
+                        <input asp-for="Value09" class="form-control" />
+                        <span asp-validation-for="Value09" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value10" class="control-label"></label>
+                        <input asp-for="Value10" class="form-control" />
+                        <span asp-validation-for="Value10" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value11" class="control-label"></label>
+                        <input asp-for="Value11" class="form-control" />
+                        <span asp-validation-for="Value11" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Value12" class="control-label"></label>
+                        <input asp-for="Value12" class="form-control" />
+                        <span asp-validation-for="Value12" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ValueNext" class="control-label"></label>
+                        <input asp-for="ValueNext" class="form-control" />
+                        <span asp-validation-for="ValueNext" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SortedId" class="control-label"></label>
+                        <input asp-for="SortedId" class="form-control" />
+                        <span asp-validation-for="SortedId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Visible" class="control-label"></label>
+                        <input asp-for="Visible" class="form-control" />
+                        <span asp-validation-for="Visible" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="d-flex justify-content-between m-0" style="width: 100%">
+                    <div class="col-auto">
+                        <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="modal">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <div class="col-auto">
+                        <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="modal">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#save").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'success',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("SaveTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#close").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#X").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $('.myselect').select2({
+                                theme: 'bootstrap4',
+                                placeholder: 'This is my placeholder',
+                                allowClear: false
+                            }).on('select2-focus', function () {
+                                $(this).select2('open');
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

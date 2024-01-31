@@ -1,0 +1,37 @@
+﻿@model EIS.EISModels.Kpiunit
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Kpiunit</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NameEn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NameEn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NameHu)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NameHu)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NameDe)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NameDe)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

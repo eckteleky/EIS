@@ -1,0 +1,1364 @@
+﻿@using Microsoft.AspNetCore.Localization
+@model EIS.EISModels.MesproductPlanWeek
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=swap">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="~/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Sweetalert2 -->
+<link rel="stylesheet" href="~/plugins/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="~/plugins/select2/js/select2.full.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="~/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<style>
+    input[type=time]::-webkit-datetime-edit-ampm-field {
+        display: none;
+    }
+    input[type="time"]::-webkit-calendar-picker-indicator {
+        background: transparent;
+        margin: -15px;
+    }
+    input[type="time"]{
+        width: 80px;
+    }
+    .checkbox-round {
+        width: 12px;
+        height: 12px;
+        background-color: transparent;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 2px solid #ddd;
+        appearance: none;
+        -webkit-appearance: none;
+        outline: 1px solid #222;
+        cursor: pointer;
+    }
+
+    .checkbox-round:checked {
+        background-color: #444;
+    }
+</style>
+<style>
+    #timeInput {
+        width: 60px;
+    }
+</style>
+
+<script>
+    const timeInput = document.getElementById("timeInput");
+    timeInput.addEventListener("input", function () {
+        const value = this.value.replace(/[^0-9]/g, "");
+        if (value.length > 2) {
+            this.value = value.slice(0, 2) + ":" + value.slice(2);
+        }
+    });
+</script>
+<a hidden asp-controller="MesproductPlanWeeks" asp-action="Index" id="uplink"></a>
+<div class="modal fade" id="addEdit">
+    <div class="modal-dialog modal-xl" style="min-width:1450px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addLabel">@EIS.Resources.Resource.ResourceManager.GetString("MESProductPlanWeek", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Edit", System.Globalization.CultureInfo.CurrentCulture).ToLower()</h4>
+                <div class="modal-tools">
+                    <button type="button" class="btn btn-tool" data-dismiss="modal" id="X">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-body" style="padding-bottom: 20px">
+                <form asp-action="Edit" style="width: 100%">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <table width="100%">
+                        <thead hidden>
+                            <tr>
+                                <th width="50%"></th>
+                                <th width="50%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%" style="text-align:left">
+                                    @Html.DisplayFor(model => model.LineId)
+                                </td>
+                                <td width="50%" style="text-align:right">
+                                    @Html.DisplayFor(model => model.Year) CW @Html.DisplayFor(model => model.Week)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="StartTime" />
+                    <input type="hidden" asp-for="LineId" />
+                    <input type="hidden" asp-for="Year" />
+                    <input type="hidden" asp-for="Week" />
+                    <input type="hidden" asp-for="Newflag" />
+                    <table width="100%" style="background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                        <thead>
+                            <tr>
+                                <th width="5%" style="background-color: var(--eck-lightgreen2);">Műszak</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Vasárnap</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Hétfő</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Kedd</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Szerda</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Csütörtök</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Péntek</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Szombat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="5%">I.</td>
+                                <td width="13%"><input asp-for="Active01" type="checkbox" class="checkbox-round" /></td>
+                                <td width="13%"><input asp-for="Active11" type="checkbox" class="checkbox-round" /></td>
+                                <td width="13%"><input asp-for="Active21" type="checkbox" class="checkbox-round" /></td>
+                                <td width="13%"><input asp-for="Active31" type="checkbox" class="checkbox-round" /></td>
+                                <td width="13%"><input asp-for="Active41" type="checkbox" class="checkbox-round" /></td>
+                                <td width="13%"><input asp-for="Active51" type="checkbox" class="checkbox-round" /></td>
+                                <td width="13%"><input asp-for="Active61" type="checkbox" class="checkbox-round" /></td>
+                            </tr>
+                            <tr>
+                                <td width="5%">II.</td>
+                                <td width="13%"><input asp-for="Active02" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active12" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active22" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active32" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active42" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active52" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active62" type="checkbox" class="checkbox-round"  /></td>
+                            </tr>
+                            <tr>
+                                <td width="5%">III.</td>
+                                <td width="13%"><input asp-for="Active03" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active13" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active23" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active33" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active43" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active53" type="checkbox" class="checkbox-round"  /></td>
+                                <td width="13%"><input asp-for="Active63" type="checkbox" class="checkbox-round"  /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table width="100%" style="background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                        <thead>
+                            <tr>
+                                <th width="5%" style="background-color: var(--eck-lightgreen2);">Állás</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Vasárnap</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Hétfő</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Kedd</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Szerda</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Csütörtök</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Péntek</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Szombat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="5%">I.</td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance01" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From01" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To01"  type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype01" class="form-control" asp-items="ViewBag.Mtype01"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance11" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From11" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To11" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype11" class="form-control" asp-items="ViewBag.Mtype11"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance21" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From21" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To21" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype21" class="form-control" asp-items="ViewBag.Mtype21"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance31" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From31" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To31" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype31" class="form-control" asp-items="ViewBag.Mtype31"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance41" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From41" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To41" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype41" class="form-control" asp-items="ViewBag.Mtype41"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance51" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From51" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To51" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype51" class="form-control" asp-items="ViewBag.Mtype51"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance61" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From61" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To61" type="time" timeformat="24h" min="06:00" max="14:20" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype61" class="form-control" asp-items="ViewBag.Mtype61"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="5%">II.</td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance02" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From02" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To02" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype02" class="form-control" asp-items="ViewBag.Mtype02"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance12" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From12" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To12" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype12" class="form-control" asp-items="ViewBag.Mtype12"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance22" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From22" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To22" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype22" class="form-control" asp-items="ViewBag.Mtype22"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance32" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From32" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To32" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype32" class="form-control" asp-items="ViewBag.Mtype32"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance42" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From42" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To42" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype42" class="form-control" asp-items="ViewBag.Mtype42"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance52" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From52" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To52" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype52" class="form-control" asp-items="ViewBag.Mtype52"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance62" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From62" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To62" type="time" timeformat="24h" min="14:20" max="22:40" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype62" class="form-control" asp-items="ViewBag.Mtype62"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="5%">III.</td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance03" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From03" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To03" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype03" class="form-control" asp-items="ViewBag.Mtype03"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance13" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From13" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To13" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype13" class="form-control" asp-items="ViewBag.Mtype13"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance23" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From23" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To23" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype23" class="form-control" asp-items="ViewBag.Mtype23"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance33" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From33" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To33" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype33" class="form-control" asp-items="ViewBag.Mtype33"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance43" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From43" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To43" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype43" class="form-control" asp-items="ViewBag.Mtype43"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance53" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From53" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To53" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype53" class="form-control" asp-items="ViewBag.Mtype53"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="13%">
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="8%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                                <th width="2%"></th>
+                                                <th width="44%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="8%"><input asp-for="Maintenance63" type="checkbox" class="checkbox-round" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="From63" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                                <td width="2%">&nbsp;</td>
+                                                <td width="44%"><input asp-for="To63" type="time" timeformat="24h" min="22:40" max="06:00" class="form-control" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="100%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%"><select asp-for="Mtype63" class="form-control" asp-items="ViewBag.Mtype63"></select></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                    <table width="100%" style="background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                        <thead>
+                            <tr>
+                                <th width="5%" style="background-color: var(--eck-lightgreen2);">Sorvezető</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Vasárnap</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Hétfő</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Kedd</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Szerda</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Csütörtök</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Péntek</th>
+                                <th width="13%" style="background-color: var(--eck-lightgreen2);">Szombat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="5%">I.</td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId011" class="form-control" asp-items="ViewBag.WorkerId011"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId012" class="form-control" asp-items="ViewBag.WorkerId012"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId111" class="form-control" asp-items="ViewBag.WorkerId111"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId112" class="form-control" asp-items="ViewBag.WorkerId112"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId211" class="form-control" asp-items="ViewBag.WorkerId211"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId212" class="form-control" asp-items="ViewBag.WorkerId212"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId311" class="form-control" asp-items="ViewBag.WorkerId311"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId312" class="form-control" asp-items="ViewBag.WorkerId312"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId411" class="form-control" asp-items="ViewBag.WorkerId411"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId412" class="form-control" asp-items="ViewBag.WorkerId412"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId511" class="form-control" asp-items="ViewBag.WorkerId511"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId512" class="form-control" asp-items="ViewBag.WorkerId512"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId611" class="form-control" asp-items="ViewBag.WorkerId611"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId612" class="form-control" asp-items="ViewBag.WorkerId612"></select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="5%">II.</td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId021" class="form-control" asp-items="ViewBag.WorkerId021"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId022" class="form-control" asp-items="ViewBag.WorkerId022"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId121" class="form-control" asp-items="ViewBag.WorkerId121"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId122" class="form-control" asp-items="ViewBag.WorkerId122"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId221" class="form-control" asp-items="ViewBag.WorkerId221"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId222" class="form-control" asp-items="ViewBag.WorkerId222"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId321" class="form-control" asp-items="ViewBag.WorkerId321"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId322" class="form-control" asp-items="ViewBag.WorkerId322"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId421" class="form-control" asp-items="ViewBag.WorkerId421"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId422" class="form-control" asp-items="ViewBag.WorkerId422"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId521" class="form-control" asp-items="ViewBag.WorkerId521"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId522" class="form-control" asp-items="ViewBag.WorkerId522"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId621" class="form-control" asp-items="ViewBag.WorkerId621"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId622" class="form-control" asp-items="ViewBag.WorkerId622"></select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="5%">III.</td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId031" class="form-control" asp-items="ViewBag.WorkerId031"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId032" class="form-control" asp-items="ViewBag.WorkerId032"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId131" class="form-control" asp-items="ViewBag.WorkerId131"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId132" class="form-control" asp-items="ViewBag.WorkerId132"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId231" class="form-control" asp-items="ViewBag.WorkerId231"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId232" class="form-control" asp-items="ViewBag.WorkerId232"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId331" class="form-control" asp-items="ViewBag.WorkerId331"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId332" class="form-control" asp-items="ViewBag.WorkerId332"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId431" class="form-control" asp-items="ViewBag.WorkerId431"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId432" class="form-control" asp-items="ViewBag.WorkerId432"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId531" class="form-control" asp-items="ViewBag.WorkerId531"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId532" class="form-control" asp-items="ViewBag.WorkerId532"></select>
+                                    </div>
+                                </td>
+                                <td width="13%">
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId631" class="form-control" asp-items="ViewBag.WorkerId631"></select>
+                                    </div>
+                                    <div class="input-group" data-toggle="tooltip">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <select asp-for="WorkerId632" class="form-control" asp-items="ViewBag.WorkerId632"></select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="d-flex justify-content-between m-0" style="width: 100%">
+                    <div class="col-auto">
+                        <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="modal">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <div class="col-auto">
+                        <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="modal">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#save").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'success',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("SaveTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#close").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#X").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            //Initialize Select2 Elements
+                            $('.myselect').select2({
+                                theme: 'bootstrap4',
+                                placeholder: 'This is my placeholder',
+                                allowClear: false
+                            }).on('select2-focus', function () {
+                                $(this).select2('open');
+                            });
+                        });
+                        $(function () {
+                            $('#DolgozoId').select2({
+                                placeholder: "Select a WorkerID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                            $('#ID').select2({
+                                placeholder: "Select a ID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                            $('#KID').select2({
+                                placeholder: "Select a ID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                         });
+                    </script>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

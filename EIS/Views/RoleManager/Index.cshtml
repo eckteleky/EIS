@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+
+@model List<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "Role Manager";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<br />
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <table width="100%">
+        <thead hidden>
+            <tr>
+                <th>&nbsp;</th>
+                <th width="60px" align="right">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td valign="middle">
+                    <h1>@EIS.Resources.Resource.ResourceManager.GetString("Role Manager", System.Globalization.CultureInfo.CurrentCulture)</h1>
+                    <button id="myButton" type="button" style="padding: 0px;color: blue;" class="btn btn-link" data-toggle="modal" data-target="#myModal"><img border="0" src="~/images/Add 16x16.png" width="16" heigth="16" title="Create"/></button>
+                </td>
+                <td width="60px" align="right"><partial name="EISDesign/_LoginPartial" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="example2" class="table table-bordered table-sm" width="100%">
+        <thead>
+            <tr>
+                <th>@EIS.Resources.Resource.ResourceManager.GetString("Id", System.Globalization.CultureInfo.CurrentCulture)</th>
+                <th>@EIS.Resources.Resource.ResourceManager.GetString("Role", System.Globalization.CultureInfo.CurrentCulture)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr style="background-color: #fff">
+                    <td>@role.Id</td>
+                    <td>@role.Name</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">@EIS.Resources.Resource.ResourceManager.GetString("Add Role", System.Globalization.CultureInfo.CurrentCulture)</h4>
+          <button id="myButton" type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form method="post" asp-action="AddRole" asp-controller="RoleManager">
+                <div class="input-group">
+                    <label name="roleName" class="control-label"></label>
+                    <input name="roleName" class="form-control">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <span class="input-group-btn">
+                <button class="btn btn-primary">@EIS.Resources.Resource.ResourceManager.GetString("Add New Role", System.Globalization.CultureInfo.CurrentCulture)</button>
+            </span>
+            <button id="myButton" type="button" class="btn btn-primary" data-dismiss="modal">@EIS.Resources.Resource.ResourceManager.GetString("Close", System.Globalization.CultureInfo.CurrentCulture)</button>
+        </div>
+      </div>
+      
+    </div>
+ </div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

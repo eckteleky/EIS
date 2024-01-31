@@ -1,0 +1,1375 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = EIS
+build_property.RootNamespace = EIS
+build_property.ProjectDir = C:\Users\teleky\Documents\05 Digitalisation\EIS\eis\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\teleky\Documents\05 Digitalisation\EIS\eis
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Lockout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/SQLError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxTUUxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/UserProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxVc2VyUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertIntervals/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRJbnRlcnZhbHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertIntervals/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRJbnRlcnZhbHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertIntervals/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRJbnRlcnZhbHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertIntervals/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRJbnRlcnZhbHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertIntervals/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRJbnRlcnZhbHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertIntervals/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRJbnRlcnZhbHNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertIntervals/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRJbnRlcnZhbHNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertLevelUsers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRMZXZlbFVzZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertLevelUsers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRMZXZlbFVzZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertLevelUsers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRMZXZlbFVzZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertLevelUsers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRMZXZlbFVzZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertLevelUsers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRMZXZlbFVzZXJzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertLevelUsers/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRMZXZlbFVzZXJzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertLevelUsers/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRMZXZlbFVzZXJzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertStations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRTdGF0aW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertStations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRTdGF0aW9uc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertStations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRTdGF0aW9uc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertStations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRTdGF0aW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertStations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRTdGF0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertStations/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRTdGF0aW9uc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertStations/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRTdGF0aW9uc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUserDescriptions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2VyRGVzY3JpcHRpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUserDescriptions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2VyRGVzY3JpcHRpb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUserDescriptions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2VyRGVzY3JpcHRpb25zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUserDescriptions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2VyRGVzY3JpcHRpb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUserDescriptions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2VyRGVzY3JpcHRpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUserDescriptions/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2VyRGVzY3JpcHRpb25zXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUserDescriptions/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2VyRGVzY3JpcHRpb25zXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUsers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2Vyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUsers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2Vyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUsers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2Vyc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUsers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2Vyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUsers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2Vyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUsers/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2Vyc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/AlertUsers/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxlcnRVc2Vyc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Cttables/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3R0YWJsZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Cttables/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3R0YWJsZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Cttables/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3R0YWJsZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Cttables/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3R0YWJsZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Cttables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3R0YWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/DashBoards/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaEJvYXJkc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/DownTimeTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG93blRpbWVUYWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/DownTimeTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG93blRpbWVUYWJsZXNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/Select.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXFNlbGVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/Viewer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXFZpZXdlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/_DetailsModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXF9EZXRhaWxzTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dtreports/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHRyZXBvcnRzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/DttypesGroups/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHR0eXBlc0dyb3Vwc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/DttypesGroups/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHR0eXBlc0dyb3Vwc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/DttypesGroups/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHR0eXBlc0dyb3Vwc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dttypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHR0eXBlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dttypes/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHR0eXBlc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Dttypes/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHR0eXBlc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesjobs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc2pvYnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesjobs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc2pvYnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesjobs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc2pvYnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesjobs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc2pvYnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesjobs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc2pvYnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesjobs/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc2pvYnNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesjobs/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc2pvYnNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesstatus/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3N0YXR1c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesstatus/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3N0YXR1c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesstatus/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3N0YXR1c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesstatus/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3N0YXR1c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesstatus/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3N0YXR1c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesstatus/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3N0YXR1c1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesstatus/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3N0YXR1c1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesttstypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3R0c3R5cGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesttstypes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3R0c3R5cGVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesttstypes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3R0c3R5cGVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesttstypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3R0c3R5cGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesttstypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3R0c3R5cGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesttstypes/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3R0c3R5cGVzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/EasyMesttstypes/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWFzeU1lc3R0c3R5cGVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Empty/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wdHlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ErrorTables/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JUYWJsZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ErrorTables/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JUYWJsZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ErrorTables/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JUYWJsZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ErrorTables/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JUYWJsZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ErrorTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JUYWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/Error404.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvcjQwNC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/LZAbfor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMWkFiZm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/LZCategoryOfMonth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMWkNhdGVnb3J5T2ZNb250aC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/LZHolidayOfMonth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMWkhvbGlkYXlPZk1vbnRoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/LZHours.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMWkhvdXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/LZHoursOfMonth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMWkhvdXJzT2ZNb250aC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/LZSzabadsag.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMWlN6YWJhZHNhZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/LZViewer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMWlZpZXdlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/SQLError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTUUxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/ViewGbmDownTimeReasons.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3R2JtRG93blRpbWVSZWFzb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Home/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsDetectionTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzRGV0ZWN0aW9uVGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsDetectionTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzRGV0ZWN0aW9uVGFibGVzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsDetectionTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzRGV0ZWN0aW9uVGFibGVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsFailureClassCodeTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzRmFpbHVyZUNsYXNzQ29kZVRhYmxlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsFailureClassCodeTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzRmFpbHVyZUNsYXNzQ29kZVRhYmxlc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsFailureClassCodeTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzRmFpbHVyZUNsYXNzQ29kZVRhYmxlc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsFailureCodeTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzRmFpbHVyZUNvZGVUYWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsFailureCodeTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzRmFpbHVyZUNvZGVUYWJsZXNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsFailureCodeTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzRmFpbHVyZUNvZGVUYWJsZXNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsHeaderTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzSGVhZGVyVGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsHeaderTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzSGVhZGVyVGFibGVzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsHeaderTables/_DeleteModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzSGVhZGVyVGFibGVzXF9EZWxldGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsHeaderTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzSGVhZGVyVGFibGVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsMuszakTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzTXVzemFrVGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsMuszakTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzTXVzemFrVGFibGVzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsMuszakTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzTXVzemFrVGFibGVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IFSShiftsTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSUZTU2hpZnRzVGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IFSShiftsTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSUZTU2hpZnRzVGFibGVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsValueTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzVmFsdWVUYWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsValueTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzVmFsdWVUYWJsZXNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsValueTables/_DeleteModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzVmFsdWVUYWJsZXNcX0RlbGV0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/IfsValueTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWZzVmFsdWVUYWJsZXNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/KpidataSources/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZGF0YVNvdXJjZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/KpidataSources/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZGF0YVNvdXJjZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/KpidataSources/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZGF0YVNvdXJjZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/KpidataSources/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZGF0YVNvdXJjZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/KpidataSources/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZGF0YVNvdXJjZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/KpidataSources/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZGF0YVNvdXJjZXNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/KpidataSources/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZGF0YVNvdXJjZXNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiexpectations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZXhwZWN0YXRpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiexpectations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZXhwZWN0YXRpb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiexpectations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZXhwZWN0YXRpb25zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiexpectations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZXhwZWN0YXRpb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiexpectations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZXhwZWN0YXRpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiexpectations/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZXhwZWN0YXRpb25zXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiexpectations/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpZXhwZWN0YXRpb25zXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiheaders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpaGVhZGVyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiheaders/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpaGVhZGVyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiheaders/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpaGVhZGVyc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiheaders/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpaGVhZGVyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiheaders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpaGVhZGVyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiheaders/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpaGVhZGVyc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiheaders/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpaGVhZGVyc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiprocesses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcHJvY2Vzc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiprocesses/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcHJvY2Vzc2VzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiprocesses/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcHJvY2Vzc2VzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiprocesses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcHJvY2Vzc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiprocesses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcHJvY2Vzc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiprocesses/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcHJvY2Vzc2VzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiprocesses/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcHJvY2Vzc2VzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiresponsibles/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcmVzcG9uc2libGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiresponsibles/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcmVzcG9uc2libGVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiresponsibles/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcmVzcG9uc2libGVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiresponsibles/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcmVzcG9uc2libGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiresponsibles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcmVzcG9uc2libGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiresponsibles/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcmVzcG9uc2libGVzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiresponsibles/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpcmVzcG9uc2libGVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpisummantions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Bpc3VtbWFudGlvbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpisummantions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Bpc3VtbWFudGlvbnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpisummantions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Bpc3VtbWFudGlvbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpisummantions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Bpc3VtbWFudGlvbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpisummantions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Bpc3VtbWFudGlvbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpisummantions/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Bpc3VtbWFudGlvbnNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpisummantions/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Bpc3VtbWFudGlvbnNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/KPITables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS1BJVGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiunits/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdW5pdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiunits/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdW5pdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiunits/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdW5pdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiunits/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdW5pdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiunits/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdW5pdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiunits/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdW5pdHNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpiunits/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdW5pdHNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpivalues/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdmFsdWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpivalues/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdmFsdWVzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Kpivalues/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3BpdmFsdWVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Locations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Locations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Locations/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Locations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Locations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Locations/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Locations/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYXRpb25zXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzCompetency/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpDb21wZXRlbmN5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzDolgozoTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpEb2xnb3pvVGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzDolgozoTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpEb2xnb3pvVGFibGVzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzDolgozoTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpEb2xnb3pvVGFibGVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzIntervalTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpJbnRlcnZhbFRhYmxlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzIntervalTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpJbnRlcnZhbFRhYmxlc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzIntervalTables/_DeleteModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpJbnRlcnZhbFRhYmxlc1xfRGVsZXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzIntervalTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpJbnRlcnZhbFRhYmxlc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzKefetartoTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpLZWZldGFydG9UYWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzKefetartoTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpLZWZldGFydG9UYWJsZXNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzKefetartoTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpLZWZldGFydG9UYWJsZXNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzKefetartotipuslistaTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpLZWZldGFydG90aXB1c2xpc3RhVGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzKefetartotipuslistaTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpLZWZldGFydG90aXB1c2xpc3RhVGFibGVzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzKefetartotipuslistaTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpLZWZldGFydG90aXB1c2xpc3RhVGFibGVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzKefetartotipusTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpLZWZldGFydG90aXB1c1RhYmxlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzKefetartotipusTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpLZWZldGFydG90aXB1c1RhYmxlc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzKefetartotipusTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpLZWZldGFydG90aXB1c1RhYmxlc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMunkaCodeTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdW5rYUNvZGVUYWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMunkaCodeTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdW5rYUNvZGVUYWJsZXNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMunkaCodeTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdW5rYUNvZGVUYWJsZXNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMunkanapTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdW5rYW5hcFRhYmxlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMunkanapTables/Viewer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdW5rYW5hcFRhYmxlc1xWaWV3ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMunkanapTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdW5rYW5hcFRhYmxlc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMunkanapTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdW5rYW5hcFRhYmxlc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMuszakTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdXN6YWtUYWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMuszakTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdXN6YWtUYWJsZXNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMuszakTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdXN6YWtUYWJsZXNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMuveletReszletTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdXZlbGV0UmVzemxldFRhYmxlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMuveletReszletTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdXZlbGV0UmVzemxldFRhYmxlc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzMuveletReszletTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpNdXZlbGV0UmVzemxldFRhYmxlc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzTeljesitmenyTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpUZWxqZXNpdG1lbnlUYWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzTeljesitmenyTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpUZWxqZXNpdG1lbnlUYWJsZXNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzTeljesitmenyTables/_DeleteModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpUZWxqZXNpdG1lbnlUYWJsZXNcX0RlbGV0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/LzTeljesitmenyTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHpUZWxqZXNpdG1lbnlUYWJsZXNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesevents/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzZXZlbnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesevents/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzZXZlbnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesevents/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzZXZlbnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesevents/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzZXZlbnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesevents/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzZXZlbnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesevents/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzZXZlbnRzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesevents/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzZXZlbnRzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlans/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlans/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlans/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlans/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlans/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlans/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5zXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlans/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5zXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5UeXBlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanTypes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5UeXBlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanTypes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5UeXBlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5UeXBlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5UeXBlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanTypes/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5UeXBlc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanTypes/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5UeXBlc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanWeeks/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5XZWVrc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanWeeks/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5XZWVrc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanWeeks/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5XZWVrc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanWeeks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5XZWVrc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanWeeks/Index - Copy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5XZWVrc1xJbmRleCAtIENvcHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanWeeks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5XZWVrc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanWeeks/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5XZWVrc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/MesproductPlanWeeks/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzcHJvZHVjdFBsYW5XZWVrc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesworkers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzd29ya2Vyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesworkers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzd29ya2Vyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesworkers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzd29ya2Vyc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesworkers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzd29ya2Vyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesworkers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzd29ya2Vyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesworkers/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzd29ya2Vyc1xfQ3JlYXRlTW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Mesworkers/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzd29ya2Vyc1xfRWRpdE1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/QualityCosts/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVhbGl0eUNvc3RzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ReportUsers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0VXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ReportUsers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0VXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ReportUsers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0VXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ReportUsers/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0VXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ReportUsers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0VXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ReportUsers/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0VXNlcnNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ReportUsers/_DeleteModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0VXNlcnNcX0RlbGV0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ReportUsers/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0VXNlcnNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/RoleManager/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZU1hbmFnZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfRm9vdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfTG9naW5QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_MainNavigation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfTWFpbk5hdmlnYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_Scripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfU2NyaXB0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_SelectLanguagePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfU2VsZWN0TGFuZ3VhZ2VQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_Styles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfU3R5bGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_TIP2HeaderPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfVElQMkhlYWRlclBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_TopNavigation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfVG9wTmF2aWdhdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_ViewHeaderPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfVmlld0hlYWRlclBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/EISDesign/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVJU0Rlc2lnblxfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ShiftsTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpZnRzVGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ShiftView/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hpZnRWaWV3XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/ShopFloorTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcEZsb29yVGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/SystemParamTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3lzdGVtUGFyYW1UYWJsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/SystemParamTables/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3lzdGVtUGFyYW1UYWJsZXNcX0NyZWF0ZU1vZGFsUGFydGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/SystemParamTables/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3lzdGVtUGFyYW1UYWJsZXNcX0VkaXRNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/TablePlannedDownTimes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGVQbGFubmVkRG93blRpbWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/TablePlannedDownTimes/_CreateModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGVQbGFubmVkRG93blRpbWVzXF9DcmVhdGVNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/TablePlannedDownTimes/_EditModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGVQbGFubmVkRG93blRpbWVzXF9FZGl0TW9kYWxQYXJ0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/TaskLPA/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza0xQQVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/TaskShopFloor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1Nob3BGbG9vclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/UserRoles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclJvbGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/UserRoles/NotFound.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclJvbGVzXE5vdEZvdW5kLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/UserRoles/_ManageModalPartion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclJvbGVzXF9NYW5hZ2VNb2RhbFBhcnRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/teleky/Documents/05 Digitalisation/EIS/eis/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

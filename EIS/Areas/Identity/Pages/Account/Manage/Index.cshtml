@@ -1,0 +1,90 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = @EIS.Resources.Resource.ResourceManager.GetString("Profile", System.Globalization.CultureInfo.CurrentCulture);
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h2 style="color: rgba(0,0,0,.9);">@ViewData["Title"]</h2>
+@*<partial name="_StatusMessage" model="Model.StatusMessage" />
+<partial name="_StatusMessage" model="Model.UserNameChangeLimitMessage" />*@
+<form id="profile-form" method="post" enctype="multipart/form-data">
+    <div class="row" style="color: rgba(0,0,0,.9);">
+
+        <div class="col-md-6">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.FirstName">@EIS.Resources.Resource.ResourceManager.GetString("FirstName", System.Globalization.CultureInfo.CurrentCulture)</label>
+                <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName">@EIS.Resources.Resource.ResourceManager.GetString("LastName", System.Globalization.CultureInfo.CurrentCulture)</label>
+                <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Username">@EIS.Resources.Resource.ResourceManager.GetString("UserName", System.Globalization.CultureInfo.CurrentCulture)</label>
+                <input asp-for="Input.Username" class="form-control" />
+                <span asp-validation-for="Input.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber">@EIS.Resources.Resource.ResourceManager.GetString("PhoneNumber", System.Globalization.CultureInfo.CurrentCulture)</label>
+                <input asp-for="Input.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="btn btn-primary">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+
+        </div>
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <table>
+                    <thead hidden>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label asp-for="Input.ProfilePicture" style="width: 100%;">@EIS.Resources.Resource.ResourceManager.GetString("ProfilePicture", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                @if (Model.Input.ProfilePicture != null)
+                                {
+                                    <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(Model.Input.ProfilePicture))">
+                                }
+                                else
+                                {
+                                    <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="">
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="files" class="btn btn-primary">@EIS.Resources.Resource.ResourceManager.GetString("Select Image", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <input type="file"
+                                       id="files" 
+                                       style="visibility:hidden;border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                                       accept=".png,.jpg,.jpeg,.gif,.tif"
+                                       asp-for="Input.ProfilePicture"
+                                       class="form-control"
+                                       onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

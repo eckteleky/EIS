@@ -1,0 +1,57 @@
+﻿@page
+@model TwoFactorAuthenticationModel
+@{
+    ViewData["Title"] = @EIS.Resources.Resource.ResourceManager.GetString("Two-factor authentication (2FA)", System.Globalization.CultureInfo.CurrentCulture);
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<partial name="_StatusMessage" for="StatusMessage" />
+<h2 style="color: rgba(0,0,0,.9);">@ViewData["Title"]</h2>
+@if (Model.Is2faEnabled)
+{
+    if (Model.RecoveryCodesLeft == 0)
+    {
+        <div class="alert alert-danger" style="color: rgba(0,0,0,.9);">
+            <strong>You have no recovery codes left.</strong>
+            <p>You must <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a> before you can log in with a recovery code.</p>
+        </div>
+    }
+    else if (Model.RecoveryCodesLeft == 1)
+    {
+        <div class="alert alert-danger" style="color: rgba(0,0,0,.9);">
+            <strong>You have 1 recovery code left.</strong>
+            <p>You can <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+        </div>
+    }
+    else if (Model.RecoveryCodesLeft <= 3)
+    {
+        <div class="alert alert-warning" style="color: rgba(0,0,0,.9);">
+            <strong>You have @Model.RecoveryCodesLeft recovery codes left.</strong>
+            <p>You should <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
+        </div>
+    }
+
+    if (Model.IsMachineRemembered)
+    {
+        <form method="post" style="display: inline-block" style="color: rgba(0,0,0,.9);">
+            <button type="submit" class="btn btn-default">@EIS.Resources.Resource.ResourceManager.GetString("Forget this browser", System.Globalization.CultureInfo.CurrentCulture)</button>
+        </form>
+    }
+    <a asp-page="./Disable2fa" class="btn btn-default" style="color: rgba(0,0,0,.9);">@EIS.Resources.Resource.ResourceManager.GetString("Disable 2FA", System.Globalization.CultureInfo.CurrentCulture)</a>
+    <a asp-page="./GenerateRecoveryCodes" class="btn btn-default" style="color: rgba(0,0,0,.9);">@EIS.Resources.Resource.ResourceManager.GetString("Reset recovery codes", System.Globalization.CultureInfo.CurrentCulture)</a>
+}
+
+<h5>@EIS.Resources.Resource.ResourceManager.GetString("Authenticator app", System.Globalization.CultureInfo.CurrentCulture)</h5>
+@if (!Model.HasAuthenticator)
+{
+    <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-default" style="color: rgba(0,0,0,.9);">@EIS.Resources.Resource.ResourceManager.GetString("Add authenticator app", System.Globalization.CultureInfo.CurrentCulture)</a>
+}
+else
+{
+    <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-default" style="color: rgba(0,0,0,.9);">@EIS.Resources.Resource.ResourceManager.GetString("Setup authenticator app", System.Globalization.CultureInfo.CurrentCulture)</a>
+    <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-default" style="color: rgba(0,0,0,.9);">@EIS.Resources.Resource.ResourceManager.GetString("Reset authenticator app", System.Globalization.CultureInfo.CurrentCulture)</a>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

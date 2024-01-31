@@ -1,0 +1,2863 @@
+﻿@using EIS.Helpers
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Localization
+@using static EIS.Helpers.NavigationIndicatorHelper;
+@inject IHttpContextAccessor Accessor
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var dtfrom = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTFrom")) ? @Accessor.HttpContext.Session.GetString("DTFrom") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("MM") + "." + @DateTime.Now.Date.ToString("dd") + "." : @DateTime.Now.Date.ToString("MM") + "/" + @DateTime.Now.Date.ToString("dd") + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dtfromhu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTFromHU")) ? @Accessor.HttpContext.Session.GetString("DTFromHU") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("MM") + "." + @DateTime.Now.Date.ToString("dd") + "." : @DateTime.Now.Date.ToString("MM") + "/" + @DateTime.Now.Date.ToString("dd") + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dtto = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTTo")) ? @Accessor.HttpContext.Session.GetString("DTTo") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("MM") + "." + @DateTime.Now.Date.ToString("dd") + "." : @DateTime.Now.Date.ToString("MM") + "/" + @DateTime.Now.Date.ToString("dd") + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dttohu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTToHU")) ? @Accessor.HttpContext.Session.GetString("DTToHU") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("MM") + "." + @DateTime.Now.Date.ToString("dd") + "." : @DateTime.Now.Date.ToString("MM") + "/" + @DateTime.Now.Date.ToString("dd") + "/" + @DateTime.Now.Date.ToString("yyyy");
+    //week
+    //var dtwwfrom = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTFrom")) ? @Accessor.HttpContext.Session.GetString("DTFrom") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("ww") : @DateTime.Now.Date.ToString("ww") + "/" + @DateTime.Now.Date.ToString("yyyy");
+    //var dtwwfromhu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTFromHU")) ? @Accessor.HttpContext.Session.GetString("DTFromHU") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("ww") : @DateTime.Now.Date.ToString("ww") + "/" + @DateTime.Now.Date.ToString("yyyy");
+    //var dtwwto = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTTo")) ? @Accessor.HttpContext.Session.GetString("DTTo") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("ww") : @DateTime.Now.Date.ToString("ww") + "/" + @DateTime.Now.Date.ToString("yyyy");
+    //var dtwwtohu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTToHU")) ? @Accessor.HttpContext.Session.GetString("DTToHU") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("ww") : @DateTime.Now.Date.ToString("ww") + "/" + @DateTime.Now.Date.ToString("yyyy");
+    //today
+    var dttoday = @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("MM") + "." + @DateTime.Now.Date.ToString("dd") + "." : @DateTime.Now.Date.ToString("MM") + "/" + @DateTime.Now.Date.ToString("dd") + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dtfromtxt = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTFromTxt")) ? @Accessor.HttpContext.Session.GetString("DTFromTxt") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("MMMM", @requestCulture.RequestCulture.UICulture) + "." : @DateTime.Now.Date.ToString("MMMM", @requestCulture.RequestCulture.UICulture) + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dtfromtxthu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTFromTxtHU")) ? @Accessor.HttpContext.Session.GetString("DTFromTxtHU") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("MMMM", @requestCulture.RequestCulture.UICulture) + "." : @DateTime.Now.Date.ToString("MMMM", @requestCulture.RequestCulture.UICulture) + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dttotxt = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTToTxt")) ? @Accessor.HttpContext.Session.GetString("DTToTxt") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("MMMM", @requestCulture.RequestCulture.UICulture) + "." : @DateTime.Now.Date.ToString("MMMM", @requestCulture.RequestCulture.UICulture) + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dttotxthu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTToTxtHU")) ? @Accessor.HttpContext.Session.GetString("DTToTxtHU") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("MMMM", @requestCulture.RequestCulture.UICulture) + "." : @DateTime.Now.Date.ToString("MMMM", @requestCulture.RequestCulture.UICulture) + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dtwwfromtxt = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTFromTxt")) ? @Accessor.HttpContext.Session.GetString("DTFromTxt") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("ww", @requestCulture.RequestCulture.UICulture) + "." : @DateTime.Now.Date.ToString("ww", @requestCulture.RequestCulture.UICulture) + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dtwwfromtxthu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTFromTxtHU")) ? @Accessor.HttpContext.Session.GetString("DTFromTxtHU") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("ww", @requestCulture.RequestCulture.UICulture) + "." : @DateTime.Now.Date.ToString("ww", @requestCulture.RequestCulture.UICulture) + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dtwwtotxt = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTToTxt")) ? @Accessor.HttpContext.Session.GetString("DTToTxt") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("ww", @requestCulture.RequestCulture.UICulture) + "." : @DateTime.Now.Date.ToString("ww", @requestCulture.RequestCulture.UICulture) + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dtwwtotxthu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTToTxtHU")) ? @Accessor.HttpContext.Session.GetString("DTToTxtHU") : @requestCulture.RequestCulture.UICulture.Name == "hu-HU" ? @DateTime.Now.Date.ToString("yyyy") + "." + @DateTime.Now.Date.ToString("ww", @requestCulture.RequestCulture.UICulture) + "." : @DateTime.Now.Date.ToString("ww", @requestCulture.RequestCulture.UICulture) + "/" + @DateTime.Now.Date.ToString("yyyy");
+    var dtinterval = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTInterval")) ? @Accessor.HttpContext.Session.GetString("DTInterval") : dtfrom + " - " + dtto;
+    var dtintervalhu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTIntervalHU")) ? @Accessor.HttpContext.Session.GetString("DTIntervalHU") : dtfromhu + " - " + dttohu;
+    //var dtwwinterval = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTInterval")) ? @Accessor.HttpContext.Session.GetString("DTInterval") : dtwwfrom + " - " + dtwwto;
+    //var dtwwintervalhu = !string.IsNullOrEmpty(@Accessor.HttpContext.Session.GetString("DTIntervalHU")) ? @Accessor.HttpContext.Session.GetString("DTIntervalHU") : dtwwfromhu + " - " + dtwwtohu;
+    switch(@Accessor.HttpContext.Session.GetInt32("DayGroup"))
+    {
+        default:
+        case 0:
+        case 1:
+        case 2:
+            dtto = dtfrom;
+            dtinterval = dtfrom + " - " + dtto;
+            dttohu = dtfromhu;
+            dtintervalhu = dtfromhu + " - " + dttohu;
+        break;
+        case 3:
+            dtinterval = dtfrom + " - " + dtto;
+            dtintervalhu = dtfromhu + " - " + dttohu;
+        break;
+        case 4:
+            dtinterval = dtfrom + " - " + dtto;
+            dtintervalhu = dtfromhu + " - " + dttohu;
+        break;
+    }
+}
+
+ <a hidden asp-controller="Home" asp-action="Index" id="refreshlink"></a>
+ <a hidden asp-controller="Home" asp-action="SetServerDatas" id="link" asp-route-returnUrl="@returnUrl" ></a>
+
+<!-- date-range-picker -->
+<script src="~/plugins/daterangepicker/daterangepicker.js"></script>
+ <!-- Content Header (Page header) -->
+<div class="content-header m-0" style="padding: 10px 10px 5px 15px">
+    <div class="container-fluid p-0">
+        <div class="d-flex justify-content-between">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                @if (@Accessor.HttpContext.Session.GetInt32("AddGroup").HasValue)
+                {
+                    @if (@Accessor.HttpContext.Session.GetInt32("AddGroup")>1)
+                    {
+                        <div class="col-xs-auto">
+                            <button id="myButton" disabled type="submit" class="btn btn-record btn-block" style="width: 120px" data-toggle="ajax-modal" data-target="#addCreate" data-url="@Url.Action("Create")">@EIS.Resources.Resource.ResourceManager.GetString("NewRecord", System.Globalization.CultureInfo.CurrentCulture)</button>
+                        </div>
+                    }
+                    else
+                    {
+                        @if (@Accessor.HttpContext.Session.GetInt32("AddGroup")>0)
+                        {
+                            <div class="col-xs-auto">
+                                @* <button type="submit" class="btn btn-record btn-block" style="width: 120px" data-toggle="ajax-modal" data-target="#addCreate" data-url="@Url.Action("Create")" onclick="onSingleClick(); return false;" ondblclick="show_msg_box(); return false;">@EIS.Resources.Resource.ResourceManager.GetString("NewRecord", System.Globalization.CultureInfo.CurrentCulture)</button> *@
+                                <button id="myButton" type="submit" class="btn btn-record btn-block" style="width: 120px" data-toggle="ajax-modal" data-target="#addCreate" data-url="@Url.Action("Create")">@EIS.Resources.Resource.ResourceManager.GetString("NewRecord", System.Globalization.CultureInfo.CurrentCulture)</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-xs-auto"></div>
+                        }
+                    }
+                }
+                <div class="row m-0" style="justify-content: right">
+                    <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-industry" style="width: 16px;"></i>
+                                </span>
+                            </div>
+                            @if (@requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "hu")
+                            {
+                                <select class="form-control custom-select" id="company" onchange="getcompanyhu()" style="width: 170px; vertical-align:middle;">
+                                @if (@Accessor.HttpContext.Session.GetInt32("Company").HasValue)
+                                {
+                                    @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 1)
+                                    {
+                                        <option selected="selected" value="1">Eckerle Kiskőrös</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="1">Eckerle Kiskőrös</option>
+                                    }
+                                    @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 2)
+                                    {
+                                        <option selected="selected" value="2">Eckerle Bóly</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="2">Eckerle Bóly</option>
+                                    }
+                                    @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 3)
+                                    {
+                                        <option selected="selected" value="3">Eckerle Cluj</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="3">Eckerle Cluj</option>
+                                    }
+                                    @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 4)
+                                    {
+                                        <option selected="selected" value="4">Eckerle Ottersweier</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="4">Eckerle Ottersweier</option>
+                                    }
+                                    @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 5)
+                                    {
+                                        <option selected="selected" value="5">Eckerle Zhuhai</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="5">Eckerle Zhuhai</option>
+                                    }
+                                    @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 6)
+                                    {
+                                        <option selected="selected" value="6">Eckerle Querétaro</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="6">Eckerle Querétaro</option>
+                                    }
+                                    @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 7)
+                                    {
+                                        <option selected="selected" value="7">Eckerle Truda</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="7">Eckerle Turda</option>
+                                    }
+                                }
+                                else
+                                {
+                                    <option selected="" value="1">Eckerle Kiskőrös</option>
+                                    <option value="2">Eckerle Bóly</option>
+                                    <option value="3">Eckerle Cluj</option>
+                                    <option value="4">Eckerle Ottersweier</option>
+                                    <option value="5">Eckerle Zhuhai</option>
+                                    <option value="6">Eckerle Querétaro</option>
+                                    <option value="7">Eckerle Turda</option>
+                                }
+                            </select>
+                            }
+                            else
+                            {
+                                <select class="form-control custom-select" id="company" onchange="getcompany()" style="width: 170px; vertical-align:middle;">
+                                    @if (@Accessor.HttpContext.Session.GetInt32("Company").HasValue)
+                                    {
+                                        @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 1)
+                                        {
+                                            <option selected="selected" value="1">Eckerle Kiskőrös</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="1">Eckerle Kiskőrös</option>
+                                        }
+                                        @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 2)
+                                        {
+                                            <option selected="selected" value="2">Eckerle Bóly</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="2">Eckerle Bóly</option>
+                                        }
+                                        @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 3)
+                                        {
+                                            <option selected="selected" value="3">Eckerle Cluj</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="3">Eckerle Cluj</option>
+                                        }
+                                        @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 4)
+                                        {
+                                            <option selected="selected" value="4">Eckerle Ottersweier</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="4">Eckerle Ottersweier</option>
+                                        }
+                                        @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 5)
+                                        {
+                                            <option selected="selected" value="5">Eckerle Zhuhai</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="5">Eckerle Zhuhai</option>
+                                        }
+                                        @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 6)
+                                        {
+                                            <option selected="selected" value="6">Eckerle Querétaro</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="6">Eckerle Querétaro</option>
+                                        }
+                                        @if (@Accessor.HttpContext.Session.GetInt32("Company").Value == 7)
+                                        {
+                                            <option selected="selected" value="7">Eckerle Turda</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="7">Eckerle Turda</option>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <option selected="" value="1">Eckerle Kiskőrös</option>
+                                        <option value="2">Eckerle Bóly</option>
+                                        <option value="3">Eckerle Cluj</option>
+                                        <option value="4">Eckerle Ottersweier</option>
+                                        <option value="5">Eckerle Zhuhai</option>
+                                        <option value="6">Eckerle Querétaro</option>
+                                        <option value="7">Eckerle Turda</option>
+                                    }
+                                </select>
+                            }
+                        </div>
+                    </div>
+                    @if (@Accessor.HttpContext.Session.GetInt32("LineIDGroup").HasValue)
+                    {
+                        @if (@Accessor.HttpContext.Session.GetInt32("LineIDGroup") > 0)
+                        {
+                            <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-bars-staggered" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    @if (@requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "hu")
+                                    {
+                                        <select class="form-control custom-select" id="lineid" name="lineid" onchange="getcompanyhu()" style="width: 140px">
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "ALL Line")
+                                            {
+                                                <option selected="selected">ALL Line</option>
+                                            }
+                                            else
+                                            {
+                                                <option>ALL Line</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "GBM Line1")
+                                            {
+                                                <option selected="selected">GBM Line1</option>
+                                            }
+                                            else
+                                            {
+                                                <option>GBM Line1</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "GBM Line2")
+                                            {
+                                                <option selected="selected">GBM Line2</option>
+                                            }
+                                            else
+                                            {
+                                                <option>GBM Line2</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "BRM Line1")
+                                            {
+                                                <option selected="selected">BRM Line1</option>
+                                            }
+                                            else
+                                            {
+                                                <option>BRM Line1</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "VALEO RSW2")
+                                            {
+                                                <option selected="selected">VALEO RSW2</option>
+                                            }
+                                            else
+                                            {
+                                                <option>VALEO RSW2</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "EGAS")
+                                            {
+                                                <option selected="selected">EGAS</option>
+                                            }
+                                            else
+                                            {
+                                                <option>EGAS</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "DVE5 Line")
+                                            {
+                                                <option selected="selected">DVE5 Line</option>
+                                            }
+                                            else
+                                            {
+                                                <option>DVE5 Line</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "WSL_AL")
+                                            {
+                                                <option selected="selected">WSL_AL</option>
+                                            }
+                                            else
+                                            {
+                                                <option>WSL_AL</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "WSL_RT")
+                                            {
+                                                <option selected="selected">WSL_RT</option>
+                                            }
+                                            else
+                                            {
+                                                <option>WSL_RT</option>
+                                            }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select class="form-control custom-select" id="lineid" name="lineid" onchange="getcompany()" style="width: 140px">
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "ALL Line")
+                                            {
+                                                <option selected="selected">ALL Line</option>
+                                            }
+                                            else
+                                            {
+                                                <option>ALL Line</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "GBM Line1")
+                                            {
+                                                <option selected="selected">GBM Line1</option>
+                                            }
+                                            else
+                                            {
+                                                <option>GBM Line1</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "GBM Line2")
+                                            {
+                                                <option selected="selected">GBM Line2</option>
+                                            }
+                                            else
+                                            {
+                                                <option>GBM Line2</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "BRM Line1")
+                                            {
+                                                <option selected="selected">BRM Line1</option>
+                                            }
+                                            else
+                                            {
+                                                <option>BRM Line1</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "VALEO RSW2")
+                                            {
+                                                <option selected="selected">VALEO RSW2</option>
+                                            }
+                                            else
+                                            {
+                                                <option>VALEO RSW2</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "EGAS")
+                                            {
+                                                <option selected="selected">EGAS</option>
+                                            }
+                                            else
+                                            {
+                                                <option>EGAS</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "DVE5 Line")
+                                            {
+                                                <option selected="selected">DVE5 Line</option>
+                                            }
+                                            else
+                                            {
+                                                <option>DVE5 Line</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "WSL_AL")
+                                            {
+                                                <option selected="selected">WSL_AL</option>
+                                            }
+                                            else
+                                            {
+                                                <option>WSL_AL</option>
+                                            }
+                                            @if (@Accessor.HttpContext.Session.GetString("LineID") == "WSL_RT")
+                                            {
+                                                <option selected="selected">WSL_RT</option>
+                                            }
+                                            else
+                                            {
+                                                <option>WSL_RT</option>
+                                            }
+                                        </select>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <select hidden id="lineid">
+                                <option>ALL Line</option>
+                                <option selected="selected">GBM Line1</option>
+                                <option>GBM Line2</option>
+                                <option>BRM Line1</option>
+                                <option>VALEO RSW2</option>
+                                <option>EGAS</option>
+                                <option>DVE5 Line</option>
+                                <option>WSL_AL</option>
+                                <option>WSL_RT</option>
+                            </select>
+                        }
+                    }
+                    else
+                    {
+                        <select hidden id="lineid">
+                            <option>ALL Line</option>
+                            <option selected="selected">GBM Line1</option>
+                            <option>GBM Line2</option>
+                            <option>BRM Line1</option>
+                            <option>VALEO RSW2</option>
+                            <option>EGAS</option>
+                            <option>DVE5 Line</option>
+                            <option>WSL_AL</option>
+                            <option>WSL_RT</option>
+                        </select>
+                    }
+                    @if (@Accessor.HttpContext.Session.GetInt32("StationGroup").HasValue)
+                    {
+                        @if (@Accessor.HttpContext.Session.GetInt32("StationGroup") > 0)
+                        {
+                           <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-gavel" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    @if (@requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "hu")
+                                    {
+                                    <select class="form-control custom-select" id="stationid" name="stationid" onchange="getcompanyhu()">
+                                        @switch(@Accessor.HttpContext.Session.GetString("LineID"))
+                                        {
+                                            default:
+                                            case "GBM Line1":
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">GBM Line1 | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">GBM Line1 | WL</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 1)
+                                                {
+                                                    <option selected="selected" value="1">GBM Line1 | ST01</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="1">GBM Line1 | ST01</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 2)
+                                                {
+                                                    <option selected="selected" value="2">GBM Line1 | ST02</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="2">GBM Line1 | ST02</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 3)
+                                                {
+                                                    <option selected="selected" value="3">GBM Line1 | ST03</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="3">GBM Line1 | ST03</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 4)
+                                                {
+                                                    <option selected="selected" value="4">GBM Line1 | ST04</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="4">GBM Line1 | ST04</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 5)
+                                                {
+                                                    <option selected="selected" value="5">GBM Line1 | ST05</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="5">GBM Line1 | ST05</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 51)
+                                                {
+                                                    <option selected="selected" value="51">GBM Line1 | ST05B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="51">GBM Line1 | ST05B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 6)
+                                                {
+                                                    <option selected="selected" value="6">GBM Line1 | ST06</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="6">GBM Line1 | ST06</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 7)
+                                                {
+                                                    <option selected="selected" value="7">GBM Line1 | ST07</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="7">GBM Line1 | ST07</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 8)
+                                                {
+                                                    <option selected="selected" value="8">GBM Line1 | ST08</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="8">GBM Line1 | ST08</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 91)
+                                                {
+                                                    <option selected="selected" value="91">GBM Line1 | ST09.1</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="91">GBM Line1 | ST09.1</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 9)
+                                                {
+                                                    <option selected="selected" value="9">GBM Line1 | ST09</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="9">GBM Line1 | ST09</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 10)
+                                                {
+                                                    <option selected="selected" value="10">GBM Line1 | ST10</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="10">GBM Line1 | ST10</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 12)
+                                                {
+                                                    <option selected="selected" value="12">GBM Line1 | ST12</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="12">GBM Line1 | ST12</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 13)
+                                                {
+                                                    <option selected="selected" value="13">GBM Line1 | ST13</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="13">GBM Line1 | ST13</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 14)
+                                                {
+                                                    <option selected="selected" value="14">GBM Line1 | ST14</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="14">GBM Line1 | ST14</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 141)
+                                                {
+                                                    <option selected="selected" value="141">GBM Line1 | ST14A</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="141">GBM Line1 | ST14A</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 142)
+                                                {
+                                                    <option selected="selected" value="142">GBM Line1 | ST14B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="142">GBM Line1 | ST14B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 143)
+                                                {
+                                                    <option selected="selected" value="143">GBM Line1 | ST14C</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="143">GBM Line1 | ST14C</option>
+                                                }
+                                                @*@if (@Accessor.HttpContext.Session.GetInt32("StationID") == 144)
+                                                {
+                                                    <option selected="selected" value="144">GBM Line1 | ST14D</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="144">GBM Line1 | ST14D</option>
+                                                }*@
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 15)
+                                                {
+                                                    <option selected="selected" value="15">GBM Line1 | ST15</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="15">GBM Line1 | ST15</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 17)
+                                                {
+                                                    <option selected="selected" value="17">GBM Line1 | ST17</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="17">GBM Line1 | ST17</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 18)
+                                                {
+                                                    <option selected="selected" value="18">GBM Line1 | ST18</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="18">GBM Line1 | ST18</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 19)
+                                                {
+                                                    <option selected="selected" value="19">GBM Line1 | ST19</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="19">GBM Line1 | ST19</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 20)
+                                                {
+                                                    <option selected="selected" value="20">GBM Line1 | ST20</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="20">GBM Line1 | ST20</option>
+                                                }
+                                                @*@if (@Accessor.HttpContext.Session.GetInt32("StationID") == 21)
+                                                {
+                                                    <option selected="selected" value="21">GBM Line1 | ST21</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="21">GBM Line1 | ST21</option>
+                                                }*@
+                                                @*@if (@Accessor.HttpContext.Session.GetInt32("StationID") == 22)
+                                                {
+                                                    <option selected="selected" value="22">GBM Line1 | ST22</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="22">GBM Line1 | ST22</option>
+                                                }*@
+                                            break;
+                                            case "GBM Line2":
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">GBM Line2 | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">GBM Line2 | WL</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 10)
+                                                {
+                                                    <option selected="selected" value="10">GBM Line2 | ST01</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="10">GBM Line2 | ST01</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 20)
+                                                {
+                                                    <option selected="selected" value="20">GBM Line2 | ST02</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="20">GBM Line2 | ST02</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 30)
+                                                {
+                                                    <option selected="selected" value="30">GBM Line2 | ST03</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="30">GBM Line2 | ST03</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 40)
+                                                {
+                                                    <option selected="selected" value="40">GBM Line2 | ST04</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="40">GBM Line2 | ST04</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 50)
+                                                {
+                                                    <option selected="selected" value="50">GBM Line2 | ST05</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="50">GBM Line2 | ST05</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 60)
+                                                {
+                                                    <option selected="selected" value="60">GBM Line2 | ST06</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="60">GBM Line2 | ST06</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 70)
+                                                {
+                                                    <option selected="selected" value="70">GBM Line2 | ST07</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="70">GBM Line2 | ST07</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 71)
+                                                {
+                                                    <option selected="selected" value="71">GBM Line2 | ST07B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="71">GBM Line2 | ST07B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 80)
+                                                {
+                                                    <option selected="selected" value="80">GBM Line2 | ST08</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="80">GBM Line2 | ST08</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 84)
+                                                {
+                                                    <option selected="selected" value="84">GBM Line2 | ST08B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="84">GBM Line2 | ST08B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 90)
+                                                {
+                                                    <option selected="selected" value="90">GBM Line2 | ST09</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="90">GBM Line2 | ST09</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 100)
+                                                {
+                                                    <option selected="selected" value="100">GBM Line2 | ST10</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="100">GBM Line2 | ST10</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 110)
+                                                {
+                                                    <option selected="selected" value="110">GBM Line2 | ST11</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="110">GBM Line2 | ST11</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 120)
+                                                {
+                                                    <option selected="selected" value="120">GBM Line2 | ST12</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="120">GBM Line2 | ST12</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 131)
+                                                {
+                                                    <option selected="selected" value="131">GBM Line2 | ST13A</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="131">GBM Line2 | ST13A</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 132)
+                                                {
+                                                    <option selected="selected" value="132">GBM Line2 | ST13B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="132">GBM Line2 | ST13B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 140)
+                                                {
+                                                    <option selected="selected" value="140">GBM Line2 | ST14</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="140">GBM Line2 | ST14</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 150)
+                                                {
+                                                    <option selected="selected" value="150">GBM Line2 | ST15</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="150">GBM Line2 | ST15</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 161)
+                                                {
+                                                    <option selected="selected" value="161">GBM Line2 | ST16A</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="161">GBM Line2 | ST16A</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 162)
+                                                {
+                                                    <option selected="selected" value="162">GBM Line2 | ST16B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="162">GBM Line2 | ST16B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 171)
+                                                {
+                                                    <option selected="selected" value="171">GBM Line2 | ST17A</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="171">GBM Line2 | ST17A</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 172)
+                                                {
+                                                    <option selected="selected" value="172">GBM Line2 | ST17B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="172">GBM Line2 | ST17B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 180)
+                                                {
+                                                    <option selected="selected" value="180">GBM Line2 | ST18</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="180">GBM Line2 | ST18</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 182)
+                                                {
+                                                    <option selected="selected" value="182">GBM Line2 | ST18B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="182">GBM Line2 | ST18B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 190)
+                                                {
+                                                    <option selected="selected" value="190">GBM Line2 | ST19</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="190">GBM Line2 | ST19</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 200)
+                                                {
+                                                    <option selected="selected" value="200">GBM Line2 | ST20</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="200">GBM Line2 | ST20</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 210)
+                                                {
+                                                    <option selected="selected" value="210">GBM Line2 | ST21</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="210">GBM Line1 | ST21</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 220)
+                                                {
+                                                    <option selected="selected" value="220">GBM Line2 | ST22</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="220">GBM Line1 | ST22</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 230)
+                                                {
+                                                    <option selected="selected" value="230">GBM Line2 | ST23</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="230">GBM Line2 | ST23</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 240)
+                                                {
+                                                    <option selected="selected" value="240">GBM Line2 | ST24</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="240">GBM Line2 | ST24</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 250)
+                                                {
+                                                    <option selected="selected" value="250">GBM Line2 | ST25</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="250">GBM Line2 | ST25</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 260)
+                                                {
+                                                    <option selected="selected" value="260">GBM Line2 | ST26</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="260">GBM Line2 | ST26</option>
+                                                }
+                                            break;
+                                            case  "BRM Line1":
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">BRM Line1 | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">BRM Line1 | WL</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 1)
+                                                {
+                                                    <option selected="selected" value="1">BRM Line1 | ST01</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="1">BRM Line1 | ST01</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 2)
+                                                {
+                                                    <option selected="selected" value="2">BRM Line1 | ST02</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="2">BRM Line1 | ST02</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 3)
+                                                {
+                                                    <option selected="selected" value="3">BRM Line1 | ST03</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="3">BRM Line1 | ST03</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 4)
+                                                {
+                                                    <option selected="selected" value="4">BRM Line1 | ST04</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="4">BRM Line1 | ST04</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 5)
+                                                {
+                                                    <option selected="selected" value="5">BRM Line1 | ST05</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="5">BRM Line1 | ST05</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 6)
+                                                {
+                                                    <option selected="selected" value="6">BRM Line1 | ST06</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="6">BRM Line1 | ST06</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 7)
+                                                {
+                                                    <option selected="selected" value="7">BRM Line1 | ST07</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="7">BRM Line1 | ST07</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 8)
+                                                {
+                                                    <option selected="selected" value="8">BRM Line1 | ST08</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="8">BRM Line1 | ST08</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 9)
+                                                {
+                                                    <option selected="selected" value="9">BRM Line1 | ST09</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="9">BRM Line1 | ST09</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 10)
+                                                {
+                                                    <option selected="selected" value="10">BRM Line1 | ST10</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="10">BRM Line1 | ST10</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 11)
+                                                {
+                                                    <option selected="selected" value="11">BRM Line1 | ST11</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="11">BRM Line1 | ST11</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 12)
+                                                {
+                                                    <option selected="selected" value="12">BRM Line1 | ST12</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="12">BRM Line1 | ST12</option>
+                                                }
+                                                break;
+                                            case "VALEO RSW2":
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                   <option selected="selected" value="0">VALEO RSW2 | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">VALEO RSW2 | WL</option>
+                                                }
+                                            break;
+                                            case "EGAS":
+                                            @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">EGAS | RT</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">EGAS | RT</option>
+                                                }
+                                            break;
+                                            case "DVE5 Line":
+                                            @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">DVE5 Line | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">DVE5 Line | WL</option>
+                                                }
+                                            break;
+                                            case "WSL_AL":
+                                            @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">WSL_AL | AL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">WSL_AL | AL</option>
+                                                }
+                                            break;
+                                            case "WSL_RT":
+                                            @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">WSL_RT | RT</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">WSL_RT | RT</option>
+                                                }
+                                            break;
+                                        }
+                                    </select>
+                                    }
+                                    else
+                                    {
+                                    <select class="form-control custom-select" id="stationid" name="stationid" onchange="getcompany()">
+                                        @switch(@Accessor.HttpContext.Session.GetString("LineID"))
+                                        {
+                                            default:
+                                            case "GBM Line1":
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">GBM Line1 | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">GBM Line1 | WL</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 1)
+                                                {
+                                                    <option selected="selected" value="1">GBM Line1 | ST01</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="1">GBM Line1 | ST01</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 2)
+                                                {
+                                                    <option selected="selected" value="2">GBM Line1 | ST02</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="2">GBM Line1 | ST02</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 3)
+                                                {
+                                                    <option selected="selected" value="3">GBM Line1 | ST03</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="3">GBM Line1 | ST03</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 4)
+                                                {
+                                                    <option selected="selected" value="4">GBM Line1 | ST04</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="4">GBM Line1 | ST04</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 5)
+                                                {
+                                                    <option selected="selected" value="5">GBM Line1 | ST05</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="5">GBM Line1 | ST05</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 51)
+                                                {
+                                                    <option selected="selected" value="51">GBM Line1 | ST05B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="51">GBM Line1 | ST05B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 6)
+                                                {
+                                                    <option selected="selected" value="6">GBM Line1 | ST06</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="6">GBM Line1 | ST06</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 7)
+                                                {
+                                                    <option selected="selected" value="7">GBM Line1 | ST07</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="7">GBM Line1 | ST07</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 8)
+                                                {
+                                                    <option selected="selected" value="8">GBM Line1 | ST08</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="8">GBM Line1 | ST08</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 91)
+                                                {
+                                                    <option selected="selected" value="91">GBM Line1 | ST09.1</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="91">GBM Line1 | ST09.1</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 9)
+                                                {
+                                                    <option selected="selected" value="9">GBM Line1 | ST09</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="9">GBM Line1 | ST09</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 10)
+                                                {
+                                                    <option selected="selected" value="10">GBM Line1 | ST10</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="10">GBM Line1 | ST10</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 12)
+                                                {
+                                                    <option selected="selected" value="12">GBM Line1 | ST12</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="12">GBM Line1 | ST12</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 13)
+                                                {
+                                                    <option selected="selected" value="13">GBM Line1 | ST13</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="13">GBM Line1 | ST13</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 14)
+                                                {
+                                                    <option selected="selected" value="14">GBM Line1 | ST14</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="14">GBM Line1 | ST14</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 141)
+                                                {
+                                                    <option selected="selected" value="141">GBM Line1 | ST14A</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="141">GBM Line1 | ST14A</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 142)
+                                                {
+                                                    <option selected="selected" value="142">GBM Line1 | ST14B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="142">GBM Line1 | ST14B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 143)
+                                                {
+                                                    <option selected="selected" value="143">GBM Line1 | ST14C</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="143">GBM Line1 | ST14C</option>
+                                                }
+                                                @*@if (@Accessor.HttpContext.Session.GetInt32("StationID") == 144)
+                                                {
+                                                    <option selected="selected" value="144">GBM Line1 | ST14D</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="144">GBM Line1 | ST14D</option>
+                                                }*@
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 15)
+                                                {
+                                                    <option selected="selected" value="15">GBM Line1 | ST15</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="15">GBM Line1 | ST15</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 17)
+                                                {
+                                                    <option selected="selected" value="17">GBM Line1 | ST17</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="17">GBM Line1 | ST17</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 18)
+                                                {
+                                                    <option selected="selected" value="18">GBM Line1 | ST18</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="18">GBM Line1 | ST18</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 19)
+                                                {
+                                                    <option selected="selected" value="19">GBM Line1 | ST19</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="19">GBM Line1 | ST19</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 20)
+                                                {
+                                                    <option selected="selected" value="20">GBM Line1 | ST20</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="20">GBM Line1 | ST20</option>
+                                                }
+                                                @*@if (@Accessor.HttpContext.Session.GetInt32("StationID") == 21)
+                                                {
+                                                    <option selected="selected" value="21">GBM Line1 | ST21</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="21">GBM Line1 | ST21</option>
+                                                }*@
+                                                @*@if (@Accessor.HttpContext.Session.GetInt32("StationID") == 22)
+                                                {
+                                                    <option selected="selected" value="22">GBM Line1 | ST22</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="22">GBM Line1 | ST22</option>
+                                                }*@
+                                            break;
+                                            case "GBM Line2":
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">GBM Line2 | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">GBM Line2 | WL</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 10)
+                                                {
+                                                    <option selected="selected" value="10">GBM Line2 | ST01</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="10">GBM Line2 | ST01</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 20)
+                                                {
+                                                    <option selected="selected" value="20">GBM Line2 | ST02</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="20">GBM Line2 | ST02</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 30)
+                                                {
+                                                    <option selected="selected" value="30">GBM Line2 | ST03</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="30">GBM Line2 | ST03</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 40)
+                                                {
+                                                    <option selected="selected" value="40">GBM Line2 | ST04</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="40">GBM Line2 | ST04</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 50)
+                                                {
+                                                    <option selected="selected" value="50">GBM Line2 | ST05</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="50">GBM Line2 | ST05</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 60)
+                                                {
+                                                    <option selected="selected" value="60">GBM Line2 | ST06</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="60">GBM Line2 | ST06</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 70)
+                                                {
+                                                    <option selected="selected" value="70">GBM Line2 | ST07</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="70">GBM Line2 | ST07</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 71)
+                                                {
+                                                    <option selected="selected" value="71">GBM Line2 | ST07B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="71">GBM Line2 | ST07B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 80)
+                                                {
+                                                    <option selected="selected" value="80">GBM Line2 | ST08</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="80">GBM Line2 | ST08</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 84)
+                                                {
+                                                    <option selected="selected" value="84">GBM Line2 | ST08B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="84">GBM Line2 | ST08B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 90)
+                                                {
+                                                    <option selected="selected" value="90">GBM Line2 | ST09</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="90">GBM Line2 | ST09</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 100)
+                                                {
+                                                    <option selected="selected" value="100">GBM Line2 | ST10</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="100">GBM Line2 | ST10</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 110)
+                                                {
+                                                    <option selected="selected" value="110">GBM Line2 | ST11</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="110">GBM Line2 | ST11</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 120)
+                                                {
+                                                    <option selected="selected" value="120">GBM Line2 | ST12</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="120">GBM Line2 | ST12</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 131)
+                                                {
+                                                    <option selected="selected" value="131">GBM Line2 | ST13A</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="131">GBM Line2 | ST13A</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 132)
+                                                {
+                                                    <option selected="selected" value="132">GBM Line2 | ST13B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="132">GBM Line2 | ST13B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 140)
+                                                {
+                                                    <option selected="selected" value="140">GBM Line2 | ST14</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="140">GBM Line2 | ST14</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 150)
+                                                {
+                                                    <option selected="selected" value="150">GBM Line2 | ST15</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="150">GBM Line2 | ST15</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 161)
+                                                {
+                                                    <option selected="selected" value="161">GBM Line2 | ST16A</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="161">GBM Line2 | ST16A</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 162)
+                                                {
+                                                    <option selected="selected" value="162">GBM Line2 | ST16B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="162">GBM Line2 | ST16B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 171)
+                                                {
+                                                    <option selected="selected" value="171">GBM Line2 | ST17A</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="171">GBM Line2 | ST17A</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 172)
+                                                {
+                                                    <option selected="selected" value="172">GBM Line2 | ST17B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="172">GBM Line2 | ST17B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 180)
+                                                {
+                                                    <option selected="selected" value="180">GBM Line2 | ST18</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="180">GBM Line2 | ST18</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 182)
+                                                {
+                                                    <option selected="selected" value="182">GBM Line2 | ST18B</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="182">GBM Line2 | ST18B</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 190)
+                                                {
+                                                    <option selected="selected" value="190">GBM Line2 | ST19</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="190">GBM Line2 | ST19</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 200)
+                                                {
+                                                    <option selected="selected" value="200">GBM Line2 | ST20</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="200">GBM Line2 | ST20</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 210)
+                                                {
+                                                    <option selected="selected" value="210">GBM Line2 | ST21</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="210">GBM Line1 | ST21</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 220)
+                                                {
+                                                    <option selected="selected" value="220">GBM Line2 | ST22</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="220">GBM Line1 | ST22</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 230)
+                                                {
+                                                    <option selected="selected" value="230">GBM Line2 | ST23</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="230">GBM Line2 | ST23</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 240)
+                                                {
+                                                    <option selected="selected" value="240">GBM Line2 | ST24</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="240">GBM Line2 | ST24</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 250)
+                                                {
+                                                    <option selected="selected" value="250">GBM Line2 | ST25</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="250">GBM Line2 | ST25</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 260)
+                                                {
+                                                    <option selected="selected" value="260">GBM Line2 | ST26</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="260">GBM Line2 | ST26</option>
+                                                }
+                                            break;
+                                            case  "BRM Line1":
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">BRM Line1 | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">BRM Line1 | WL</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 1)
+                                                {
+                                                    <option selected="selected" value="1">BRM Line1 | ST01</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="1">BRM Line1 | ST01</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 2)
+                                                {
+                                                    <option selected="selected" value="2">BRM Line1 | ST02</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="2">BRM Line1 | ST02</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 3)
+                                                {
+                                                    <option selected="selected" value="3">BRM Line1 | ST03</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="3">BRM Line1 | ST03</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 4)
+                                                {
+                                                    <option selected="selected" value="4">BRM Line1 | ST04</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="4">BRM Line1 | ST04</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 5)
+                                                {
+                                                    <option selected="selected" value="5">BRM Line1 | ST05</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="5">BRM Line1 | ST05</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 6)
+                                                {
+                                                    <option selected="selected" value="6">BRM Line1 | ST06</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="6">BRM Line1 | ST06</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 7)
+                                                {
+                                                    <option selected="selected" value="7">BRM Line1 | ST07</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="7">BRM Line1 | ST07</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 8)
+                                                {
+                                                    <option selected="selected" value="8">BRM Line1 | ST08</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="8">BRM Line1 | ST08</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 9)
+                                                {
+                                                    <option selected="selected" value="9">BRM Line1 | ST09</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="9">BRM Line1 | ST09</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 10)
+                                                {
+                                                    <option selected="selected" value="10">BRM Line1 | ST10</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="10">BRM Line1 | ST10</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 11)
+                                                {
+                                                    <option selected="selected" value="11">BRM Line1 | ST11</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="11">BRM Line1 | ST11</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 12)
+                                                {
+                                                    <option selected="selected" value="12">BRM Line1 | ST12</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="12">BRM Line1 | ST12</option>
+                                                }
+                                                break;
+                                            case "VALEO RSW2":
+                                                @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                   <option selected="selected" value="0">VALEO RSW2 | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">VALEO RSW2 | WL</option>
+                                                }
+                                            break;
+                                            case "EGAS":
+                                            @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">EGAS | RT</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">EGAS | RT</option>
+                                                }
+                                            break;
+                                            case "DVE5 Line":
+                                            @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                {
+                                                    <option selected="selected" value="0">DVE5 Line | WL</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="0">DVE5 Line | WL</option>
+                                                }
+                                            break;
+                                                case "WSL_AL":
+                                                    @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                    {
+                                                        <option selected="selected" value="0">WSL_AL | AL</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="0">WSL_AL | AL</option>
+                                                    }
+                                                    break;
+                                                case "WSL_RT":
+                                                    @if (@Accessor.HttpContext.Session.GetInt32("StationID") == 0)
+                                                    {
+                                                        <option selected="selected" value="0">WSL_RT | RT</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="0">WSL_RT | RT</option>
+                                                    }
+                                                    break;
+                                            }
+                                    </select>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <select hidden id="stationid">
+                                <option selected="selected" value="0">WL</option>
+                            </select>
+                        }
+                    }
+                    else
+                    {
+                        <select hidden id="stationid">
+                            <option selected="selected" value="0">WL</option>
+                        </select>
+                    }
+                    @if (@requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "hu")
+                    {
+                        switch (@Accessor.HttpContext.Session.GetInt32("DayGroup"))
+                        {
+                            default:
+                            case 0: 
+                                <!-- Date range picker-->
+                                <div hidden class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                    @*<label>Date range:</label>*@
+                                    <div hidden class="input-group">
+                                        <div hidden class="input-group-prepend">
+                                            <span hidden class="input-group-text">
+                                                <i hidden class="fas fa-calendar-week" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <input hidden type="text" name="daterangehu" onchange="getcompanyhu()" value="@dtintervalhu" class="form-control float-right" id="daterangehu" style="width: 190px">
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+                                <!-- /.form group -->
+                            break;
+                            case 1:
+                                    <!-- Date range picker-->
+                                    <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                        @*<label>Date range:</label>*@
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-calendar-week" style="width: 16px;"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" name="daterangehu" onchange="getcompanyhu()" value="@dtfromhu" class="form-control float-right" id="daterangehu" style="width: 110px">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                            break;
+                            case 2:
+                                <!-- Date range picker-->
+                                <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                    @*<label>Date range:</label>*@
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-calendar-week" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        @*<input type="text" name="monthrangehu" onchange="getmonthhu()" value="@dtfrom" class="form-control float-right" id="monthrangehu" style="width: 130px">*@
+                                        <div name="monthrangehu" id="monthrangehu" class="form-control float-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 150px; height: 38px">
+                                            <span>@dtfromtxthu</span>
+                                        </div>
+                                    </div>
+                                    <!-- /.input group -->
+                                </div>
+                            break;
+                            case 3:
+                                    <!-- Date range picker-->
+                                    <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                        @*<label>Date range:</label>*@
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-calendar-week" style="width: 16px;"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" name="daterangehu" onchange="getcompanyhu()" value="@dtintervalhu" class="form-control float-right" id="daterangehu" style="width: 190px">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+                            break;
+                            case 4:
+                                    <!-- Date range picker-->
+                                    <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                        @*<label>Date range:</label>*@
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-calendar-week" style="width: 16px;"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" name="daterangehu" onchange="getcompanyhu()" value="@dtintervalhu" class="form-control float-right" id="daterangehu" style="width: 190px">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        switch (@Accessor.HttpContext.Session.GetInt32("DayGroup"))
+                        {
+                            default:
+                            case 0:
+                                    <!-- Date range picker-->
+                                    <div hidden class="form-group" style="height: 38px; padding: 0px 5px">
+                                        @*<label>Date range:</label>*@
+                                        <div hidden class="input-group">
+                                            <div hidden class="input-group-prepend">
+                                                <span hidden class="input-group-text">
+                                                    <i hidden class="fas fa-calendar-week"></i>
+                                                </span>
+                                            </div>
+                                            <input hidden type="text" name="daterange" onchange="getcompany()" value="@dtinterval" class="form-control float-right" id="daterange" style="width: 190px">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+                            break;
+                            case 1:
+                                    <!-- Date range picker-->
+                                    <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                        @*<label>Date range:</label>*@
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-calendar-week" style="width: 16px;"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" name="daterange" onchange="getcompany()" value="@dtfrom" class="form-control float-right" id="daterange" style="width: 110px">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                            break;
+                            case 2:
+                                    <!-- Date range picker-->
+                                    <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                        @*<label>Date range:</label>*@
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-calendar-week" style="width: 16px;"></i>
+                                                </span>
+                                            </div>
+                                            @*<input type="text" name="monthrange" onchange="getmonth()" value="@dtfrom" class="form-control float-right" id="monthrange" style="width: 130px">*@
+                                            <div name="monthrange" id="monthrange" class="form-control float-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 150px; height: 38px">
+                                                <span>@dtfromtxt</span>
+                                            </div>
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                            break;
+                            case 3:
+                                    <!-- Date range picker-->
+                                    <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                        @*<label>Date range:</label>*@
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-calendar-week" style="width: 16px;"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" name="daterange" onchange="getcompany()" value="@dtinterval" class="form-control float-right" id="daterange" style="width: 190px">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+                            break;
+                            case 4:
+                                    <!-- Date range picker-->
+                                    <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                        @*<label>Date range:</label>*@
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fas fa-calendar-week" style="width: 16px;"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" name="daterange" onchange="getcompany()" value="@dtinterval" class="form-control float-right" id="daterange" style="width: 190px">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form group -->
+                            break;
+                        }
+                    }
+                    @if (@Accessor.HttpContext.Session.GetInt32("ShiftGroup").HasValue)
+                    {
+                        @if (@Accessor.HttpContext.Session.GetInt32("ShiftGroup") > 0)
+                        {
+                            <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar-day" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    @if (@requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "hu")
+                                    {
+                                        <select class="form-control custom-select" id="shift" name="shift" onchange="getcompanyhu()" style="width: 120px">
+                                            @if (@Accessor.HttpContext.Session.GetInt32("Shift").HasValue)
+                                            {
+                                                @if (@Accessor.HttpContext.Session.GetInt32("Shift").Value == 4)
+                                                {
+                                                    <option selected="selected" value="4">@EIS.Resources.Resource.ResourceManager.GetString("AllDay", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="4">@EIS.Resources.Resource.ResourceManager.GetString("AllDay", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("Shift").Value == 1)
+                                                {
+                                                    <option selected="selected" value="1">@EIS.Resources.Resource.ResourceManager.GetString("Morning", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="1">@EIS.Resources.Resource.ResourceManager.GetString("Morning", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("Shift").Value == 2)
+                                                {
+                                                    <option selected="selected" value="2">@EIS.Resources.Resource.ResourceManager.GetString("Afternoon", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="2">@EIS.Resources.Resource.ResourceManager.GetString("Afternoon", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("Shift").Value == 3)
+                                                {
+                                                    <option selected="selected" value="3">@EIS.Resources.Resource.ResourceManager.GetString("Night", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="3">@EIS.Resources.Resource.ResourceManager.GetString("Night", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option selected="selected" value="4">@EIS.Resources.Resource.ResourceManager.GetString("AllDay", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                <option value="1">@EIS.Resources.Resource.ResourceManager.GetString("Morning", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                <option value="2">@EIS.Resources.Resource.ResourceManager.GetString("Afternoon", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                <option value="3">@EIS.Resources.Resource.ResourceManager.GetString("Night", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                            }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select class="form-control custom-select" id="shift" name="shift" onchange="getcompany()" style="width: 120px">
+                                            @if (@Accessor.HttpContext.Session.GetInt32("Shift").HasValue)
+                                            {
+                                                @if (@Accessor.HttpContext.Session.GetInt32("Shift").Value == 4)
+                                                {
+                                                    <option selected="selected" value="4">@EIS.Resources.Resource.ResourceManager.GetString("AllDay", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="4">@EIS.Resources.Resource.ResourceManager.GetString("AllDay", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("Shift").Value == 1)
+                                                {
+                                                    <option selected="selected" value="1">@EIS.Resources.Resource.ResourceManager.GetString("Morning", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="1">@EIS.Resources.Resource.ResourceManager.GetString("Morning", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("Shift").Value == 2)
+                                                {
+                                                    <option selected="selected" value="2">@EIS.Resources.Resource.ResourceManager.GetString("Afternoon", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="2">@EIS.Resources.Resource.ResourceManager.GetString("Afternoon", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("Shift").Value == 3)
+                                                {
+                                                    <option selected="selected" value="3">@EIS.Resources.Resource.ResourceManager.GetString("Night", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="3">@EIS.Resources.Resource.ResourceManager.GetString("Night", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option selected="selected" value="4">@EIS.Resources.Resource.ResourceManager.GetString("AllDay", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                <option value="1">@EIS.Resources.Resource.ResourceManager.GetString("Morning", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                <option value="2">@EIS.Resources.Resource.ResourceManager.GetString("Afternoon", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                                <option value="3">@EIS.Resources.Resource.ResourceManager.GetString("Night", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                            }
+                                        </select>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <select hidden id="shift">
+                                <option selected="selected" value="4">@EIS.Resources.Resource.ResourceManager.GetString("AllDay", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                <option value="1">@EIS.Resources.Resource.ResourceManager.GetString("Morning", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                <option value="2">@EIS.Resources.Resource.ResourceManager.GetString("Afternoon", System.Globalization.CultureInfo.CurrentCulture)</option>
+                                <option value="3">@EIS.Resources.Resource.ResourceManager.GetString("Night", System.Globalization.CultureInfo.CurrentCulture)</option>
+                            </select>
+                        }
+                    }
+                    else
+                    {
+                        <select hidden id="shift">
+                            <option selected="selected" value="4">@EIS.Resources.Resource.ResourceManager.GetString("AllDay", System.Globalization.CultureInfo.CurrentCulture)</option>
+                            <option value="1">@EIS.Resources.Resource.ResourceManager.GetString("Morning", System.Globalization.CultureInfo.CurrentCulture)</option>
+                            <option value="2">@EIS.Resources.Resource.ResourceManager.GetString("Afternoon", System.Globalization.CultureInfo.CurrentCulture)</option>
+                            <option value="3">@EIS.Resources.Resource.ResourceManager.GetString("Night", System.Globalization.CultureInfo.CurrentCulture)</option>
+                        </select>
+                    }
+                    @if (@Accessor.HttpContext.Session.GetInt32("LZOPGroup").HasValue)
+                    {
+                        @if (@Accessor.HttpContext.Session.GetInt32("LZOPGroup") > 0)
+                        {
+                            <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar-day" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    @if (@requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "hu")
+                                    {
+                                        <select class="form-control custom-select" id="lzopid" name="lzopid" onchange="getcompanyhu()" style="width: 380px">
+                                            @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").HasValue)
+                                            {
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 66)
+                                                {
+                                                    <option selected="selected" value="66">9000 | szabadság</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="66">9000 | szabadság</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 67)
+                                                {
+                                                    <option selected="selected" value="67">9050 | igazolatlan fizetetlen (jelenlétit von)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="67">9050 | igazolatlan fizetetlen (jelenlétit von)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 68)
+                                                {
+                                                    <option selected="selected" value="68">9080 | igazolt fizetetlen (kérelmet kell írni)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="68">9080 | igazolt fizetetlen (kérelmet kell írni)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 69)
+                                                {
+                                                    <option selected="selected" value="69">9100 | táppénz</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="69">9100 | táppénz</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 70)
+                                                {
+                                                    <option selected="selected" value="70">9110 | terhes táppénz</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="70">9110 | terhes táppénz</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 71)
+                                                {
+                                                    <option selected="selected" value="71">9130 | GYED, GYES</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="71">9130 | GYED, GYES</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 72)
+                                                {
+                                                    <option selected="selected" value="72">9150 | táppénz gyerekkel (GYÁP kitölteni és aláíratni)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="72">9150 | táppénz gyerekkel (GYÁP kitölteni és aláíratni)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 73)
+                                                {
+                                                    <option selected="selected" value="73">9250 | csúsztatás</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="73">9250 | csúsztatás</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 74)
+                                                {
+                                                    <option selected="selected" value="74">9300 | fizetett ünnep</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="74">9300 | fizetett ünnep</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 75)
+                                                {
+                                                    <option selected="selected" value="75">9455 | felmondási idő</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="75">9455 | felmondási idő</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 92)
+                                                {
+                                                    <option selected="selected" value="92">9450/20 | üzemorvosi vizsgálat</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="92">9450/20 | üzemorvosi vizsgálat</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option selected="selected" value="66">9000 | szabadság</option>
+                                                <option value="67">9050 | igazolatlan fizetetlen (jelenlétit von)</option>
+                                                <option value="68">9080 | igazolt fizetetlen (kérelmet kell írni)</option>
+                                                <option value="69">9100 | táppénz</option>
+                                                <option value="70">9110 | terhes táppénz</option>
+                                                <option value="71">9130 | GYED, GYES</option>
+                                                <option value="72">9150 | táppénz gyerekkel (GYÁP kitölteni és aláíratni)</option>
+                                                <option value="73">9250 | csúsztatás</option>
+                                                <option value="74">9300 | fizetett ünnep</option>
+                                                <option value="75">9455 | felmondási idő</option>
+                                                <option value="92">9450/20 | üzemorvosi vizsgálat</option>
+                                            }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select class="form-control custom-select" id="lzopid" name="lzopid" onchange="getcompany()" style="width: 380px">
+                                            @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").HasValue)
+                                            {
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 66)
+                                                {
+                                                    <option selected="selected" value="66">9000 | szabadság</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="66">9000 | szabadság</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 67)
+                                                {
+                                                    <option selected="selected" value="67">9050 | igazolatlan fizetetlen (jelenlétit von)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="67">9050 | igazolatlan fizetetlen (jelenlétit von)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 68)
+                                                {
+                                                    <option selected="selected" value="68">9080 | igazolt fizetetlen (kérelmet kell írni)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="68">9080 | igazolt fizetetlen (kérelmet kell írni)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 69)
+                                                {
+                                                    <option selected="selected" value="69">9100 | táppénz</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="69">9100 | táppénz</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 70)
+                                                {
+                                                    <option selected="selected" value="70">9110 | terhes táppénz</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="70">9110 | terhes táppénz</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 71)
+                                                {
+                                                    <option selected="selected" value="71">9130 | GYED, GYES</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="71">9130 | GYED, GYES</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 72)
+                                                {
+                                                    <option selected="selected" value="72">9150 | táppénz gyerekkel (GYÁP kitölteni és aláíratni)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="72">9150 | táppénz gyerekkel (GYÁP kitölteni és aláíratni)</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 73)
+                                                {
+                                                    <option selected="selected" value="73">9250 | csúsztatás</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="73">9250 | csúsztatás</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 74)
+                                                {
+                                                    <option selected="selected" value="74">9300 | fizetett ünnep</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="74">9300 | fizetett ünnep</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 75)
+                                                {
+                                                    <option selected="selected" value="75">9455 | felmondási idő</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="75">9455 | felmondási idő</option>
+                                                }
+                                                @if (@Accessor.HttpContext.Session.GetInt32("LZOPId").Value == 92)
+                                                {
+                                                    <option selected="selected" value="92">9450/20 | üzemorvosi vizsgálat</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="92">9450/20 | üzemorvosi vizsgálat</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option selected="selected" value="66">9000 | szabadság</option>
+                                                <option value="67">9050 | igazolatlan fizetetlen (jelenlétit von)</option>
+                                                <option value="68">9080 | igazolt fizetetlen (kérelmet kell írni)</option>
+                                                <option value="69">9100 | táppénz</option>
+                                                <option value="70">9110 | terhes táppénz</option>
+                                                <option value="71">9130 | GYED, GYES</option>
+                                                <option value="72">9150 | táppénz gyerekkel (GYÁP kitölteni és aláíratni)</option>
+                                                <option value="73">9250 | csúsztatás</option>
+                                                <option value="74">9300 | fizetett ünnep</option>
+                                                <option value="75">9455 | felmondási idő</option>
+                                                <option value="92">9450/20 | üzemorvosi vizsgálat</option>
+                                            }
+                                        </select>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <select hidden id="lzopid">
+                                <option selected="selected" value="66">9000 | szabadság</option>
+                                <option value="67">9050 | igazolatlan fizetetlen (jelenlétit von)</option>
+                                <option value="68">9080 | igazolt fizetetlen (kérelmet kell írni)</option>
+                                <option value="69">9100 | táppénz</option>
+                                <option value="70">9110 | terhes táppénz</option>
+                                <option value="71">9130 | GYED, GYES</option>
+                                <option value="72">9150 | táppénz gyerekkel (GYÁP kitölteni és aláíratni)</option>
+                                <option value="73">9250 | csúsztatás</option>
+                                <option value="74">9300 | fizetett ünnep</option>
+                                <option value="75">9455 | felmondási idő</option>
+                                <option value="92">9450/20 | üzemorvosi vizsgálat</option>
+                            </select>
+                        }
+                    }
+                    else
+                    {
+                        <select hidden id="lzopid">
+                            <option selected="selected" value="66">9000 | szabadság</option>
+                            <option value="67">9050 | igazolatlan fizetetlen (jelenlétit von)</option>
+                            <option value="68">9080 | igazolt fizetetlen (kérelmet kell írni)</option>
+                            <option value="69">9100 | táppénz</option>
+                            <option value="70">9110 | terhes táppénz</option>
+                            <option value="71">9130 | GYED, GYES</option>
+                            <option value="72">9150 | táppénz gyerekkel (GYÁP kitölteni és aláíratni)</option>
+                            <option value="73">9250 | csúsztatás</option>
+                            <option value="74">9300 | fizetett ünnep</option>
+                            <option value="75">9455 | felmondási idő</option>
+                            <option value="92">9450/20 | üzemorvosi vizsgálat</option>
+                        </select>
+                    }
+                    @if (@requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "hu")
+                    {
+                        @if (@Accessor.HttpContext.Session.GetInt32("LZGroup").HasValue)
+                        {
+                            @if (@Accessor.HttpContext.Session.GetInt32("LZGroup") > 0)
+                            {
+                                <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" id="dolgozoid" name="dolgozoid" onchange="getcompanyhu()" class="form-control" style="width: 80px; text-align: center" />
+                                        @if (@Accessor.HttpContext.Session.GetInt32("DolgozoId").HasValue)
+                                        {
+                                            <script>
+                                                var dolgozoid = @Accessor.HttpContext.Session.GetInt32("DolgozoId").Value.ToString();
+
+                                                // ✅ Set DolgozoId input Value
+                                                const dolgozoidInput = document.getElementById('dolgozoid');
+                                                dolgozoidInput.value = dolgozoid;
+                                            </script>
+                                        }
+                                        else
+                                        {
+                                            <script>
+                                                $('#dolgozoid').val('0');
+                                            </script>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div hidden id="dolgozoid">0</div>
+                            }
+                        }
+                        else
+                        {
+                            <div hidden id="dolgozoid">0</div>
+                        }
+                    }
+                    else
+                    {
+                        @if (@Accessor.HttpContext.Session.GetInt32("LZGroup").HasValue)
+                        {
+                            @if (@Accessor.HttpContext.Session.GetInt32("LZGroup") > 0)
+                            {
+                                <div class="col-xs-auto" style="height: 38px; padding: 0px 5px">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" id="dolgozoid" name="dolgozoid" onchange="getcompany()" class="form-control" style="width: 80px; text-align: center" />
+                                        @if (@Accessor.HttpContext.Session.GetInt32("DolgozoId").HasValue)
+                                        {
+                                            <script>
+                                                var dolgozoid = @Accessor.HttpContext.Session.GetInt32("DolgozoId").Value.ToString();
+
+                                                // ✅ Set DolgozoId input Value
+                                                const dolgozoidInput = document.getElementById('dolgozoid');
+                                                dolgozoidInput.value = dolgozoid;
+                                            </script>
+                                        }
+                                        else
+                                        {
+                                            <script>
+                                                $('#dolgozoid').val('0');
+                                            </script>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div hidden id="dolgozoid">0</div>
+                            }
+                        }
+                        else
+                        {
+                            <div hidden id="dolgozoid">0</div>
+                        }
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="col-xs-auto" style="height: 38px; padding-right: 0px">LOGIN</div>
+            }
+        </div>
+    </div>
+</div>
+<style>
+    select {
+        border: 0px solid transparent;
+        background-color: var(--eck-boardgray);
+        @*height: 26px;*@
+    }
+    input  {
+        border: 0px solid transparent;
+        background-color: var(--eck-boardgray);
+        @*height: 26px;*@
+    }
+</style>
+<script>
+    $(function () {
+        const options = { year: 'numeric', month: 'long' };
+        var start = moment().subtract(29, 'days');
+        var end = moment();
+
+        function cbmonth(start, end) {
+            let formatter = new Intl.DateTimeFormat('en-US',options);
+            $('#monthrange span').html(formatter.format(start));
+            getmonth(start, start);
+        }
+
+        function cbmonthhu(start, end) {
+            let formatter = new Intl.DateTimeFormat('hu-HU', options);
+            $('#monthrangehu span').html(formatter.format(start));
+            getmonthhu(start, start);
+        }
+
+        $('#monthrange').daterangepicker({
+            minYear: 2022,
+            showISOWeekNumbers: true,
+            singleDatePicker: (@Accessor.HttpContext.Session.GetInt32("DayGroup") % 3 > 0),
+            startDate: "@dtfrom",
+            endDate: "@dtto",
+            locale: {
+                format: "MM/DD/YYYY",
+                separator: " - ",
+                applyLabel: "Apply",
+                cancelLabel: "Cancel",
+                fromLabel: "From",
+                toLabel: "To",
+                customRangeLabel: "Custom settings",
+                weekLabel: "W",
+                daysOfWeek: [
+                    "Su",
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa"
+                ],
+                monthNames: [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                firstDay: 1
+            },
+            ranges: {
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            }, function (start, end, label) {
+            cbmonth(start, end);
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+
+        $('#weekrange').daterangepicker({
+            minYear: 2022,
+            showISOWeekNumbers: true,
+            singleDatePicker: (@Accessor.HttpContext.Session.GetInt32("DayGroup") % 3 > 0),
+            startDate: "@dtfrom",
+            endDate: "@dtto",
+            starts: 0,
+            locale: {
+                format: "MM/DD/YYYY,yyyy-ww",
+                separator: " - ",
+                applyLabel: "Apply",
+                cancelLabel: "Cancel",
+                fromLabel: "From",
+                toLabel: "To",
+                customRangeLabel: "Custom settings",
+                weekLabel: "W",
+                daysOfWeek: [
+                    "Su",
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa"
+                ],
+                monthNames: [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                firstDay: 1
+            },
+            ranges: {
+                'This Week': [moment().startOf('week'), moment().endOf('week')],
+                'Last Week': [moment().subtract(1, 'week').startOf('week'), moment().subtract(1, 'week').endOf('week')]
+            },
+            }, function (start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+
+        $('#monthrangehu').daterangepicker({
+            minYear: 2022,
+            showISOWeekNumbers: true,
+            singleDatePicker: (@Accessor.HttpContext.Session.GetInt32("DayGroup") % 3 > 0),
+            startDate: "@dtfromhu",
+            endDate: "@dttohu",
+            locale: {
+                format: "YYYY.MM.DD.",
+                separator: " - ",
+                applyLabel: "Elfogad",
+                cancelLabel: "Mégsem",
+                fromLabel: "Tól",
+                toLabel: "Ig",
+                customRangeLabel: "Saját beállítás",
+                weekLabel: "Hét",
+                daysOfWeek: [
+                    "V",
+                    "H",
+                    "K",
+                    "Sz",
+                    "Cs",
+                    "P",
+                    "Szo"
+                ],
+                monthNames: [
+                    "Január",
+                    "Február",
+                    "Március",
+                    "Április",
+                    "Május",
+                    "Június",
+                    "Július",
+                    "Augusztus",
+                    "Szeptember",
+                    "Október",
+                    "November",
+                    "December"
+                ],
+                firstDay: 1
+            },
+            ranges: {
+                'Ez a hónap': [moment().startOf('month'), moment().endOf('month')],
+                'Előző hónap': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            }, function (start, end, label) {
+            cbmonthhu(start, end);
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+        
+        $('#weekrangehu').daterangepicker({
+            minYear: 2022,
+            showISOWeekNumbers: true,
+            singleDatePicker: (@Accessor.HttpContext.Session.GetInt32("DayGroup") % 3 > 0),
+            startDate: "@dtfromhu",
+            endDate: "@dttohu",
+            starts: 0,
+            locale: {
+                format: "YYYY.MM.DD.,yyyy-ww",
+                separator: " - ",
+                applyLabel: "Elfogad",
+                cancelLabel: "Mégsem",
+                fromLabel: "Tól",
+                toLabel: "Ig",
+                customRangeLabel: "Saját beállítás",
+                weekLabel: "Hét",
+                daysOfWeek: [
+                    "V",
+                    "H",
+                    "K",
+                    "Sz",
+                    "Cs",
+                    "P",
+                    "Szo"
+                ],
+                monthNames: [
+                    "Január",
+                    "Február",
+                    "Március",
+                    "Április",
+                    "Május",
+                    "Június",
+                    "Július",
+                    "Augusztus",
+                    "Szeptember",
+                    "Október",
+                    "November",
+                    "December"
+                ],
+                firstDay: 1
+            },
+            ranges: {
+                'Ez a hét': [moment().startOf('week'), moment().endOf('week')],
+                'Előző hét': [moment().subtract(1, 'week').startOf('week'), moment().subtract(1, 'week').endOf('week')]
+            },
+            }, function (start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+
+        $('#daterange').daterangepicker({
+            minYear: 2022,
+            showISOWeekNumbers: false,
+            singleDatePicker: (@Accessor.HttpContext.Session.GetInt32("DayGroup") % 3 > 0),
+            startDate: "@dtfrom",
+            endDate: "@dtto",
+            locale: {
+                format: "MM/DD/YYYY",
+                separator: " - ",
+                applyLabel: "Apply",
+                cancelLabel: "Cancel",
+                fromLabel: "From",
+                toLabel: "To",
+                customRangeLabel: "Custom settings",
+                weekLabel: "W",
+                daysOfWeek: [
+                    "Su",
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa"
+                ],
+                monthNames: [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ],
+                firstDay: 0
+            },
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            }, function (start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+        
+        $('#daterangehu').daterangepicker({
+            minYear: 2022,
+            showISOWeekNumbers: false,
+            singleDatePicker: (@Accessor.HttpContext.Session.GetInt32("DayGroup") % 3 > 0),
+            startDate: "@dtfromhu",
+            endDate: "@dttohu",
+            locale: {
+                format: "YYYY.MM.DD.",
+                separator: " - ",
+                applyLabel: "Elfogad",
+                cancelLabel: "Mégsem",
+                fromLabel: "Tól",
+                toLabel: "Ig",
+                customRangeLabel: "Saját beállítás",
+                weekLabel: "Hét",
+                daysOfWeek: [
+                    "V",
+                    "H",
+                    "K",
+                    "Sz",
+                    "Cs",
+                    "P",
+                    "Szo"
+                ],
+                monthNames: [
+                    "Január",
+                    "Február",
+                    "Március",
+                    "Április",
+                    "Május",
+                    "Június",
+                    "Július",
+                    "Augusztus",
+                    "Szeptember",
+                    "Október",
+                    "November",
+                    "December"
+                ],
+                firstDay: 0
+            },
+            ranges: {
+                'Ma': [moment(), moment()],
+                'Tegnap': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Utolsó 7 nap': [moment().subtract(6, 'days'), moment()],
+                'Utolsó 30 nap': [moment().subtract(29, 'days'), moment()],
+                'Ez a hónap': [moment().startOf('month'), moment().endOf('month')],
+                'Előző hónap': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            }, function (start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+    })
+    function getmonth(start,end) {
+        var t = new Date(start);
+        //alert(t + ":" + end.length);
+        var c = document.getElementById("company").value;
+        var x = document.getElementById("lineid").value;
+        var z = document.getElementById("shift").value;
+        var a = document.getElementById("dolgozoid").value;
+        var b = 0;//document.getElementById("stationid").value;
+        const yearfrom = t.getFullYear();
+        const monthfrom = t.getMonth() + 1;
+        const dayfrom = t.getDate();
+        const yearto = t.getFullYear();
+        const monthto = t.getMonth() + 1;
+        const dayto = t.getDate();
+        //alert(yearfrom + "." + monthfrom + "." + dayfrom + "." + " to " + yearto + "." + monthto + "." + dayto + ".")
+        let shift = parseInt(z.trim());
+        let company = parseInt(c.trim());
+        //document.getElementById("lineidtxt").innerHTML = x;
+        window.location = document.getElementById('link').href + "&LineID=" + x + "&YearFrom=" + yearfrom + "&MonthFrom=" + monthfrom + "&DayFrom=" + dayfrom + "&YearTo=" + yearto + "&MonthTo=" + monthto + "&DayTo=" + dayto + "&Shift=" + shift + "&Company=" + company + "&DolgozoId=" + a + "&StationId=" + b;
+    }
+    function getmonthhu(start,end) {
+        var t = new Date(start);
+        //alert(t + ":" + end.length);
+        var c = document.getElementById("company").value;
+        var x = document.getElementById("lineid").value;
+        var z = document.getElementById("shift").value;
+        var a = document.getElementById("dolgozoid").value;
+        var b = 0;//document.getElementById("stationid").value;
+        const yearfrom = t.getFullYear();
+        const monthfrom = t.getMonth() + 1;
+        const dayfrom = t.getDate();
+        const yearto = t.getFullYear();
+        const monthto = t.getMonth() + 1;
+        const dayto = t.getDate();
+        //alert(yearfrom + "." + monthfrom + "." + dayfrom + "." + " to " + yearto + "." + monthto + "." + dayto + ".")
+        let shift = parseInt(z.trim());
+        let company = parseInt(c.trim());
+        //document.getElementById("lineidtxt").innerHTML = x;
+        window.location = document.getElementById('link').href + "&LineID=" + x + "&YearFrom=" + yearfrom + "&MonthFrom=" + monthfrom + "&DayFrom=" + dayfrom + "&YearTo=" + yearto + "&MonthTo=" + monthto + "&DayTo=" + dayto + "&Shift=" + shift + "&Company=" + company + "&DolgozoId=" + a + "&StationId=" + b;
+    }
+
+    function getcompany() {
+        var c = document.getElementById("company").value;
+        var x = document.getElementById("lineid").value;
+        var y = document.getElementById("daterange").value;
+        var z = document.getElementById("shift").value;
+        var a = document.getElementById("dolgozoid").value;
+        //alert(a + ":" + a.length)
+        var b = document.getElementById("stationid").value;
+        var o = document.getElementById("lzopid").value;
+        //alert(b + ":" + b.length)
+        if (y.length=10)
+        {
+            y = y + ' - ' + y;
+        }
+        const [DTFrom, DTTo] = y.split(' - ');
+        const [MonthFrom, DayFrom, YearFrom] = DTFrom.split('/');
+        const [MonthTo, DayTo, YearTo] = DTTo.split('/');
+        //alert(MonthFrom + "/" + DayFrom + "/" + YearFrom + " to " + MonthTo + "/" + DayTo + "/" + YearTo)
+        let yearfrom = parseInt(YearFrom.trim());
+        let monthfrom = parseInt(MonthFrom.trim());
+        let dayfrom = parseInt(DayFrom.trim());
+        let yearto = parseInt(YearTo.trim());
+        let monthto = parseInt(MonthTo.trim());
+        let dayto = parseInt(DayTo.trim());
+        let shift = parseInt(z.trim());
+        let company = parseInt(c.trim());
+        //document.getElementById("lineidtxt").innerHTML = x;
+        window.location = document.getElementById('link').href + "&LineID=" + x + "&YearFrom=" + yearfrom + "&MonthFrom=" + monthfrom + "&DayFrom=" + dayfrom + "&YearTo=" + yearto + "&MonthTo=" + monthto + "&DayTo=" + dayto + "&Shift=" + shift + "&Company=" + company + "&DolgozoId=" + a + "&StationId=" + b + "&LZOPId=" + o;
+    }
+   function getcompanyhu() {
+        var c = document.getElementById("company").value;
+        var x = document.getElementById("lineid").value;
+        var y = document.getElementById("daterangehu").value;
+        var z = document.getElementById("shift").value;
+        var a = document.getElementById("dolgozoid").value;
+        var b = document.getElementById("stationid").value;
+        var o = document.getElementById("lzopid").value;
+        //alert(y + ":" + y.length)
+        if (y.length=11)
+        {
+            y = y + ' - ' + y;
+        }
+        const [DTFrom, DTTo] = y.split(' - ');
+        const [YearFrom, MonthFrom, DayFrom] = DTFrom.split('.');
+        const [YearTo, MonthTo, DayTo] = DTTo.split('.');
+        //alert(YearFrom + "." + MonthFrom + "." + DayFrom + "." + " to " + YearTo + "." + MonthTo + "." + DayTo + ".")
+        let yearfrom = parseInt(YearFrom.trim());
+        let monthfrom = parseInt(MonthFrom.trim());
+        let dayfrom = parseInt(DayFrom.trim());
+        let yearto = parseInt(YearTo.trim());
+        let monthto = parseInt(MonthTo.trim());
+        let dayto = parseInt(DayTo.trim());
+        let shift = parseInt(z.trim());
+        let company = parseInt(c.trim());
+        //document.getElementById("lineidtxt").innerHTML = x;
+        window.location = document.getElementById('link').href + "&LineID=" + x + "&YearFrom=" + yearfrom + "&MonthFrom=" + monthfrom + "&DayFrom=" + dayfrom + "&YearTo=" + yearto + "&MonthTo=" + monthto + "&DayTo=" + dayto + "&Shift=" + shift + "&Company=" + company + "&DolgozoId=" + a + "&StationId=" + b + "&LZOPId=" + o;
+    }
+</script>

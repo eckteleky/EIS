@@ -1,0 +1,43 @@
+﻿@page
+@model EmailModel
+@{
+    ViewData["Title"] = @EIS.Resources.Resource.ResourceManager.GetString("Manage Email", System.Globalization.CultureInfo.CurrentCulture);
+    ViewData["ActivePage"] = ManageNavPages.Email;
+}
+
+<h2 style="color: rgba(0,0,0,.9);">@ViewData["Title"]</h2>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<div class="row">
+    <div class="col-md-6" style="color: rgba(0,0,0,.9);">
+        <form id="email-form" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email">@EIS.Resources.Resource.ResourceManager.GetString("Email", System.Globalization.CultureInfo.CurrentCulture)</label>
+                @if (Model.IsEmailConfirmed)
+                {
+                    <div class="input-group">
+                        <input asp-for="Email" class="form-control" disabled style="max-width: 100%"/>
+                        <div class="input-group-append">
+                            <span class="input-group-text text-success font-weight-bold">✓</span>
+                        </div>
+                    </div>
+                }
+                 else
+                {
+                    <input asp-for="Email" class="form-control" disabled style="max-width: 100%"/>
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">@EIS.Resources.Resource.ResourceManager.GetString("Send verification email", System.Globalization.CultureInfo.CurrentCulture)</button>
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.NewEmail">@EIS.Resources.Resource.ResourceManager.GetString("NewEmail", System.Globalization.CultureInfo.CurrentCulture)</label>
+                <input asp-for="Input.NewEmail" class="form-control" />
+                <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+            </div>
+            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="btn btn-primary">@EIS.Resources.Resource.ResourceManager.GetString("Change Email", System.Globalization.CultureInfo.CurrentCulture)</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

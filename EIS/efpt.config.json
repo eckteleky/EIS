@@ -1,0 +1,405 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "EISDBContext",
+   "ContextNamespace": "EISModels",
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": "EISModels",
+   "OutputContextPath": "EISModels",
+   "OutputPath": "EISModels",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "EIS",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[AlertIntervals]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AlertLevelUsers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AlertStations]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AlertUserDescription]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AlertUsers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CTTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DownTimeTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DTReport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DTTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[DTTypesGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EasyMESJOB]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EasyMESStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EasyMESTTSTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ErrorTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[IFS_Detection_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[IFS_FailureClassCode_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[IFS_FailureCode_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[IFS_Header_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[IFS_Muszak_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[IFS_Value_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[KPIDataSource]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[KPIExpectation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[KPIHeader]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[KPIProcess]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[KPIResponsible]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[KPISummantion]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[KPIUnit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[KPIValues]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Location]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_Dolgozo_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_Interval_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_Kefetarto_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_Kefetartotipus_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_Kefetartotipuslista_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_MunkaCode_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_Munkanap_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_Muszak_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_MuveletReszlet_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LZ_Teljesitmeny_Table]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MESEvents]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MESProductPlan]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MESProductPlanType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MESProductPlanWeek]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MESProductPlanWeekTemp]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[MESWorker]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ReportUsers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ShiftsTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SystemParamTable]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Table_Planned_DownTime]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Table_Shift_Type]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Table_Station]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Table_Types]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[View_CTTableUpdate]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_GBM_DownTime_Reasons]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_IFS_FailureCode_Table]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_IFS_Header_Table]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_IFS_HeadersList]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_IFS_Value_Table]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_IFS_ValueSearch_Table]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_KPIValues]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_AbFor]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_Competency]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_Hours]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_Interval_Table]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_Kefetarto_Table]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_Kefetartotipus_Table]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_Munkanap_Table]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_Search]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_Szabadsag]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_LZ_Teljesitmeny_Table]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_ReportUsers]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[View_Shift_Types]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[GetLZCategory]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[GetLZCategoryEn]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[GetLZHours]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[GetLZHoursEN]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[GetLZSzabadsag]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[GetLZSzabadsagEN]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[ReadDTSPivot]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[fn_getbomid]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[fn_getitemsid]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[fn_getlineid]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[GetLZCategoryList]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[GetLZCategoryListEn]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[GetLZCompetency]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[GetLZDolgozo]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[GetLZKefetartoId]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[GetLZMuveletId]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[ParetoRead]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[ViewShiftTable]",
+         "ObjectType": 2
+      },
+      {
+         "Name": "[dbo].[ViewShiftView]",
+         "ObjectType": 2
+      }
+   ],
+   "UiHint": "kiapp04\\sqlexpress.TTS.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

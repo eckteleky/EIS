@@ -1,0 +1,918 @@
+﻿@model IEnumerable<EIS.EISModels.Dtreport>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+<style>
+    p {
+        text-indent: 10px;
+    }
+    .tooltipA {
+        -moz-tab-size: 4; /* Firefox */
+        tab-size: 4;
+        text-align: left;
+        position: relative;
+        display: inline-block;
+        color: black;
+        border-bottom: 1px dotted black;
+    }
+
+    .tooltipA .tooltiptextA {
+        -moz-tab-size: 4; /* Firefox */
+        tab-size: 4;
+        text-align: left;
+        visibility: hidden;
+        width: 400px;
+        background-color: var(--eck-green);
+        color: #333333;
+        text-shadow: 2px 2px 5px lightgray;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        /* padding-left: 5px; */
+        position: absolute;
+        z-index: 9999;
+        /* bottom: 125%; */
+        left: 0%;
+        margin-left: 10px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .tooltipA .tooltiptextA::after {
+        -moz-tab-size: 4; /* Firefox */
+        tab-size: 4;
+        text-align: left;
+        content: "";
+        position: absolute;
+        top: 10px;
+        right: 100%;
+        z-index: 9999;
+        height: auto;
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent var(--eck-green) transparent transparent;
+    }
+
+    .tooltipA:hover .tooltiptextA {
+        -moz-tab-size: 4; /* Firefox */
+        tab-size: 4;
+        text-align: left;
+        visibility: visible;
+        z-index: 9999;
+        top: 5px;
+        left: 15px;
+        height: auto;
+        opacity: 1;
+    }
+</style>
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Downtime Report -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Dtreports", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LineID", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Datum", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Muszak", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("StartTime", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ItemNo", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("GoodQty", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ScrapQty", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Downtime", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="tablebody">
+                                        <td>
+                                            <button width="100%" type="button" class="btn btn-link tablebutton" style="width:100%;color:black;text-align:left;" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.LineId)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button width="100%" type="button" class="btn btn-link tablebutton" style="width:100%;color:black;text-align:left;" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @item.StartTime.ToString("yyyy-MM-dd")
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button width="100%" type="button" class="btn btn-link tablebutton" style="width:100%;color:black;text-align:left;" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Shift)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button width="100%" type="button" class="btn btn-link tablebutton" style="width:100%;color:black;text-align:left;" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @if (item.TypeNumbers > 0)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.ChangeTimeA)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 1)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.ChangeTimeB)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 2)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.ChangeTimeC)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 3)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.ChangeTimeD)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 4)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.ChangeTimeE)
+                                                }
+                                                else { }
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button width="100%" type="button" class="btn btn-link tablebutton" style="width:100%;color:black;text-align:left;" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @if (item.TypeNumbers > 0)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.TypeNameA)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 1)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.TypeNameB)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 2)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.TypeNameC)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 3)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.TypeNameD)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 4)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.TypeNameE)
+                                                }
+                                                else { }
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button width="100%" type="button" class="btn btn-link tablebutton" style="width:100%;color:black;text-align:left;" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @if (item.TypeNumbers > 0)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.CurrentKorrA)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 1)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.CurrentKorrB)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 2)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.CurrentKorrC)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 3)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.CurrentKorrD)
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 4)
+                                                {
+                                                    @Html.DisplayFor(modelItem => item.CurrentKorrE)
+                                                }
+                                                else { }
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-link tablebutton" style="width:100%;color:black;text-align:left;" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @if (item.TypeNumbers > 0)
+                                                {
+                                                    <div class="tooltipA">
+                                                        @Html.DisplayFor(modelItem => item.EolkorrA)
+                                                        @if (item.ErrorNra1.HasValue)
+                                                        {
+                                                            @if (item.ErrorNra1.Value > 0)
+                                                            {
+                                                                <span class="tooltiptextA">
+                                                                        @if (item.ErrorNra1.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra1.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra1) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda1Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra2.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra2.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra2) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda2Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra3.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra3.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra3) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda3Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra4.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra4.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra4) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda4Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra5.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra5.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra5) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda5Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra6.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra6.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra6) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda6Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra7.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra7.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra7) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda7Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra8.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra8.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra8) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda8Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra9.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra9.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra9) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda9Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra10.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra10.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra10) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda10Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra11.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra11.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra11) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda11Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra12.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra12.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra12) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda12Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra13.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra13.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra13) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda13Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra14.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra14.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra14) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda14Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                        @if (item.ErrorNra15.HasValue)
+                                                                        {
+                                                                            @if (item.ErrorNra15.Value > 0)
+                                                                            {
+                                                                                @Html.DisplayFor(modelItem => item.ErrorNra15) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIda15Navigation.Description)<br />
+                                                                            }
+                                                                        }
+                                                                </span>
+                                                            }
+                                                        }
+                                                    </div>
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 1)
+                                                {
+                                                    <div class="tooltipA">
+                                                        @Html.DisplayFor(modelItem => item.EolkorrB)
+                                                        @if (item.ErrorNrb1.HasValue)
+                                                        {
+                                                            @if (item.ErrorNrb1.Value > 0)
+                                                            {
+                                                                <span class="tooltiptextA">
+                                                                    @if (item.ErrorNrb1.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb1.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb1) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb1Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb2.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb2.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb2) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb2Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb3.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb3.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb3) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb3Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb4.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb4.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb4) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb4Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb5.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb5.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb5) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb5Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb6.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb6.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb6) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb6Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb7.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb7.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb7) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb7Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb8.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb8.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb8) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb8Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb9.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb9.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb9) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb9Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb10.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb10.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb10) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb10Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb11.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb11.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb11) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb11Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb12.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb12.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb12) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb12Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb13.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb13.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb13) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb13Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb14.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb14.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb14) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb14Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrb15.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrb15.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrb15) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdb15Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                </span>
+                                                            }
+                                                        }
+                                                    </div>
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 2)
+                                                {
+                                                    <div class="tooltipA">
+                                                        @Html.DisplayFor(modelItem => item.EolkorrC)
+                                                        @if (item.ErrorNrc1.HasValue)
+                                                        {
+                                                            @if (item.ErrorNrc1.Value > 0)
+                                                            {
+                                                                <span class="tooltiptextA">
+                                                                    @if (item.ErrorNrc1.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc1.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc1) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc1Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc2.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc2.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc2) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc2Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc3.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc3.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc3) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc3Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc4.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc4.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc4) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc4Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc5.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc5.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc5) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc5Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc6.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc6.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc6) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc6Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc7.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc7.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc7) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc7Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc8.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc8.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc8) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc8Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc9.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc9.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc9) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc9Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc10.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc10.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc10) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc10Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc11.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc11.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc11) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc11Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc12.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc12.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc12) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc12Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc13.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc13.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc13) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc13Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc14.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc14.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc14) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc14Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrc15.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrc15.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrc15) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdc15Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                </span>
+                                                            }
+                                                        }
+                                                    </div>
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 3)
+                                                {
+                                                    <div class="tooltipA">
+                                                        @Html.DisplayFor(modelItem => item.EolkorrD)
+                                                        @if (item.ErrorNrd1.HasValue)
+                                                        {
+                                                            @if (item.ErrorNrd1.Value > 0)
+                                                            {
+                                                                <span class="tooltiptextA">
+                                                                    @if (item.ErrorNrd1.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd1.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd1) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd1Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd2.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd2.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd2) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd2Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd3.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd3.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd3) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd3Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd4.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd4.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd4) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd4Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd5.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd5.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd5) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd5Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd6.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd6.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd6) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd6Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd7.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd7.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd7) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd7Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd8.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd8.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd8) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd8Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd9.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd9.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd9) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd9Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd10.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd10.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd10) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd10Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd11.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd11.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd11) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd11Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd12.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd12.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd12) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd12Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd13.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd13.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd13) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd13Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd14.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd14.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd14) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd14Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNrd15.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNrd15.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNrd15) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIdd15Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                </span>
+                                                            }
+                                                        }
+                                                    </div>
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 4)
+                                                {
+                                                    <div class="tooltipA">
+                                                        @Html.DisplayFor(modelItem => item.EolkorrE)
+                                                        @if (item.ErrorNre1.HasValue)
+                                                        {
+                                                            @if (item.ErrorNre1.Value > 0)
+                                                            {
+                                                                <span class="tooltiptextA">
+                                                                    @if (item.ErrorNre1.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre1.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre1) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde1Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre2.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre2.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre2) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde2Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre3.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre3.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre3) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde3Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre4.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre4.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre4) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde4Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre5.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre5.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre5) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde5Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre6.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre6.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre6) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde6Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre7.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre7.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre7) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde7Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre8.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre8.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre8) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde8Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre9.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre9.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre9) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde9Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre10.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre10.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre10) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde10Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre11.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre11.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre11) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde11Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre12.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre12.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre12) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde12Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre13.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre13.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre13) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde13Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre14.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre14.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre14) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde14Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                    @if (item.ErrorNre15.HasValue)
+                                                                    {
+                                                                        @if (item.ErrorNre15.Value > 0)
+                                                                        {
+                                                                            @Html.DisplayFor(modelItem => item.ErrorNre15) <text> db </text> @Html.DisplayFor(modelItem => item.ErrorIde15Navigation.Description)<br />
+                                                                        }
+                                                                    }
+                                                                </span>
+                                                            }
+                                                        }
+                                                    </div>
+                                                }
+                                                else { }
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" width="100%" type="button" class="btn btn-link tablebutton" style="width:100%;color:black;text-align:left;" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @if (item.TypeNumbers > 0)
+                                                {
+                                                    TimeSpan ts = TimeSpan.FromSeconds(item.DownTimefromSqla.Value);
+                                                    @if (item.DownTimefromSqla.Value > 3600)
+                                                    {
+                                                        @ts.ToString("hh':'mm':'ss")
+                                                    }
+                                                    else
+                                                    {
+                                                        @ts.ToString("mm':'ss")
+                                                    }
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 1)
+                                                {
+                                                    TimeSpan ts = TimeSpan.FromSeconds(item.DownTimefromSqlb.Value);
+                                                    @if (item.DownTimefromSqlb.Value > 3600)
+                                                    {
+                                                        @ts.ToString("hh':'mm':'ss")
+                                                    }
+                                                    else
+                                                    {
+                                                        @ts.ToString("mm':'ss")
+                                                    }
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 2)
+                                                {
+                                                    TimeSpan ts = TimeSpan.FromSeconds(item.DownTimefromSqlc.Value);
+                                                    @if (item.DownTimefromSqlc.Value > 3600)
+                                                    {
+                                                        @ts.ToString("hh':'mm':'ss")
+                                                    }
+                                                    else
+                                                    {
+                                                        @ts.ToString("mm':'ss")
+                                                    }
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 3)
+                                                {
+                                                    TimeSpan ts = TimeSpan.FromSeconds(item.DownTimefromSqld.Value);
+                                                    @if (item.DownTimefromSqld.Value > 3600)
+                                                    {
+                                                        @ts.ToString("hh':'mm':'ss")
+                                                    }
+                                                    else
+                                                    {
+                                                        @ts.ToString("mm':'ss")
+                                                    }
+                                                }
+                                                else { }<br>
+                                                @if (item.TypeNumbers > 4)
+                                                {
+                                                    TimeSpan ts = TimeSpan.FromSeconds(item.DownTimefromSqle.Value);
+                                                    @if (item.DownTimefromSqle.Value > 3600)
+                                                    {
+                                                        @ts.ToString("hh':'mm':'ss")
+                                                    }
+                                                    else
+                                                    {
+                                                        @ts.ToString("mm':'ss")
+                                                    }
+                                                }
+                                                else { }
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

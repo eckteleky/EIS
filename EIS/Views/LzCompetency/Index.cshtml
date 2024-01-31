@@ -1,0 +1,129 @@
+﻿@model IEnumerable<EIS.EISModels.GetLZCompetencyResult>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Downtime Report -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LZCompetency", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DolgozoID", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DolgozoNeve", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Muveletszam", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Muveletreszlet", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Description", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Kefetartoszam", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Tipus", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Darab", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("OsszesDarab", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("OsszesOra", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("CT", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Last", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="tablebody">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DolgozoID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DolgozoNeve)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Muveletszam)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MuveletReszlet)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Kefetartoszam)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Tipus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Darab)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OsszesDarab)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OsszesOra)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CT)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Last)
+                                        </td>
+                                        @*<td width=6px>
+                                <button id="myButton" type="button" style="padding: 0px;margin:0px;color: rgba(0,0,0,.9);" class="btn btn-link" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")"><i class="fa fa-edit"></i></button>
+                                </td>*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

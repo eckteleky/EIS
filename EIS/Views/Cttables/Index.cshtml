@@ -1,0 +1,216 @@
+﻿@model IEnumerable<EIS.EISModels.Cttable>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeStamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Muszak)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LongCt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LongStep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TesterId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TesterSubId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Xct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Xpt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Xwt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nok)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wtnr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cutting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dummies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Leerfahren)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sent2Cloud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlertLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastAlertLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dtstatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Downtime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dttypes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeStamp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Muszak)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LongCt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LongStep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TesterId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TesterSubId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Xct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Xpt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Xwt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nok)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wtnr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cutting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dummies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Leerfahren)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modified)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sent2Cloud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlertLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastAlertLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dtstatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Downtime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dttypes.CodeId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

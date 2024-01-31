@@ -1,0 +1,119 @@
+﻿@model IEnumerable<EIS.EISModels.TablePlannedDownTime>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Break Time Planner -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("TablePlannedDownTimes", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @EIS.Resources.Resource.ResourceManager.GetString("Line" , System.Globalization.CultureInfo.CurrentCulture)
+                                    </th>
+                                    <th>
+                                        @EIS.Resources.Resource.ResourceManager.GetString("Muszak" , System.Globalization.CultureInfo.CurrentCulture)
+                                    </th>
+                                    <th>
+                                        @EIS.Resources.Resource.ResourceManager.GetString("StartTime" , System.Globalization.CultureInfo.CurrentCulture)
+                                    </th>
+                                    <th>
+                                        @EIS.Resources.Resource.ResourceManager.GetString("EndTime" , System.Globalization.CultureInfo.CurrentCulture)
+                                    </th>
+                                    <th>
+                                        @EIS.Resources.Resource.ResourceManager.GetString("BreakDescription" , System.Globalization.CultureInfo.CurrentCulture)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="tablebody">
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.LineId)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Muszak)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Start)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.End)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        @*<br>
+                        <!-- Button trigger modal -->
+                        <button id="myButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                            Launch static backdrop modal
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                        <button id="myButton" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        I will not close if you click outside me. Don't even try to press escape key.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="myButton" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button id="myButton" type="button" class="btn btn-primary">Understood</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

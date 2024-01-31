@@ -1,0 +1,25 @@
+﻿@page
+@model ShowRecoveryCodesModel
+@{
+    ViewData["Title"] = @EIS.Resources.Resource.ResourceManager.GetString("Recovery codes", System.Globalization.CultureInfo.CurrentCulture);
+    ViewData["ActivePage"] = "TwoFactorAuthentication";
+}
+
+<partial name="_StatusMessage" for="StatusMessage" />
+<h2 style="color: rgba(0,0,0,.9);">@ViewData["Title"]</h2>
+<div class="alert alert-warning" role="alert" style="color: rgba(0,0,0,.9);">
+    <p>
+        <strong>@EIS.Resources.Resource.ResourceManager.GetString("Put these codes in a safe place.", System.Globalization.CultureInfo.CurrentCulture)</strong>
+    </p>
+    <p>
+        @EIS.Resources.Resource.ResourceManager.GetString("If you lose your device and don't have the recovery codes you will lose access to your account.", System.Globalization.CultureInfo.CurrentCulture)
+    </p>
+</div>
+<div class="row" style="color: rgba(0,0,0,.9);">
+    <div class="col-md-12">
+        @for (var row = 0; row < Model.RecoveryCodes.Length; row += 2)
+        {
+            <code class="recovery-code">@Model.RecoveryCodes[row]</code><text>&nbsp;</text><code class="recovery-code">@Model.RecoveryCodes[row + 1]</code><br />
+        }
+    </div>
+</div>

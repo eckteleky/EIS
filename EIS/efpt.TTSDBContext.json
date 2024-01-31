@@ -1,0 +1,209 @@
+﻿{
+  "CodeGenerationMode": 3,
+  "ContextClassName": "EISDBContext",
+  "ContextNamespace": "EISModels",
+  "DefaultDacpacSchema": null,
+  "FilterSchemas": false,
+  "IncludeConnectionString": true,
+  "ModelNamespace": "EISModels",
+  "OutputContextPath": "EISModels",
+  "OutputPath": "EISModels",
+  "PreserveCasingWithRegex": true,
+  "ProjectRootNamespace": "EIS",
+  "Schemas": null,
+  "SelectedHandlebarsLanguage": 0,
+  "SelectedToBeGenerated": 0,
+  "Tables": [
+    {
+      "Name": "[dbo].[DownTimeTable]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[DTTypes]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[DTTypesGroup]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[IFS_Detection_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[IFS_FailureClassCode_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[IFS_FailureCode_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[IFS_Header_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[IFS_Muszak_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[IFS_Value_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_Dolgozo_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_Interval_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_Kefetarto_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_Kefetartotipus_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_Kefetartotipuslista_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_MunkaCode_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_Munkanap_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_Muszak_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_MuveletReszlet_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[LZ_Teljesitmeny_Table]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[ShiftsTable]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[SystemParamTable]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Table_Shift_Type]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Table_Station]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[Table_Types]",
+      "ObjectType": 0
+    },
+    {
+      "Name": "[dbo].[View_IFS_FailureCode_Table]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_IFS_Header_Table]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_IFS_Value_Table]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_IFS_ValueSearch_Table]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_AbFor]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_Competency]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_Hours]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_Interval_Table]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_Kefetarto_Table]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_Kefetartotipus_Table]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_Munkanap_Table]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_Search]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_Szabadsag]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[View_LZ_Teljesitmeny_Table]",
+      "ObjectType": 3
+    },
+    {
+      "Name": "[dbo].[GetLZCompetency]",
+      "ObjectType": 2
+    },
+    {
+      "Name": "[dbo].[GetLZDolgozo]",
+      "ObjectType": 2
+    },
+    {
+      "Name": "[dbo].[GetLZKefetartoId]",
+      "ObjectType": 2
+    },
+    {
+      "Name": "[dbo].[GetLZMuveletId]",
+      "ObjectType": 2
+    },
+    {
+      "Name": "[dbo].[ParetoRead]",
+      "ObjectType": 2
+    }
+  ],
+  "UiHint": "kiapp04\\sqlexpress.TTS.dbo",
+  "UseBoolPropertiesWithoutDefaultSql": false,
+  "UseDatabaseNames": false,
+  "UseDbContextSplitting": false,
+  "UseFluentApiOnly": true,
+  "UseHandleBars": false,
+  "UseHierarchyId": false,
+  "UseInflector": false,
+  "UseLegacyPluralizer": false,
+  "UseManyToManyEntity": false,
+  "UseNoConstructor": false,
+  "UseNoDefaultConstructor": false,
+  "UseNoNavigations": false,
+  "UseNoObjectFilter": false,
+  "UseNodaTime": false,
+  "UseNullableReferences": false,
+  "UseSchemaFolders": false,
+  "UseSpatial": false,
+  "UseT4": false
+}

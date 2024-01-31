@@ -1,0 +1,1177 @@
+﻿@model EIS.EISModels.Dtreport
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Dtreport</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="TimeStamp" class="control-label"></label>
+                <input asp-for="TimeStamp" class="form-control" />
+                <span asp-validation-for="TimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserCode" class="control-label"></label>
+                <input asp-for="UserCode" class="form-control" />
+                <span asp-validation-for="UserCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shift" class="control-label"></label>
+                <input asp-for="Shift" class="form-control" />
+                <span asp-validation-for="Shift" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LineId" class="control-label"></label>
+                <input asp-for="LineId" class="form-control" />
+                <span asp-validation-for="LineId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNumbers" class="control-label"></label>
+                <input asp-for="TypeNumbers" class="form-control" />
+                <span asp-validation-for="TypeNumbers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequestfromSql" class="control-label"></label>
+                <input asp-for="RequestfromSql" class="form-control" />
+                <span asp-validation-for="RequestfromSql" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentfromSql" class="control-label"></label>
+                <input asp-for="CurrentfromSql" class="form-control" />
+                <span asp-validation-for="CurrentfromSql" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoodfromSql" class="control-label"></label>
+                <input asp-for="GoodfromSql" class="form-control" />
+                <span asp-validation-for="GoodfromSql" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolfromSql" class="control-label"></label>
+                <input asp-for="EolfromSql" class="form-control" />
+                <span asp-validation-for="EolfromSql" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DownTimefromSql" class="control-label"></label>
+                <input asp-for="DownTimefromSql" class="form-control" />
+                <span asp-validation-for="DownTimefromSql" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Wtnr" class="control-label"></label>
+                <input asp-for="Wtnr" class="form-control" />
+                <span asp-validation-for="Wtnr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <input asp-for="Message" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNumberA" class="control-label"></label>
+                <input asp-for="TypeNumberA" class="form-control" />
+                <span asp-validation-for="TypeNumberA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChangeTimeA" class="control-label"></label>
+                <input asp-for="ChangeTimeA" class="form-control" />
+                <span asp-validation-for="ChangeTimeA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNameA" class="control-label"></label>
+                <input asp-for="TypeNameA" class="form-control" />
+                <span asp-validation-for="TypeNameA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequestfromSqla" class="control-label"></label>
+                <input asp-for="RequestfromSqla" class="form-control" />
+                <span asp-validation-for="RequestfromSqla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentfromSqla" class="control-label"></label>
+                <input asp-for="CurrentfromSqla" class="form-control" />
+                <span asp-validation-for="CurrentfromSqla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentKorrA" class="control-label"></label>
+                <input asp-for="CurrentKorrA" class="form-control" />
+                <span asp-validation-for="CurrentKorrA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentMessageA" class="control-label"></label>
+                <input asp-for="CurrentMessageA" class="form-control" />
+                <span asp-validation-for="CurrentMessageA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoodfromSqla" class="control-label"></label>
+                <input asp-for="GoodfromSqla" class="form-control" />
+                <span asp-validation-for="GoodfromSqla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolfromSqla" class="control-label"></label>
+                <input asp-for="EolfromSqla" class="form-control" />
+                <span asp-validation-for="EolfromSqla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolkorrA" class="control-label"></label>
+                <input asp-for="EolkorrA" class="form-control" />
+                <span asp-validation-for="EolkorrA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DownTimefromSqla" class="control-label"></label>
+                <input asp-for="DownTimefromSqla" class="form-control" />
+                <span asp-validation-for="DownTimefromSqla" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WtnrA" class="control-label"></label>
+                <input asp-for="WtnrA" class="form-control" />
+                <span asp-validation-for="WtnrA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MessageA" class="control-label"></label>
+                <input asp-for="MessageA" class="form-control" />
+                <span asp-validation-for="MessageA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNumberB" class="control-label"></label>
+                <input asp-for="TypeNumberB" class="form-control" />
+                <span asp-validation-for="TypeNumberB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChangeTimeB" class="control-label"></label>
+                <input asp-for="ChangeTimeB" class="form-control" />
+                <span asp-validation-for="ChangeTimeB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNameB" class="control-label"></label>
+                <input asp-for="TypeNameB" class="form-control" />
+                <span asp-validation-for="TypeNameB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequestfromSqlb" class="control-label"></label>
+                <input asp-for="RequestfromSqlb" class="form-control" />
+                <span asp-validation-for="RequestfromSqlb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentfromSqlb" class="control-label"></label>
+                <input asp-for="CurrentfromSqlb" class="form-control" />
+                <span asp-validation-for="CurrentfromSqlb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentKorrB" class="control-label"></label>
+                <input asp-for="CurrentKorrB" class="form-control" />
+                <span asp-validation-for="CurrentKorrB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentMessageB" class="control-label"></label>
+                <input asp-for="CurrentMessageB" class="form-control" />
+                <span asp-validation-for="CurrentMessageB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoodfromSqlb" class="control-label"></label>
+                <input asp-for="GoodfromSqlb" class="form-control" />
+                <span asp-validation-for="GoodfromSqlb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolfromSqlb" class="control-label"></label>
+                <input asp-for="EolfromSqlb" class="form-control" />
+                <span asp-validation-for="EolfromSqlb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolkorrB" class="control-label"></label>
+                <input asp-for="EolkorrB" class="form-control" />
+                <span asp-validation-for="EolkorrB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DownTimefromSqlb" class="control-label"></label>
+                <input asp-for="DownTimefromSqlb" class="form-control" />
+                <span asp-validation-for="DownTimefromSqlb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WtnrB" class="control-label"></label>
+                <input asp-for="WtnrB" class="form-control" />
+                <span asp-validation-for="WtnrB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MessageB" class="control-label"></label>
+                <input asp-for="MessageB" class="form-control" />
+                <span asp-validation-for="MessageB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNumberC" class="control-label"></label>
+                <input asp-for="TypeNumberC" class="form-control" />
+                <span asp-validation-for="TypeNumberC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChangeTimeC" class="control-label"></label>
+                <input asp-for="ChangeTimeC" class="form-control" />
+                <span asp-validation-for="ChangeTimeC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNameC" class="control-label"></label>
+                <input asp-for="TypeNameC" class="form-control" />
+                <span asp-validation-for="TypeNameC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequestfromSqlc" class="control-label"></label>
+                <input asp-for="RequestfromSqlc" class="form-control" />
+                <span asp-validation-for="RequestfromSqlc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentfromSqlc" class="control-label"></label>
+                <input asp-for="CurrentfromSqlc" class="form-control" />
+                <span asp-validation-for="CurrentfromSqlc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentKorrC" class="control-label"></label>
+                <input asp-for="CurrentKorrC" class="form-control" />
+                <span asp-validation-for="CurrentKorrC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentMessageC" class="control-label"></label>
+                <input asp-for="CurrentMessageC" class="form-control" />
+                <span asp-validation-for="CurrentMessageC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoodfromSqlc" class="control-label"></label>
+                <input asp-for="GoodfromSqlc" class="form-control" />
+                <span asp-validation-for="GoodfromSqlc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolfromSqlc" class="control-label"></label>
+                <input asp-for="EolfromSqlc" class="form-control" />
+                <span asp-validation-for="EolfromSqlc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolkorrC" class="control-label"></label>
+                <input asp-for="EolkorrC" class="form-control" />
+                <span asp-validation-for="EolkorrC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DownTimefromSqlc" class="control-label"></label>
+                <input asp-for="DownTimefromSqlc" class="form-control" />
+                <span asp-validation-for="DownTimefromSqlc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WtnrC" class="control-label"></label>
+                <input asp-for="WtnrC" class="form-control" />
+                <span asp-validation-for="WtnrC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MessageC" class="control-label"></label>
+                <input asp-for="MessageC" class="form-control" />
+                <span asp-validation-for="MessageC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNumberD" class="control-label"></label>
+                <input asp-for="TypeNumberD" class="form-control" />
+                <span asp-validation-for="TypeNumberD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChangeTimeD" class="control-label"></label>
+                <input asp-for="ChangeTimeD" class="form-control" />
+                <span asp-validation-for="ChangeTimeD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNameD" class="control-label"></label>
+                <input asp-for="TypeNameD" class="form-control" />
+                <span asp-validation-for="TypeNameD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequestfromSqld" class="control-label"></label>
+                <input asp-for="RequestfromSqld" class="form-control" />
+                <span asp-validation-for="RequestfromSqld" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentfromSqld" class="control-label"></label>
+                <input asp-for="CurrentfromSqld" class="form-control" />
+                <span asp-validation-for="CurrentfromSqld" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentKorrD" class="control-label"></label>
+                <input asp-for="CurrentKorrD" class="form-control" />
+                <span asp-validation-for="CurrentKorrD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentMessageD" class="control-label"></label>
+                <input asp-for="CurrentMessageD" class="form-control" />
+                <span asp-validation-for="CurrentMessageD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoodfromSqld" class="control-label"></label>
+                <input asp-for="GoodfromSqld" class="form-control" />
+                <span asp-validation-for="GoodfromSqld" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolfromSqld" class="control-label"></label>
+                <input asp-for="EolfromSqld" class="form-control" />
+                <span asp-validation-for="EolfromSqld" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolkorrD" class="control-label"></label>
+                <input asp-for="EolkorrD" class="form-control" />
+                <span asp-validation-for="EolkorrD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DownTimefromSqld" class="control-label"></label>
+                <input asp-for="DownTimefromSqld" class="form-control" />
+                <span asp-validation-for="DownTimefromSqld" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WtnrD" class="control-label"></label>
+                <input asp-for="WtnrD" class="form-control" />
+                <span asp-validation-for="WtnrD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MessageD" class="control-label"></label>
+                <input asp-for="MessageD" class="form-control" />
+                <span asp-validation-for="MessageD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNumberE" class="control-label"></label>
+                <input asp-for="TypeNumberE" class="form-control" />
+                <span asp-validation-for="TypeNumberE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChangeTimeE" class="control-label"></label>
+                <input asp-for="ChangeTimeE" class="form-control" />
+                <span asp-validation-for="ChangeTimeE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeNameE" class="control-label"></label>
+                <input asp-for="TypeNameE" class="form-control" />
+                <span asp-validation-for="TypeNameE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RequestfromSqle" class="control-label"></label>
+                <input asp-for="RequestfromSqle" class="form-control" />
+                <span asp-validation-for="RequestfromSqle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentfromSqle" class="control-label"></label>
+                <input asp-for="CurrentfromSqle" class="form-control" />
+                <span asp-validation-for="CurrentfromSqle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentKorrE" class="control-label"></label>
+                <input asp-for="CurrentKorrE" class="form-control" />
+                <span asp-validation-for="CurrentKorrE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentMessageE" class="control-label"></label>
+                <input asp-for="CurrentMessageE" class="form-control" />
+                <span asp-validation-for="CurrentMessageE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GoodfromSqle" class="control-label"></label>
+                <input asp-for="GoodfromSqle" class="form-control" />
+                <span asp-validation-for="GoodfromSqle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolfromSqle" class="control-label"></label>
+                <input asp-for="EolfromSqle" class="form-control" />
+                <span asp-validation-for="EolfromSqle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EolkorrE" class="control-label"></label>
+                <input asp-for="EolkorrE" class="form-control" />
+                <span asp-validation-for="EolkorrE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DownTimefromSqle" class="control-label"></label>
+                <input asp-for="DownTimefromSqle" class="form-control" />
+                <span asp-validation-for="DownTimefromSqle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WtnrE" class="control-label"></label>
+                <input asp-for="WtnrE" class="form-control" />
+                <span asp-validation-for="WtnrE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MessageE" class="control-label"></label>
+                <input asp-for="MessageE" class="form-control" />
+                <span asp-validation-for="MessageE" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="SentEmail" /> @Html.DisplayNameFor(model => model.SentEmail)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda1" class="control-label"></label>
+                <select asp-for="ErrorIda1" class="form-control" asp-items="ViewBag.ErrorIda1"></select>
+                <span asp-validation-for="ErrorIda1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda2" class="control-label"></label>
+                <select asp-for="ErrorIda2" class="form-control" asp-items="ViewBag.ErrorIda2"></select>
+                <span asp-validation-for="ErrorIda2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda3" class="control-label"></label>
+                <select asp-for="ErrorIda3" class="form-control" asp-items="ViewBag.ErrorIda3"></select>
+                <span asp-validation-for="ErrorIda3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda4" class="control-label"></label>
+                <select asp-for="ErrorIda4" class="form-control" asp-items="ViewBag.ErrorIda4"></select>
+                <span asp-validation-for="ErrorIda4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda5" class="control-label"></label>
+                <select asp-for="ErrorIda5" class="form-control" asp-items="ViewBag.ErrorIda5"></select>
+                <span asp-validation-for="ErrorIda5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda6" class="control-label"></label>
+                <select asp-for="ErrorIda6" class="form-control" asp-items="ViewBag.ErrorIda6"></select>
+                <span asp-validation-for="ErrorIda6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda7" class="control-label"></label>
+                <select asp-for="ErrorIda7" class="form-control" asp-items="ViewBag.ErrorIda7"></select>
+                <span asp-validation-for="ErrorIda7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda8" class="control-label"></label>
+                <select asp-for="ErrorIda8" class="form-control" asp-items="ViewBag.ErrorIda8"></select>
+                <span asp-validation-for="ErrorIda8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda9" class="control-label"></label>
+                <select asp-for="ErrorIda9" class="form-control" asp-items="ViewBag.ErrorIda9"></select>
+                <span asp-validation-for="ErrorIda9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda10" class="control-label"></label>
+                <select asp-for="ErrorIda10" class="form-control" asp-items="ViewBag.ErrorIda10"></select>
+                <span asp-validation-for="ErrorIda10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda11" class="control-label"></label>
+                <select asp-for="ErrorIda11" class="form-control" asp-items="ViewBag.ErrorIda11"></select>
+                <span asp-validation-for="ErrorIda11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda12" class="control-label"></label>
+                <select asp-for="ErrorIda12" class="form-control" asp-items="ViewBag.ErrorIda12"></select>
+                <span asp-validation-for="ErrorIda12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda13" class="control-label"></label>
+                <select asp-for="ErrorIda13" class="form-control" asp-items="ViewBag.ErrorIda13"></select>
+                <span asp-validation-for="ErrorIda13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda14" class="control-label"></label>
+                <select asp-for="ErrorIda14" class="form-control" asp-items="ViewBag.ErrorIda14"></select>
+                <span asp-validation-for="ErrorIda14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIda15" class="control-label"></label>
+                <select asp-for="ErrorIda15" class="form-control" asp-items="ViewBag.ErrorIda15"></select>
+                <span asp-validation-for="ErrorIda15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra1" class="control-label"></label>
+                <input asp-for="ErrorNra1" class="form-control" />
+                <span asp-validation-for="ErrorNra1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra2" class="control-label"></label>
+                <input asp-for="ErrorNra2" class="form-control" />
+                <span asp-validation-for="ErrorNra2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra3" class="control-label"></label>
+                <input asp-for="ErrorNra3" class="form-control" />
+                <span asp-validation-for="ErrorNra3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra4" class="control-label"></label>
+                <input asp-for="ErrorNra4" class="form-control" />
+                <span asp-validation-for="ErrorNra4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra5" class="control-label"></label>
+                <input asp-for="ErrorNra5" class="form-control" />
+                <span asp-validation-for="ErrorNra5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra6" class="control-label"></label>
+                <input asp-for="ErrorNra6" class="form-control" />
+                <span asp-validation-for="ErrorNra6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra7" class="control-label"></label>
+                <input asp-for="ErrorNra7" class="form-control" />
+                <span asp-validation-for="ErrorNra7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra8" class="control-label"></label>
+                <input asp-for="ErrorNra8" class="form-control" />
+                <span asp-validation-for="ErrorNra8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra9" class="control-label"></label>
+                <input asp-for="ErrorNra9" class="form-control" />
+                <span asp-validation-for="ErrorNra9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra10" class="control-label"></label>
+                <input asp-for="ErrorNra10" class="form-control" />
+                <span asp-validation-for="ErrorNra10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra11" class="control-label"></label>
+                <input asp-for="ErrorNra11" class="form-control" />
+                <span asp-validation-for="ErrorNra11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra12" class="control-label"></label>
+                <input asp-for="ErrorNra12" class="form-control" />
+                <span asp-validation-for="ErrorNra12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra13" class="control-label"></label>
+                <input asp-for="ErrorNra13" class="form-control" />
+                <span asp-validation-for="ErrorNra13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra14" class="control-label"></label>
+                <input asp-for="ErrorNra14" class="form-control" />
+                <span asp-validation-for="ErrorNra14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNra15" class="control-label"></label>
+                <input asp-for="ErrorNra15" class="form-control" />
+                <span asp-validation-for="ErrorNra15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb1" class="control-label"></label>
+                <select asp-for="ErrorIdb1" class="form-control" asp-items="ViewBag.ErrorIdb1"></select>
+                <span asp-validation-for="ErrorIdb1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb2" class="control-label"></label>
+                <select asp-for="ErrorIdb2" class="form-control" asp-items="ViewBag.ErrorIdb2"></select>
+                <span asp-validation-for="ErrorIdb2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb3" class="control-label"></label>
+                <select asp-for="ErrorIdb3" class="form-control" asp-items="ViewBag.ErrorIdb3"></select>
+                <span asp-validation-for="ErrorIdb3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb4" class="control-label"></label>
+                <select asp-for="ErrorIdb4" class="form-control" asp-items="ViewBag.ErrorIdb4"></select>
+                <span asp-validation-for="ErrorIdb4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb5" class="control-label"></label>
+                <select asp-for="ErrorIdb5" class="form-control" asp-items="ViewBag.ErrorIdb5"></select>
+                <span asp-validation-for="ErrorIdb5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb6" class="control-label"></label>
+                <select asp-for="ErrorIdb6" class="form-control" asp-items="ViewBag.ErrorIdb6"></select>
+                <span asp-validation-for="ErrorIdb6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb7" class="control-label"></label>
+                <select asp-for="ErrorIdb7" class="form-control" asp-items="ViewBag.ErrorIdb7"></select>
+                <span asp-validation-for="ErrorIdb7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb8" class="control-label"></label>
+                <select asp-for="ErrorIdb8" class="form-control" asp-items="ViewBag.ErrorIdb8"></select>
+                <span asp-validation-for="ErrorIdb8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb9" class="control-label"></label>
+                <select asp-for="ErrorIdb9" class="form-control" asp-items="ViewBag.ErrorIdb9"></select>
+                <span asp-validation-for="ErrorIdb9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb10" class="control-label"></label>
+                <select asp-for="ErrorIdb10" class="form-control" asp-items="ViewBag.ErrorIdb10"></select>
+                <span asp-validation-for="ErrorIdb10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb11" class="control-label"></label>
+                <select asp-for="ErrorIdb11" class="form-control" asp-items="ViewBag.ErrorIdb11"></select>
+                <span asp-validation-for="ErrorIdb11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb12" class="control-label"></label>
+                <select asp-for="ErrorIdb12" class="form-control" asp-items="ViewBag.ErrorIdb12"></select>
+                <span asp-validation-for="ErrorIdb12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb13" class="control-label"></label>
+                <select asp-for="ErrorIdb13" class="form-control" asp-items="ViewBag.ErrorIdb13"></select>
+                <span asp-validation-for="ErrorIdb13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb14" class="control-label"></label>
+                <select asp-for="ErrorIdb14" class="form-control" asp-items="ViewBag.ErrorIdb14"></select>
+                <span asp-validation-for="ErrorIdb14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdb15" class="control-label"></label>
+                <select asp-for="ErrorIdb15" class="form-control" asp-items="ViewBag.ErrorIdb15"></select>
+                <span asp-validation-for="ErrorIdb15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb1" class="control-label"></label>
+                <input asp-for="ErrorNrb1" class="form-control" />
+                <span asp-validation-for="ErrorNrb1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb2" class="control-label"></label>
+                <input asp-for="ErrorNrb2" class="form-control" />
+                <span asp-validation-for="ErrorNrb2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb3" class="control-label"></label>
+                <input asp-for="ErrorNrb3" class="form-control" />
+                <span asp-validation-for="ErrorNrb3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb4" class="control-label"></label>
+                <input asp-for="ErrorNrb4" class="form-control" />
+                <span asp-validation-for="ErrorNrb4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb5" class="control-label"></label>
+                <input asp-for="ErrorNrb5" class="form-control" />
+                <span asp-validation-for="ErrorNrb5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb6" class="control-label"></label>
+                <input asp-for="ErrorNrb6" class="form-control" />
+                <span asp-validation-for="ErrorNrb6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb7" class="control-label"></label>
+                <input asp-for="ErrorNrb7" class="form-control" />
+                <span asp-validation-for="ErrorNrb7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb8" class="control-label"></label>
+                <input asp-for="ErrorNrb8" class="form-control" />
+                <span asp-validation-for="ErrorNrb8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb9" class="control-label"></label>
+                <input asp-for="ErrorNrb9" class="form-control" />
+                <span asp-validation-for="ErrorNrb9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb10" class="control-label"></label>
+                <input asp-for="ErrorNrb10" class="form-control" />
+                <span asp-validation-for="ErrorNrb10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb11" class="control-label"></label>
+                <input asp-for="ErrorNrb11" class="form-control" />
+                <span asp-validation-for="ErrorNrb11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb12" class="control-label"></label>
+                <input asp-for="ErrorNrb12" class="form-control" />
+                <span asp-validation-for="ErrorNrb12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb13" class="control-label"></label>
+                <input asp-for="ErrorNrb13" class="form-control" />
+                <span asp-validation-for="ErrorNrb13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb14" class="control-label"></label>
+                <input asp-for="ErrorNrb14" class="form-control" />
+                <span asp-validation-for="ErrorNrb14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrb15" class="control-label"></label>
+                <input asp-for="ErrorNrb15" class="form-control" />
+                <span asp-validation-for="ErrorNrb15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc1" class="control-label"></label>
+                <select asp-for="ErrorIdc1" class="form-control" asp-items="ViewBag.ErrorIdc1"></select>
+                <span asp-validation-for="ErrorIdc1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc2" class="control-label"></label>
+                <select asp-for="ErrorIdc2" class="form-control" asp-items="ViewBag.ErrorIdc2"></select>
+                <span asp-validation-for="ErrorIdc2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc3" class="control-label"></label>
+                <select asp-for="ErrorIdc3" class="form-control" asp-items="ViewBag.ErrorIdc3"></select>
+                <span asp-validation-for="ErrorIdc3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc4" class="control-label"></label>
+                <select asp-for="ErrorIdc4" class="form-control" asp-items="ViewBag.ErrorIdc4"></select>
+                <span asp-validation-for="ErrorIdc4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc5" class="control-label"></label>
+                <select asp-for="ErrorIdc5" class="form-control" asp-items="ViewBag.ErrorIdc5"></select>
+                <span asp-validation-for="ErrorIdc5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc6" class="control-label"></label>
+                <select asp-for="ErrorIdc6" class="form-control" asp-items="ViewBag.ErrorIdc6"></select>
+                <span asp-validation-for="ErrorIdc6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc7" class="control-label"></label>
+                <select asp-for="ErrorIdc7" class="form-control" asp-items="ViewBag.ErrorIdc7"></select>
+                <span asp-validation-for="ErrorIdc7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc8" class="control-label"></label>
+                <select asp-for="ErrorIdc8" class="form-control" asp-items="ViewBag.ErrorIdc8"></select>
+                <span asp-validation-for="ErrorIdc8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc9" class="control-label"></label>
+                <select asp-for="ErrorIdc9" class="form-control" asp-items="ViewBag.ErrorIdc9"></select>
+                <span asp-validation-for="ErrorIdc9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc10" class="control-label"></label>
+                <select asp-for="ErrorIdc10" class="form-control" asp-items="ViewBag.ErrorIdc10"></select>
+                <span asp-validation-for="ErrorIdc10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc11" class="control-label"></label>
+                <select asp-for="ErrorIdc11" class="form-control" asp-items="ViewBag.ErrorIdc11"></select>
+                <span asp-validation-for="ErrorIdc11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc12" class="control-label"></label>
+                <select asp-for="ErrorIdc12" class="form-control" asp-items="ViewBag.ErrorIdc12"></select>
+                <span asp-validation-for="ErrorIdc12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc13" class="control-label"></label>
+                <select asp-for="ErrorIdc13" class="form-control" asp-items="ViewBag.ErrorIdc13"></select>
+                <span asp-validation-for="ErrorIdc13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc14" class="control-label"></label>
+                <select asp-for="ErrorIdc14" class="form-control" asp-items="ViewBag.ErrorIdc14"></select>
+                <span asp-validation-for="ErrorIdc14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdc15" class="control-label"></label>
+                <select asp-for="ErrorIdc15" class="form-control" asp-items="ViewBag.ErrorIdc15"></select>
+                <span asp-validation-for="ErrorIdc15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc1" class="control-label"></label>
+                <input asp-for="ErrorNrc1" class="form-control" />
+                <span asp-validation-for="ErrorNrc1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc2" class="control-label"></label>
+                <input asp-for="ErrorNrc2" class="form-control" />
+                <span asp-validation-for="ErrorNrc2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc3" class="control-label"></label>
+                <input asp-for="ErrorNrc3" class="form-control" />
+                <span asp-validation-for="ErrorNrc3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc4" class="control-label"></label>
+                <input asp-for="ErrorNrc4" class="form-control" />
+                <span asp-validation-for="ErrorNrc4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc5" class="control-label"></label>
+                <input asp-for="ErrorNrc5" class="form-control" />
+                <span asp-validation-for="ErrorNrc5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc6" class="control-label"></label>
+                <input asp-for="ErrorNrc6" class="form-control" />
+                <span asp-validation-for="ErrorNrc6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc7" class="control-label"></label>
+                <input asp-for="ErrorNrc7" class="form-control" />
+                <span asp-validation-for="ErrorNrc7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc8" class="control-label"></label>
+                <input asp-for="ErrorNrc8" class="form-control" />
+                <span asp-validation-for="ErrorNrc8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc9" class="control-label"></label>
+                <input asp-for="ErrorNrc9" class="form-control" />
+                <span asp-validation-for="ErrorNrc9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc10" class="control-label"></label>
+                <input asp-for="ErrorNrc10" class="form-control" />
+                <span asp-validation-for="ErrorNrc10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc11" class="control-label"></label>
+                <input asp-for="ErrorNrc11" class="form-control" />
+                <span asp-validation-for="ErrorNrc11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc12" class="control-label"></label>
+                <input asp-for="ErrorNrc12" class="form-control" />
+                <span asp-validation-for="ErrorNrc12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc13" class="control-label"></label>
+                <input asp-for="ErrorNrc13" class="form-control" />
+                <span asp-validation-for="ErrorNrc13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc14" class="control-label"></label>
+                <input asp-for="ErrorNrc14" class="form-control" />
+                <span asp-validation-for="ErrorNrc14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrc15" class="control-label"></label>
+                <input asp-for="ErrorNrc15" class="form-control" />
+                <span asp-validation-for="ErrorNrc15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd1" class="control-label"></label>
+                <select asp-for="ErrorIdd1" class="form-control" asp-items="ViewBag.ErrorIdd1"></select>
+                <span asp-validation-for="ErrorIdd1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd2" class="control-label"></label>
+                <select asp-for="ErrorIdd2" class="form-control" asp-items="ViewBag.ErrorIdd2"></select>
+                <span asp-validation-for="ErrorIdd2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd3" class="control-label"></label>
+                <select asp-for="ErrorIdd3" class="form-control" asp-items="ViewBag.ErrorIdd3"></select>
+                <span asp-validation-for="ErrorIdd3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd4" class="control-label"></label>
+                <select asp-for="ErrorIdd4" class="form-control" asp-items="ViewBag.ErrorIdd4"></select>
+                <span asp-validation-for="ErrorIdd4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd5" class="control-label"></label>
+                <select asp-for="ErrorIdd5" class="form-control" asp-items="ViewBag.ErrorIdd5"></select>
+                <span asp-validation-for="ErrorIdd5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd6" class="control-label"></label>
+                <select asp-for="ErrorIdd6" class="form-control" asp-items="ViewBag.ErrorIdd6"></select>
+                <span asp-validation-for="ErrorIdd6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd7" class="control-label"></label>
+                <select asp-for="ErrorIdd7" class="form-control" asp-items="ViewBag.ErrorIdd7"></select>
+                <span asp-validation-for="ErrorIdd7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd8" class="control-label"></label>
+                <select asp-for="ErrorIdd8" class="form-control" asp-items="ViewBag.ErrorIdd8"></select>
+                <span asp-validation-for="ErrorIdd8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd9" class="control-label"></label>
+                <select asp-for="ErrorIdd9" class="form-control" asp-items="ViewBag.ErrorIdd9"></select>
+                <span asp-validation-for="ErrorIdd9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd10" class="control-label"></label>
+                <select asp-for="ErrorIdd10" class="form-control" asp-items="ViewBag.ErrorIdd10"></select>
+                <span asp-validation-for="ErrorIdd10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd11" class="control-label"></label>
+                <select asp-for="ErrorIdd11" class="form-control" asp-items="ViewBag.ErrorIdd11"></select>
+                <span asp-validation-for="ErrorIdd11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd12" class="control-label"></label>
+                <select asp-for="ErrorIdd12" class="form-control" asp-items="ViewBag.ErrorIdd12"></select>
+                <span asp-validation-for="ErrorIdd12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd13" class="control-label"></label>
+                <select asp-for="ErrorIdd13" class="form-control" asp-items="ViewBag.ErrorIdd13"></select>
+                <span asp-validation-for="ErrorIdd13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd14" class="control-label"></label>
+                <select asp-for="ErrorIdd14" class="form-control" asp-items="ViewBag.ErrorIdd14"></select>
+                <span asp-validation-for="ErrorIdd14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIdd15" class="control-label"></label>
+                <select asp-for="ErrorIdd15" class="form-control" asp-items="ViewBag.ErrorIdd15"></select>
+                <span asp-validation-for="ErrorIdd15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd1" class="control-label"></label>
+                <input asp-for="ErrorNrd1" class="form-control" />
+                <span asp-validation-for="ErrorNrd1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd2" class="control-label"></label>
+                <input asp-for="ErrorNrd2" class="form-control" />
+                <span asp-validation-for="ErrorNrd2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd3" class="control-label"></label>
+                <input asp-for="ErrorNrd3" class="form-control" />
+                <span asp-validation-for="ErrorNrd3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd4" class="control-label"></label>
+                <input asp-for="ErrorNrd4" class="form-control" />
+                <span asp-validation-for="ErrorNrd4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd5" class="control-label"></label>
+                <input asp-for="ErrorNrd5" class="form-control" />
+                <span asp-validation-for="ErrorNrd5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd6" class="control-label"></label>
+                <input asp-for="ErrorNrd6" class="form-control" />
+                <span asp-validation-for="ErrorNrd6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd7" class="control-label"></label>
+                <input asp-for="ErrorNrd7" class="form-control" />
+                <span asp-validation-for="ErrorNrd7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd8" class="control-label"></label>
+                <input asp-for="ErrorNrd8" class="form-control" />
+                <span asp-validation-for="ErrorNrd8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd9" class="control-label"></label>
+                <input asp-for="ErrorNrd9" class="form-control" />
+                <span asp-validation-for="ErrorNrd9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd10" class="control-label"></label>
+                <input asp-for="ErrorNrd10" class="form-control" />
+                <span asp-validation-for="ErrorNrd10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd11" class="control-label"></label>
+                <input asp-for="ErrorNrd11" class="form-control" />
+                <span asp-validation-for="ErrorNrd11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd12" class="control-label"></label>
+                <input asp-for="ErrorNrd12" class="form-control" />
+                <span asp-validation-for="ErrorNrd12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd13" class="control-label"></label>
+                <input asp-for="ErrorNrd13" class="form-control" />
+                <span asp-validation-for="ErrorNrd13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd14" class="control-label"></label>
+                <input asp-for="ErrorNrd14" class="form-control" />
+                <span asp-validation-for="ErrorNrd14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNrd15" class="control-label"></label>
+                <input asp-for="ErrorNrd15" class="form-control" />
+                <span asp-validation-for="ErrorNrd15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde1" class="control-label"></label>
+                <select asp-for="ErrorIde1" class="form-control" asp-items="ViewBag.ErrorIde1"></select>
+                <span asp-validation-for="ErrorIde1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde2" class="control-label"></label>
+                <select asp-for="ErrorIde2" class="form-control" asp-items="ViewBag.ErrorIde2"></select>
+                <span asp-validation-for="ErrorIde2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde3" class="control-label"></label>
+                <select asp-for="ErrorIde3" class="form-control" asp-items="ViewBag.ErrorIde3"></select>
+                <span asp-validation-for="ErrorIde3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde4" class="control-label"></label>
+                <select asp-for="ErrorIde4" class="form-control" asp-items="ViewBag.ErrorIde4"></select>
+                <span asp-validation-for="ErrorIde4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde5" class="control-label"></label>
+                <select asp-for="ErrorIde5" class="form-control" asp-items="ViewBag.ErrorIde5"></select>
+                <span asp-validation-for="ErrorIde5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde6" class="control-label"></label>
+                <select asp-for="ErrorIde6" class="form-control" asp-items="ViewBag.ErrorIde6"></select>
+                <span asp-validation-for="ErrorIde6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde7" class="control-label"></label>
+                <select asp-for="ErrorIde7" class="form-control" asp-items="ViewBag.ErrorIde7"></select>
+                <span asp-validation-for="ErrorIde7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde8" class="control-label"></label>
+                <select asp-for="ErrorIde8" class="form-control" asp-items="ViewBag.ErrorIde8"></select>
+                <span asp-validation-for="ErrorIde8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde9" class="control-label"></label>
+                <select asp-for="ErrorIde9" class="form-control" asp-items="ViewBag.ErrorIde9"></select>
+                <span asp-validation-for="ErrorIde9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde10" class="control-label"></label>
+                <select asp-for="ErrorIde10" class="form-control" asp-items="ViewBag.ErrorIde10"></select>
+                <span asp-validation-for="ErrorIde10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde11" class="control-label"></label>
+                <select asp-for="ErrorIde11" class="form-control" asp-items="ViewBag.ErrorIde11"></select>
+                <span asp-validation-for="ErrorIde11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde12" class="control-label"></label>
+                <select asp-for="ErrorIde12" class="form-control" asp-items="ViewBag.ErrorIde12"></select>
+                <span asp-validation-for="ErrorIde12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde13" class="control-label"></label>
+                <select asp-for="ErrorIde13" class="form-control" asp-items="ViewBag.ErrorIde13"></select>
+                <span asp-validation-for="ErrorIde13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde14" class="control-label"></label>
+                <select asp-for="ErrorIde14" class="form-control" asp-items="ViewBag.ErrorIde14"></select>
+                <span asp-validation-for="ErrorIde14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorIde15" class="control-label"></label>
+                <select asp-for="ErrorIde15" class="form-control" asp-items="ViewBag.ErrorIde15"></select>
+                <span asp-validation-for="ErrorIde15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre1" class="control-label"></label>
+                <input asp-for="ErrorNre1" class="form-control" />
+                <span asp-validation-for="ErrorNre1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre2" class="control-label"></label>
+                <input asp-for="ErrorNre2" class="form-control" />
+                <span asp-validation-for="ErrorNre2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre3" class="control-label"></label>
+                <input asp-for="ErrorNre3" class="form-control" />
+                <span asp-validation-for="ErrorNre3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre4" class="control-label"></label>
+                <input asp-for="ErrorNre4" class="form-control" />
+                <span asp-validation-for="ErrorNre4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre5" class="control-label"></label>
+                <input asp-for="ErrorNre5" class="form-control" />
+                <span asp-validation-for="ErrorNre5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre6" class="control-label"></label>
+                <input asp-for="ErrorNre6" class="form-control" />
+                <span asp-validation-for="ErrorNre6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre7" class="control-label"></label>
+                <input asp-for="ErrorNre7" class="form-control" />
+                <span asp-validation-for="ErrorNre7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre8" class="control-label"></label>
+                <input asp-for="ErrorNre8" class="form-control" />
+                <span asp-validation-for="ErrorNre8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre9" class="control-label"></label>
+                <input asp-for="ErrorNre9" class="form-control" />
+                <span asp-validation-for="ErrorNre9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre10" class="control-label"></label>
+                <input asp-for="ErrorNre10" class="form-control" />
+                <span asp-validation-for="ErrorNre10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre11" class="control-label"></label>
+                <input asp-for="ErrorNre11" class="form-control" />
+                <span asp-validation-for="ErrorNre11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre12" class="control-label"></label>
+                <input asp-for="ErrorNre12" class="form-control" />
+                <span asp-validation-for="ErrorNre12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre13" class="control-label"></label>
+                <input asp-for="ErrorNre13" class="form-control" />
+                <span asp-validation-for="ErrorNre13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre14" class="control-label"></label>
+                <input asp-for="ErrorNre14" class="form-control" />
+                <span asp-validation-for="ErrorNre14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ErrorNre15" class="control-label"></label>
+                <input asp-for="ErrorNre15" class="form-control" />
+                <span asp-validation-for="ErrorNre15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,29 @@
+﻿    @using Microsoft.AspNetCore.Identity
+    @inject SignInManager<ApplicationUser> SignInManager
+    @inject UserManager<ApplicationUser> UserManager
+    @using EIS.Helpers
+    @using Microsoft.AspNetCore.Localization
+    @using System.Globalization;
+
+    @{
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+    }
+    <div id="PlaceHolderHere"></div>
+    @if (!SignInManager.IsSignedIn(User))
+    {
+        <head>
+            <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+        </head>
+    }
+    else
+    {
+        <div class="tableview">
+            <p>Use this page to detail your site's privacy policy.</p>
+        </div>
+    }
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }

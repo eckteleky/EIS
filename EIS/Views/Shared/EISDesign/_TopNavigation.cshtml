@@ -1,0 +1,200 @@
+﻿@using EIS.Helpers
+@using Microsoft.AspNetCore.Http
+@using static EIS.Helpers.NavigationIndicatorHelper; 
+@inject IHttpContextAccessor Accessor
+<!-- Navbar --> 
+    @{var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";}
+    <a hidden asp-controller="Home" asp-action="getsubmenuid" id="getsubmenuidlink" asp-route-returnUrl="@returnUrl" ></a>
+    <div hidden class="submenuid">-</div>
+    <nav class="main-header navbar navbar-expand-xl navbar-white navbar-light p-0" style="min-height: 52px">
+        <div class="container-fluid p-0">
+            <button class="navbar-toggler" type="button" style="min-height: 52px" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse order-3 collapse" id="navbarCollapse">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav" style="min-height: 52px">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        switch(@Accessor.HttpContext.Session.GetString("Submenu"))
+                        {
+                            default:
+                            case "1": 
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu1" asp-controller="Home" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("home", "index")">@EIS.Resources.Resource.ResourceManager.GetString("OEE", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                        <li class="nav-item text-nowrap">
+                                        <a id="submenu2" asp-controller="ShiftView" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("shiftview", "index")">@EIS.Resources.Resource.ResourceManager.GetString("ShiftView", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu3" asp-controller="DTReports" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("dtreports", "index")">@EIS.Resources.Resource.ResourceManager.GetString("IFSShiftTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu4" asp-controller="DownTimeTables" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("downtimetables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("DTTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu5" asp-controller="TablePlannedDownTimes" asp-action="Index" asp-route-id="1" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("tableplanneddowntimes", "index")">@EIS.Resources.Resource.ResourceManager.GetString("TablePlannedDownTimes", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu6" asp-controller="MesproductPlanWeeks" asp-action="Index" asp-route-id="2" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("mesproductplanweeks", "index" )">@EIS.Resources.Resource.ResourceManager.GetString("TablePlannedShifts", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu7" asp-controller="EasyMESjobs" asp-action="Index" asp-route-id="1" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("easymesjobs", "index" )">@EIS.Resources.Resource.ResourceManager.GetString("EasyMESJobs", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    break;
+                            case "2":
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu1" asp-controller="LzTeljesitmenyTables" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("lzteljesitmenytables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZTeljesitmenyTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu2" asp-controller="LzIntervalTables" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("lzintervaltables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZIntervalTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu3" asp-controller="Home" asp-action="LZHoursOfMonth" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("home", "lzhoursofmonth")">@EIS.Resources.Resource.ResourceManager.GetString("WorkingTimeReports", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu4" asp-controller="Home" asp-action="LZHolidayOfMonth" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("home", "lzholidayofmonth")">@EIS.Resources.Resource.ResourceManager.GetString("AbsenceReports", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu5" asp-controller="LZMunkanapTables" asp-action="Viewer" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("lzmunkanaptables", "viewer")">@EIS.Resources.Resource.ResourceManager.GetString("LZMunkaNapViewer", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu6" asp-controller="Home" asp-action="LZCategoryOfMonth" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("home", "lzcategoryofmonth")">@EIS.Resources.Resource.ResourceManager.GetString("LZCategoryOfMonth", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu7" asp-controller="Empty" asp-action="Index" asp-route-id="1" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "1" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                            break;
+                            case "3":
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu1" asp-controller="Kpivalues" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("kpivalues", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu2" asp-controller="KPITables" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("kpitables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPITables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu3" asp-controller="QualityCosts" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("qualitycosts", "index")">@EIS.Resources.Resource.ResourceManager.GetString("QualityCosts", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu4" asp-controller="DTReports" asp-action="Viewer" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("dtreports", "viewer")">@EIS.Resources.Resource.ResourceManager.GetString("IFSShiftTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu5" asp-controller="Empty" asp-action="Index" asp-route-id="2" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "2")">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu6" asp-controller="Empty" asp-action="Index" asp-route-id="3" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "3" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu7" asp-controller="Empty" asp-action="Index" asp-route-id="4" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "4" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                            break;
+                            case "4":
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu1" asp-controller="DashBoards" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("dashboards", "index")">@EIS.Resources.Resource.ResourceManager.GetString("Dashboard", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu2" asp-controller="Empty" asp-action="Index" asp-route-id="1" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "1")">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu3" asp-controller="Empty" asp-action="Index" asp-route-id="2" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "2" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu4" asp-controller="Empty" asp-action="Index" asp-route-id="3" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "3" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu5" asp-controller="Empty" asp-action="Index" asp-route-id="4" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "4" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu6" asp-controller="Empty" asp-action="Index" asp-route-id="5" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "5" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu7" asp-controller="Empty" asp-action="Index" asp-route-id="6" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "6" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                            break;
+                            case "5":
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu1" asp-controller="TaskLPA" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("tasklpa", "index")">@EIS.Resources.Resource.ResourceManager.GetString("TaskLPA", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu2" asp-controller="TaskShopfloor" asp-action="Index" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("taskshopfloor", "index")">@EIS.Resources.Resource.ResourceManager.GetString("TaskShopFloor", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu3" asp-controller="Empty" asp-action="Index" asp-route-id="1" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "1")">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu4" asp-controller="Empty" asp-action="Index" asp-route-id="2" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "2" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu5" asp-controller="Empty" asp-action="Index" asp-route-id="3" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "3")">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu6" asp-controller="Empty" asp-action="Index" asp-route-id="4" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "4" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                                    <li class="nav-item text-nowrap">
+                                        <a id="submenu7" asp-controller="Empty" asp-action="Index" asp-route-id="5" style="min-height: 52px" class="pt-3 pb-3 nav-link @Url.MakeActiveClass("empty", "index", "5" )">@EIS.Resources.Resource.ResourceManager.GetString("Empty", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                    </li>
+                            break;
+                    }
+                }
+                </ul>
+            </div>
+
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <!-- Language -->
+                <li>       
+                    <a data-widget="fullscreen" href="#" role="button">
+                        <img src="~/images/EIS.svg" alt="Eckerle Logo" width="40" height="40" />
+                    </a>
+                </li>
+            </ul>
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-sm-1">
+                <li>   
+                    <table>
+                        <thead>
+                            <tr>
+                                <th hidden></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="85px"><div class="digital-clock" style="color: var(--eck-textgray); height: 21px">00:00:00</div></td>
+                            </tr>
+                            <tr>
+                                <td><div class="calendar-day" align="center" style="color: var(--eck-textgray)">2022.10.21</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        $(document).ready(function() {
+          clockUpdate();
+          setInterval(clockUpdate, 1000);
+        })
+
+        function clockUpdate() {
+            var date = new Date();
+            $('.digital-clock').css({ 'color': 'var(--eck-textgray)', 'text-shadow': '0 0 6px var(--eck-white)' });
+            function addZero(x) {
+                if (x < 10) {
+                    return x = '0' + x;
+                } else {
+                    return x;
+                }
+            }
+
+            var h = addZero(date.getHours());
+            var m = addZero(date.getMinutes());
+            var s = addZero(date.getSeconds());
+            var y = addZero(date.getFullYear());
+            var mo = addZero(date.getMonth() + 1);
+            var d = addZero(date.getDate());
+
+            $('.digital-clock').text(h + ':' + m + ':' + s)
+            $('.calendar-day').text(y + '.' + mo + '.' + d)
+        }
+    </script>
+<!-- /.navbar -->

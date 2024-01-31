@@ -1,0 +1,158 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model IEnumerable<EIS.EISModels.ShiftsTable>
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<head>
+    <!-- just usingjquery for the $(document).ready() - we don't need it for charting  -->
+    <script type="text/javascript" src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- need the raphael vector library -->
+    <script type="text/javascript" src="~/plugins/treemap-squared-master/examples/raphael-min.js"></script>
+    <!-- our treemapping library-->
+    <script type="text/javascript" src="~/plugins/treemap-squared-master/min/treemap-squared-0.5.min.js"></script>
+    <!-- ChartJS-Chart-TreeMap -->
+    <script src="~/plugins/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"></script>
+</head>
+
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Downtime Report -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("RoutingSlipTable", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LineID", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Shift", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Hour1", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Hour2", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Hour3", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Hour4", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Hour5", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Hour6", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Hour7", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Hour8", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Hour9", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("CT", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="tablebody">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LineId)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.Starttime)-#@Html.DisplayFor(modelItem => item.Muszak)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Start)-@Html.DisplayFor(modelItem => item.Stop)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.Elvart)/@Html.DisplayFor(modelItem => item.Gyartott)/@Html.DisplayFor(modelItem => item.Szazalek)/@Html.DisplayFor(modelItem => item.Allasido)/@Html.DisplayFor(modelItem => item.PGyartott)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartH00)-@Html.DisplayFor(modelItem => item.StopH00)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.ElvartH00)/@Html.DisplayFor(modelItem => item.GyartottH00)/@Html.DisplayFor(modelItem => item.SzazalekH00)/@Html.DisplayFor(modelItem => item.AllasidoH00)/@Html.DisplayFor(modelItem => item.PGyartottH00)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartH01)-@Html.DisplayFor(modelItem => item.StopH01)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.ElvartH01)/@Html.DisplayFor(modelItem => item.GyartottH01)/@Html.DisplayFor(modelItem => item.SzazalekH01)/@Html.DisplayFor(modelItem => item.AllasidoH01)/@Html.DisplayFor(modelItem => item.PGyartottH01)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartH02)-@Html.DisplayFor(modelItem => item.StopH02)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.ElvartH02)/@Html.DisplayFor(modelItem => item.GyartottH02)/@Html.DisplayFor(modelItem => item.SzazalekH02)/@Html.DisplayFor(modelItem => item.AllasidoH02)/@Html.DisplayFor(modelItem => item.PGyartottH02)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartH03)-@Html.DisplayFor(modelItem => item.StopH03)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.ElvartH03)/@Html.DisplayFor(modelItem => item.GyartottH03)/@Html.DisplayFor(modelItem => item.SzazalekH03)/@Html.DisplayFor(modelItem => item.AllasidoH03)/@Html.DisplayFor(modelItem => item.PGyartottH03)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartH04)-@Html.DisplayFor(modelItem => item.StopH04)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.ElvartH04)/@Html.DisplayFor(modelItem => item.GyartottH04)/@Html.DisplayFor(modelItem => item.SzazalekH04)/@Html.DisplayFor(modelItem => item.AllasidoH04)/@Html.DisplayFor(modelItem => item.PGyartottH04)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartH05)-@Html.DisplayFor(modelItem => item.StopH05)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.ElvartH05)/@Html.DisplayFor(modelItem => item.GyartottH05)/@Html.DisplayFor(modelItem => item.SzazalekH05)/@Html.DisplayFor(modelItem => item.AllasidoH05)/@Html.DisplayFor(modelItem => item.PGyartottH05)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartH06)-@Html.DisplayFor(modelItem => item.StopH06)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.ElvartH06)/@Html.DisplayFor(modelItem => item.GyartottH06)/@Html.DisplayFor(modelItem => item.SzazalekH06)/@Html.DisplayFor(modelItem => item.AllasidoH06)/@Html.DisplayFor(modelItem => item.PGyartottH06)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartH07)-@Html.DisplayFor(modelItem => item.StopH07)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.ElvartH07)/@Html.DisplayFor(modelItem => item.GyartottH07)/@Html.DisplayFor(modelItem => item.SzazalekH07)/@Html.DisplayFor(modelItem => item.AllasidoH07)/@Html.DisplayFor(modelItem => item.PGyartottH07)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StartH08)-@Html.DisplayFor(modelItem => item.StopH08)
+                                            <br>
+                                            @Html.DisplayFor(modelItem => item.ElvartH08)/@Html.DisplayFor(modelItem => item.GyartottH08)/@Html.DisplayFor(modelItem => item.SzazalekH08)/@Html.DisplayFor(modelItem => item.AllasidoH08)/@Html.DisplayFor(modelItem => item.PGyartottH08)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Ct)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,718 @@
+﻿@model EIS.EISModels.MesproductPlanWeek
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>MesproductPlanWeek</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LineId" class="control-label"></label>
+                <input asp-for="LineId" class="form-control" />
+                <span asp-validation-for="LineId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Week" class="control-label"></label>
+                <input asp-for="Week" class="form-control" />
+                <span asp-validation-for="Week" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active01" /> @Html.DisplayNameFor(model => model.Active01)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance01" /> @Html.DisplayNameFor(model => model.Maintenance01)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype01" class="control-label"></label>
+                <select asp-for="Mtype01" class ="form-control" asp-items="ViewBag.Mtype01"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From01" class="control-label"></label>
+                <input asp-for="From01" class="form-control" />
+                <span asp-validation-for="From01" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To01" class="control-label"></label>
+                <input asp-for="To01" class="form-control" />
+                <span asp-validation-for="To01" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId011" class="control-label"></label>
+                <select asp-for="WorkerId011" class ="form-control" asp-items="ViewBag.WorkerId011"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId012" class="control-label"></label>
+                <select asp-for="WorkerId012" class ="form-control" asp-items="ViewBag.WorkerId012"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active02" /> @Html.DisplayNameFor(model => model.Active02)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance02" /> @Html.DisplayNameFor(model => model.Maintenance02)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype02" class="control-label"></label>
+                <select asp-for="Mtype02" class ="form-control" asp-items="ViewBag.Mtype02"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From02" class="control-label"></label>
+                <input asp-for="From02" class="form-control" />
+                <span asp-validation-for="From02" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To02" class="control-label"></label>
+                <input asp-for="To02" class="form-control" />
+                <span asp-validation-for="To02" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId021" class="control-label"></label>
+                <select asp-for="WorkerId021" class ="form-control" asp-items="ViewBag.WorkerId021"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId022" class="control-label"></label>
+                <select asp-for="WorkerId022" class ="form-control" asp-items="ViewBag.WorkerId022"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active03" /> @Html.DisplayNameFor(model => model.Active03)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance03" /> @Html.DisplayNameFor(model => model.Maintenance03)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype03" class="control-label"></label>
+                <select asp-for="Mtype03" class ="form-control" asp-items="ViewBag.Mtype03"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From03" class="control-label"></label>
+                <input asp-for="From03" class="form-control" />
+                <span asp-validation-for="From03" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To03" class="control-label"></label>
+                <input asp-for="To03" class="form-control" />
+                <span asp-validation-for="To03" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId031" class="control-label"></label>
+                <select asp-for="WorkerId031" class ="form-control" asp-items="ViewBag.WorkerId031"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId032" class="control-label"></label>
+                <select asp-for="WorkerId032" class ="form-control" asp-items="ViewBag.WorkerId032"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active11" /> @Html.DisplayNameFor(model => model.Active11)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance11" /> @Html.DisplayNameFor(model => model.Maintenance11)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype11" class="control-label"></label>
+                <select asp-for="Mtype11" class ="form-control" asp-items="ViewBag.Mtype11"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From11" class="control-label"></label>
+                <input asp-for="From11" class="form-control" />
+                <span asp-validation-for="From11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To11" class="control-label"></label>
+                <input asp-for="To11" class="form-control" />
+                <span asp-validation-for="To11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId111" class="control-label"></label>
+                <select asp-for="WorkerId111" class ="form-control" asp-items="ViewBag.WorkerId111"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId112" class="control-label"></label>
+                <select asp-for="WorkerId112" class ="form-control" asp-items="ViewBag.WorkerId112"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active12" /> @Html.DisplayNameFor(model => model.Active12)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance12" /> @Html.DisplayNameFor(model => model.Maintenance12)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype12" class="control-label"></label>
+                <select asp-for="Mtype12" class ="form-control" asp-items="ViewBag.Mtype12"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From12" class="control-label"></label>
+                <input asp-for="From12" class="form-control" />
+                <span asp-validation-for="From12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To12" class="control-label"></label>
+                <input asp-for="To12" class="form-control" />
+                <span asp-validation-for="To12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId121" class="control-label"></label>
+                <select asp-for="WorkerId121" class ="form-control" asp-items="ViewBag.WorkerId121"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId122" class="control-label"></label>
+                <select asp-for="WorkerId122" class ="form-control" asp-items="ViewBag.WorkerId122"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active13" /> @Html.DisplayNameFor(model => model.Active13)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance13" /> @Html.DisplayNameFor(model => model.Maintenance13)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype13" class="control-label"></label>
+                <select asp-for="Mtype13" class ="form-control" asp-items="ViewBag.Mtype13"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From13" class="control-label"></label>
+                <input asp-for="From13" class="form-control" />
+                <span asp-validation-for="From13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To13" class="control-label"></label>
+                <input asp-for="To13" class="form-control" />
+                <span asp-validation-for="To13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId131" class="control-label"></label>
+                <select asp-for="WorkerId131" class ="form-control" asp-items="ViewBag.WorkerId131"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId132" class="control-label"></label>
+                <select asp-for="WorkerId132" class ="form-control" asp-items="ViewBag.WorkerId132"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active21" /> @Html.DisplayNameFor(model => model.Active21)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance21" /> @Html.DisplayNameFor(model => model.Maintenance21)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype21" class="control-label"></label>
+                <select asp-for="Mtype21" class ="form-control" asp-items="ViewBag.Mtype21"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From21" class="control-label"></label>
+                <input asp-for="From21" class="form-control" />
+                <span asp-validation-for="From21" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To21" class="control-label"></label>
+                <input asp-for="To21" class="form-control" />
+                <span asp-validation-for="To21" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId211" class="control-label"></label>
+                <select asp-for="WorkerId211" class ="form-control" asp-items="ViewBag.WorkerId211"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId212" class="control-label"></label>
+                <select asp-for="WorkerId212" class ="form-control" asp-items="ViewBag.WorkerId212"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active22" /> @Html.DisplayNameFor(model => model.Active22)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance22" /> @Html.DisplayNameFor(model => model.Maintenance22)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype22" class="control-label"></label>
+                <select asp-for="Mtype22" class ="form-control" asp-items="ViewBag.Mtype22"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From22" class="control-label"></label>
+                <input asp-for="From22" class="form-control" />
+                <span asp-validation-for="From22" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To22" class="control-label"></label>
+                <input asp-for="To22" class="form-control" />
+                <span asp-validation-for="To22" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId221" class="control-label"></label>
+                <select asp-for="WorkerId221" class ="form-control" asp-items="ViewBag.WorkerId221"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId222" class="control-label"></label>
+                <select asp-for="WorkerId222" class ="form-control" asp-items="ViewBag.WorkerId222"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active23" /> @Html.DisplayNameFor(model => model.Active23)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance23" /> @Html.DisplayNameFor(model => model.Maintenance23)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype23" class="control-label"></label>
+                <select asp-for="Mtype23" class ="form-control" asp-items="ViewBag.Mtype23"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From23" class="control-label"></label>
+                <input asp-for="From23" class="form-control" />
+                <span asp-validation-for="From23" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To23" class="control-label"></label>
+                <input asp-for="To23" class="form-control" />
+                <span asp-validation-for="To23" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId231" class="control-label"></label>
+                <select asp-for="WorkerId231" class ="form-control" asp-items="ViewBag.WorkerId231"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId232" class="control-label"></label>
+                <select asp-for="WorkerId232" class ="form-control" asp-items="ViewBag.WorkerId232"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active31" /> @Html.DisplayNameFor(model => model.Active31)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance31" /> @Html.DisplayNameFor(model => model.Maintenance31)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype31" class="control-label"></label>
+                <select asp-for="Mtype31" class ="form-control" asp-items="ViewBag.Mtype31"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From31" class="control-label"></label>
+                <input asp-for="From31" class="form-control" />
+                <span asp-validation-for="From31" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To31" class="control-label"></label>
+                <input asp-for="To31" class="form-control" />
+                <span asp-validation-for="To31" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId311" class="control-label"></label>
+                <select asp-for="WorkerId311" class ="form-control" asp-items="ViewBag.WorkerId311"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId312" class="control-label"></label>
+                <select asp-for="WorkerId312" class ="form-control" asp-items="ViewBag.WorkerId312"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active32" /> @Html.DisplayNameFor(model => model.Active32)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance32" /> @Html.DisplayNameFor(model => model.Maintenance32)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype32" class="control-label"></label>
+                <select asp-for="Mtype32" class ="form-control" asp-items="ViewBag.Mtype32"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From32" class="control-label"></label>
+                <input asp-for="From32" class="form-control" />
+                <span asp-validation-for="From32" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To32" class="control-label"></label>
+                <input asp-for="To32" class="form-control" />
+                <span asp-validation-for="To32" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId321" class="control-label"></label>
+                <select asp-for="WorkerId321" class ="form-control" asp-items="ViewBag.WorkerId321"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId322" class="control-label"></label>
+                <select asp-for="WorkerId322" class ="form-control" asp-items="ViewBag.WorkerId322"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active33" /> @Html.DisplayNameFor(model => model.Active33)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance33" /> @Html.DisplayNameFor(model => model.Maintenance33)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype33" class="control-label"></label>
+                <select asp-for="Mtype33" class ="form-control" asp-items="ViewBag.Mtype33"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From33" class="control-label"></label>
+                <input asp-for="From33" class="form-control" />
+                <span asp-validation-for="From33" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To33" class="control-label"></label>
+                <input asp-for="To33" class="form-control" />
+                <span asp-validation-for="To33" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId331" class="control-label"></label>
+                <select asp-for="WorkerId331" class ="form-control" asp-items="ViewBag.WorkerId331"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId332" class="control-label"></label>
+                <select asp-for="WorkerId332" class ="form-control" asp-items="ViewBag.WorkerId332"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active41" /> @Html.DisplayNameFor(model => model.Active41)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance41" /> @Html.DisplayNameFor(model => model.Maintenance41)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype41" class="control-label"></label>
+                <select asp-for="Mtype41" class ="form-control" asp-items="ViewBag.Mtype41"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From41" class="control-label"></label>
+                <input asp-for="From41" class="form-control" />
+                <span asp-validation-for="From41" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To41" class="control-label"></label>
+                <input asp-for="To41" class="form-control" />
+                <span asp-validation-for="To41" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId411" class="control-label"></label>
+                <select asp-for="WorkerId411" class ="form-control" asp-items="ViewBag.WorkerId411"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId412" class="control-label"></label>
+                <select asp-for="WorkerId412" class ="form-control" asp-items="ViewBag.WorkerId412"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active42" /> @Html.DisplayNameFor(model => model.Active42)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance42" /> @Html.DisplayNameFor(model => model.Maintenance42)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype42" class="control-label"></label>
+                <select asp-for="Mtype42" class ="form-control" asp-items="ViewBag.Mtype42"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From42" class="control-label"></label>
+                <input asp-for="From42" class="form-control" />
+                <span asp-validation-for="From42" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To42" class="control-label"></label>
+                <input asp-for="To42" class="form-control" />
+                <span asp-validation-for="To42" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId421" class="control-label"></label>
+                <select asp-for="WorkerId421" class ="form-control" asp-items="ViewBag.WorkerId421"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId422" class="control-label"></label>
+                <select asp-for="WorkerId422" class ="form-control" asp-items="ViewBag.WorkerId422"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active43" /> @Html.DisplayNameFor(model => model.Active43)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="From43" class="control-label"></label>
+                <input asp-for="From43" class="form-control" />
+                <span asp-validation-for="From43" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To43" class="control-label"></label>
+                <input asp-for="To43" class="form-control" />
+                <span asp-validation-for="To43" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance43" /> @Html.DisplayNameFor(model => model.Maintenance43)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype43" class="control-label"></label>
+                <select asp-for="Mtype43" class ="form-control" asp-items="ViewBag.Mtype43"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId431" class="control-label"></label>
+                <select asp-for="WorkerId431" class ="form-control" asp-items="ViewBag.WorkerId431"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId432" class="control-label"></label>
+                <select asp-for="WorkerId432" class ="form-control" asp-items="ViewBag.WorkerId432"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active51" /> @Html.DisplayNameFor(model => model.Active51)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance51" /> @Html.DisplayNameFor(model => model.Maintenance51)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype51" class="control-label"></label>
+                <select asp-for="Mtype51" class ="form-control" asp-items="ViewBag.Mtype51"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From51" class="control-label"></label>
+                <input asp-for="From51" class="form-control" />
+                <span asp-validation-for="From51" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To51" class="control-label"></label>
+                <input asp-for="To51" class="form-control" />
+                <span asp-validation-for="To51" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId511" class="control-label"></label>
+                <select asp-for="WorkerId511" class ="form-control" asp-items="ViewBag.WorkerId511"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId512" class="control-label"></label>
+                <select asp-for="WorkerId512" class ="form-control" asp-items="ViewBag.WorkerId512"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active52" /> @Html.DisplayNameFor(model => model.Active52)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance52" /> @Html.DisplayNameFor(model => model.Maintenance52)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype52" class="control-label"></label>
+                <select asp-for="Mtype52" class ="form-control" asp-items="ViewBag.Mtype52"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From52" class="control-label"></label>
+                <input asp-for="From52" class="form-control" />
+                <span asp-validation-for="From52" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To52" class="control-label"></label>
+                <input asp-for="To52" class="form-control" />
+                <span asp-validation-for="To52" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId521" class="control-label"></label>
+                <select asp-for="WorkerId521" class ="form-control" asp-items="ViewBag.WorkerId521"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId522" class="control-label"></label>
+                <select asp-for="WorkerId522" class ="form-control" asp-items="ViewBag.WorkerId522"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active53" /> @Html.DisplayNameFor(model => model.Active53)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance53" /> @Html.DisplayNameFor(model => model.Maintenance53)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype53" class="control-label"></label>
+                <select asp-for="Mtype53" class ="form-control" asp-items="ViewBag.Mtype53"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From53" class="control-label"></label>
+                <input asp-for="From53" class="form-control" />
+                <span asp-validation-for="From53" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To53" class="control-label"></label>
+                <input asp-for="To53" class="form-control" />
+                <span asp-validation-for="To53" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId531" class="control-label"></label>
+                <select asp-for="WorkerId531" class ="form-control" asp-items="ViewBag.WorkerId531"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId532" class="control-label"></label>
+                <select asp-for="WorkerId532" class ="form-control" asp-items="ViewBag.WorkerId532"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active61" /> @Html.DisplayNameFor(model => model.Active61)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance61" /> @Html.DisplayNameFor(model => model.Maintenance61)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype61" class="control-label"></label>
+                <select asp-for="Mtype61" class ="form-control" asp-items="ViewBag.Mtype61"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From61" class="control-label"></label>
+                <input asp-for="From61" class="form-control" />
+                <span asp-validation-for="From61" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To61" class="control-label"></label>
+                <input asp-for="To61" class="form-control" />
+                <span asp-validation-for="To61" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId611" class="control-label"></label>
+                <select asp-for="WorkerId611" class ="form-control" asp-items="ViewBag.WorkerId611"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId612" class="control-label"></label>
+                <select asp-for="WorkerId612" class ="form-control" asp-items="ViewBag.WorkerId612"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active62" /> @Html.DisplayNameFor(model => model.Active62)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance62" /> @Html.DisplayNameFor(model => model.Maintenance62)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype62" class="control-label"></label>
+                <select asp-for="Mtype62" class ="form-control" asp-items="ViewBag.Mtype62"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From62" class="control-label"></label>
+                <input asp-for="From62" class="form-control" />
+                <span asp-validation-for="From62" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To62" class="control-label"></label>
+                <input asp-for="To62" class="form-control" />
+                <span asp-validation-for="To62" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId621" class="control-label"></label>
+                <select asp-for="WorkerId621" class ="form-control" asp-items="ViewBag.WorkerId621"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId622" class="control-label"></label>
+                <select asp-for="WorkerId622" class ="form-control" asp-items="ViewBag.WorkerId622"></select>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active63" /> @Html.DisplayNameFor(model => model.Active63)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Maintenance63" /> @Html.DisplayNameFor(model => model.Maintenance63)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mtype63" class="control-label"></label>
+                <select asp-for="Mtype63" class ="form-control" asp-items="ViewBag.Mtype63"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="From63" class="control-label"></label>
+                <input asp-for="From63" class="form-control" />
+                <span asp-validation-for="From63" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To63" class="control-label"></label>
+                <input asp-for="To63" class="form-control" />
+                <span asp-validation-for="To63" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId631" class="control-label"></label>
+                <select asp-for="WorkerId631" class ="form-control" asp-items="ViewBag.WorkerId631"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkerId632" class="control-label"></label>
+                <select asp-for="WorkerId632" class ="form-control" asp-items="ViewBag.WorkerId632"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,933 @@
+﻿@using EIS.Helpers
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Localization
+@using static EIS.Helpers.NavigationIndicatorHelper;
+@inject IHttpContextAccessor Accessor
+
+@{
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+<a hidden asp-controller="Home" asp-action="Index" id="refreshlink"></a>
+<a hidden asp-controller="Home" asp-action="Index" id="refreshlink1"></a>
+<a hidden asp-controller="LzTeljesitmenyTables" asp-action="Index" id="refreshlink2"></a>
+<a hidden asp-controller="CardsOfUsers" asp-action="Index" asp-route-id="1" id="refreshlink3"></a>
+<a hidden asp-controller="CardsOfUsersB" asp-action="Index" asp-route-id="8" id="refreshlink4"></a>
+<a hidden asp-controller="Kpivalues" asp-action="Index" id="refreshlink5"></a>
+<a hidden asp-controller="DashBoards" asp-action="Index" id="refreshlink6"></a>
+<a hidden asp-controller="TaskLPA" asp-action="Index" id="refreshlink7"></a>
+<a hidden asp-controller="Home" asp-action="SetServerDatas" id="link" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="setoee" id="oeelink" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="setlz" id="lzlink" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="settask" id="tasklink" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="settip" id="tiplink" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="settip2" id="tip2link" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="setkpis" id="kpislink" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="setdashboard" id="dashboardlink" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="getsubmenuid" id="maingetsubmenuidlink" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-area="Identity" asp-page="/Account/Logout" id="logoutlink" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="setlanghun" id="hunlanglink" method="post" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="setlangeng" id="englanglink" method="post" asp-route-returnUrl="@returnUrl"></a>
+<a hidden asp-controller="Home" asp-action="setlangall" id="alllanglink" method="post" asp-route-returnUrl="@returnUrl"></a>
+<aside id="settingsmenunew" class="navbar navbar-expand-xl navbar-light pt-0 pb-0" style="visibility:hidden;min-height:0px; max-height: 0px; top: 900px; background-color:var(--eck-green); z-index: 99999; padding-left: 63px;">
+    <div class="container-fluid">
+ @*       <button class="navbar-toggler" type="button" style="height:53px" data-toggle="collapse" data-target="#mainnavbarCollapse" aria-controls="mainnavbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>*@
+
+        <div class="navbar-collapse order-3 collapse dropup" id="mainnavbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item dropup">
+@*                    <a href="#" data-toggle="dropdown" aria-haspopup="true" id="dropdownMenu1" aria-expanded="false" class="pt-2 pb-2 nav-link dropdown-toggle" style="height:53px">@EIS.Resources.Resource.ResourceManager.GetString("Settings", System.Globalization.CultureInfo.CurrentCulture)</a>
+*@                    <ul class="dropdown-menu dropup border-0 shadow" aria-labelledby="dropdownMenu1" style="display: block;width:200px;">
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenuAL" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("AlertTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="dropdownSubMenuAL" class="dropdown-menu border-0 shadow" style="height:210px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="AlertIntervals" asp-action="Index" class="nav-link @Url.MakeActiveClass("alertintervals", "index")">@EIS.Resources.Resource.ResourceManager.GetString("AlertIntervals", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="AlertLevelUsers" asp-action="Index" class="nav-link @Url.MakeActiveClass("alertlevelusers", "index")">@EIS.Resources.Resource.ResourceManager.GetString("AlertLevelUsers", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="AlertStations" asp-action="Index" class="nav-link @Url.MakeActiveClass("alertstations", "index")">@EIS.Resources.Resource.ResourceManager.GetString("AlertStations", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="AlertUserDescriptions" asp-action="Index" class="nav-link @Url.MakeActiveClass("alertuserdescriptions", "index")">@EIS.Resources.Resource.ResourceManager.GetString("AlertUserDescriptions", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="AlertUsers" asp-action="Index" class="nav-link @Url.MakeActiveClass("alertusers", "index")">@EIS.Resources.Resource.ResourceManager.GetString("AlertUsers", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="ReportUsers" asp-action="Index" class="nav-link @Url.MakeActiveClass("reportusers", "index")">@EIS.Resources.Resource.ResourceManager.GetString("ReportUsers", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="ifsdropdownSubMenu" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("IFSShiftTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="ifsdropdownSubMenu" class="dropdown-menu border-0 shadow" style="height:210px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="IFSHeaderTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("ifsheadertables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("IFSHeaderTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="IFSValueTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("ifsvaluetables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("IFSValueTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="IFSFailureCodeTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("ifsfaulirecodetables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("IFSFaulireCodeTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="IFSFailureClassCodeTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("ifsfaulireclasscodetables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("IFSFaulireClassCodeTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="IFSDetectionTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("ifsdetectiontables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("IFSDetectionTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="IFSMuszakTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("ifsmuszaktables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("IFSMuszakTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenulz" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("LZTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="dropdownSubMenulz" class="dropdown-menu border-0 shadow" style="height:240px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzDolgozoTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("lzdolgozotables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZDolgozoTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzMuveletReszletTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("lzmuveletreszlettables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZMuveletReszletTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzKefetartoTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("lzkefetartotables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZKefetartoTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzKefetartotipuslistaTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("lzkefetartotipuslistatables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZKefetartoTipusListaTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzMuszakTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("lzmuszaktables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZMuszakTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzKefetartotipusTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("lzkefetartotipustables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZKefetartoTipusTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzCompetency" asp-action="Index" class="nav-link @Url.MakeActiveClass("lzcompetency", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZCompetencyTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenumn" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("LZNaptarTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="dropdownSubMenumn" class="dropdown-menu border-0 shadow" style="height:110px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzMunkanapTables" asp-action="Viewer" class="nav-link @Url.MakeActiveClass("lzmunkanaptables", "viewer")">@EIS.Resources.Resource.ResourceManager.GetString("LZNaptarTablesViewer", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzMunkanapTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("lzmunkanaptables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZMunkaNapTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="LzMunkaCodeTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("lzmunkacodetables", "index")">@EIS.Resources.Resource.ResourceManager.GetString("LZMunkaCodeTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @*<li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenueasymes" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("EasyMES", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="dropdownSubMenueasymess" class="dropdown-menu border-0 shadow" style="height:300px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="EasyMesboms" asp-action="Index" class="nav-link @Url.MakeActiveClass("easymesboms", "index")">@EIS.Resources.Resource.ResourceManager.GetString("EasyMESBOMs", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="EasyMesitems" asp-action="Index" class="nav-link @Url.MakeActiveClass("easymesitems", "index")">@EIS.Resources.Resource.ResourceManager.GetString("EasyMESItems", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="EasyMesjobs" asp-action="Index" class="nav-link @Url.MakeActiveClass("easymesjobs", "index")">@EIS.Resources.Resource.ResourceManager.GetString("EasyMESJobs", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="EasyMesmains" asp-action="Index" class="nav-link @Url.MakeActiveClass("easymesmains", "index")">@EIS.Resources.Resource.ResourceManager.GetString("EasyMESMains", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="EasyMesstatus" asp-action="Index" class="nav-link @Url.MakeActiveClass("EasyMesstatus", "index")">@EIS.Resources.Resource.ResourceManager.GetString("EasyMesstatus", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="EasyMesshiftPlans" asp-action="Index" class="nav-link @Url.MakeActiveClass("easymesshiftplans", "index")">@EIS.Resources.Resource.ResourceManager.GetString("EasyMESShiftPlans", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="EasyMesshifts" asp-action="Index" class="nav-link @Url.MakeActiveClass("easymesshifts", "index")">@EIS.Resources.Resource.ResourceManager.GetString("EasyMESShifts", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="EasyMesttstypes" asp-action="Index" class="nav-link @Url.MakeActiveClass("easymesttstypes", "index")">@EIS.Resources.Resource.ResourceManager.GetString("EasyMESTTSTypes", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="EasyMestypes" asp-action="Index" class="nav-link @Url.MakeActiveClass("easymestypes", "index")">@EIS.Resources.Resource.ResourceManager.GetString("EasyMESTypes", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                            </ul>
+                        </li>*@
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenukpis" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="dropdownSubMenukpis" class="dropdown-menu border-0 shadow" style="height:270px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="KpidataSources" asp-action="Index" class="nav-link @Url.MakeActiveClass("kpidatasources", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPIDataSources", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="Kpiexpectations" asp-action="Index" class="nav-link @Url.MakeActiveClass("kpiexpectations", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPIExpectations", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="Kpiheaders" asp-action="Index" class="nav-link @Url.MakeActiveClass("kpiheaders", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPIHeaders", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="Kpiprocesses" asp-action="Index" class="nav-link @Url.MakeActiveClass("kpiprocesses", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPIProcesses", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="Kpiresponsibles" asp-action="Index" class="nav-link @Url.MakeActiveClass("kpiresponsibles", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPIResponsibles", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="Kpisummantions" asp-action="Index" class="nav-link @Url.MakeActiveClass("kpisummantions", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPISummantions", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="Kpiunits" asp-action="Index" class="nav-link @Url.MakeActiveClass("kpiunits", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPIUnits", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="Kpivalues" asp-action="Index" class="nav-link @Url.MakeActiveClass("kpivalues", "index")">@EIS.Resources.Resource.ResourceManager.GetString("KPIValues", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenumesevents" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("Mesevents", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="dropdownSubMenumesevents" class="dropdown-menu border-0 shadow" style="height:80px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="MesproductPlans" asp-action="Index" class="nav-link @Url.MakeActiveClass("mesproductplans", "index")">@EIS.Resources.Resource.ResourceManager.GetString("MesproductPlans", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="MesproductPlanTypes" asp-action="Index" class="nav-link @Url.MakeActiveClass("mesproductplantypes", "index")">@EIS.Resources.Resource.ResourceManager.GetString("MesproductPlanTypes", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenudt" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("DTTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="dropdownSubMenudt" class="dropdown-menu border-0 shadow" style="height:80px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="DTTypes" asp-action="Index" class="nav-link @Url.MakeActiveClass("dttypes", "index")">@EIS.Resources.Resource.ResourceManager.GetString("DTTypesTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="DTTypesGroups" asp-action="Index" class="nav-link @Url.MakeActiveClass("dttypesgroups", "index")">@EIS.Resources.Resource.ResourceManager.GetString("DTTypesGroupsTables", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenusys" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("SystemParams", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="dropdownSubMenusys" class="dropdown-menu border-0 shadow" style="height:80px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="ShiftsTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("shiftstables", "index")">
+                                        @EIS.Resources.Resource.ResourceManager.GetString("Shift", System.Globalization.CultureInfo.CurrentCulture)
+                                    </a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="SystemParamTables" asp-action="Index" class="nav-link @Url.MakeActiveClass("systemparamtables", "index")">
+                                        @EIS.Resources.Resource.ResourceManager.GetString("SystemParams", System.Globalization.CultureInfo.CurrentCulture)
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenuadm" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("Admin", System.Globalization.CultureInfo.CurrentCulture)</a>
+                            <ul aria-labelledby="dropdownSubMenuadm" class="dropdown-menu border-0 shadow" style="height:80px">
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="UserRoles" asp-action="Index" class="nav-link @Url.MakeActiveClass("userroles", "index")">
+                                        @EIS.Resources.Resource.ResourceManager.GetString("User Roles", System.Globalization.CultureInfo.CurrentCulture)
+                                    </a>
+                                </li>
+                                <li class="dropdown-item text-nowrap">
+                                    <a asp-controller="RoleManager" asp-action="Index" class="nav-link @Url.MakeActiveClass("rolemanager", "index")">
+                                        @EIS.Resources.Resource.ResourceManager.GetString("Role Manager", System.Globalization.CultureInfo.CurrentCulture)
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @*<li class="dropdown-divider"></li>
+                        <!-- Language Dropdown Menu -->
+                        @if (System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "hu")
+                        {
+                            <li class="dropdown-submenu dropdown-hover">
+                                <a id="dropdownSubMenulang" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("Language", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                <ul aria-labelledby="dropdownSubMenulang" class="dropdown-menu border-0 shadow" style="height:80px">
+                                    <li class="dropdown-item text-nowrap">
+                                        <div style="border: 0px solid transparent;" onclick="setlangeng()"><i class="flag-icon flag-icon-gb mr-2"></i>&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("English", System.Globalization.CultureInfo.CurrentCulture)</div>
+                                    </li>
+                                    <li class="dropdown-item text-nowrap active">
+                                        <div style="border: 0px solid transparent;" onclick="setlanghun()"><i class="flag-icon flag-icon-hu mr-2"></i>&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Hungarian", System.Globalization.CultureInfo.CurrentCulture)</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="dropdown-submenu dropdown-hover">
+                                <a id="dropdownSubMenulang" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">@EIS.Resources.Resource.ResourceManager.GetString("Language", System.Globalization.CultureInfo.CurrentCulture)</a>
+                                <ul aria-labelledby="dropdownSubMenulang" class="dropdown-menu border-0 shadow" style="height:80px">
+                                    <li class="dropdown-item text-nowrap active">
+                                        <div style="border: 0px solid transparent;" onclick="setlangeng()"><i class="flag-icon flag-icon-gb mr-2"></i>&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("English", System.Globalization.CultureInfo.CurrentCulture)</div>
+                                    </li>
+                                    <li class="dropdown-item text-nowrap">
+                                        <div style="border: 0px solid transparent;" onclick="setlanghun()"><i class="flag-icon flag-icon-hu mr-2"></i>&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Hungarian", System.Globalization.CultureInfo.CurrentCulture)</div>
+                                    </li>
+                                </ul>
+                            </li>
+                        }*@
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</aside>
+<aside class="main-sidebar sidebar-dark-primary">
+    <div class="user-panel ml-0 mt-0 pb-0 pt-0 mb-0 d-flex mr-0 sidebar-dark-primary elevation-4" style="height: 53px; justify-content: center">
+        <img src="~/images/Eckerlelogogray.svg" alt="ECKERLE Logo" style="height: 33px; width: auto" class=" mt-2 brand-image">
+    </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="mt-1">
+                    @switch(@Accessor.HttpContext.Session.GetString("Submenu"))
+                    {
+                        case "1":
+                            <div class="w-100 pt-2 pb-2" onmousedown="setoee()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("OEEHeader", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="oeemenu" class="fa-classic fa-chart-pie active" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setlz()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Laufzettel", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="lzmenu" class="fa-regular fa-circle-user" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setkpis()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="kpismenu" class="fa-classic fa-chart-line" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setdashboard()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Dashboard", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="dashboardmenu" class="fas fa-desktop" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="settask()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Task", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="taskmenu" class="fa fa-tasks" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>                   
+                        break;
+                        case "2":
+                            <div class="w-100 pt-2 pb-2" onmousedown="setoee()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("OEEHeader", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="oeemenu" class="fa-classic fa-chart-pie" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setlz()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Laufzettel", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="lzmenu" class="fa-regular fa-circle-user active" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setkpis()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)">
+                            <i id="kpismenu" class="fa-classic fa-chart-line" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setdashboard()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Dashboard", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="dashboardmenu" class="fas fa-desktop" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="settask()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Task", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="taskmenu" class="fa fa-tasks" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>                   
+                        break;
+                        case "3":
+                            <div class="w-100 pt-2 pb-2" onmousedown="setoee()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("OEEHeader", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="oeemenu" class="fa-classic fa-chart-pie" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setlz()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Laufzettel", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="lzmenu" class="fa-regular fa-circle-user" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setkips()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="kpismenu" class="fa-classic fa-chart-line active" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setdashboard()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Dashboard", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="dashboardmenu" class="fas fa-desktop" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="settask()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Task", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="taskmenu" class="fa fa-tasks" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>                   
+                        break;            
+                        case "4":
+                            <div class="w-100 pt-2 pb-2" onmousedown="setoee()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("OEEHeader", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="oeemenu" class="fa-classic fa-chart-pie" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setlz()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Laufzettel", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="lzmenu" class="fa-regular fa-circle-user" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setkpis()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="kpismenu" class="fa-classic fa-chart-line" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setdashboard()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Dashboard", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="dashboardmenu" class="fas fa-desktop active" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="settask()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Task", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="taskmenu" class="fa fa-tasks" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>                   
+                        break;
+                        case "5":
+                            <div class="w-100 pt-2 pb-2" onmousedown="setoee()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("OEEHeader", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="oeemenu" class="fa-classic fa-chart-pie" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setlz()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Laufzettel", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="lzmenu" class="fa-regular fa-circle-user" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setkpis()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="kpismenu" class="fa-classic fa-chart-line" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setdashboard()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Dashboard", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="dashboardmenu" class="fas fa-desktop" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="settask()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Task", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="taskmenu" class="fa fa-tasks active" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>                   
+                        break;
+                        default:
+                            <div class="w-100 pt-2 pb-2" onmousedown="setoee()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("OEEHeader", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="oeemenu" class="fa-classic fa-chart-pie active" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setlz()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Laufzettel", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="lzmenu" class="fa-regular fa-circle-user" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setkpis()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="kipsmenu" class="fa-classic fa-chart-line" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="setdashboard()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Dashboard", System.Globalization.CultureInfo.CurrentCulture)">
+                            <i id="dashboardmenu" class="fas fa-desktop" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>
+                            <div class="w-100 pt-2 pb-2" onmousedown="settask()" style="height:53px; justify-content: center;text-align: center">
+                                <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Task", System.Globalization.CultureInfo.CurrentCulture)">
+                                    <i id="taskmenu" class="fa fa-tasks" style="font-size: 1.3rem"></i>
+                                </a>
+                            </div>                   
+                        break;                    
+                    }
+            </div>
+            <div class="mt-0" style="border-top: 0; position:absolute; bottom: 0; width: 53px">
+                    <!-- User Account -->
+                    <partial name="EISDesign/_LoginPartial" />
+                    <!-- Language Settings -->
+                    <div class="w-100 pt-3 pb-3" style="height:53px; justify-content: center;text-align: center">
+                        <a href="#" id="setlenglink" title="@EIS.Resources.Resource.ResourceManager.GetString("Language", System.Globalization.CultureInfo.CurrentCulture)" onclick="setlanguage()">
+                            <i id="setlanguage" class="fa fa-globe" style="font-size: 1.3rem"></i>
+                        </a>
+                    </div>
+                    <!-- Settings -->                   
+                    @if ((User.IsInRole("Admin")) | (User.Identity.Name == "attila.palfi"))
+                    {
+                        @*<div class="w-100 pt-3 pb-3" style="height:53px; justify-content: center;text-align: center">
+                            <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Settings", System.Globalization.CultureInfo.CurrentCulture)" onclick="showsettings()">
+                                <i id="setmenu" class="fa fa-gear" style="font-size: 1.3rem;"></i>
+                            </a>
+                        </div>*@
+                        <div class="w-100 pt-3 pb-3" style="height:53px; justify-content: center;text-align: center">
+                            <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Settings", System.Globalization.CultureInfo.CurrentCulture)" onclick="showsettingsnew()">
+                                <i id="setmenunew" class="fa fa-gear" style="font-size: 1.3rem;"></i>
+                            </a>
+                        </div>
+                    }
+                    @*<div class="w-100 pt-1 pb-1">
+                        <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("OEEHeader", System.Globalization.CultureInfo.CurrentCulture)">
+                            <i class="fa-regular fa-circle-user" style="font-size: 1.6rem;height: 26px; width: 26px; margin: 0px 0px 0px 12px"></i>
+                        </a>
+                    </div>*@
+                    <!-- Logout -->
+                    <div class="w-100 pt-3 pb-3" style="border-top:1px solid var(--eck-textgray); height:53px; justify-content: center;text-align: center">
+                        <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Logout", System.Globalization.CultureInfo.CurrentCulture)" onclick="logout()">
+                            <i id="logoutmenu" class="fa fa-power-off" style="font-size: 1.3rem"></i>
+                        </a>
+                    </div>
+                    @*<a href="#" class="btn btn-secondary hide-on-collapse pos-right">Help</a>*@
+                @*</ul>*@
+            </div>
+        }
+        else
+        {   
+            <div class="mt-0" style="border-top: 0; position: absolute; bottom: 0; width: 53px">
+                <!-- Language Settings -->
+                <div class="w-100 pt-3 pb-3" style="height:53px; justify-content: center;text-align: center">
+                    <a href="#" id="setlenglink" title="@EIS.Resources.Resource.ResourceManager.GetString("Language", System.Globalization.CultureInfo.CurrentCulture)" onclick="setlanguage()">
+                        <i id="setlanguage" class="fa fa-globe" style="font-size: 1.3rem"></i>
+                    </a>
+                </div>
+                <div class="w-100 pt-3 pb-3" style="height:53px; justify-content: center;text-align: center">
+                    <a asp-area="Identity" asp-page="/Account/Register" title="@EIS.Resources.Resource.ResourceManager.GetString("Register", System.Globalization.CultureInfo.CurrentCulture)">
+                        <i id="registermenu" class="fa-regular fa-registered" style="font-size: 1.3rem"></i>
+                    </a>
+                </div>
+                <div class="w-100 pt-3 pb-3" style="border-top:1px solid var(--eck-textgray); height:53px; justify-content: center;text-align: center">
+                    <a asp-area="Identity" asp-page="/Account/Login" title="@EIS.Resources.Resource.ResourceManager.GetString("Login", System.Globalization.CultureInfo.CurrentCulture)">
+                        <i id="loginmenu" class="fa-regular fa-circle-user" style="font-size: 1.3rem"></i>
+                    </a>
+                </div>
+            </div>
+        }
+    <div class="pt-0 pb-0" style="border-top: 0; position: absolute; bottom: 0; left: 50%; width: 25px; min-height:12px; text-align: right; padding-right:2px;">
+        <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Status", System.Globalization.CultureInfo.CurrentCulture)">
+            <div class="mainsubmenuid" id="mainsubmenuid" style="font-size: 0.6rem; height:12px;">---</div>
+        </a>
+    </div>
+    <div class="pt-0 pb-0" style="border-top: 0; position: absolute; bottom: 0; left: 0; width: 25px; min-height:12px; text-align: left; padding-left:2px;">
+        <a href="#" title="@EIS.Resources.Resource.ResourceManager.GetString("Status", System.Globalization.CultureInfo.CurrentCulture)">
+            <div class="pagesize" id="pagesize" style="font-size: 0.6rem; height:12px;">---</div>
+        </a>
+    </div>
+    @*</div>*@
+    <!-- /.sidebar-custom -->
+</aside>
+<script>
+    @*function showsettings()
+    {
+        var elem = document.getElementById("settingsmenu");
+        if (elem.style.visibility == "hidden")
+        {
+            elem.style.minHeight = "53px";
+            elem.style.maxHeight = "";
+            elem.style.visibility = "visible";
+            var link = document.getElementById('setmenu');
+            link.style.color = "var(--eck-green)";
+        }
+        else
+        {
+            if (elem.style.visibility == "visible") 
+            {
+                elem.style.minHeight = "0px";
+                elem.style.maxHeight = "0px";
+                elem.style.visibility = "hidden";
+                var link = document.getElementById('setmenu');
+                link.style.color = "";
+            }
+        }
+    }*@
+    function showsettingsnew()
+    {
+        var elem = document.getElementById("settingsmenunew");
+        if (elem.style.visibility == "hidden")
+        {
+            elem.style.minHeight = "0px";
+            elem.style.maxHeight = "0px";
+            elem.style.visibility = "visible";
+            var link = document.getElementById('setmenunew');
+            link.style.color = "var(--eck-green)";
+        }
+        else
+        {
+            if (elem.style.visibility == "visible") 
+            {
+                elem.style.minHeight = "0px";
+                elem.style.maxHeight = "0px";
+                elem.style.visibility = "hidden";
+                var link = document.getElementById('setmenunew');
+                link.style.color = "";
+            }
+        }
+    }
+    function logout() {
+            window.location = document.getElementById('logoutlink').href;
+    } 
+
+    function setoee() {
+        $.ajax({
+            url: document.getElementById('oeelink').href
+        }).done(function(data) {
+            if (data!=1)
+            {
+                window.location = document.getElementById('refreshlink1').href;
+            }
+            mainUpdate();
+        });
+    }
+    function setlz() {
+        $.ajax({
+            url: document.getElementById('lzlink').href
+        }).done(function (data) {
+            if (data != 2) {
+                window.location = document.getElementById('refreshlink2').href;
+            }
+            mainUpdate();
+        });
+    }
+    function setkpis()
+    {
+        $.ajax({
+            url: document.getElementById('kpislink').href
+        }).done(function (data) {
+            if (data != 3) {
+                window.location = document.getElementById('refreshlink5').href;
+            } 
+            mainUpdate();
+        });
+    }
+    function setdashboard()
+    {
+        $.ajax({
+            url: document.getElementById('dashboardlink').href
+        }).done(function (data) {
+            if (data != 4) {
+                window.location = document.getElementById('refreshlink6').href;
+            } 
+            mainUpdate();
+        });
+    }
+    function settask()
+    {
+        $.ajax({
+            url: document.getElementById('tasklink').href
+        }).done(function (data) {
+            if (data != 5) {
+                window.location = document.getElementById('refreshlink7').href;
+            } 
+            mainUpdate();
+        });
+    }
+    $(document).ready(function () {
+        $('.pagesize').text(document.body.clientHeight);
+        mainUpdate();
+        @* setInterval(mainUpdate, 1000); *@
+    })
+
+    window.addEventListener('resize', go);
+
+    function go(){
+        $('.pagesize').text(document.body.clientHeight);
+    }
+
+    function mainUpdate() {
+        go();
+        $.ajax({
+            url: document.getElementById('maingetsubmenuidlink').href
+        }).done(function (data) {
+            var elem = document.getElementById("settingsmenunew");
+            if ($('.mainsubmenuid').text()!=data)
+            {
+                //alert("Ready:" + data)
+                switch (data) {
+                    case "001":
+                    case "011":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "002":
+                    case "012":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "003":
+                    case "013":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "004":
+                    case "014":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "005":
+                    case "015":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "301":
+                    case "311":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "302":
+                    case "312":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "303":
+                    case "313":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "304":
+                    case "314":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "305":
+                    case "315":
+                        var link = document.getElementById('oeemenu');
+                        link.style.color = "";
+                        var link = document.getElementById('lzmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('kpismenu');
+                        link.style.color = "";
+                        var link = document.getElementById('dashboardmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('taskmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('logoutmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        break;
+                    case "101":
+                    case "111":
+                    case "102":
+                    case "112":
+                    case "103":
+                    case "113":
+                    case "104":
+                    case "114":
+                    case "105":
+                    case "115":
+                        var link = document.getElementById('loginmenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('registermenu');
+                        link.style.color = "";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        var elem = document.getElementById("settingsmenunew");
+                        if (elem.style.visibility == "visible") {
+                            elem.style.maxHeight = "0px";
+                            elem.style.minHeight = "0px";
+                            elem.style.visibility = "hidden";
+                        }
+                        break;
+                    case "201":
+                    case "211":
+                    case "202":
+                    case "212":
+                    case "203":
+                    case "213":
+                    case "204":
+                    case "214":
+                    case "205":
+                    case "215":
+                        var link = document.getElementById('loginmenu');
+                        link.style.color = "";
+                        var link = document.getElementById('registermenu');
+                        link.style.color = "var(--eck-green)";
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "";
+                        var elem = document.getElementById("settingsmenunew");
+                        if (elem.style.visibility == "visible") {
+                            elem.style.maxHeight = "0px";
+                            elem.style.minHeight = "0px";
+                            elem.style.visibility = "hidden";
+                        }
+                        break;
+                    default:
+                        var link = document.getElementById('mainsubmenuid');
+                        link.style.color = "var(--eck-red)";
+                        var elem = document.getElementById("settingsmenunew");
+                        if (elem.style.visibility == "visible") {
+                            elem.style.maxHeight = "0px";
+                            elem.style.minHeight = "0px";
+                            elem.style.visibility = "hidden";
+                        }
+                        break;
+                }
+                //alert("Ready:" + data)
+                $('.mainsubmenuid').text(data);
+            }
+        })@* (jQuery) *@;
+    }
+    var getFirstBrowserLanguage = function () {
+        var nav = window.navigator,
+            browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
+            i,
+            language;
+
+        // support for HTML 5.1 "navigator.languages"
+        if (Array.isArray(nav.languages)) {
+            for (i = 0; i < nav.languages.length; i++) {
+                language = nav.languages[i];
+                if (language && language.length) {
+                    return language;
+                }
+            }
+        }
+
+        // support for other well known properties in browsers
+        for (i = 0; i < browserLanguagePropertyKeys.length; i++) {
+            language = nav[browserLanguagePropertyKeys[i]];
+            if (language && language.length) {
+                return language;
+            }
+        }
+
+        return null;
+    };
+    function setlanguage()
+    {
+        var link = document.getElementById('setlanguage');
+        link.style.color = "var(--eck-green)";
+        var url = new URL(document.getElementById('setlenglink').href).pathname.toString();
+        window.location = '@Url.Action("setlangall","Home")' + '?returnUrl=' + url + '';
+    }
+    function setlangeng() {
+        var lang = "en-US";
+        var url = new URL(document.getElementById('dropdownSubMenulang').href).pathname.toString();
+        window.location = '@Url.Action("setlangeng","Home")' + '?returnUrl=' + url + '';
+    }
+    function setlanghun() {
+        var lang = "hu-HU";
+        var url = new URL(document.getElementById('dropdownSubMenulang').href).pathname.toString();
+        window.location = '@Url.Action("setlanghun","Home")' + '?returnUrl=' + url + '';
+    }
+</script>

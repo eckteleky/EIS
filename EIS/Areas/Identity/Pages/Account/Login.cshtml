@@ -1,0 +1,173 @@
+﻿@*
+@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+    <div class="col-md-4">
+        <section>
+            <form id="account" method="post">
+                <h4>Use a local account to log in.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe">
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                    </p>
+                    <p>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to log in.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+*@
+@page
+@model LoginModel
+@{
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+    ViewData["Title"] = "Log in";
+}
+<style>
+    .input-group > .form-control.valid {
+        background-color: var(--eck-lightgreen3);
+    }
+
+    input:-internal-autofill-selected {
+        appearance: menulist-button;
+        background-image: none !important;
+        background-color: -internal-light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;
+        color: fieldtext !important;
+    }
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@EIS.Resources.Resource.ResourceManager.GetString("Log In", System.Globalization.CultureInfo.CurrentCulture)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="row" style="font-family: 'URWDINLight'; font-weight: 200; font-style: normal; font-size: 100%; color: rgba(0,0,0,.9);">
+    <br />
+<center>
+    <div class="col-xl-4" style="text-align:left;">
+        @*<div class="login-logo">
+            <a href="~/Home"><b>Web</b>TIP</a>
+            <br />
+            <img src="~/images/tip_medium.png" />
+        </div>*@
+        <div class="card" style="border: hidden;background-color: transparent;">
+            <div class="card-body">
+                <h4>@EIS.Resources.Resource.ResourceManager.GetString("Sign in to start your session", System.Globalization.CultureInfo.CurrentCulture)</h4>
+                <hr />
+                <form id="account" method="post">
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <input asp-for="Input.Email" class="form-control" placeholder="email" />
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="input-group">
+                            <input asp-for="Input.Password" class="form-control" placeholder="password" />
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Input.Password" class="text-danger small"></span>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-xl-12" style="text-align:left;">
+                            <button type="submit" class="btn btn-classic btn-block float-right" style="width: 150px">@EIS.Resources.Resource.ResourceManager.GetString("Sign In", System.Globalization.CultureInfo.CurrentCulture)</button>
+                        </div>
+                    </div>
+                    @*<div asp-validation-summary="All" class="text-danger small"></div>*@
+                </form>
+            </div>
+        </div>
+    </div>
+</center>
+</body>
+</html>
+
+@section Scripts {
+    <style>
+        .card {
+            border: 0px solid;
+            padding: 10px;
+            box-shadow: 0px 0px red;            
+        }
+    </style>
+    <partial name="_ValidationScriptsPartial" />
+}

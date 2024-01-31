@@ -1,0 +1,130 @@
+﻿@model IEnumerable<EIS.EISModels.ViewLzIntervalTable>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Downtime Report -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LZIntervalTable", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DolgozoID", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DolgozoNeve", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DatumTol", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DatumIg", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Ora", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Muveletszam", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Muveletreszlet", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Description", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Megjegyzes", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th width=6px></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="tablebody">
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.DolgozoId)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.DolgozoNeve)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.DatumTol)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.DatumIg)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Ora)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Muveletszam)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Muveletreszlet)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Description)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Megjegyzes)
+                                            </button>
+                                        </td>
+                                        <td width=6px>
+                                            <button id="myButton" type="button" class="btn btn-link tablebutton" data-toggle="ajax-modal" data-target="#addDelete" data-url="@Url.Action($"Delete/{item.Id}")"><i class="fa fa-eraser"></i></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

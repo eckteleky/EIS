@@ -1,0 +1,452 @@
+﻿@model IEnumerable<EIS.EISModels.EasyMesjob>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@using Newtonsoft.Json;
+<link href="~/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/plugins/jquery-ui/jquery-ui.structure.min.css" rel="stylesheet" />
+<link href="~/plugins/jquery-ui/jquery-ui.structure.css" rel="stylesheet" />
+<link href="~/plugins/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet" />
+<link href="~/plugins/jquery-ui/jquery-ui.theme.css" rel="stylesheet" />
+<link href="~/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
+<script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="~/plugins/jquery-ui/jquery-ui.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#sortable").sortable({
+            update: function (event, ui) {
+                var itemIds = "";
+                $("#sortable").find(".taskSingleLine").each(function () {
+                    var itemId = $(this).attr("data-taskid");
+                    itemIds = itemIds + itemId + ",";
+                });
+                $.ajax({
+                    url: '@Url.Action("UpdateItem", "EasyMesjobs")',
+                    data: { itemIds: itemIds },
+                    type: 'POST',
+                    success: function (data) {
+                        setTimeout(() => { window.location.reload(true); }, 100);
+                    },
+                    error: function (xhr, status, error) {
+
+                    }
+                });
+
+            }
+        })
+
+    })
+</script>
+
+<!-- Bootstrap slider -->
+<link href="~/plugins/bootstrap-slider/css/bootstrap-slider.min.css" rel="stylesheet" />
+<link href="~/plugins/bootstrap-slider/css/bootstrap-slider.css" rel="stylesheet" />
+<script src="~/plugins/bootstrap-slider/bootstrap-slider.min.js"></script>
+<script src="~/plugins/bootstrap-slider/bootstrap-slider.js"></script>
+<!-- Ion Slider -->
+<link href="~/plugins/ion-rangeslider/css/ion.rangeslider.min.css" rel="stylesheet" />
+<link href="~/plugins/ion-rangeslider/css/ion.rangeslider.css" rel="stylesheet" />
+<script src="~/plugins/ion-rangeslider/js/ion.rangeslider.min.js"></script>
+<script src="~/plugins/ion-rangeslider/js/ion.rangeslider.js"></script>
+<!-- Page specific script -->
+
+<script>
+    $(function () {
+        var lang = 'hu-HU';
+        // var year = 2022;
+        // var mon = 3;
+        // var day = 27;
+
+        var $inputFrom = $(".data_from");
+        var $inputTo = $(".data_to");
+
+        function dateToTS(date) {
+            return date.valueOf();
+        }
+
+        function tsToDate(ts) {
+            var d = new Date(ts);
+
+            // var mm = d.getMonth();
+            // var dd = d.getDate();
+            // var yy = d.getFullYear();
+            // var hh = d.getHours();
+            // var mi = d.getMinutes();
+            // var ss = d.getSeconds();
+
+            // var nd = new Date(yy, mm - 1, dd, hh, mi, ss);
+
+            return d.toLocaleDateString(lang, {
+                month: '2-digit',
+                day: '2-digit',
+                //weekday: 'short',
+                hour: '2-digit',
+                minute: '2-digit'
+            }).replace('. ','.');
+        }
+
+        // function tsToShift(ts) {
+        //     var d = new Date(ts);
+
+        //     var mm = d.getMonth();
+        //     var dd = d.getDate();
+        //     var yy = d.getFullYear();
+        //     var hh = d.getHours();
+        //     var mi = d.getMinutes();
+        //     var ss = d.getSeconds();
+
+        //     var shift = ' 1';
+        //     switch (hh) {
+        //         case 06: shift = ' 1'; break;
+        //         case 14: shift = ' 2'; break;
+        //         case 22: shift = ' 3'; break;
+        //     }
+
+        //     var nd = new Date(yy, mm - 1, dd, hh, mi, ss);
+
+        //     return '<bold>' + nd.toLocaleDateString(lang, {
+        //         weekday: 'short'
+        //     }) + '</bold><small>' + shift + '</small>';
+        // }
+
+        // var mini = dateToTS(new Date(2022, 3, 6, 22, 40, 00));
+        // var maxi = dateToTS(new Date(2022, 3, 13, 22, 40, 00));
+        // var marks = [
+        //     dateToTS(new Date(2022, 3, 06, 22, 40, 00)), //V3.  ,0
+        //     dateToTS(new Date(2022, 3, 07, 06, 00, 00)), //H1.  ,1
+        //     dateToTS(new Date(2022, 3, 07, 14, 20, 00)), //H2.  ,2
+        //     dateToTS(new Date(2022, 3, 07, 22, 40, 00)), //H3.  ,3
+        //     dateToTS(new Date(2022, 3, 08, 06, 00, 00)), //K1.  ,4
+        //     dateToTS(new Date(2022, 3, 08, 14, 20, 00)), //K2.  ,5
+        //     dateToTS(new Date(2022, 3, 08, 22, 40, 00)), //K3.  ,6
+        //     dateToTS(new Date(2022, 3, 09, 06, 00, 00)), //Sze1.,8
+        //     dateToTS(new Date(2022, 3, 09, 14, 20, 00)), //Sze2.,9
+        //     dateToTS(new Date(2022, 3, 09, 22, 40, 00)), //Sze3.,10
+        //     dateToTS(new Date(2022, 3, 10, 06, 00, 00)), //Cs1. ,11
+        //     dateToTS(new Date(2022, 3, 10, 14, 20, 00)), //Cs2. ,12
+        //     dateToTS(new Date(2022, 3, 10, 22, 40, 00)), //Cs3. ,13
+        //     dateToTS(new Date(2022, 3, 11, 06, 00, 00)), //P1.  ,14
+        //     dateToTS(new Date(2022, 3, 11, 14, 20, 00)), //P2.  ,15
+        //     dateToTS(new Date(2022, 3, 11, 22, 40, 00)), //P3.  ,16
+        //     dateToTS(new Date(2022, 3, 12, 06, 00, 00)), //Szo1.,17
+        //     dateToTS(new Date(2022, 3, 12, 14, 20, 00)), //Szo2.,18
+        //     dateToTS(new Date(2022, 3, 12, 22, 40, 00)), //Szo3.,19
+        //     dateToTS(new Date(2022, 3, 13, 06, 00, 00)), //V1.  ,20
+        //     dateToTS(new Date(2022, 3, 13, 14, 20, 00)), //V2.  ,21
+        //     dateToTS(new Date(2022, 3, 13, 22, 40, 00)), //V3.  ,22
+        // ];
+        // var tmarks = [
+        //     'V 3.műszak',
+        //     'H 1.műszak', 'H 2.műszak', 'H 3.műszak',
+        //     'K 1.műszak', 'K 2.műszak', 'K 3.műszak',
+        //     'Sze 1.műszak', 'Sze 2.műszak', 'Sze 3.műszak',
+        //     'Cs 1.műszak', 'Cs 2.műszak', 'Cs 3.műszak',
+        //     'P 1.műszak', 'P 2.műszak', 'P 3.műszak',
+        //     'Szo 1.műszak', 'Szo 2.műszak', 'Szo 3.műszak',
+        //     'V 1.műszak', 'V 2.műszak'//, 'V 3.műszak'
+        // ];
+
+        var $range = $(".js-range-slider");
+        $range.ionRangeSlider({
+            skin: "flat",//"sharp",
+            type: "double",
+            grid: false,
+            //min: mini,//dateToTS(new Date(year, 3, 20, 22, 40, 00)),
+            //max: maxi,//dateToTS(new Date(year, 3, 27, 22, 40, 00)),
+            //from: dateToTS(new Date(year, 3, 24, 11, 12, 33)),
+            //to: dateToTS(new Date(year, 3, 24, 15, 44, 55)),
+            to_fixed: true,
+            from_fixed: true,
+            hide_min_max: true,
+            hide_from_to: false,
+            disable: false,
+            prettify: tsToDate,
+            // onStart: function (data) {
+            //     addMarks(data.slider);
+            // }
+        });
+
+        // function convertToPercent(num) {
+        //     var percent = (num - mini) / (maxi - mini) * 100;
+        //     return percent;
+        // }
+
+        // Date.prototype.addDays = function (days) {
+        //     var date = new Date(this.valueOf());
+        //     date.setDate(date.getDate() + days);
+        //     return date;
+        // }
+
+        // function addMarks($slider) {
+        //     var html = '';
+        //     var left = 0;
+        //     var i;
+        //     var listInJs = @Html.Raw(JsonConvert.SerializeObject(ViewBag.EnabledList));
+
+        //     for (i = 0; i < marks.length; i++) {
+        //         left = 98 * i / (marks.length - 1);// convertToPercent(marks[i]);
+        //         // if (listInJs != null) {
+        //             // var b = listInJs[i].Enable;
+        //             // if (b == true) {
+        //                 html += '<nobr><span class="mark" style="left: ' + left + '%">' + tsToShift(marks[i]) + '</span></nobr>';
+        //             // }
+        //             // else {
+        //             //     html += '<nobr><span class="markdark" style="left: ' + left + '%">' + tsToShift(marks[i]) + '</span></nobr>';
+        //             // }
+        //         // }
+        //         // else {
+        //         //     if ((i > 15 & i < 21) | (i > 36 & i < 42)) {
+        //         //         html += '<nobr><span class="markdark" style="left: ' + left + '%">' + tsToShift(marks[i]) + '</span></nobr>';
+        //         //     }
+        //         //     else {
+        //         //         html += '<nobr><span class="mark" style="left: ' + left + '%">' + tsToShift(marks[i]) + '</span></nobr>';
+        //         //     }
+        //         // }
+        //     }
+        //     $slider.append(html);
+        // }
+    })
+</script>
+<style>
+    .irs--flat .irs-bar {
+        margin-top: 5px;
+        background-color: var(--eck-green);
+        height: 2px;
+        z-index: auto;
+    }
+
+    .irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single {
+        background-color: var(--eck-green);
+    }
+
+    .irs--flat .irs-min {
+        /* background-color: var(--eck-green); */
+    }
+
+    .irs--flat .irs-max {
+        /* background-color: var(--eck-green); */
+    }
+
+    .irs--flat .irs-from {
+        /* background-color: var(--eck-green); */
+    }
+
+    .irs--flat .irs-to {
+        /* background-color: var(--eck-green); */
+    }
+
+    .irs--flat .irs-handle {
+        /* background-color: var(--eck-green);
+        line-height:2px; */
+        z-index: auto;
+    }
+
+    .irs--flat .irs-line {
+        background-color: #eeeeee;
+    }
+
+    .irs--flat .irs-handle > i:first-child {
+        border-top-color: var(--eck-green);
+        background-color: var(--eck-green);
+        border-width: 2px;
+        z-index: auto;
+    }
+
+    .irs--flat .irs-from:before, .irs--flat .irs-to:before, .irs--flat .irs-single:before {
+        border-top-color: var(--eck-green);
+        border-width: 2px;
+    }
+
+    .irs--sharp .irs-bar {
+        background-color: var(--eck-green);
+    }
+
+    .irs--sharp .irs-from, .irs--sharp .irs-to, .irs--sharp .irs-single {
+        background-color: var(--eck-green);
+    }
+    .irs--sharp .irs-min {
+        background-color: var(--eck-green);
+    }
+
+    .irs--sharp .irs-max {
+        background-color: var(--eck-green);
+    }
+
+    .irs--sharp .irs-from {
+        background-color: var(--eck-green);
+    }
+
+    .irs--sharp .irs-to {
+        background-color: var(--eck-green);
+    }
+
+    .irs--sharp .irs-handle {
+        background-color: var(--eck-green);
+    }
+    .irs--sharp .irs-line {
+        background-color: #eeeeee;
+    }
+
+    .irs--sharp .irs-handle > i:first-child {
+        border-top-color: var(--eck-green);
+    }
+
+    .irs--sharp .irs-from:before, .irs--sharp .irs-to:before, .irs--sharp .irs-single:before {
+        border-top-color: var(--eck-green);
+    }
+
+    .mark {
+        display: block;
+        position: absolute;
+        opacity: 0.55;
+        top: 39px;
+        background: #eeeeee;
+        transform: rotate(-0deg);
+        padding: 2px 2px 0px 2px;
+        border-radius: 5px;
+        color: #888888;
+        margin-left: -2px;
+        font-size: xx-small;
+    }
+
+    .markdark {
+        display: block;
+        position: absolute;
+        opacity: 0.55;
+        top: 39px;
+        background: #f8f8f8;
+        transform: rotate(-0deg);
+        padding: 2px 2px 0px 2px;
+        border-radius: 5px;
+        color: #eeeeee;
+        margin-left: -2px;
+        font-size: xx-small;
+    }
+</style>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+    DateTime scalefrom = ViewBag.Scalefrom;
+    DateTime scaleto = ViewBag.Scaleto;
+    int day = (scaleto > scalefrom ? scaleto - scalefrom : scalefrom - scaleto).Days;
+    string widthdays = Math.Max(900, 450 * (day+1)).ToString()+"px"; 
+}
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview" >
+        <div class="row" style="margin: 0px 5px;">
+            <!-- Downtime Report -->
+            <div class="col" style="padding: 5px;width:auto;">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("EasyMESJobs", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed7" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th style="min-width:15px;">
+                                        @Html.DisplayName("Nr")
+                                    </th>
+                                    <th style="min-width:15px;">
+                                        @Html.DisplayName("Id")
+                                    </th>
+                                    <th style="min-width:50px;">
+                                        @Html.DisplayName("LineId")
+                                    </th>
+                                    <th style="min-width:80px;">
+                                        @Html.DisplayName("Type")
+                                    </th>
+                                    <th style="min-width:30px;">
+                                        @Html.DisplayName("PlanQty")
+                                    </th>
+                                    <th style="min-width:30px;">
+                                        @Html.DisplayName("Qty")
+                                    </th>
+                                    <th style="min-width:60px;">
+                                        @Html.DisplayName("Status")
+                                    </th>
+                                    <th style="min-width:@widthdays;">
+                                        @Html.DisplayName("Diagram")
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="sortable" style="cursor:pointer">
+                                @foreach (var item in Model)
+                                {
+                                    <tr class ="tablebody">
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.RowNo)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Id)
+                                            </button>
+                                        </td>
+                                        <td class="taskSingleLine" id="task@(item.Id)" data-taskid="@(item.Id)">
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.SystemParam.LineId)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Ttstypes.TtstypeName)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.PlanQty)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.ProducedQty)
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                @Html.DisplayFor(modelItem => item.Status.Status)
+                                            </button>
+                                        </td>
+                                        <td style="padding-left: 35px;padding-right: 35px;">
+                                                @{
+                                                    // DateTime scalefrom = ViewBag.Scalefrom;
+                                                    string sfrom = (scalefrom.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0)).TotalSeconds * 1000).ToString();
+                                                    // DateTime scaleto = ViewBag.Scaleto;
+                                                    string sto = (scaleto.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0)).TotalSeconds * 1000).ToString();
+                                                    DateTime testfrom = item.CalcStart;
+                                                    string tfrom = (testfrom.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0)).TotalSeconds * 1000).ToString();
+                                                    DateTime testto = item.CalcEnd.Value;
+                                                    string tto = (testto.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0)).TotalSeconds * 1000).ToString();
+                                                }
+                                            <input type="text" class="js-range-slider color-3" value="" disabled data-min=@sfrom data-max=@sto data-from=@tfrom data-to=@tto data_lang=@System.Globalization.CultureInfo.CurrentCulture.Name />
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

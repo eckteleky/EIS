@@ -1,0 +1,404 @@
+﻿@model IEnumerable<EIS.EISModels.ViewKpivalues>
+@using ChartJSCore.Models;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+    List<Chart> verticalBarChart = (List<Chart>)ViewData["chart"];    
+}
+
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Laufzettel -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-header border-0" style="padding: 10px 15px 5px 15px">
+                        <h3 class="card-title">
+                            @EIS.Resources.Resource.ResourceManager.GetString("KPIs", System.Globalization.CultureInfo.CurrentCulture)
+                        </h3>
+                    </div>
+                    <div class="card-body" style="padding: 5px 5px 2px 10px;">
+                        @foreach (var item in Model)
+                        {
+                            <div class="row" style="margin: 0px 5px">
+                                <!-- Downtime Logbook -->
+                                <div class="col-xl-12" style="padding: 5px">
+                                    <div class="card">
+                                        @*<div class="card-header border-0" style="padding: 10px 15px 5px 15px">
+                                            <h3 class="card-title">
+                                                @Html.DisplayFor(modelItem => item.SortedId)@Html.Raw(" - ")@Html.Raw("(")@Html.DisplayFor(modelItem => item.ProcessId)@Html.Raw(") ")@Html.DisplayFor(modelItem => item.ProcessName)@Html.Raw(" | ")@Html.DisplayFor(modelItem => item.DescriptionEn)@Html.Raw(" [")@Html.DisplayFor(modelItem => item.ResponsibleName)@Html.Raw("]")
+                                            </h3>
+                                        </div>*@
+                                        <div class="card-body table-responsive" style="padding: 5px 15px 10px 15px">
+                                            <table id="logbook" class="table table-bordered table-hover table-head-fixed text-nowrap table-sm" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="25px">
+                                                            @Html.TextBoxFor(modelItem => item.SortedId,@item.SortedId.Value.ToString("0"), new { style = "text-align:center;width: 25px" } )
+                                                        </th>
+                                                        <th class="nowrapleft">
+                                                            @Html.DisplayFor(modelItem => item.DescriptionEn)@Html.Raw(" [")@Html.DisplayFor(modelItem => item.ResponsibleName)@Html.Raw("]")
+                                                        </th>
+                                                        <th class="nowrapleft">
+                                                            @Html.Raw("(")@Html.DisplayFor(modelItem => item.ProcessId)@Html.Raw(") ")@Html.DisplayFor(modelItem => item.ProcessName)
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.DisplayFor(modelItem => item.YearPrev)
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("January")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("February")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("March")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("April")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("May")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("June")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("July")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("August")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("September")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("October")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("November")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.Raw("December")
+                                                        </th>
+                                                        <th class="nowrapcenter">
+                                                            @Html.DisplayFor(modelItem => item.Year)
+                                                        </th>
+                                                        <th class="nowrapleft">
+                                                            @Html.DisplayFor(modelItem => item.DescriptionEn)
+                                                        </th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="25px">
+                                                            @Html.Raw("")
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                                @Html.Raw("STATUS INDICATOR")
+                                                            </button>
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.StatusPrev == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status01 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status02 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status03 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status04 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status05 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status06 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status07 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status08 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status09 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status10 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status11 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.Status12 == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @if (@item.StatusNext == 1)
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-green);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-thumbs-up\"></i>")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("<i style=\"color:var(--eck-red);background-color:var(--eck-lightgray3);\" class=\"fa-regular fa-face-angry\"></i>")
+                                                            }
+                                                        </td>
+                                                        <td rowspan="3">
+                                                            <div class="chart-container" style="position: relative ; height:120px; width:240px;">
+                                                                @{
+                                                                    var s = "verticalBarChart" + @item.SortedId;
+                                                                }
+                                                                <canvas height="120" width="240" id=@s></canvas>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="25px" class="nowrapcenter">
+                                                            @if (@item.ExpectationName == "MIN")
+                                                            {
+                                                                @Html.Raw("^")
+                                                            }
+                                                            else
+                                                            @if (@item.ExpectationName == "MAX")
+                                                            {
+                                                                @Html.Raw("v")
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.Raw("?")
+                                                            }
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                                @Html.Raw("TARGET Value")@Html.Raw(" [")@Html.DisplayFor(modelItem => item.UnitNameEn)@Html.Raw("]")
+                                                            </button>
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.TargetPrev,@item.TargetPrev.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target01,@item.Target01.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target02,@item.Target02.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target03,@item.Target03.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target04,@item.Target04.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target05,@item.Target05.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target06,@item.Target06.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target07,@item.Target07.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target08,@item.Target08.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target09,@item.Target09.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target10,@item.Target10.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target11,@item.Target11.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Target12,@item.Target12.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.TargetNext,@item.TargetNext.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="25px">
+                                                            @Html.Raw("")
+                                                        </td>
+                                                        <td colspan="2">
+                                                            <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")">
+                                                                @Html.Raw("ACTUAL VALUE")@Html.Raw(" [")@Html.DisplayFor(modelItem => item.UnitNameEn)@Html.Raw("]")
+                                                            </button>
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.ValuePrev,@item.ValuePrev.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value01,@item.Value01.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value02,@item.Value02.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value03,@item.Value03.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value04,@item.Value04.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value05,@item.Value05.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value06,@item.Value06.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value07,@item.Value07.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value08,@item.Value08.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value09,@item.Value09.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value10,@item.Value10.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value11,@item.Value11.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.Value12,@item.Value12.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                        <td class="nowrapcenter">
+                                                            @Html.TextBoxFor(modelItem => item.ValueNext,@item.ValueNext.Value.ToString(@item.Format), new { style = "text-align:center;width: 70px" } )
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        @for (int i = 0; i < verticalBarChart.Count(); i++)
+        {
+            string s = "verticalBarChart" + (i + 1).ToString();
+            @Html.Raw(verticalBarChart[i].CreateChartCode(s));
+        }
+    </script>
+}

@@ -1,0 +1,134 @@
+﻿<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=swap">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="~/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Sweetalert2 -->
+<link rel="stylesheet" href="~/plugins/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="~/plugins/select2/js/select2.full.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="~/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<a hidden asp-controller="DTReport" asp-action="Create" id="uplink"></a>
+<script language="JavaScript" type="text/javascript">
+    function openPop() {
+        var Sel_Ind = document.getElementById('myURLs').selectedIndex;
+        var popUrl = document.getElementById('myURLs').options[Sel_Ind].value;
+        //$("#addSelect").hide();
+        //winpops = window.open(popUrl, "", "width=600,height=600,resizable,")
+    }
+    $(document).ready(function () {
+        $("#addError").modal();
+    })
+</script>
+<div class="modal fade show active" id="addSelect">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addLabel">@EIS.Resources.Resource.ResourceManager.GetString("Dtreports", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Select", System.Globalization.CultureInfo.CurrentCulture)</h4>
+                <div class="modal-tools">
+                    <button type="button" class="btn btn-tool" data-dismiss="modal" id="X">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" style="padding: 10px 10px">
+                <table width="100%">
+                    <thead hidden>
+                        <tr>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h1 style="color:brown;text-align:center">Nincs adat, az adott műszakhoz!</h1>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="myURLs" onChange="javascript:openPop();">
+                                    <option value="4">Válassz műszakot...</option>
+                                    <option value="1">Nappali</option>
+                                    <option value="2">Délutáni</option>
+                                    <option value="3">Éjszakai</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="d-flex justify-content-between m-0" style="width: 100%">
+                    @*                    <div class="col-auto">
+                    <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="modal">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    *@                    <div class="col-auto">
+                        <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="modal">@EIS.Resources.Resource.ResourceManager.GetString("OK", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#save").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'success',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("OK", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                var Sel_Ind = document.getElementById('myURLs').selectedIndex;
+                                var popUrl = document.getElementById('myURLs').options[Sel_Ind].value;
+                                //winpops = window.open(popUrl, "", "width=600,height=600,resizable,")
+                                window.location.href = "/DTReports/Index?Shift=" + popUrl;
+                            });
+                            $("#close").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                window.location.href = "/DTReports";
+                            });
+                            $("#X").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                window.location.href = "/DTReports";
+                            });
+                        });
+                        $(function () {
+                            $('#DolgozoId').select2({
+                                placeholder: "Select a WorkerID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                            $('#ID').select2({
+                                placeholder: "Select a ID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                            $('#KID').select2({
+                                placeholder: "Select a ID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

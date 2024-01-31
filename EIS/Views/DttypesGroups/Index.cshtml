@@ -1,0 +1,91 @@
+﻿@model IEnumerable<EIS.EISModels.DttypesGroup>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Downtime Report -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DttypesGroups", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th>
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DtgroupId", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    @{
+                                        var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+                                    }
+                                    @if (@requestCulture.RequestCulture.UICulture.Name == "hu-HU")
+                                    {
+                                        <th>
+                                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Decription", System.Globalization.CultureInfo.CurrentCulture))
+                                        </th>
+                                    }
+                                    else
+                                    {
+                                        <th>
+                                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DecriptionEn", System.Globalization.CultureInfo.CurrentCulture))
+                                        </th>
+                                    }
+                                    <th width=6px></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="tablebody">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DtgroupId)
+                                        </td>
+                                        @if (@requestCulture.RequestCulture.UICulture.Name == "hu-HU")
+                                        {
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Description)
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DescriptionEn)
+                                            </td>
+                                        }
+                                        <td width=6px>
+                                            <button id="myButton" type="button" class="btn btn-link tablebutton" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit/{item.Id}")"><i class="fa fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

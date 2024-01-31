@@ -1,0 +1,253 @@
+﻿@using Microsoft.AspNetCore.Localization
+@model EIS.EISModels.LzTeljesitmenyTable
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=swap">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="~/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Sweetalert2 -->
+<link rel="stylesheet" href="~/plugins/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="~/plugins/select2/js/select2.full.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="~/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<a hidden asp-controller="LzTeljesitmenyTables" asp-action="GetKefetartoId" id="uplink"></a>
+<div class="modal fade" id="addCreate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addLabel">@EIS.Resources.Resource.ResourceManager.GetString("LZTeljesitmenyTable", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Create", System.Globalization.CultureInfo.CurrentCulture)</h4>
+                <div class="modal-tools">
+                    <button type="button" class="btn btn-tool" data-dismiss="modal" id="X">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" style="padding-bottom: 20px">
+                <form asp-action="Create" style="width: 100%">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="row" style="padding: 0 7.5px 5px 7.5px">
+                        <label class="control-label">@EIS.Resources.Resource.ResourceManager.GetString("EmployeeData", System.Globalization.CultureInfo.CurrentCulture)</label>
+                    </div>
+                    <div class="row" style="border: 0 -7.5px">
+                        <div class="col-12" style="padding: 0 7.5px">
+                            <div class="input-group" style="margin-bottom: 10px" data-toggle="tooltip" title="@EIS.Resources.Resource.ResourceManager.GetString("txtid", System.Globalization.CultureInfo.CurrentCulture)">
+                                @*<label asp-for="DolgozoId" class="control-label"></label>*@
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user" style="width: 16px;"></i>
+                                    </span>
+                                </div>
+                                <select id="DolgozoId" asp-for="DolgozoId" class="form-control custom-select" style="max-width:100%" asp-items="ViewBag.DolgozoId" ></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border: 0 -7.5px">
+                        <div class="col-6" style="padding: 0 7.5px">
+                            <div class="input-group" style="margin-bottom: 10px" data-toggle="tooltip" title="@EIS.Resources.Resource.ResourceManager.GetString("txtdate", System.Globalization.CultureInfo.CurrentCulture)">
+                                @*<label asp-for="Datum" class="control-label"></label>*@
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-calendar" style="width: 16px;"></i>
+                                    </span>
+                                </div>
+                                <input type="date" asp-for="Datum" class="form-control"/>
+                                <span asp-validation-for="Datum" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-3" style="padding: 0 7.5px">
+                            <div class="input-group" style="margin-bottom: 10px" data-toggle="tooltip" title="@EIS.Resources.Resource.ResourceManager.GetString("txtshift", System.Globalization.CultureInfo.CurrentCulture)">
+                                @*<label asp-for="MuszakId" class="control-label"></label>*@
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-calendar-day" style="width: 16px;"></i>
+                                    </span>
+                                </div>
+                                <select asp-for="MuszakId" class="form-control custom-select" asp-items="ViewBag.MuszakId"></select>
+                            </div>
+                        </div>
+                        <div class="col-3" style="padding: 0 7.5px">
+                            <div class="input-group" style="margin-bottom: 10px" data-toggle="tooltip" title="@EIS.Resources.Resource.ResourceManager.GetString("txthours", System.Globalization.CultureInfo.CurrentCulture)">
+                                @*<label asp-for="Ora" class="control-label"></label>*@
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="font-size: 1.1rem">
+                                        <i class="fas fa-clock"></i>
+                                    </span>
+                                </div>
+                                <input asp-for="Ora" class="form-control"/>
+                                <span asp-validation-for="Ora" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 7.5px 7.5px 5px 7.5px">
+                        <label class="control-label">@EIS.Resources.Resource.ResourceManager.GetString("RoutingsData", System.Globalization.CultureInfo.CurrentCulture)</label>
+                    </div>
+                    <div class="row" style="border: 0 -7.5px">
+                        <div class="col-12" style="padding: 0 7.5px">
+                            <script>
+                                $(document).ready(function () {
+                                    $("#ID").on("change", function () {
+                                        var MuveletId = this.value;
+                                        var KefetartoId = $("#KID").value;
+                                        var url = document.getElementById('uplink').href;//"/LzTeljesitmenyTables/GetKefetartoId";
+                                        $.ajax({
+                                            method: "POST",
+                                            dataType: "json",
+                                            url: url,
+                                            data: {
+                                                MuveletId: MuveletId
+                                            },
+                                            success: function(r)
+                                            {
+                                                target = $('#KID');
+                                                $(target).empty();
+                                                //$('<option value="-1"><option>').appendTo(target);
+                                                var len = r.length;
+                                                for (var i = 0; i < len; i++) {
+                                                    if (typeof(r[i])!="undefined")
+                                                    {
+                                                        $('<option value="' + r[i].value.toString() + '"' + (r[i].selected == true ? ' selected' : '') + '>' + r[i].text + '</option>').appendTo(target);
+                                                    }
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+                            <div class="input-group" style="margin-bottom: 10px" data-toggle="tooltip" title="@EIS.Resources.Resource.ResourceManager.GetString("txtopid", System.Globalization.CultureInfo.CurrentCulture)">
+                                @*<label asp-for="MuveletId" class="control-label"></label>*@
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-bars-staggered" style="width: 16px;"></i>
+                                    </span>
+                                </div>
+                                <select id="ID" asp-for="MuveletId" class="form-control custom-select" style="width: 80%;" asp-items="ViewBag.MuveletId"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border: 0 -7.5px">
+                        <div class="col-6" style="padding: 0 7.5px">
+                            <div class="input-group" style="margin-bottom: 10px" data-toggle="tooltip" title="@EIS.Resources.Resource.ResourceManager.GetString("txtbhid", System.Globalization.CultureInfo.CurrentCulture)">
+                                @*<label asp-for="KefetartoId" class="control-label"></label>*@
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                    </span>
+                                </div>
+                                <select id="KID" asp-for="KefetartoId" class="form-control custom-select2" style="width: 80%;" asp-items="ViewBag.KefetartoId"></select>
+                            </div>
+                        </div>
+                        <div class="col-3" style="padding: 0 7.5px">
+                            <div class="input-group" style="margin-bottom: 10px" data-toggle="tooltip" title="@EIS.Resources.Resource.ResourceManager.GetString("txtgoodparts", System.Globalization.CultureInfo.CurrentCulture)">
+                                @*<label asp-for="Darab" class="control-label"></label>*@
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                        <i class="fas fa-check" style="width: 16px;"></i>
+                                    </span>
+                                </div>
+                                <input asp-for="Darab" class="form-control"/>
+                                <span asp-validation-for="Darab" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-3" style="padding: 0 7.5px">
+                            <div class="input-group" style="margin-bottom: 10px" data-toggle="tooltip" title="@EIS.Resources.Resource.ResourceManager.GetString("txtbadparts", System.Globalization.CultureInfo.CurrentCulture)">
+                                @*<label asp-for="HibasDarab" class="control-label"></label>*@
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="color: var(--eck-red)">
+                                        <i class="fas fa-xmark" style="width: 16px;"></i>
+                                    </span>
+                                </div>
+                                <input asp-for="HibasDarab" class="form-control"/>
+                                <span asp-validation-for="HibasDarab" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 7.5px 7.5px 5px 7.5px">
+                        <label class="control-label">@EIS.Resources.Resource.ResourceManager.GetString("Comments", System.Globalization.CultureInfo.CurrentCulture)</label>
+                    </div>
+                    <div class="row" style="border: 0 -7.5px">
+                        <div class="col-12" style="padding: 0 7.5px">
+                            <div class="input-group" data-toggle="tooltip" title="@EIS.Resources.Resource.ResourceManager.GetString("txtcomments", System.Globalization.CultureInfo.CurrentCulture)">
+                                @*<label asp-for="Megjegyzes" class="control-label"></label>*@
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="font-size: 1.2rem">
+                                        <i class="fas fa-circle-info"></i>
+                                    </span>
+                                </div>
+                                <input asp-for="Megjegyzes" class="form-control float-right" placeholder="@EIS.Resources.Resource.ResourceManager.GetString("txtcomment", System.Globalization.CultureInfo.CurrentCulture)" />
+                                <span asp-validation-for="Megjegyzes" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="d-flex justify-content-between m-0" style="width: 100%">
+                    <div class="col-auto">
+                        <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="modal">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <div class="col-auto">
+                        <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="modal">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#save").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'success',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("SaveTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#close").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#X").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                        });
+                         $(function () {
+                            $('#DolgozoId').select2({
+                                placeholder: "Select a WorkerID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                            $('#ID').select2({
+                                placeholder: "Select a ID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                            $('#KID').select2({
+                                placeholder: "Select a ID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                         });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

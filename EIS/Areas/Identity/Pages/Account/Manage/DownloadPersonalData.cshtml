@@ -1,0 +1,12 @@
+﻿@page
+@model DownloadPersonalDataModel
+@{
+    ViewData["Title"] = @EIS.Resources.Resource.ResourceManager.GetString("Download Your Data", System.Globalization.CultureInfo.CurrentCulture);
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<h2 style="color: rgba(0,0,0,.9);">@ViewData["Title"]</h2>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

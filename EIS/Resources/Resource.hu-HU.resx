@@ -1,0 +1,1899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Akció</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktív</value>
+  </data>
+  <data name="Actual" xml:space="preserve">
+    <value>Aktuális</value>
+  </data>
+  <data name="AddNewRole" xml:space="preserve">
+    <value>Új jog hozzáadás</value>
+  </data>
+  <data name="AddRemoveRolesforUser" xml:space="preserve">
+    <value>Felhasználói jogok hozzáadása és törlése</value>
+  </data>
+  <data name="AddRole" xml:space="preserve">
+    <value>Jog hozzáadás</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Adminisztrátor</value>
+  </data>
+  <data name="Afternoon" xml:space="preserve">
+    <value>Délután</value>
+  </data>
+  <data name="AlertLevel" xml:space="preserve">
+    <value>Riasztási szint</value>
+  </data>
+  <data name="Allasido" xml:space="preserve">
+    <value>Állásidő</value>
+  </data>
+  <data name="AllCode" xml:space="preserve">
+    <value>Minden kód</value>
+  </data>
+  <data name="AllDay" xml:space="preserve">
+    <value>Egész nap</value>
+  </data>
+  <data name="AllParts" xml:space="preserve">
+    <value>Összes termék</value>
+  </data>
+  <data name="Allrightsreserved." xml:space="preserve">
+    <value>Minden jog fenntartva.</value>
+  </data>
+  <data name="Are you sure you want to delete this?" xml:space="preserve">
+    <value>Biztos, hogy törli a következőt?</value>
+  </data>
+  <data name="Automotive1" xml:space="preserve">
+    <value>GBM</value>
+  </data>
+  <data name="Automotive2" xml:space="preserve">
+    <value>Kéziszerszámok 1</value>
+  </data>
+  <data name="Automotive3" xml:space="preserve">
+    <value>Kéziszerszámok 2</value>
+  </data>
+  <data name="AVAILABILITYTXT" xml:space="preserve">
+    <value>Elérhetőség</value>
+  </data>
+  <data name="Back to list" xml:space="preserve">
+    <value>Vissza a listához</value>
+  </data>
+  <data name="BadParts" xml:space="preserve">
+    <value>Rossz termék</value>
+  </data>
+  <data name="BeDat" xml:space="preserve">
+    <value>Belépés</value>
+  </data>
+  <data name="Board" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="BoardGroup" xml:space="preserve">
+    <value>Projekt csoport</value>
+  </data>
+  <data name="BoardGroupId" xml:space="preserve">
+    <value>Projekt csoport</value>
+  </data>
+  <data name="BoardGroups" xml:space="preserve">
+    <value>Projekt csoportok</value>
+  </data>
+  <data name="Boards" xml:space="preserve">
+    <value>Projektek</value>
+  </data>
+  <data name="BoardTitle" xml:space="preserve">
+    <value>Projekt név</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Mégsem</value>
+  </data>
+  <data name="Card" xml:space="preserve">
+    <value>Feladat</value>
+  </data>
+  <data name="CardId" xml:space="preserve">
+    <value>Feladat azonosító</value>
+  </data>
+  <data name="Cards" xml:space="preserve">
+    <value>Feladatok</value>
+  </data>
+  <data name="CardsOfUsers" xml:space="preserve">
+    <value>Felelősök</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategória</value>
+  </data>
+  <data name="Change Email" xml:space="preserve">
+    <value>Email váltás</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Jelszóváltás</value>
+  </data>
+  <data name="Clarified" xml:space="preserve">
+    <value>Tisztázva</value>
+  </data>
+  <data name="Clarified 50%" xml:space="preserve">
+    <value>Tisztázva 50%</value>
+  </data>
+  <data name="ClassCodeDetection" xml:space="preserve">
+    <value>Hibaosztály detektálás</value>
+  </data>
+  <data name="ClassCodeDetectionEN" xml:space="preserve">
+    <value>Hibaosztály detektálás [Angol]</value>
+  </data>
+  <data name="ClassCodeId" xml:space="preserve">
+    <value>Hibacsoportkód</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Bezárás</value>
+  </data>
+  <data name="CloseTxt" xml:space="preserve">
+    <value>Munkádat bezártam</value>
+  </data>
+  <data name="CodeId" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Új jelszó megerősítése</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Megjegyzés</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Cég</value>
+  </data>
+  <data name="Competencies" xml:space="preserve">
+    <value>Kompetenciák</value>
+  </data>
+  <data name="Competency" xml:space="preserve">
+    <value>Kompetencia</value>
+  </data>
+  <data name="CompetencyMatrix" xml:space="preserve">
+    <value>Kompetencia mátrix</value>
+  </data>
+  <data name="CompetencyMatrixes" xml:space="preserve">
+    <value>Kompetencia mátrix</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>kitöltve</value>
+  </data>
+  <data name="Confirmpassword" xml:space="preserve">
+    <value>Jelszó megerősítése</value>
+  </data>
+  <data name="Copy to clipboard..." xml:space="preserve">
+    <value>Ment...</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Másolási védelem</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>adatbevitel</value>
+  </data>
+  <data name="Create a new account." xml:space="preserve">
+    <value>Új felhasználó létrehozása</value>
+  </data>
+  <data name="Create new" xml:space="preserve">
+    <value>Új készítése</value>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>Rögzítés dátuma</value>
+  </data>
+  <data name="Createdby" xml:space="preserve">
+    <value>Készítette</value>
+  </data>
+  <data name="CT" xml:space="preserve">
+    <value>Ciklusidő</value>
+  </data>
+  <data name="Cycletime" xml:space="preserve">
+    <value>Ciklusidő</value>
+  </data>
+  <data name="Darab" xml:space="preserve">
+    <value>Darab</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Műszerfal</value>
+  </data>
+  <data name="Datum" xml:space="preserve">
+    <value>Dátum</value>
+  </data>
+  <data name="DatumIg" xml:space="preserve">
+    <value>Eddig</value>
+  </data>
+  <data name="DatumTol" xml:space="preserve">
+    <value>Ettől</value>
+  </data>
+  <data name="Decription" xml:space="preserve">
+    <value>Leírás [magyar]</value>
+  </data>
+  <data name="DecriptionEn" xml:space="preserve">
+    <value>Leírás [angol]</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Általános</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="Deleted" xml:space="preserve">
+    <value>Törölve</value>
+  </data>
+  <data name="Deleted 0%" xml:space="preserve">
+    <value>Törölve 0%</value>
+  </data>
+  <data name="DeleteDataAndCloseMyAccount" xml:space="preserve">
+    <value>Törölje az adatokat és zárja be a fiókomat</value>
+  </data>
+  <data name="DeletePersonalData" xml:space="preserve">
+    <value>Személyi adatok törlése</value>
+  </data>
+  <data name="DeleteTxt" xml:space="preserve">
+    <value>Kitöröltem az adatod</value>
+  </data>
+  <data name="Deleting this data will permanently remove your account, and this cannot be recovered." xml:space="preserve">
+    <value>Az adatok törlésével véglegesen eltávolítja fiókját, és ezeket nem lehet visszaállítani.</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Feladatleírás</value>
+  </data>
+  <data name="DescriptionEN" xml:space="preserve">
+    <value>Feladatleírás [Angol]</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Részletek</value>
+  </data>
+  <data name="DetectDescription" xml:space="preserve">
+    <value>Detektálás</value>
+  </data>
+  <data name="DetectDescriptionEN" xml:space="preserve">
+    <value>Detektálás [Angol]</value>
+  </data>
+  <data name="DetectId" xml:space="preserve">
+    <value>Detektálás</value>
+  </data>
+  <data name="LossChart" xml:space="preserve">
+    <value>Mennyiség-veszteség diagram</value>
+  </data>
+  <data name="DownTimeLog" xml:space="preserve">
+    <value>Állásidő napló</value>
+  </data>
+  <data name="OEEGauge" xml:space="preserve">
+    <value>OEE diagram</value>
+  </data>
+  <data name="Disable 2FA" xml:space="preserve">
+    <value>2FA tiltása</value>
+  </data>
+  <data name="Disable two-factor authentication (2FA)" xml:space="preserve">
+    <value>Két-faktoros azonosítás letiltása (2FA)</value>
+  </data>
+  <data name="Disabling 2FA does not change the keys used in authenticator apps. If you wish to change the key used in an authenticator app you should" xml:space="preserve">
+    <value>A 2FA letiltása nem módosítja a hitelesítő alkalmazásokban használt kulcsokat. Ha meg szeretné változtatni a hitelesítő alkalmazásban használt kulcsot, ezt meg kell tennie</value>
+  </data>
+  <data name="DolgozoID" xml:space="preserve">
+    <value>Dolgozószám</value>
+  </data>
+  <data name="DolgozoNeve" xml:space="preserve">
+    <value>Dolgozónév</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Elvégezve</value>
+  </data>
+  <data name="Done 100%" xml:space="preserve">
+    <value>Elvégezve 100%</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Letöltés</value>
+  </data>
+  <data name="Download Your Data" xml:space="preserve">
+    <value>Töltsd le az adataidat</value>
+  </data>
+  <data name="Downtime" xml:space="preserve">
+    <value>Állásidő</value>
+  </data>
+  <data name="DownTimeIndex" xml:space="preserve">
+    <value>ÁLLÁSIDŐ OKOK RÖGZÍTÉSE</value>
+  </data>
+  <data name="DownTimeTables" xml:space="preserve">
+    <value>Állásidő ok jelentése</value>
+  </data>
+  <data name="DropOutDueToDownTime" xml:space="preserve">
+    <value>Állásidő miatti kiesés</value>
+  </data>
+  <data name="TotalLoss" xml:space="preserve">
+    <value>Kiesett darabszám</value>
+  </data>
+  <data name="DroppedQuantity" xml:space="preserve">
+    <value>Kiesett darabszám</value>
+  </data>
+  <data name="DTDownTime" xml:space="preserve">
+    <value>Állásidő</value>
+  </data>
+  <data name="DtgroupId" xml:space="preserve">
+    <value>Csoport</value>
+  </data>
+  <data name="DTLine" xml:space="preserve">
+    <value>Sor</value>
+  </data>
+  <data name="DTMinute" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="DTSearch" xml:space="preserve">
+    <value>Keresés...</value>
+  </data>
+  <data name="DTShift" xml:space="preserve">
+    <value>Műszak</value>
+  </data>
+  <data name="DTTables" xml:space="preserve">
+    <value>Állásidő jelentés</value>
+  </data>
+  <data name="DTTime" xml:space="preserve">
+    <value>Idő</value>
+  </data>
+  <data name="DTTypes" xml:space="preserve">
+    <value>Állásidő ok</value>
+  </data>
+  <data name="DTTypesGroup" xml:space="preserve">
+    <value>DTTypesGroup</value>
+  </data>
+  <data name="DttypesGroupDescription" xml:space="preserve">
+    <value>Állásidő típus csoport [magyar]</value>
+  </data>
+  <data name="DttypesGroupDescriptionEn" xml:space="preserve">
+    <value>Állásidő típus csoport [angol]</value>
+  </data>
+  <data name="DTTypesGroupIndex" xml:space="preserve">
+    <value>MUNKAHELY CSOPORTOK</value>
+  </data>
+  <data name="DTTypesGroups" xml:space="preserve">
+    <value>Állásidő ok csoportja</value>
+  </data>
+  <data name="DTTypesGroupsTables" xml:space="preserve">
+    <value>Munakahely csoportok</value>
+  </data>
+  <data name="DTTypesIndex" xml:space="preserve">
+    <value>ÁLLÁSIDŐ OKOK</value>
+  </data>
+  <data name="DTTypesTables" xml:space="preserve">
+    <value>Okok leírása</value>
+  </data>
+  <data name="DTWorkDay" xml:space="preserve">
+    <value>Munkanap</value>
+  </data>
+  <data name="Du" xml:space="preserve">
+    <value>DU</value>
+  </data>
+  <data name="DueDate" xml:space="preserve">
+    <value>Eredeti határidő</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>szerkesztés</value>
+  </data>
+  <data name="Efficiencies" xml:space="preserve">
+    <value>Hatékonysági faktor</value>
+  </data>
+  <data name="Efficiency" xml:space="preserve">
+    <value>Hatékonyság</value>
+  </data>
+  <data name="EFFICIENCYTXT" xml:space="preserve">
+    <value>Hatékonyság</value>
+  </data>
+  <data name="EliminationDueToEfficiency" xml:space="preserve">
+    <value>Hatékonyság miatti kiesés</value>
+  </data>
+  <data name="Elvart" xml:space="preserve">
+    <value>Elvárt</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail címe</value>
+  </data>
+  <data name="EmailInvalid" xml:space="preserve">
+    <value>E-mail nem megfelelő</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>E-mail cím szükséges</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>Üres</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>Vége</value>
+  </data>
+  <data name="English (United States)" xml:space="preserve">
+    <value>Angol (USA)</value>
+  </data>
+  <data name="Export to PDF file..." xml:space="preserve">
+    <value>PDF-be export...</value>
+  </data>
+  <data name="External logins" xml:space="preserve">
+    <value>Külső belépés</value>
+  </data>
+  <data name="FailureCodeID" xml:space="preserve">
+    <value>Hibakód azonosító</value>
+  </data>
+  <data name="FailureDescription" xml:space="preserve">
+    <value>Hibaleírás</value>
+  </data>
+  <data name="FailureDescriptionEN" xml:space="preserve">
+    <value>Hibaleírás [Angol]</value>
+  </data>
+  <data name="FailureRate" xml:space="preserve">
+    <value>Hibaráta</value>
+  </data>
+  <data name="FinishDate" xml:space="preserve">
+    <value>Teljesítés dátuma</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Előnév</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Felhasználó neve</value>
+  </data>
+  <data name="FullNameRequired" xml:space="preserve">
+    <value>Felhasználó neve szükséges</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Általános</value>
+  </data>
+  <data name="GoodNumberOfPieces" xml:space="preserve">
+    <value>Jó darabok száma</value>
+  </data>
+  <data name="GoodPartsA" xml:space="preserve">
+    <value>Jó darabszám</value>
+  </data>
+  <data name="Gyartott" xml:space="preserve">
+    <value>Gyártott</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Szia</value>
+  </data>
+  <data name="Hetnapja" xml:space="preserve">
+    <value>Hét napja</value>
+  </data>
+  <data name="Hi," xml:space="preserve">
+    <value>Üdv,</value>
+  </data>
+  <data name="Hi, Visitor" xml:space="preserve">
+    <value>Üdv, Látogató</value>
+  </data>
+  <data name="HibasDarab" xml:space="preserve">
+    <value>Hibás</value>
+  </data>
+  <data name="High" xml:space="preserve">
+    <value>Magas</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Alap</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>óra</value>
+  </data>
+  <data name="Hour1" xml:space="preserve">
+    <value>1-ÓRA</value>
+  </data>
+  <data name="Hour2" xml:space="preserve">
+    <value>2-ÓRA</value>
+  </data>
+  <data name="Hour3" xml:space="preserve">
+    <value>3-ÓRA</value>
+  </data>
+  <data name="Hour4" xml:space="preserve">
+    <value>4-ÓRA</value>
+  </data>
+  <data name="Hour5" xml:space="preserve">
+    <value>5-ÓRA</value>
+  </data>
+  <data name="Hour6" xml:space="preserve">
+    <value>6-ÓRA</value>
+  </data>
+  <data name="Hour7" xml:space="preserve">
+    <value>7-ÓRA</value>
+  </data>
+  <data name="Hour8" xml:space="preserve">
+    <value>8-ÓRA</value>
+  </data>
+  <data name="Hour9" xml:space="preserve">
+    <value>9-ÓRA</value>
+  </data>
+  <data name="HourlyGoodQuantity" xml:space="preserve">
+    <value>Óránkénti jó darabszám</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>Órák</value>
+  </data>
+  <data name="Hungarian (Hungary)" xml:space="preserve">
+    <value>Magyar</value>
+  </data>
+  <data name="I already have a membership" xml:space="preserve">
+    <value>Már tag vagyok</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Azonosító</value>
+  </data>
+  <data name="IdRequired" xml:space="preserve">
+    <value>Azonosító kell</value>
+  </data>
+  <data name="IFSDetectionIndex" xml:space="preserve">
+    <value>DETEKTÁLÁS HELYE</value>
+  </data>
+  <data name="IFSDetectionTable" xml:space="preserve">
+    <value>Detektálás tábla</value>
+  </data>
+  <data name="IFSDetectionTables" xml:space="preserve">
+    <value>Detektálás helye</value>
+  </data>
+  <data name="IFSFailureClassCodeIndex" xml:space="preserve">
+    <value>HIBAOSZTÁLY</value>
+  </data>
+  <data name="IFSFailureClassCodeTable" xml:space="preserve">
+    <value>Hibaosztály tábla</value>
+  </data>
+  <data name="IFSFailureCodeIndex" xml:space="preserve">
+    <value>HIBAKÓDOK</value>
+  </data>
+  <data name="IFSFailureCodeTable" xml:space="preserve">
+    <value>Hibakód tábla</value>
+  </data>
+  <data name="IFSFaulireClassCodeTables" xml:space="preserve">
+    <value>Hibaosztályok</value>
+  </data>
+  <data name="IFSFaulireCodeTables" xml:space="preserve">
+    <value>Hibákódok</value>
+  </data>
+  <data name="IFSHeaderID" xml:space="preserve">
+    <value>Azonosító</value>
+  </data>
+  <data name="IFSHeaderIndex" xml:space="preserve">
+    <value>HIBA FEJLÉC ADATOK</value>
+  </data>
+  <data name="IFSHeaderTable" xml:space="preserve">
+    <value>Hiba fejléc tábla</value>
+  </data>
+  <data name="IFSHeaderTables" xml:space="preserve">
+    <value>Hiba fejléc</value>
+  </data>
+  <data name="IFSMuszakIndex" xml:space="preserve">
+    <value>MŰSZAKOK</value>
+  </data>
+  <data name="IFSMuszakTables" xml:space="preserve">
+    <value>Műszak</value>
+  </data>
+  <data name="IFSShiftIndex" xml:space="preserve">
+    <value>GYÁRTOTT DARABSZÁM</value>
+  </data>
+  <data name="IFSShiftTables" xml:space="preserve">
+    <value>Darabszám jelentés</value>
+  </data>
+  <data name="IFSValueIndex" xml:space="preserve">
+    <value>HIBAGYŰJTŐ</value>
+  </data>
+  <data name="IFSValueTable" xml:space="preserve">
+    <value>Hibagyűjtő tábla</value>
+  </data>
+  <data name="IFSValueTables" xml:space="preserve">
+    <value>Hibagyűjtő</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>Folyamatban</value>
+  </data>
+  <data name="In Progress 75%" xml:space="preserve">
+    <value>Folyamatban 75%</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Lista</value>
+  </data>
+  <data name="Interval" xml:space="preserve">
+    <value>Intervallum</value>
+  </data>
+  <data name="Irsz" xml:space="preserve">
+    <value>Irsz</value>
+  </data>
+  <data name="Kefetartoszam" xml:space="preserve">
+    <value>Kefetartószám</value>
+  </data>
+  <data name="KiDat" xml:space="preserve">
+    <value>Kilépés</value>
+  </data>
+  <data name="KPI" xml:space="preserve">
+    <value>KPI mutató</value>
+  </data>
+  <data name="Kpiid" xml:space="preserve">
+    <value>KPI azonosító</value>
+  </data>
+  <data name="KPIs" xml:space="preserve">
+    <value>KPI-k</value>
+  </data>
+  <data name="KPITables" xml:space="preserve">
+    <value>KPI mutatók</value>
+  </data>
+  <data name="Language:" xml:space="preserve">
+    <value>Nyelv:</value>
+  </data>
+  <data name="LangURL:" xml:space="preserve">
+    <value>/language/hu.json</value>
+  </data>
+  <data name="Last" xml:space="preserve">
+    <value>Utolsó adat</value>
+  </data>
+  <data name="LastAlertLevel" xml:space="preserve">
+    <value>Utaolsó riasztás</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Utónév</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Szint</value>
+  </data>
+  <data name="LineID" xml:space="preserve">
+    <value>Sor</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>Listája</value>
+  </data>
+  <data name="Log In" xml:space="preserve">
+    <value>Belépés</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Belépés</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Kilépés</value>
+  </data>
+  <data name="Logs" xml:space="preserve">
+    <value>Naplózás</value>
+  </data>
+  <data name="LossOfCycleTime" xml:space="preserve">
+    <value>Ciklusidő veszteség</value>
+  </data>
+  <data name="LossOfDownTime" xml:space="preserve">
+    <value>Állásidő veszteség</value>
+  </data>
+  <data name="Low" xml:space="preserve">
+    <value>Alacsony</value>
+  </data>
+  <data name="LZAbfor" xml:space="preserve">
+    <value>Dolgozói lekérdezés</value>
+  </data>
+  <data name="LZAbForIndex" xml:space="preserve">
+    <value>DOLGOZÓI LEKÉRDEZÉS</value>
+  </data>
+  <data name="LZCompetencyIndex" xml:space="preserve">
+    <value>KVALIFIKÁCIÓK</value>
+  </data>
+  <data name="LZCompetencyTables" xml:space="preserve">
+    <value>Kvalifikációk leírása</value>
+  </data>
+  <data name="LZDolgozoIndex" xml:space="preserve">
+    <value>DOLGOZÓK</value>
+  </data>
+  <data name="LZDolgozoTables" xml:space="preserve">
+    <value>Dolgozó tábla</value>
+  </data>
+  <data name="LZHolidayOfMonth" xml:space="preserve">
+    <value>Dolgozói havi szabadság</value>
+  </data>
+  <data name="LZHours" xml:space="preserve">
+    <value>Dolgozói órák</value>
+  </data>
+  <data name="LZHoursIndex" xml:space="preserve">
+    <value>DOLGOZÓI ÓRÁK</value>
+  </data>
+  <data name="LZHoursOfMonth" xml:space="preserve">
+    <value>Dolgozói havi órák</value>
+  </data>
+  <data name="LZHoursOfMonthIndex" xml:space="preserve">
+    <value>DOLGOZÓI HAVI ÓRÁK</value>
+  </data>
+  <data name="LZHSzabadsagOfMonthIndex" xml:space="preserve">
+    <value>DOLGOZÓI HAVI SZABADSÁG</value>
+  </data>
+  <data name="LZIntervalIndex" xml:space="preserve">
+    <value>TÁVOLLÉT RÖGZÍTÉS</value>
+  </data>
+  <data name="LZIntervalTable" xml:space="preserve">
+    <value>Dolgozói távollétek</value>
+  </data>
+  <data name="LZIntervalTables" xml:space="preserve">
+    <value>Távollét rögzítés</value>
+  </data>
+  <data name="LZKefetartoIndex" xml:space="preserve">
+    <value>TERMÉK CSOPORTOK</value>
+  </data>
+  <data name="LZKefetartoTable" xml:space="preserve">
+    <value>Termék csoport tábla</value>
+  </data>
+  <data name="LZKefetartoTables" xml:space="preserve">
+    <value>Termék csoportok</value>
+  </data>
+  <data name="LZKefetartoTipusIndex" xml:space="preserve">
+    <value>MŰVELETEK</value>
+  </data>
+  <data name="LZKefetartoTipusListaIndex" xml:space="preserve">
+    <value>GYÁRTÓ TERÜLETEK</value>
+  </data>
+  <data name="LZKefetartoTipusListaTable" xml:space="preserve">
+    <value>Gyártó terület tábla</value>
+  </data>
+  <data name="LZKefetartoTipusListaTables" xml:space="preserve">
+    <value>Gyártó területek</value>
+  </data>
+  <data name="LZKefetartoTipusTable" xml:space="preserve">
+    <value>Művelet tábla</value>
+  </data>
+  <data name="LZKefetartoTipusTables" xml:space="preserve">
+    <value>Műveletek</value>
+  </data>
+  <data name="LZMunkaCodeIndex" xml:space="preserve">
+    <value>MUNKANAP CSOPORTOK</value>
+  </data>
+  <data name="LZMunkaCodeTables" xml:space="preserve">
+    <value>Munkanap csoport tábla</value>
+  </data>
+  <data name="LZMunkaNapIndex" xml:space="preserve">
+    <value>MUNKANAPOK</value>
+  </data>
+  <data name="LZMunkaNapTables" xml:space="preserve">
+    <value>Munkanap tábla</value>
+  </data>
+  <data name="LZMunkaNapViewer" xml:space="preserve">
+    <value>Munkaidő naptár</value>
+  </data>
+  <data name="LZMuszakIndex" xml:space="preserve">
+    <value>MŰSZAKOK</value>
+  </data>
+  <data name="LZMuszakTable" xml:space="preserve">
+    <value>Műszak tábla</value>
+  </data>
+  <data name="LZMuszakTables" xml:space="preserve">
+    <value>Műszakok</value>
+  </data>
+  <data name="LZMuveletReszletIndex" xml:space="preserve">
+    <value>CIKKSZÁMOK</value>
+  </data>
+  <data name="LZMuveletReszletTable" xml:space="preserve">
+    <value>Cikkszám tábla</value>
+  </data>
+  <data name="LZMuveletReszletTables" xml:space="preserve">
+    <value>Cikkszámok</value>
+  </data>
+  <data name="LZNaptarTables" xml:space="preserve">
+    <value>Munkanaptár</value>
+  </data>
+  <data name="LZNaptarTablesViewer" xml:space="preserve">
+    <value>Munkanaptár</value>
+  </data>
+  <data name="LZSzabadsag" xml:space="preserve">
+    <value>Dolgozói szabadság</value>
+  </data>
+  <data name="LZSzabadsagIndex" xml:space="preserve">
+    <value>DOLGOZÓI SZABADSÁGOK</value>
+  </data>
+  <data name="LZSzabadsagOfMonthIndex" xml:space="preserve">
+    <value>DOLGOZÓI HAVI SZABADSÁGOK</value>
+  </data>
+  <data name="LZTables" xml:space="preserve">
+    <value>Teljesítménylap</value>
+  </data>
+  <data name="LZTeljesitmenyIndex" xml:space="preserve">
+    <value>DOLGOZÓI TELJESÍTMÉNYEK RÖGZÍTÉSE</value>
+  </data>
+  <data name="LZTeljesitmenyTable" xml:space="preserve">
+    <value>Műveleti lap</value>
+  </data>
+  <data name="LZTeljesitmenyTables" xml:space="preserve">
+    <value>Műveleti lapok (Laufzettel)</value>
+  </data>
+  <data name="M1end" xml:space="preserve">
+    <value>Műszak #1 End</value>
+  </data>
+  <data name="M1start" xml:space="preserve">
+    <value>Műszak #1 Start</value>
+  </data>
+  <data name="M2end" xml:space="preserve">
+    <value>Műszak #2 End</value>
+  </data>
+  <data name="M2start" xml:space="preserve">
+    <value>Műszak #2 Start</value>
+  </data>
+  <data name="M3end" xml:space="preserve">
+    <value>Műszak #3 End</value>
+  </data>
+  <data name="M3start" xml:space="preserve">
+    <value>Műszak #3 Start</value>
+  </data>
+  <data name="Manage Email" xml:space="preserve">
+    <value>Email kezelése</value>
+  </data>
+  <data name="Manage your account" xml:space="preserve">
+    <value>Fiók kezelése</value>
+  </data>
+  <data name="ManageUserRoles" xml:space="preserve">
+    <value>Felhasználói jogok szerkesztése</value>
+  </data>
+  <data name="Meanpercent" xml:space="preserve">
+    <value>Közép [%]</value>
+  </data>
+  <data name="Medium" xml:space="preserve">
+    <value>Közepes</value>
+  </data>
+  <data name="Megjegyzes" xml:space="preserve">
+    <value>Megjegyzés</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menü</value>
+  </data>
+  <data name="Minpercent" xml:space="preserve">
+    <value>Min. [%]</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>perc</value>
+  </data>
+  <data name="Modified" xml:space="preserve">
+    <value>Módosítva</value>
+  </data>
+  <data name="OEEChart" xml:space="preserve">
+    <value>havi OEE diagram</value>
+  </data>
+  <data name="Morning" xml:space="preserve">
+    <value>Délelőtt</value>
+  </data>
+  <data name="Munkaido" xml:space="preserve">
+    <value>Munkaóra</value>
+  </data>
+  <data name="Munkanap" xml:space="preserve">
+    <value>Munkanap</value>
+  </data>
+  <data name="Muszak" xml:space="preserve">
+    <value>Műszak</value>
+  </data>
+  <data name="Muveletreszlet" xml:space="preserve">
+    <value>Műveletrészlet</value>
+  </data>
+  <data name="Muveletszam" xml:space="preserve">
+    <value>Műveletszám</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Neve</value>
+  </data>
+  <data name="NewEmail" xml:space="preserve">
+    <value>Új email</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Új jelszó</value>
+  </data>
+  <data name="Night" xml:space="preserve">
+    <value>Éjszaka</value>
+  </data>
+  <data name="NumberOfRejects" xml:space="preserve">
+    <value>Selejtek száma</value>
+  </data>
+  <data name="OEE" xml:space="preserve">
+    <value>OEE napi kimutatás</value>
+  </data>
+  <data name="OEEIndex" xml:space="preserve">
+    <value>OEE NAPI KIMUTATÁS</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>Régi jelszó</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Kiírva</value>
+  </data>
+  <data name="Open 25%" xml:space="preserve">
+    <value>Kiírva 25%</value>
+  </data>
+  <data name="Ora" xml:space="preserve">
+    <value>Óra</value>
+  </data>
+  <data name="OsszesDarab" xml:space="preserve">
+    <value>Összes darab</value>
+  </data>
+  <data name="OsszesOra" xml:space="preserve">
+    <value>Összes óra</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Egyéb</value>
+  </data>
+  <data name="Others" xml:space="preserve">
+    <value>Egyéb</value>
+  </data>
+  <data name="Parent" xml:space="preserve">
+    <value>Szülő</value>
+  </data>
+  <data name="ParentId" xml:space="preserve">
+    <value>Szülő ID</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Jelszó</value>
+  </data>
+  <data name="Personal data" xml:space="preserve">
+    <value>Személyes adatok</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telefonszám</value>
+  </data>
+  <data name="Pihenonap" xml:space="preserve">
+    <value>Pihenőnap</value>
+  </data>
+  <data name="Please select from the top navigation menu!" xml:space="preserve">
+    <value>Kérjük, válasszon a felső navigációs menüből!</value>
+  </data>
+  <data name="Power Tools 1" xml:space="preserve">
+    <value>Autóipari gyártás 1</value>
+  </data>
+  <data name="Power Tools 2" xml:space="preserve">
+    <value>Autóipari gyártás 2</value>
+  </data>
+  <data name="PowerTools1" xml:space="preserve">
+    <value>Autóipari gyártás 1</value>
+  </data>
+  <data name="PowerTools2" xml:space="preserve">
+    <value>Autóipari gyártás 2</value>
+  </data>
+  <data name="Print..." xml:space="preserve">
+    <value>Nyomtat...</value>
+  </data>
+  <data name="Priorities" xml:space="preserve">
+    <value>Prioritások</value>
+  </data>
+  <data name="PrioritiesTitle" xml:space="preserve">
+    <value>Prioritások neve</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Prioritás</value>
+  </data>
+  <data name="PriorityID" xml:space="preserve">
+    <value>Prioritás azonosítója</value>
+  </data>
+  <data name="PriorityTitle" xml:space="preserve">
+    <value>Prioritás neve</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Titoktartás</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="ProfilePicture" xml:space="preserve">
+    <value>Profil kép</value>
+  </data>
+  <data name="PT" xml:space="preserve">
+    <value>Gyártásidő</value>
+  </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Minőség</value>
+  </data>
+  <data name="QualityCosts" xml:space="preserve">
+    <value>Minőség költségek</value>
+  </data>
+  <data name="QUALITYTXT" xml:space="preserve">
+    <value>Minőség</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Regisztráció</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Regisztrálás</value>
+  </data>
+  <data name="Remember Me" xml:space="preserve">
+    <value>Emlékezz rám</value>
+  </data>
+  <data name="Rememberme" xml:space="preserve">
+    <value>Emlékezz rám?</value>
+  </data>
+  <data name="Request culture provider:" xml:space="preserve">
+    <value>Nyelv kiválasztás szükséges:</value>
+  </data>
+  <data name="RescheduleDate" xml:space="preserve">
+    <value>Határidő</value>
+  </data>
+  <data name="reset your authenticator keys." xml:space="preserve">
+    <value>állítsa vissza a hitelesítő kulcsokat.</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Jogosultság</value>
+  </data>
+  <data name="Role Manager" xml:space="preserve">
+    <value>Jogosultságok</value>
+  </data>
+  <data name="RoleId" xml:space="preserve">
+    <value>Jogosultság Id</value>
+  </data>
+  <data name="RoleManagerIndex" xml:space="preserve">
+    <value>JOGOK MENEDZSERE</value>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Jogosultság neve</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Jogosultságok</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Mentés</value>
+  </data>
+  <data name="Save to CSV file..." xml:space="preserve">
+    <value>CSV-be ment...</value>
+  </data>
+  <data name="Save to Excel file..." xml:space="preserve">
+    <value>Excel-be ment...</value>
+  </data>
+  <data name="SaveTxt" xml:space="preserve">
+    <value>Munkádat elmentettem</value>
+  </data>
+  <data name="Scrap" xml:space="preserve">
+    <value>Selejt</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Kereső</value>
+  </data>
+  <data name="Search text..." xml:space="preserve">
+    <value>Keresd...</value>
+  </data>
+  <data name="Search:" xml:space="preserve">
+    <value>Keresés:</value>
+  </data>
+  <data name="Select Image" xml:space="preserve">
+    <value>Kép kiválasztása</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>Kiválasztott</value>
+  </data>
+  <data name="Selejt" xml:space="preserve">
+    <value>Selejt</value>
+  </data>
+  <data name="Send verification email" xml:space="preserve">
+    <value>Küldj megerősítő e-mailt</value>
+  </data>
+  <data name="Setting time" xml:space="preserve">
+    <value>Beállítási idő</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Beállítások</value>
+  </data>
+  <data name="SettingsParts" xml:space="preserve">
+    <value>Beállítási termék</value>
+  </data>
+  <data name="Shift" xml:space="preserve">
+    <value>Műszak</value>
+  </data>
+  <data name="ShiftDescription" xml:space="preserve">
+    <value>Műszak</value>
+  </data>
+  <data name="ShiftDescriptionEN" xml:space="preserve">
+    <value>Műszak [Angol]</value>
+  </data>
+  <data name="ShiftIndex" xml:space="preserve">
+    <value>MŰSZAK ADATOK</value>
+  </data>
+  <data name="ShiftsTable" xml:space="preserve">
+    <value>Műszak</value>
+  </data>
+  <data name="ShopfloorTables" xml:space="preserve">
+    <value>Shopfloor tábla</value>
+  </data>
+  <data name="Short" xml:space="preserve">
+    <value>Rövidnév</value>
+  </data>
+  <data name="Show/Hide Columns" xml:space="preserve">
+    <value>Oszlopok megjelenítése/elrejtése</value>
+  </data>
+  <data name="Sign In" xml:space="preserve">
+    <value>Belépés</value>
+  </data>
+  <data name="Sign in to start your session" xml:space="preserve">
+    <value>A munkamenet megkezdéséhez jelentkezzen be</value>
+  </data>
+  <data name="Sign up using Facebook" xml:space="preserve">
+    <value>Regisztrálj a Facebook segítségével</value>
+  </data>
+  <data name="Sign up using Google+" xml:space="preserve">
+    <value>Regisztráljon a Google+ használatával</value>
+  </data>
+  <data name="SortedId" xml:space="preserve">
+    <value>Rendezett ID</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Kezdet</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Kezdete</value>
+  </data>
+  <data name="StationId" xml:space="preserve">
+    <value>Állomás</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Státusz</value>
+  </data>
+  <data name="StatusID" xml:space="preserve">
+    <value>Státusz azonosító</value>
+  </data>
+  <data name="StatusTitle" xml:space="preserve">
+    <value>Státusz neve</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Vég</value>
+  </data>
+  <data name="SumDownTime" xml:space="preserve">
+    <value>Összes állásidő</value>
+  </data>
+  <data name="SystemParamIndex" xml:space="preserve">
+    <value>RENDSZER PARAMÉTEREK</value>
+  </data>
+  <data name="SystemParams" xml:space="preserve">
+    <value>Rendszer</value>
+  </data>
+  <data name="Szazelek" xml:space="preserve">
+    <value>Százalék</value>
+  </data>
+  <data name="SzDat" xml:space="preserve">
+    <value>Születés</value>
+  </data>
+  <data name="Telefonszam" xml:space="preserve">
+    <value>Telefonszám</value>
+  </data>
+  <data name="Test" xml:space="preserve">
+    <value>Próba</value>
+  </data>
+  <data name="Testing" xml:space="preserve">
+    <value>Tesztelés</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Szöveg</value>
+  </data>
+  <data name="Thepasswordlength" xml:space="preserve">
+    <value>A jelszónak minimum 6 karaktert kell tartalmaznia, amiből legalább egy nagybetű, egy szám és egy speciális karakter.</value>
+  </data>
+  <data name="Thepasswordmatch" xml:space="preserve">
+    <value>A jelszó és a megerősítési jelszó nem egyezik.</value>
+  </data>
+  <data name="This action only disables 2FA." xml:space="preserve">
+    <value>Ez a művelet csak a 2FA-t tiltja le.</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Időbélyeg</value>
+  </data>
+  <data name="TIP" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="TIPs" xml:space="preserve">
+    <value>Projektek</value>
+  </data>
+  <data name="TIPTables" xml:space="preserve">
+    <value>TIP feladatkezelő</value>
+  </data>
+  <data name="Tipus" xml:space="preserve">
+    <value>Típus</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Cimke</value>
+  </data>
+  <data name="TitleEn" xml:space="preserve">
+    <value>Cimke (angol)</value>
+  </data>
+  <data name="TitleRequired" xml:space="preserve">
+    <value>Cimke kell</value>
+  </data>
+  <data name="Tools of Admins" xml:space="preserve">
+    <value>Admin szerszámok</value>
+  </data>
+  <data name="TOP10DownTimeReason" xml:space="preserve">
+    <value>Leggyakoribb 10 állásidő ok</value>
+  </data>
+  <data name="InHours" xml:space="preserve">
+    <value>órában</value>
+  </data>
+  <data name="Two-factor authentication" xml:space="preserve">
+    <value>Kétfaktoros azonosítás</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Típus</value>
+  </data>
+  <data name="TypeID" xml:space="preserve">
+    <value>Típus</value>
+  </data>
+  <data name="OfWhich" xml:space="preserve">
+    <value>ebből</value>
+  </data>
+  <data name="UnknownDownTime" xml:space="preserve">
+    <value>indokolatlan</value>
+  </data>
+  <data name="Unnep" xml:space="preserve">
+    <value>Ünnep</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Módosítás</value>
+  </data>
+  <data name="UpdatePassword" xml:space="preserve">
+    <value>Jelszó frissítés</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Felhasználó</value>
+  </data>
+  <data name="User Roles" xml:space="preserve">
+    <value>Felhasználói jogok</value>
+  </data>
+  <data name="UserId" xml:space="preserve">
+    <value>Felhasználó azonosító</value>
+  </data>
+  <data name="UserId1" xml:space="preserve">
+    <value>Felelős</value>
+  </data>
+  <data name="UserId2" xml:space="preserve">
+    <value>Közreműködő</value>
+  </data>
+  <data name="UserId3" xml:space="preserve">
+    <value>Közreműködő</value>
+  </data>
+  <data name="UserList" xml:space="preserve">
+    <value>Felhasználók listája</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Felhasználó neve</value>
+  </data>
+  <data name="UserNameRequired" xml:space="preserve">
+    <value>Felhasználó név szükséges</value>
+  </data>
+  <data name="UserRolesIndex" xml:space="preserve">
+    <value>FELHASZNÁLÓI JOGOK</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Felhasználók</value>
+  </data>
+  <data name="Utca_hrsz" xml:space="preserve">
+    <value>Cím</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Érték</value>
+  </data>
+  <data name="Varos" xml:space="preserve">
+    <value>Város</value>
+  </data>
+  <data name="ViewGbmDownTimeReasons" xml:space="preserve">
+    <value>GBM állásokok</value>
+  </data>
+  <data name="Wasterate" xml:space="preserve">
+    <value>Selejtarány</value>
+  </data>
+  <data name="WorkingDatas" xml:space="preserve">
+    <value>GYÁRTÁSI ADATOK:</value>
+  </data>
+  <data name="WorkingDates" xml:space="preserve">
+    <value>Dátum</value>
+  </data>
+  <data name="WorkingHours" xml:space="preserve">
+    <value>Munkaórák</value>
+  </data>
+  <data name="WorkingId" xml:space="preserve">
+    <value>Dolgozó</value>
+  </data>
+  <data name="WorkingLines" xml:space="preserve">
+    <value>Gyártósor</value>
+  </data>
+  <data name="WorkingShifts" xml:space="preserve">
+    <value>Műszak</value>
+  </data>
+  <data name="WT" xml:space="preserve">
+    <value>Várakozásidő</value>
+  </data>
+  <data name="Wtnr" xml:space="preserve">
+    <value>WT szám</value>
+  </data>
+  <data name="Your account contains personal data that you have given us. This page allows you to download or delete that data." xml:space="preserve">
+    <value>Fiókja olyan személyes adatokat tartalmaz, amelyeket Ön adott nekünk. Ez az oldal lehetővé teszi az adatok letöltését vagy törlését.</value>
+  </data>
+  <data name="[None]" xml:space="preserve">
+    <value>[Semmi]</value>
+  </data>
+  <data name="FailureId" xml:space="preserve">
+    <value>Hiba azonosító</value>
+  </data>
+  <data name="LZMuszak" xml:space="preserve">
+    <value>Műszak néző</value>
+  </data>
+  <data name="Szazalek" xml:space="preserve">
+    <value>Százalék</value>
+  </data>
+  <data name="DTConnects" xml:space="preserve">
+    <value>Állás okok</value>
+  </data>
+  <data name="DTDefault" xml:space="preserve">
+    <value>Állás alapérték</value>
+  </data>
+  <data name="DTDisable" xml:space="preserve">
+    <value>Tiltott állások</value>
+  </data>
+  <data name="DTFamily" xml:space="preserve">
+    <value>Állás család</value>
+  </data>
+  <data name="DTNew" xml:space="preserve">
+    <value>Új állások</value>
+  </data>
+  <data name="DTReason" xml:space="preserve">
+    <value>Állás okok</value>
+  </data>
+  <data name="DTValue" xml:space="preserve">
+    <value>Rögzített állások</value>
+  </data>
+  <data name="DTFamilyDescription" xml:space="preserve">
+    <value>Állás család leirás</value>
+  </data>
+  <data name="DTConnect" xml:space="preserve">
+    <value>Állás kapcsolatok</value>
+  </data>
+  <data name="DTReasonDescription" xml:space="preserve">
+    <value>Állás ok leírása</value>
+  </data>
+  <data name="IFSMuszakTable" xml:space="preserve">
+    <value>Műszak tábla</value>
+  </data>
+  <data name="DTFamilyDescriptionEn" xml:space="preserve">
+    <value>Állás család leirás [angol]</value>
+  </data>
+  <data name="DTReasonDescriptionEn" xml:space="preserve">
+    <value>Állás ok leírása [angol]</value>
+  </data>
+  <data name="OEEHeader" xml:space="preserve">
+    <value>Gyártási adatok</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Angol</value>
+  </data>
+  <data name="Hungarian" xml:space="preserve">
+    <value>Magyar</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Nyelv</value>
+  </data>
+  <data name="PleaseLogin" xml:space="preserve">
+    <value>Kérem, jelentkezzen be !</value>
+  </data>
+  <data name="ShiftView" xml:space="preserve">
+    <value>Műszak nézet</value>
+  </data>
+  <data name="MainBoardGroups" xml:space="preserve">
+    <value>Projekt fejléc</value>
+  </data>
+  <data name="RoutingSlipTable" xml:space="preserve">
+    <value>Műveleti lapok (Laufzettel)</value>
+  </data>
+  <data name="NewRecord" xml:space="preserve">
+    <value>Új rögzítés</value>
+  </data>
+  <data name="Laufzettel" xml:space="preserve">
+    <value>Laufzettel</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="TaskLPA" xml:space="preserve">
+    <value>LPA</value>
+  </data>
+  <data name="TaskShopFloor" xml:space="preserve">
+    <value>ShopFloor</value>
+  </data>
+  <data name="txtbadparts" xml:space="preserve">
+    <value>Add meg a selejtek számát!</value>
+  </data>
+  <data name="txtbhid" xml:space="preserve">
+    <value>Válaszd ki a cikkszámot!</value>
+  </data>
+  <data name="txtcomment" xml:space="preserve">
+    <value>megjegyzés</value>
+  </data>
+  <data name="txtcomments" xml:space="preserve">
+    <value>Írj szöveges megjegyzést!</value>
+  </data>
+  <data name="txtconfirmpassword" xml:space="preserve">
+    <value>jelszó ismétlés</value>
+  </data>
+  <data name="txtdate" xml:space="preserve">
+    <value>Add  meg a dátumot!</value>
+  </data>
+  <data name="txtemail" xml:space="preserve">
+    <value>e-mail cím</value>
+  </data>
+  <data name="txtfirstname" xml:space="preserve">
+    <value>vezetéknév</value>
+  </data>
+  <data name="txtgoodparts" xml:space="preserve">
+    <value>Add meg a jó darabszámot!</value>
+  </data>
+  <data name="txthours" xml:space="preserve">
+    <value>Add meg a ledolgozott órák számát!</value>
+  </data>
+  <data name="txtid" xml:space="preserve">
+    <value>Válaszd ki a dolgozót vagy add meg a dolgozó számát!</value>
+  </data>
+  <data name="txtlastname" xml:space="preserve">
+    <value>utónév</value>
+  </data>
+  <data name="txtopid" xml:space="preserve">
+    <value>Válaszd ki a műveletet vagy add meg a művelet számát!</value>
+  </data>
+  <data name="txtpassword" xml:space="preserve">
+    <value>jelszó</value>
+  </data>
+  <data name="txtshift" xml:space="preserve">
+    <value>Válaszd ki a műszakot!</value>
+  </data>
+  <data name="txtdate2" xml:space="preserve">
+    <value>Kérlek válassz ki a vég dátumot!</value>
+  </data>
+  <data name="txtdatefrom" xml:space="preserve">
+    <value>Kérlek válassz ki a kezdő dátumot!</value>
+  </data>
+  <data name="EmployeeData" xml:space="preserve">
+    <value>Dolgozó adatai</value>
+  </data>
+  <data name="RoutingsData" xml:space="preserve">
+    <value>Művelet adatai</value>
+  </data>
+  <data name="txtdateto" xml:space="preserve">
+    <value>Kérlek válassz ki a vég dátumot!</value>
+  </data>
+  <data name="OEE%" xml:space="preserve">
+    <value>OEE</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Mennyiség</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Idő</value>
+  </data>
+  <data name="TablePlannedDownTimes" xml:space="preserve">
+    <value>Szünet tervező</value>
+  </data>
+  <data name="KPIDataSources" xml:space="preserve">
+    <value>KPIDataSources</value>
+  </data>
+  <data name="KPIExpectations" xml:space="preserve">
+    <value>KPIExpectations</value>
+  </data>
+  <data name="KPIHeaders" xml:space="preserve">
+    <value>KPIHeaders</value>
+  </data>
+  <data name="KPIProcesses" xml:space="preserve">
+    <value>KPIProcesses</value>
+  </data>
+  <data name="KPIResponsibles" xml:space="preserve">
+    <value>KPIResponsibles</value>
+  </data>
+  <data name="KPISummantions" xml:space="preserve">
+    <value>KPISummantions</value>
+  </data>
+  <data name="KPIUnits" xml:space="preserve">
+    <value>KPIUnits</value>
+  </data>
+  <data name="KPIValues" xml:space="preserve">
+    <value>KPIValues</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>Gyártósor</value>
+  </data>
+  <data name="ShiftStart" xml:space="preserve">
+    <value>Műszak kezdete</value>
+  </data>
+  <data name="ShiftStop" xml:space="preserve">
+    <value>Műszak vége</value>
+  </data>
+  <data name="ShiftTime" xml:space="preserve">
+    <value>Teljes üzemidő</value>
+  </data>
+  <data name="TargetQty" xml:space="preserve">
+    <value>Elvárt darabszám</value>
+  </data>
+  <data name="ProducedQty" xml:space="preserve">
+    <value>Gyártott darabszám</value>
+  </data>
+  <data name="GoodQty" xml:space="preserve">
+    <value>Jó darabszám</value>
+  </data>
+  <data name="ScrapQty" xml:space="preserve">
+    <value>Selejt darabszám</value>
+  </data>
+  <data name="UnitQty" xml:space="preserve">
+    <value>db</value>
+  </data>
+  <data name="Qty" xml:space="preserve">
+    <value>Darabszám</value>
+  </data>
+  <data name="ItemNo" xml:space="preserve">
+    <value>Cikkszám</value>
+  </data>
+  <data name="BreakDescription" xml:space="preserve">
+    <value>Szünet  leírása</value>
+  </data>
+  <data name="Break" xml:space="preserve">
+    <value>Szünet</value>
+  </data>
+  <data name="TablePlannedShifts" xml:space="preserve">
+    <value>Műszak tervező</value>
+  </data>
+  <data name="EasyMES" xml:space="preserve">
+    <value>EasyMES</value>
+  </data>
+  <data name="EasyMESBOMs" xml:space="preserve">
+    <value>EasyMESBOMs</value>
+  </data>
+  <data name="EasyMESItems" xml:space="preserve">
+    <value>EasyMESItems</value>
+  </data>
+  <data name="EasyMESJobs" xml:space="preserve">
+    <value>Gyártás tervező</value>
+  </data>
+  <data name="EasyMESMains" xml:space="preserve">
+    <value>EasyMESMains</value>
+  </data>
+  <data name="EasyMesstatus" xml:space="preserve">
+    <value>Gyártási státusz</value>
+  </data>
+  <data name="EasyMESShiftPlans" xml:space="preserve">
+    <value>EasyMESShiftPlans</value>
+  </data>
+  <data name="EasyMESShifts" xml:space="preserve">
+    <value>EasyMESShifts</value>
+  </data>
+  <data name="EasyMESTTSTypes" xml:space="preserve">
+    <value>Gyártás típusok</value>
+  </data>
+  <data name="EasyMESTypes" xml:space="preserve">
+    <value>EasyMESTypes</value>
+  </data>
+  <data name="LZInterval" xml:space="preserve">
+    <value>Távollét</value>
+  </data>
+  <data name="MESProductPlanWeek" xml:space="preserve">
+    <value>MESProductPlanWeek</value>
+  </data>
+  <data name="ShiftEvents" xml:space="preserve">
+    <value>Műszak események</value>
+  </data>
+  <data name="Maintenance" xml:space="preserve">
+    <value>Karbantartás</value>
+  </data>
+  <data name="MachineSetters" xml:space="preserve">
+    <value>Gépfelelősök</value>
+  </data>
+  <data name="WorkingTimeReports" xml:space="preserve">
+    <value>Munkaidő jelentések</value>
+  </data>
+  <data name="AbsenceReports" xml:space="preserve">
+    <value>Távollét jelentések</value>
+  </data>
+  <data name="lang" xml:space="preserve">
+    <value>hu</value>
+  </data>
+  <data name="LZCategoryOfMonth" xml:space="preserve">
+    <value>Havi órák műveletek szerint</value>
+  </data>
+  <data name="AlertIntervals" xml:space="preserve">
+    <value>AlertIntervals</value>
+  </data>
+  <data name="AlertLevelUsers" xml:space="preserve">
+    <value>AlertLevelUsers</value>
+  </data>
+  <data name="AlertStations" xml:space="preserve">
+    <value>AlertStations</value>
+  </data>
+  <data name="AlertTables" xml:space="preserve">
+    <value>AlertTables</value>
+  </data>
+  <data name="AlertUserDescriptions" xml:space="preserve">
+    <value>AlertUserDescriptions</value>
+  </data>
+  <data name="AlertUsers" xml:space="preserve">
+    <value>AlertUsers</value>
+  </data>
+  <data name="GoodParts" xml:space="preserve">
+    <value>Jó darabszám</value>
+  </data>
+  <data name="Dtreports" xml:space="preserve">
+    <value>Darabszám</value>
+  </data>
+  <data name="MESWorkers" xml:space="preserve">
+    <value>MESWorkers</value>
+  </data>
+  <data name="WTQty" xml:space="preserve">
+    <value>Paletták száma</value>
+  </data>
+  <data name="TypesProduced" xml:space="preserve">
+    <value>Gyártott típusok</value>
+  </data>
+  <data name="ReportedBy" xml:space="preserve">
+    <value>Rögzítette</value>
+  </data>
+  <data name="ReportTime" xml:space="preserve">
+    <value>Rögzítés ideje</value>
+  </data>
+  <data name="TypeProduced" xml:space="preserve">
+    <value>Gyártott típus</value>
+  </data>
+  <data name="TypeIndex" xml:space="preserve">
+    <value>Típus index</value>
+  </data>
+  <data name="TypeStart" xml:space="preserve">
+    <value>Gyártás kezdete</value>
+  </data>
+  <data name="FailureType" xml:space="preserve">
+    <value>Hibatípus</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>Rendben</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value> kiválasztás</value>
+  </data>
+  <data name="DashBoards" xml:space="preserve">
+    <value>DashBoards</value>
+  </data>
+  <data name="Mesevents" xml:space="preserve">
+    <value>MESEvents</value>
+  </data>
+  <data name="MesproductPlans" xml:space="preserve">
+    <value>MESProductPlans</value>
+  </data>
+  <data name="MesproductPlanTypes" xml:space="preserve">
+    <value>MESProductPlanTypes</value>
+  </data>
+  <data name="The Email / Username field is required." xml:space="preserve">
+    <value>Email szükséges.</value>
+  </data>
+  <data name="The Email Address field is required." xml:space="preserve">
+    <value>Email szükséges.</value>
+  </data>
+  <data name="The Email Password field is required." xml:space="preserve">
+    <value>Jelszó szükséges.</value>
+  </data>
+  <data name="2fa has been disabled. You can reenable 2fa when you setup an authenticator app" xml:space="preserve">
+    <value>A 2fa le van tiltva. A 2fa újraengedélyezéséhez hitelesítő alkalmazást állít be</value>
+  </data>
+  <data name="Add authenticator app" xml:space="preserve">
+    <value>Authenticator alkalmazás hozzáadás</value>
+  </data>
+  <data name="and" xml:space="preserve">
+    <value>és</value>
+  </data>
+  <data name="Authenticator app" xml:space="preserve">
+    <value>Authenticator alkalmazás</value>
+  </data>
+  <data name="Authenticator code" xml:space="preserve">
+    <value>Authenticator kód</value>
+  </data>
+  <data name="Configure authenticator app" xml:space="preserve">
+    <value>A hitelesítő alkalmazás konfigurálása</value>
+  </data>
+  <data name="Download a two-factor authenticator app like Microsoft Authenticator for" xml:space="preserve">
+    <value>Töltsön le egy kétfaktoros hitelesítő alkalmazást, például a Microsoft Authenticator alkalmazást</value>
+  </data>
+  <data name="Forget this browser" xml:space="preserve">
+    <value>Felejtsd el ezt a böngészőt</value>
+  </data>
+  <data name="Generate Recovery Codes" xml:space="preserve">
+    <value>Helyreállítási kódok létrehozása</value>
+  </data>
+  <data name="Generate two-factor authentication(2FA) recovery codes" xml:space="preserve">
+    <value>Kétfaktoros hitelesítési (2FA) helyreállítási kódok létrehozása</value>
+  </data>
+  <data name="Generating new recovery codes does not change the keys used in authenticator apps. If you wish to change the key used in an authenticator app you should" xml:space="preserve">
+    <value>Az új helyreállítási kódok generálása nem módosítja a hitelesítő alkalmazásokban használt kulcsokat. Ha meg szeretné változtatni a hitelesítő alkalmazásban használt kulcsot, ezt meg kell tennie</value>
+  </data>
+  <data name="Google Authenticator for" xml:space="preserve">
+    <value>Google Authenticator ehhez</value>
+  </data>
+  <data name="If you do not complete your authenticator app configuration you may lose access to your account." xml:space="preserve">
+    <value>Ha nem fejezi be a hitelesítő alkalmazás konfigurációját, elveszítheti hozzáférését fiókjához.</value>
+  </data>
+  <data name="If you lose your device and don't have the recovery codes you will lose access to your account." xml:space="preserve">
+    <value>Ha elveszíti eszközét, és nem rendelkezik a helyreállítási kódokkal, akkor elveszíti hozzáférését fiókjához.</value>
+  </data>
+  <data name="If you reset your authenticator key your authenticator app will not work until you reconfigure it." xml:space="preserve">
+    <value>Ha visszaállítja a hitelesítő kulcsot, a hitelesítő alkalmazás nem fog működni, amíg újra nem konfigurálja.</value>
+  </data>
+  <data name="into your two factor authenticator app. Spaces and casing do not matter." xml:space="preserve">
+    <value>a kétfaktoros hitelesítő alkalmazásba. A szóközök és a kis- és nagybetű nem számít.</value>
+  </data>
+  <data name="Invalid authenticator code." xml:space="preserve">
+    <value>Érvénytelen hitelesítő kód.</value>
+  </data>
+  <data name="Invalid login attempt." xml:space="preserve">
+    <value>Érvénytelen bejelentkezési kísérlet.</value>
+  </data>
+  <data name="Once you have scanned the QR code or input the key above, your two factor authentication app will provide you with a unique code. Enter the code in the confirmation box below." xml:space="preserve">
+    <value>Miután beszkennelte a QR-kódot, vagy beírta a fenti kulcsot, a kétfaktoros hitelesítési alkalmazás egyedi kódot ad. Írja be a kódot az alábbi megerősítő mezőbe.</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>vagy</value>
+  </data>
+  <data name="Put these codes in a safe place." xml:space="preserve">
+    <value>Ezeket a kódokat tegye biztonságos helyre.</value>
+  </data>
+  <data name="Recovery codes" xml:space="preserve">
+    <value>Helyreállítási kódok</value>
+  </data>
+  <data name="Remember this machine" xml:space="preserve">
+    <value>Emlékezz erre gépre</value>
+  </data>
+  <data name="Reset authenticator app" xml:space="preserve">
+    <value>Authenticator alkalmazás alapállapotba állítása</value>
+  </data>
+  <data name="Reset authenticator key" xml:space="preserve">
+    <value>Hitelesítési kulcs visszaállítása</value>
+  </data>
+  <data name="Reset recovery codes" xml:space="preserve">
+    <value>Helyreállító kóddal alapállapotba állítása</value>
+  </data>
+  <data name="Scan the QR Code or enter this key" xml:space="preserve">
+    <value>Olvassa be a QR-kódot, vagy írja be ezt a kulcsot</value>
+  </data>
+  <data name="Setup authenticator app" xml:space="preserve">
+    <value>Authenticator alkalmazás beállítás</value>
+  </data>
+  <data name="The current browser has been forgotten. When you login again from this browser you will be prompted for your 2fa code." xml:space="preserve">
+    <value>A jelenlegi böngészőt elfelejtették. Amikor újra bejelentkezik ebből a böngészőből, a rendszer kérni fogja a 2fa kódot.</value>
+  </data>
+  <data name="The password and confirmation password do not match." xml:space="preserve">
+    <value>A jelszó és a megerősítő jelszó nem egyezik.</value>
+  </data>
+  <data name="The {0} must be at least {2} and at max {1} characters long." xml:space="preserve">
+    <value>A {0} legalább {2} és legfeljebb {1} karakter hosszú lehet.</value>
+  </data>
+  <data name="This process disables 2FA until you verify your authenticator app." xml:space="preserve">
+    <value>Ez a folyamat letiltja a 2FA-t, amíg nem ellenőrzi a hitelesítő alkalmazást.</value>
+  </data>
+  <data name="To use an authenticator app go through the following steps:" xml:space="preserve">
+    <value>A hitelesítő alkalmazás használatához kövesse az alábbi lépéseket:</value>
+  </data>
+  <data name="Two-factor authentication (2FA)" xml:space="preserve">
+    <value>Kétfaktoros azonosítás (2FA)</value>
+  </data>
+  <data name="Verification Code" xml:space="preserve">
+    <value>Ellenőrző kód</value>
+  </data>
+  <data name="Verification code is invalid." xml:space="preserve">
+    <value>Az ellenőrző kód érvénytelen.</value>
+  </data>
+  <data name="Verify" xml:space="preserve">
+    <value>Ellenőrzés</value>
+  </data>
+  <data name="You have generated new recovery codes." xml:space="preserve">
+    <value>Új helyreállítási kódokat hozott létre.</value>
+  </data>
+  <data name="Your authenticator app has been verified." xml:space="preserve">
+    <value>A hitelesítő alkalmazás ellenőrzése megtörtént.</value>
+  </data>
+  <data name="Your authenticator app key has been reset, you will need to configure your authenticator app using the new key." xml:space="preserve">
+    <value>A hitelesítő alkalmazás kulcsa visszaállításra került, az új kulccsal konfigurálnia kell a hitelesítő alkalmazást.</value>
+  </data>
+  <data name="Your login is protected with an authenticator app. Enter your authenticator code below." xml:space="preserve">
+    <value>Belépésed védve van authenticator alkalmazással. Authenticator kódod add meg.</value>
+  </data>
+  <data name="ReportUsers" xml:space="preserve">
+    <value>Riport felhasználók</value>
+  </data>
+  <data name="EOLQty" xml:space="preserve">
+    <value>EOL darabszám</value>
+  </data>
+  <data name="FixedColumns" xml:space="preserve">
+    <value>Fix oszlopok</value>
+  </data>
+  <data name="Good" xml:space="preserve">
+    <value>Jó</value>
+  </data>
+</root>

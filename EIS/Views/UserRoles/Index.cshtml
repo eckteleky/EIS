@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+@model List<EIS.Models.UserRolesViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+<br />
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <table width="100%">
+        <thead hidden>
+            <tr>
+                <th>&nbsp;</th>
+                <th width="60px" align="right">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td valign="middle">
+                    <h1>@EIS.Resources.Resource.ResourceManager.GetString("User Roles", System.Globalization.CultureInfo.CurrentCulture)</h1>
+                </td>
+                <td width="60px" align="right"><partial name="EISDesign/_LoginPartial" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <table id="example2" class="table table-bordered table-sm" width="100%">
+            <thead>
+                <tr>
+                    <th>@EIS.Resources.Resource.ResourceManager.GetString("FirstName", System.Globalization.CultureInfo.CurrentCulture)</th>
+                    <th>@EIS.Resources.Resource.ResourceManager.GetString("LastName", System.Globalization.CultureInfo.CurrentCulture)</th>
+                    <th>@EIS.Resources.Resource.ResourceManager.GetString("Email", System.Globalization.CultureInfo.CurrentCulture)</th>
+                    <th>@EIS.Resources.Resource.ResourceManager.GetString("Roles", System.Globalization.CultureInfo.CurrentCulture)</th>
+                    <th>@EIS.Resources.Resource.ResourceManager.GetString("Action", System.Globalization.CultureInfo.CurrentCulture)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr style="background-color: #fff">
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Email</td>
+                        <td>@string.Join(" , ", user.Roles.ToList())</td>
+                        <td width=6px>
+                            <button id="myButton" type="button" style="padding: 0px;color: rgba(0,0,0,.9);" class="btn btn-link" data-toggle="ajax-modal" data-target="#addUpdate" data-url="@Url.Action($"Manage/{user.UserId}")"><i class="fa fa-edit"></i></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+    </table>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

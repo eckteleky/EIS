@@ -1,0 +1,119 @@
+﻿@using Microsoft.AspNetCore.Localization
+@model EIS.EISModels.IfsHeaderTable
+<!-- Sweetalert2 -->
+<link rel="stylesheet" href="~/plugins/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<!-- SweetAlert2 -->
+<script src="~/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+<div class="modal fade" id="addEdit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addLabel">@EIS.Resources.Resource.ResourceManager.GetString("IfsHeaderTable", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Edit", System.Globalization.CultureInfo.CurrentCulture).ToLower()</h4>
+                <div class="modal-tools">
+                    <button type="button" class="btn btn-tool" data-dismiss="modal" id="X">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="LineId" />
+                    <input type="hidden" asp-for="StartTime" />
+                    <input type="hidden" asp-for="ShiftId" />
+                    <div class="form-group">
+                        <label asp-for="AllParts" class="control-label"></label>
+                        <input asp-for="AllParts" class="form-control" />
+                        <span asp-validation-for="AllParts" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BadParts" class="control-label"></label>
+                        <input asp-for="BadParts" class="form-control" />
+                        <span asp-validation-for="BadParts" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="GoodParts" class="control-label"></label>
+                        <input asp-for="GoodParts" class="form-control" />
+                        <span asp-validation-for="GoodParts" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FailureRate" class="control-label"></label>
+                        <input asp-for="FailureRate" class="form-control" />
+                        <span asp-validation-for="FailureRate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SettingsParts" class="control-label"></label>
+                        <input asp-for="SettingsParts" class="form-control" />
+                        <span asp-validation-for="SettingsParts" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DroppedParts" class="control-label"></label>
+                        <input asp-for="DroppedParts" class="form-control" />
+                        <span asp-validation-for="DroppedParts" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WorkingHours" class="control-label"></label>
+                        <input asp-for="WorkingHours" class="form-control" />
+                        <span asp-validation-for="WorkingHours" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="d-flex justify-content-between m-0" style="width: 100%">
+                    <div class="col-auto">
+                        <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="modal">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <div class="col-auto">
+                        <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="modal">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#save").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'success',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("SaveTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#close").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#X").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $('.myselect').select2({
+                                theme: 'bootstrap4',
+                                placeholder: 'This is my placeholder',
+                                allowClear: false
+                            }).on('select2-focus', function () {
+                                $(this).select2('open');
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1002 @@
+﻿@model IEnumerable<EIS.EISModels.ShiftsTable>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    string lineid = (string)ViewData["LineID"];
+    int year = (int)ViewData["Year"];
+    int month = (int)ViewData["Month"];
+    int day = (int)ViewData["Day"];
+    string shift = (string)ViewData["Shift"];
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- 1st shift -->
+            <div class="col-4" style="padding: 5px">
+                <div class="card" style="min-height: 82vh;">
+                    <div class="card-header" style="padding: 18px 15px; border-bottom: 1px solid var(--eck-titlegray)">
+                        <h3 class="card-title">
+                            @EIS.Resources.Resource.ResourceManager.GetString("Morning", System.Globalization.CultureInfo.CurrentCulture)
+                        </h3>
+                    </div>
+                    <div class="card-body" style="padding: 10px 15px">
+                        <div class="row" style="margin-bottom: 15px">
+                            <div class="col-6">
+                                <table>
+                                    <tr>
+                                        <th style="width: 135px; height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Line", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 1)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.LineId)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ShiftStart", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 1)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.Start)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ShiftStop", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 1)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.Stop)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Allasido", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 1)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.Allasido)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Minute", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <table>
+                                    <tr>
+                                        <th style="width: 165px; height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("TargetQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 1)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.Elvart)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ProducedQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 1)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.Gyartott)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("GoodQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 1)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.Gyartott)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ScrapQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 1)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.PGyartott)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 15px">
+                            <div class="col-12">
+                                <a>
+                                    @EIS.Resources.Resource.ResourceManager.GetString("Qty", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Create", System.Globalization.CultureInfo.CurrentCulture)
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <label>@EIS.Resources.Resource.ResourceManager.GetString("ItemNo", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <div class="input-group" style="margin: 5px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName10"]</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <label>@EIS.Resources.Resource.ResourceManager.GetString("GoodQty", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <div class="input-group" style="margin: 5px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts10"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <label>@EIS.Resources.Resource.ResourceManager.GetString("ScrapQty", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <div class="input-group" style="margin: 5px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL10"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 28.5px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName11"]</option></select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts11"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL11"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName12"]</option></select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts12"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL12"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName13"]</option></select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts13"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL13"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName14"]</option></select>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts14"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL14"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px">
+                            <div class="col-12">
+                                <a>
+                                    @EIS.Resources.Resource.ResourceManager.GetString("Comments", System.Globalization.CultureInfo.CurrentCulture)
+                                </a>
+                                <textarea rows="4" class="form-control form-control-sidebar" type="text" style="margin-top: 5px; width:100%;"></textarea>
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="padding: 10px 15px; border-top: 1px solid var(--eck-titlegray); background: var(--eck-white)">
+                        <div class="d-flex justify-content-between m-0" style="width: 100%">
+                            <div class="col-auto">
+                                <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="card">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                            </div>
+                            <div class="col-auto">
+                                <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="mcard">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    $("#save").on("click", function () {
+                                        Swal.fire({
+                                            toast: true, position: 'top-end',
+                                            icon: 'success',
+                                            title: '@EIS.Resources.Resource.ResourceManager.GetString("SaveTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                    });
+                                    $("#close").on("click", function () {
+                                        Swal.fire({
+                                            toast: true, position: 'top-end',
+                                            icon: 'warning',
+                                            title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                    });
+                                    //Initialize Select2 Elements
+                                    $('.myselect').select2({
+                                        theme: 'bootstrap4',
+                                        placeholder: 'This is my placeholder',
+                                        allowClear: false
+                                    }).on('select2-focus', function () {
+                                        $(this).select2('open');
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 2nd shift -->
+            <div class="col-4" style="padding: 5px">
+                <div class="card" style="min-height: 760px;">
+                    <div class="card-header" style="padding: 18px 15px; border-bottom: 1px solid var(--eck-titlegray)">
+                        <h3 class="card-title">
+                            @EIS.Resources.Resource.ResourceManager.GetString("Afternoon", System.Globalization.CultureInfo.CurrentCulture)
+                        </h3>
+                    </div>
+                    <div class="card-body" style="padding: 10px 15px">
+                        <div class="row" style="margin-bottom: 15px">
+                            <div class="col-6">
+                                <table>
+                                    <tr>
+                                        <th style="width: 135px; height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Line", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 2)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.LineId)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ShiftStart", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 2)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.Start)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ShiftStop", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 2)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.Stop)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Allasido", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 2)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.Allasido)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Minute", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <table>
+                                    <tr>
+                                        <th style="width: 165px; height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("TargetQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 2)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.Elvart)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ProducedQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 2)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.Gyartott)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("GoodQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 2)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.Gyartott)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ScrapQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 2)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.PGyartott)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 15px">
+                            <div class="col-12">
+                                <a>
+                                    @EIS.Resources.Resource.ResourceManager.GetString("Qty", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Create", System.Globalization.CultureInfo.CurrentCulture)
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <label>@EIS.Resources.Resource.ResourceManager.GetString("ItemNo", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <div class="input-group" style="margin: 5px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName20"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <label>@EIS.Resources.Resource.ResourceManager.GetString("GoodQty", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <div class="input-group" style="margin: 5px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts20"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <label>@EIS.Resources.Resource.ResourceManager.GetString("ScrapQty", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <div class="input-group" style="margin: 5px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL20"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 28.5px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName21"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts21"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL21"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName22"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts22"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL22"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName23"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts23"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL23"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName24"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts24"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL24"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px">
+                            <div class="col-12">
+                                <a>
+                                    @EIS.Resources.Resource.ResourceManager.GetString("Comments", System.Globalization.CultureInfo.CurrentCulture)
+                                </a>
+                                <textarea rows="4" class="form-control form-control-sidebar" type="text" style="margin-top: 5px; width:100%;"></textarea>
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="padding: 10px 15px; border-top: 1px solid var(--eck-titlegray); background: var(--eck-white)">
+                        <div class="d-flex justify-content-between m-0" style="width: 100%">
+                            <div class="col-auto">
+                                <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="card">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                            </div>
+                            <div class="col-auto">
+                                <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="mcard">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    $("#save").on("click", function () {
+                                        Swal.fire({
+                                            toast: true, position: 'top-end',
+                                            icon: 'success',
+                                            title: '@EIS.Resources.Resource.ResourceManager.GetString("SaveTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                    });
+                                    $("#close").on("click", function () {
+                                        Swal.fire({
+                                            toast: true, position: 'top-end',
+                                            icon: 'warning',
+                                            title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                    });
+                                    //Initialize Select2 Elements
+                                    $('.myselect').select2({
+                                        theme: 'bootstrap4',
+                                        placeholder: 'This is my placeholder',
+                                        allowClear: false
+                                    }).on('select2-focus', function () {
+                                        $(this).select2('open');
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3rd shift -->
+            <div class="col-4" style="padding: 5px">
+                <div class="card" style="min-height: 760px;">
+                    <div class="card-header" style="padding: 18px 15px; border-bottom: 1px solid var(--eck-titlegray)">
+                        <h3 class="card-title">
+                            @EIS.Resources.Resource.ResourceManager.GetString("Night", System.Globalization.CultureInfo.CurrentCulture)
+                        </h3>
+                    </div>
+                    <div class="card-body" style="padding: 10px 15px">
+                        <div class="row" style="margin-bottom: 15px">
+                            <div class="col-6">
+                                <table>
+                                    <tr>
+                                        <th style="width: 135px; height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Line", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 3)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.LineId)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ShiftStart", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 3)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.Start)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ShiftStop", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 3)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.Stop)</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Allasido", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 3)) {
+                                            <td style="font-weight: 600">@Html.DisplayFor(modelItem => item.Allasido)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Minute", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <table>
+                                    <tr>
+                                        <th style="width: 165px; height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("TargetQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 3)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.Elvart)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ProducedQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 3)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.Gyartott)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("GoodQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 3)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.Gyartott)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <th style="height: 30px">@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("ScrapQty", System.Globalization.CultureInfo.CurrentCulture)):</th>
+                                        @foreach (var item in Model.Where(item => item.Muszak == 3)) {
+                                            <td style="font-weight: 600; text-align: right">@Html.DisplayFor(modelItem => item.PGyartott)&nbsp;@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("UnitQty", System.Globalization.CultureInfo.CurrentCulture))</td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom: 15px">
+                            <div class="col-12">
+                                <a>
+                                    @EIS.Resources.Resource.ResourceManager.GetString("Qty", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Create", System.Globalization.CultureInfo.CurrentCulture)
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <label>@EIS.Resources.Resource.ResourceManager.GetString("ItemNo", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <div class="input-group" style="margin: 5px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName30"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <label>@EIS.Resources.Resource.ResourceManager.GetString("GoodQty", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <div class="input-group" style="margin: 5px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts30"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <label>@EIS.Resources.Resource.ResourceManager.GetString("ScrapQty", System.Globalization.CultureInfo.CurrentCulture)</label>
+                                <div class="input-group" style="margin: 5px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL30"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 28.5px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName31"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts31"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL31"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName32"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts32"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL32"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName33"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts33"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL33"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="border: 0">
+                            <div class="col-5">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-ellipsis" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <select class="form-control">
+                                        <option selected>@ViewData["TypeName34"]</option>
+                                    </select>
+                                    </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                            <i class="fas fa-check" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["GoodParts34"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group" style="margin: 10px 0">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: var(--eck-red)">
+                                            <i class="fas fa-xmark" style="width: 16px;"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" value="@ViewData["BadPartsEOL34"]" />
+                                    <span class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-1" style="padding-top: 10px">
+                                <button id="myButton" type="button" class="btn btn-edit btn-block fa-regular fa-pen-to-square" style="height: 18px; width: 18px; padding: 8px 9px 10px 13px; color: var(--eck-red)"></button>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px">
+                            <div class="col-12">
+                                <a>
+                                    @EIS.Resources.Resource.ResourceManager.GetString("Comments", System.Globalization.CultureInfo.CurrentCulture)
+                                </a>
+                                <textarea rows="4" class="form-control form-control-sidebar" type="text" style="margin-top: 5px; width:100%;"></textarea>
+                                <span class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="padding: 10px 15px; border-top: 1px solid var(--eck-titlegray); background: var(--eck-white)">
+                        <div class="d-flex justify-content-between m-0" style="width: 100%">
+                            <div class="col-auto">
+                                <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="card">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                            </div>
+                            <div class="col-auto">
+                                <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="mcard">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    $("#save").on("click", function () {
+                                        Swal.fire({
+                                            toast: true, position: 'top-end',
+                                            icon: 'success',
+                                            title: '@EIS.Resources.Resource.ResourceManager.GetString("SaveTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                    });
+                                    $("#close").on("click", function () {
+                                        Swal.fire({
+                                            toast: true, position: 'top-end',
+                                            icon: 'warning',
+                                            title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
+                                    });
+                                    //Initialize Select2 Elements
+                                    $('.myselect').select2({
+                                        theme: 'bootstrap4',
+                                        placeholder: 'This is my placeholder',
+                                        allowClear: false
+                                    }).on('select2-focus', function () {
+                                        $(this).select2('open');
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

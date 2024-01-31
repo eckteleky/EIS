@@ -1,0 +1,27 @@
+﻿
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@*@inject IViewLocalizer Localizer*@
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{ var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem{ Value = c.Name, Text = c.TwoLetterISOLanguageName }).ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}"; }
+<div title="@EIS.Resources.Resource.ResourceManager.GetString("Request culture provider:", System.Globalization.CultureInfo.CurrentCulture)">
+    <form id="selectLanguage" asp-controller="Home" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post" role="form">
+        @EIS.Resources.Resource.ResourceManager.GetString("Language:", System.Globalization.CultureInfo.CurrentCulture)
+        &nbsp;<select name="culture" id="culture"
+                        onchange="this.form.submit();"
+                        asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+@*            <option value="hu-HU"><i style="width:50px;height:50px;" class="flag-icon flag-icon-hu">&nbsp;</i></option>
+            <option value="en-US"><i style="width:50px;height:50px;" class="flag-icon flag-icon-us">&nbsp;</i></option>
+*@        </select>
+    </form>
+</div>
+<style>
+    select {
+        border: 0px solid transparent;
+    }
+</style>

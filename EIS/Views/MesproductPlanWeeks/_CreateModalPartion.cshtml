@@ -1,0 +1,485 @@
+﻿@using Microsoft.AspNetCore.Localization
+@model EIS.EISModels.MesproductPlanWeekTemp
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=swap">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="~/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Sweetalert2 -->
+<link rel="stylesheet" href="~/plugins/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<!-- jQuery -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="~/plugins/select2/js/select2.full.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="~/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+<a hidden asp-controller="LzTeljesitmenyTables" asp-action="GetKefetartoId" id="uplink"></a>
+<style>
+    .checkbox-round {
+        width: 12px;
+        height: 12px;
+        background-color: transparent;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 2px solid #ddd;
+        appearance: none;
+        -webkit-appearance: none;
+        outline: 1px solid #222;
+        cursor: pointer;
+    }
+
+    .checkbox-round:checked {
+        background-color: #444;
+    }
+</style>
+<div class="modal fade" id="addCreate">
+    <div class="modal-dialog modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addLabel">@EIS.Resources.Resource.ResourceManager.GetString("MESProductPlanWeek", System.Globalization.CultureInfo.CurrentCulture)&nbsp;@EIS.Resources.Resource.ResourceManager.GetString("Create", System.Globalization.CultureInfo.CurrentCulture)</h4>
+                <div class="modal-tools">
+                    <button type="button" class="btn btn-tool" data-dismiss="modal" id="X">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" style="padding-bottom: 20px">
+                <form asp-action="Create" style="width: 100%">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="StartTime" />
+                    <input type="hidden" asp-for="LineId" />
+                    <input type="hidden" asp-for="Year" />
+                    <input type="hidden" asp-for="Week" />
+                    <table width="100%">
+                        <thead hidden>
+                            <tr>
+                                <th width="50%"></th>
+                                <th width="50%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="50%" style="text-align:left">
+                                    @Html.DisplayFor(model => model.LineId)
+                                </td>
+                                <td width="50%" style="text-align:right">
+                                    @Html.DisplayFor(model => model.Year) CW @Html.DisplayFor(model => model.Week)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table width="100%">
+                        <thead hidden>
+                            <tr>
+                                <th width="100%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" style="padding-top:20px; background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                                        <thead>
+                                            <tr>
+                                                <th width="2%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="96%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="2%" style="background-color: var(--eck-lightgreen2);"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>Délelőtt</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" style="padding-top:20px; background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="2%"></th>
+                                                <th width="47%"></th>
+                                                <th width="2%"></th>
+                                                <th width="47%"></th>
+                                                <th width="2%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <div class="input-group" style="margin: 5px 5px 5px -2.5px" data-toggle="tooltip">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select asp-for="WorkerId11" class="form-control" asp-items="ViewBag.WorkerId11"></select>
+                                                    </div>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <div class="input-group" style="margin: 5px 5px 5px -2.5px" data-toggle="tooltip">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select asp-for="WorkerId12" class="form-control" asp-items="ViewBag.WorkerId12"></select>
+                                                    </div>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" style="background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                                        <thead>
+                                            <tr>
+                                                <th width="9%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">V</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">H</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">K</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">Sze</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">Cs</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">P</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">Sz</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active01" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active11" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active21" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active31" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active41" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active51" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active61" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" style="padding-top:20px; background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                                        <thead>
+                                            <tr>
+                                                <th width="2%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="96%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="2%" style="background-color: var(--eck-lightgreen2);"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>Délután</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" style="padding-top:20px; background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="2%"></th>
+                                                <th width="47%"></th>
+                                                <th width="2%"></th>
+                                                <th width="47%"></th>
+                                                <th width="2%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <div class="input-group" style="margin: 5px 5px 5px -2.5px" data-toggle="tooltip">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select asp-for="WorkerId21" class="form-control" asp-items="ViewBag.WorkerId21"></select>
+                                                    </div>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <div class="input-group" style="margin: 5px 5px 5px -2.5px" data-toggle="tooltip">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select asp-for="WorkerId22" class="form-control" asp-items="ViewBag.WorkerId22"></select>
+                                                    </div>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" style="background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                                        <thead>
+                                            <tr>
+                                                <th width="9%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">V</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">H</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">K</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">Sze</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">Cs</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">P</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">Sz</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active02" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active12" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active22" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active32" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active42" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active52" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active62" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="100%">
+                                    <table width="100%" style="padding-top:20px; background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                                        <thead>
+                                            <tr>
+                                                <th width="2%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="96%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="2%" style="background-color: var(--eck-lightgreen2);"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>Éjszaka</td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" style="padding-top:20px; background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                                        <thead hidden>
+                                            <tr>
+                                                <th width="2%"></th>
+                                                <th width="47%"></th>
+                                                <th width="2%"></th>
+                                                <th width="47%"></th>
+                                                <th width="2%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <div class="input-group" style="margin: 5px 5px 5px -2.5px" data-toggle="tooltip">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select asp-for="WorkerId31" class="form-control" asp-items="ViewBag.WorkerId31"></select>
+                                                    </div>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <div class="input-group" style="margin: 5px 5px 5px -2.5px" data-toggle="tooltip">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" style="color: var(--eck-darkgreen1)">
+                                                                <i class="fas fa-user" style="width: 16px;"></i>
+                                                            </span>
+                                                        </div>
+                                                        <select asp-for="WorkerId32" class="form-control" asp-items="ViewBag.WorkerId32"></select>
+                                                    </div>
+                                                </td>
+                                                <td>&nbsp;</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" style="background-color: var(--eck-lightgreen2); border-left: 1px solid var(--eck-titlegray); border-right: 1px solid var(--eck-titlegray); border-bottom: 1px solid var(--eck-titlegray)">
+                                        <thead>
+                                            <tr>
+                                                <th width="9%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">V</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">H</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">K</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">Sze</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">Cs</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">P</th>
+                                                <th width="1%" style="background-color: var(--eck-lightgreen2);"></th>
+                                                <th width="12%" style="background-color: var(--eck-lightgreen2);">Sz</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active03" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active13" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active23" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active33" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active43" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active53" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>
+                                                    <input asp-for="Active63" type="checkbox" class="checkbox-round" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="d-flex justify-content-between m-0" style="width: 100%">
+                    <div class="col-auto">
+                        <button id="close" type="button" class="btn btn-close btn-block" style="width: 100px" data-dismiss="modal">@EIS.Resources.Resource.ResourceManager.GetString("Cancel", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <div class="col-auto">
+                        <button id="save" type="button" class="btn btn-classic btn-block" style="width: 100px" data-save="modal">@EIS.Resources.Resource.ResourceManager.GetString("Save", System.Globalization.CultureInfo.CurrentCulture)</button>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#save").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'success',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("SaveTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#close").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                            $("#X").on("click", function () {
+                                Swal.fire({
+                                    toast: true, position: 'top-end',
+                                    icon: 'warning',
+                                    title: '@EIS.Resources.Resource.ResourceManager.GetString("CloseTxt", System.Globalization.CultureInfo.CurrentCulture)',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                        });
+                         $(function () {
+                            $('#DolgozoId').select2({
+                                placeholder: "Select a WorkerID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                            $('#ID').select2({
+                                placeholder: "Select a ID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                            $('#KID').select2({
+                                placeholder: "Select a ID's Value",
+                                theme: "bootstrap4",
+                                allowClear: false
+                            });
+                         });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

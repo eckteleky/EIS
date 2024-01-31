@@ -1,0 +1,154 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@{
+    ViewData["Title"] = "Index";
+    int year = (int)ViewData["Year"];
+    int month = (int)ViewData["Month"];
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Working Time Reports -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="width: 100%">
+                    <div class="card-body chartview" style="padding: 10px 15px">
+                        <h3 class="card-title" style="padding: 8px 0 0 3px">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("RoutingSlipTable", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                        <table id="fixed" class="table table-bordered table-hover text-nowrap" style="width: auto; min-width: 1786px !important; margin-top: 5px !important">
+                            <thead>
+                                @* <tr class="tableheader">
+                                    @for (int j = 1; j < 13; j++)
+                                    {
+                                        int si = 4;
+                                        if (j == 1)
+                                        {
+                                            // 50px+200px+50px+100px = 400px
+                                            <th colspan="4" width="400px" style="position: -webkit-sticky;position: sticky;left: 0;z-index: 4;background-color: var(--eck-boardgray)">
+                                                HEADER
+                                            </th>
+                                        }
+                                        int @db = (@ViewBag.dcl - si);
+                                        // db*50px
+                                        string @w = (50*db).ToString()+"px";
+                                        // Gruppe by months
+                                        var @id = j > 1 ? "GRUPPE-" + Convert.ToChar(64 + j - 1) : "GRUPPE";
+                                        <th colspan="@db" width="@w" style="background-color: var(--eck-boardgray)">
+                                            @id
+                                        </th>
+                                    }
+                                </tr> *@
+                                <tr class="tableheader">
+                                    @for(int j = 1; j < 13; j++)
+                                    {
+                                        int si = 4;
+                                        if (j==1)
+                                        {
+                                            si = 0;
+                                        }
+                                        @for (int i = si; i < @ViewBag.dcl; i++)
+                                        {
+                                            var @id = j > 1 ? @ViewBag.dc[i] + "-" + Convert.ToChar(64 + j - 1) : @ViewBag.dc[i];
+                                            string @w = "50px";
+                                            switch (i)
+                                            {
+                                                case 0: w = "50px"; break;  // ID
+                                                case 1: w = "200px"; break; // Name
+                                                case 2: w = "50px"; break;  // Company
+                                                case 3: w = "100px"; break; // Total hours
+                                            }
+                                            @* @if (i < si)
+                                            {
+                                                switch(i)
+                                                {
+                                                    case 0:
+                                                        <th width="@w" style="position: -webkit-sticky;position: sticky;left: 0;z-index: 4;background-color: var(--eck-boardgray)">
+                                                            @id
+                                                        </th>
+                                                        break;
+                                                    case 1:
+                                                        <th width="@w" style="position: -webkit-sticky;position: sticky;left: 50px;z-index: 4;background-color: var(--eck-boardgray)">
+                                                            @id
+                                                        </th>
+                                                        break;
+                                                    case 2:
+                                                        <th width="@w" style="position: -webkit-sticky;position: sticky;left: 250px;z-index: 4;background-color: var(--eck-boardgray)">
+                                                            @id
+                                                        </th>
+                                                        break;
+                                                    case 3:
+                                                        <th width="@w" style="position: -webkit-sticky;position: sticky;left: 300px;z-index: 4;background-color: var(--eck-boardgray)">
+                                                            @id
+                                                        </th>
+                                                        break;
+                                                }
+                                            }
+                                            else
+                                            {  *@
+                                                <th width="@w" style="background-color: var(--eck-boardgray)">
+                                                    @id
+                                                </th>
+                                            @* } *@
+                                        }
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.dasl > 0)
+                                {
+                                    @foreach (var item in ViewBag.das)
+                                    {
+                                        <tr class="tablebody">
+                                            @for (int j = 1; j < 13; j++)
+                                            {
+                                                int si = 4;
+                                                if (j == 1)
+                                                {
+                                                    si = 0;
+                                                }
+                                                @for (int i = si; i < @ViewBag.dcl; i++)
+                                                {
+                                                    string @w = "50px";
+                                                    switch (i)
+                                                    {
+                                                        case 0: w = "50px"; break;
+                                                        case 1: w = "200px"; break;
+                                                        case 2: w = "50px"; break;
+                                                        case 3: w = "100px"; break;
+                                                    }
+                                                    string @id = j == 1 & i == 3 ? Convert.ToString(12*@item[i], new CultureInfo("en-US")) : Convert.ToString(@item[i], new CultureInfo("en-US"));
+                                                    <td width="@w">
+                                                        @id
+                                                    </td>
+                                                }
+                                            }
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

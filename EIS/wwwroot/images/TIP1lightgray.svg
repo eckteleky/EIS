@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Réteg_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#A6A6A6;}
+</style>
+<g>
+	<circle class="st0" cx="64" cy="96" r="48"/>
+	<path class="st0" d="M192,64c-17.7,0-32,14.3-32,32s14.3,32,32,32h288c17.7,0,32-14.3,32-32s-14.3-32-32-32H192z"/>
+	<path class="st0" d="M192,224c-17.5,0-31.6,13.9-32,31.3c-0.4,18,14.7,32.7,32.7,32.7l99.3,0.5c18,0,32-14,32-32
+		c0-17.4-14.4-32-31.8-32L192,224z"/>
+	<circle class="st0" cx="64" cy="416" r="48"/>
+	<circle class="st0" cx="64" cy="256" r="48"/>
+	<path class="st0" d="M192,383.8c-17.5,0-31.6,13.9-32,31.3c-0.4,18,14.7,32.7,32.7,32.7l99.3,0.5c18,0,32-14,32-32
+		c0-17.4-14.4-32-31.8-32L192,383.8z"/>
+	<path class="st0" d="M371.7,251.8c0-15.6,12.5-28.1,28.1-28.1h37.4c15.6,0,28.1,12.5,28.1,28.1v140.3H484
+		c15.6,0,28.1,12.5,28.1,28.1s-12.5,28.1-28.1,28.1h-93.5c-15.6,0-28.1-12.5-28.1-28.1s12.5-28.1,28.1-28.1h18.7V279.9h-9.4
+		C384.2,279.9,371.7,267.4,371.7,251.8z"/>
+</g>
+</svg>

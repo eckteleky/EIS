@@ -1,0 +1,41 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = @EIS.Resources.Resource.ResourceManager.GetString("Personal data", System.Globalization.CultureInfo.CurrentCulture);
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<h2 style="color: rgba(0,0,0,.9);">@ViewData["Title"]</h2>
+
+<div class="row" style="color: rgba(0,0,0,.9);">
+    <div class="col-md-6">
+        <p>@EIS.Resources.Resource.ResourceManager.GetString("Your account contains personal data that you have given us. This page allows you to download or delete that data.", System.Globalization.CultureInfo.CurrentCulture)</p>
+        <p>
+            <strong>@EIS.Resources.Resource.ResourceManager.GetString("Deleting this data will permanently remove your account, and this cannot be recovered.", System.Globalization.CultureInfo.CurrentCulture)</strong>
+        </p>
+        <table>
+            <thead hidden>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <form id="download-data" asp-page="DownloadPersonalData" method="post" class="form-group">
+                            <button class="btn btn-primary" type="submit">@EIS.Resources.Resource.ResourceManager.GetString("Download", System.Globalization.CultureInfo.CurrentCulture)</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a id="delete" asp-page="DeletePersonalData" class="btn btn-primary">@EIS.Resources.Resource.ResourceManager.GetString("Delete", System.Globalization.CultureInfo.CurrentCulture)</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

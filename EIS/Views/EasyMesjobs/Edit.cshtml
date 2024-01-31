@@ -1,0 +1,137 @@
+﻿@model EIS.EISModels.EasyMesjob
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>EasyMesjob</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="TtstypesId" class="control-label"></label>
+                <select asp-for="TtstypesId" class="form-control" asp-items="ViewBag.TtstypesId"></select>
+                <span asp-validation-for="TtstypesId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlanQty" class="control-label"></label>
+                <input asp-for="PlanQty" class="form-control" />
+                <span asp-validation-for="PlanQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProducedQty" class="control-label"></label>
+                <input asp-for="ProducedQty" class="form-control" />
+                <span asp-validation-for="ProducedQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Eol" class="control-label"></label>
+                <input asp-for="Eol" class="form-control" />
+                <span asp-validation-for="Eol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BadParts" class="control-label"></label>
+                <input asp-for="BadParts" class="form-control" />
+                <span asp-validation-for="BadParts" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CalcStart" class="control-label"></label>
+                <input asp-for="CalcStart" class="form-control" />
+                <span asp-validation-for="CalcStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CalcEnd" class="control-label"></label>
+                <input asp-for="CalcEnd" class="form-control" />
+                <span asp-validation-for="CalcEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobStart" class="control-label"></label>
+                <input asp-for="JobStart" class="form-control" />
+                <span asp-validation-for="JobStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobTimeStamp" class="control-label"></label>
+                <input asp-for="JobTimeStamp" class="form-control" />
+                <span asp-validation-for="JobTimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobFinish" class="control-label"></label>
+                <input asp-for="JobFinish" class="form-control" />
+                <span asp-validation-for="JobFinish" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemParamId" class="control-label"></label>
+                <select asp-for="SystemParamId" class="form-control" asp-items="ViewBag.SystemParamId"></select>
+                <span asp-validation-for="SystemParamId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Started" /> @Html.DisplayNameFor(model => model.Started)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Closed" /> @Html.DisplayNameFor(model => model.Closed)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Running" /> @Html.DisplayNameFor(model => model.Running)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Stopped" /> @Html.DisplayNameFor(model => model.Stopped)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusId" class="control-label"></label>
+                <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
+                <span asp-validation-for="StatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetEnd" class="control-label"></label>
+                <input asp-for="TargetEnd" class="form-control" />
+                <span asp-validation-for="TargetEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentage" class="control-label"></label>
+                <input asp-for="Percentage" class="form-control" />
+                <span asp-validation-for="Percentage" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CalcAuto" /> @Html.DisplayNameFor(model => model.CalcAuto)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CalcTargetEnd" /> @Html.DisplayNameFor(model => model.CalcTargetEnd)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CalcTargetStart" /> @Html.DisplayNameFor(model => model.CalcTargetStart)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetStart" class="control-label"></label>
+                <input asp-for="TargetStart" class="form-control" type="datetime" />
+                <span asp-validation-for="TargetStart" class="text-danger"></span>
+            </div>
+            <div class="form-group"> 
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

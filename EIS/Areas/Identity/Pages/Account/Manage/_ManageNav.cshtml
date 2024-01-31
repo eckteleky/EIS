@@ -1,0 +1,16 @@
+﻿@using EIS.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item" style="color: rgba(0,0,0,.9);" ><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">@EIS.Resources.Resource.ResourceManager.GetString("Profile", System.Globalization.CultureInfo.CurrentCulture)</a></li>
+    <li class="nav-item" style="color: rgba(0,0,0,.9);"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">@EIS.Resources.Resource.ResourceManager.GetString("Email", System.Globalization.CultureInfo.CurrentCulture)</a></li>
+    <li class="nav-item" style="color: rgba(0,0,0,.9);"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">@EIS.Resources.Resource.ResourceManager.GetString("Password", System.Globalization.CultureInfo.CurrentCulture)</a></li>
+    @if (hasExternalLogins)
+    {
+        <li id="external-logins" class="nav-item" style="color: rgba(0,0,0,.9);"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">@EIS.Resources.Resource.ResourceManager.GetString("External logins", System.Globalization.CultureInfo.CurrentCulture)</a></li>
+    }
+    <li class="nav-item" style="color: rgba(0,0,0,.9);"><a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">@EIS.Resources.Resource.ResourceManager.GetString("Two-factor authentication", System.Globalization.CultureInfo.CurrentCulture)</a></li>
+    <li class="nav-item" style="color: rgba(0,0,0,.9);"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">@EIS.Resources.Resource.ResourceManager.GetString("Personal data", System.Globalization.CultureInfo.CurrentCulture)</a></li>
+</ul>

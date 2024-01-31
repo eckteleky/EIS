@@ -1,0 +1,171 @@
+﻿@*
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.FirstName"></label>
+                <input asp-for="Input.FirstName" class="form-control" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.LastName"></label>
+                <input asp-for="Input.LastName" class="form-control" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to register.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+*@
+@page
+@model RegisterModel
+@{
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+    ViewData["Title"] = "Register";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@EIS.Resources.Resource.ResourceManager.GetString("Registration", System.Globalization.CultureInfo.CurrentCulture)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ </head>
+<body class="row" style="font-family: 'URWDINLight'; font-weight: 200; font-style: normal; font-size: 100%; color: rgba(0,0,0,.9);">
+    <br />
+<center>
+    <div class="col-xl-4" style="text-align:left;">
+        @*<div class="register-logo">
+            <a href="~/Home"><b>Web</b>TIP</a>
+            <br />
+            <img src="~/images/tip_medium.png" />
+        </div>*@
+
+        <div class="card" style="border: 0px solid;background-color: transparent;">
+            <div class="card-body">
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="mb-3">
+                    <h4>@EIS.Resources.Resource.ResourceManager.GetString("Create a new account.", System.Globalization.CultureInfo.CurrentCulture)</h4>
+                    <hr />
+                    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                    <div class="form-group mb-3">
+                            <label>
+                            @EIS.Resources.Resource.ResourceManager.GetString("FirstName", System.Globalization.CultureInfo.CurrentCulture)</label>
+                        <input asp-for="Input.FirstName" class="form-control" />
+                        <span asp-validation-for="Input.FirstName" class="text-danger small"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                            <label>@EIS.Resources.Resource.ResourceManager.GetString("LastName", System.Globalization.CultureInfo.CurrentCulture)</label>
+                        <input asp-for="Input.LastName" class="form-control" />
+                        <span asp-validation-for="Input.LastName" class="text-danger small"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                            <label>@EIS.Resources.Resource.ResourceManager.GetString("Email", System.Globalization.CultureInfo.CurrentCulture)</label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger small"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                            <label>@EIS.Resources.Resource.ResourceManager.GetString("Password", System.Globalization.CultureInfo.CurrentCulture)</label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger small"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                            <label>@EIS.Resources.Resource.ResourceManager.GetString("ConfirmNewPassword", System.Globalization.CultureInfo.CurrentCulture)</label>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger small"></span>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-xl-12" style="text-align:left;">
+                            <button type="submit" class="btn btn-classic btn-block float-right" style="width: 150px">@EIS.Resources.Resource.ResourceManager.GetString("Register", System.Globalization.CultureInfo.CurrentCulture)</button>
+                        </div>
+                    </div>
+                </form>
+ 
+                    @* <div class="social-auth-links text-center">
+                    <p>- OR -</p>
+                    <a href="#" class="btn btn-block btn-primary">
+                        <i class="fab fa-facebook mr-2"></i>
+                        @EIS.Resources.Resource.ResourceManager.GetString("Sign up using Facebook", System.Globalization.CultureInfo.CurrentCulture)
+                    </a>
+                    <a href="#" class="btn btn-block btn-danger">
+                        <i class="fab fa-google-plus mr-2"></i>
+                        @EIS.Resources.Resource.ResourceManager.GetString("Sign up using Google+", System.Globalization.CultureInfo.CurrentCulture)
+                    </a>
+                </div>*@
+                <a class="nav-link text-dark text-center" asp-area="Identity" asp-page="/Account/Login">@EIS.Resources.Resource.ResourceManager.GetString("I already have a membership", System.Globalization.CultureInfo.CurrentCulture)</a>
+            </div>
+        </div>
+    </div>
+    </center>
+</body>
+</html>
+
+@section Scripts {
+    <style>
+        .card {
+            border: 0px solid;
+            padding: 10px;
+            box-shadow: 0px 0px red;            
+        }
+    </style>
+    <partial name="_ValidationScriptsPartial" />
+}

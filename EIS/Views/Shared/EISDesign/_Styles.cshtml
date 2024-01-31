@@ -1,0 +1,677 @@
+﻿<!-- Eckerle Font -->
+<link rel="stylesheet" href="~/plugins/sweetalert2/sweetalert2.min.css">
+<link rel="stylesheet" href="~/fontsource/roboto-condensed/300.min.css">
+<link rel="stylesheet" href="~/fontsource/roboto-condensed/400.min.css">
+<link rel="stylesheet" href="~/fontsource/roboto-condensed/700.min.css">
+<!-- Ekko Lightbox -->
+<link rel="stylesheet" href="~/plugins/ekko-lightbox/ekko-lightbox.css">
+    <!-- Toastr -->
+<link rel="stylesheet" href="~/plugins/toastr/toastr.min.css">    
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+<!-- DataTables -->
+@* <link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"> *@
+<link rel="stylesheet" href="~/plugins/datatables/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="~/plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.min.css">
+<link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+<!-- Bootstrap 3 -->
+<link rel="stylesheet" href="~/css/fonts/glyphicons.css">
+<link rel="stylesheet" href="~/progresscircle/css/progresscircle.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+<!-- flag-icons -->
+<link rel="stylesheet" href="~/plugins/flag-icon-css/css/flag-icons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="~/css/site.css">
+<!-- daterange picker -->
+<link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+<style>
+    :root {
+        --eck-white:            #ffffff; /*rgb(255,255,255)*/
+        --eck-boardgray:        #f0f0f0; /*rgb(240,240,240)*/
+        --eck-navgreen:         #90a725; /*rgb(144,167,037)*/
+        --eck-navgray:          #363636; /*rgb(054,054,054)*/
+        --eck-titlegray:        #d4d4d4; /*rgb(212,212,212)*/
+        --eck-lightgreen3:      #f1f6d8; /*rgb(241,246,216)*/
+        --eck-lightgreen2:      #e3eeb1; /*rgb(227,238,177)*/
+        --eck-lightgreen1:      #d5e58a; /*rgb(213,229,138)*/
+        --eck-green:            #b9d43c; /*rgb(185,212,060)*/
+        --eck-darkgreen1:       #90a725; /*rgb(144,167,037)*/
+        --eck-darkgreen2:       #606f19; /*rgb(096,111,025)*/
+        --eck-darkgray:         #606060; /*rgb(096,096,096)*/
+        --eck-gray:             #a6a6a6; /*rgb(166,166,166)*/
+        --eck-lightred:         #f0d0d0; /*rgb(240,208,208)*/
+        --eck-red:              #c00000; /*rgb(192,000,000)*/
+        --eck-darkred:          #a00000; /*rgb(160,000,000)*/
+        --eck-textgray:         #6c6c6c; /*rgb(108,108,108)*/
+        --eck-blue:             #0000ff; /*rgb(000,000,255)*/
+        --eck-scrollbar:        rgba(235,235,235,0.125); /*Scrollbar color*/
+        --eck-shiftview1:       #a6a6a6; /*ShiftView #1 shift*/
+        --eck-shiftview2:       #868686; /*ShiftView #2 shift*/
+        --eck-shiftview3:       #767676; /*ShiftView #3 shift*/
+        --eck-shiftviewline1:   rgba(100,255,100,0.125); /*ShiftView #1 shift*/
+        --eck-shiftviewline2:   rgba(255,100,100,0.125); /*ShiftView #2 shift*/
+        --eck-shiftviewline3:   rgba(100,100,255,0.125); /*ShiftView #3 shift*/
+    }
+
+    table.dataTable.table-sm > thead > tr > th :not(.sorting_disabled) {
+        padding-right: 0px;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0rem;
+        font-size: 0.9rem;
+        font-weight: 100;
+        Color: var(--eck-gray)
+    }
+
+    body, html {
+        font-family: 'Roboto Condensed';
+        background-color: var(--eck-boardgray);
+        font-size: medium;
+        font-weight: 400;
+        color: var(--eck-textgray);
+    }
+
+    text {
+        font-family: 'Roboto Condensed';
+        font-size: 36px;
+        font-weight: normal;
+        color: var(--eck-textgray);
+    }
+
+    th {
+        display: table-cell;
+        font-weight: 500;
+        vertical-align: middle;
+    }
+
+    label:not(.form-check-label):not(.custom-file-label) {
+        font-weight: normal;
+    }
+
+    label {
+        display: inline-block;
+        margin-bottom: 0rem;
+    }
+
+    .form-control::placeholder {
+        color: var(--eck-gray);
+        font-weight: lighter;
+    }
+
+    .form-control:disabled::placeholder {
+        color: transparent;
+        font-weight: lighter;
+    }
+
+    .wrapper {
+        font-family: 'Roboto Condensed';
+        background-color: var(--eck-boardgray);
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        border-radius: 4px;
+        margin-right: 2px;
+        opacity: 0.6;
+        filter: invert(0);
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator:hover {
+        opacity: 1
+    }
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: var(--eck-scrollbar);
+        border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        border: 1px solid transparent;
+        background-clip: content-box;
+        background-color: var(--eck-green);
+    }
+
+    .tableview {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+    .kanbanview {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .chartview {
+        background-color: transparent;
+        overflow-x: scroll;
+        padding: 5px;
+        scrollbar-color: var(--eck-green) var(--eck-scrollbar);
+        scrollbar-width: thin;
+    }
+
+    .tableheader {
+        color: var(--eck-textgray);
+        background-color: var(--eck-boardgray);
+        font-size: medium;
+        font-style: normal;
+        overflow: hidden;
+    }
+
+    thead th {
+        background-color: var(--eck-boardgray);
+    }
+
+    tfoot th {
+        background-color: var(--eck-boardgray);
+    } 
+
+    .tablebody {
+        background-color: var(--eck-white);
+        color: var(--eck-textgray);
+    }
+
+    .tablebutton_transparent {
+        padding: 0px;
+        margin: 0px;
+        color: var(--eck-textgray);
+        border: 0px solid transparent;
+    }
+
+    .tablebutton {
+        padding: 0px;
+        margin: 0px;
+        color: var(--eck-titlegray);
+        border: 0px solid transparent;
+    }
+
+    .tablebody1 {
+        background-color: var(--eck-green);
+        color: var(--eck-white);
+    }
+
+    .tablebutton1 {
+        padding: 0px;
+        margin: 0px;
+        background-color: var(--eck-green);
+        color: var(--eck-white);
+        border: 0px solid transparent;
+    }
+
+    .tablebody2 {
+        background-color: var(--eck-red);
+        color: var(--eck-white);
+    }
+
+    .tablebutton2 {
+        padding: 0px;
+        margin: 0px;
+        background-color: var(--eck-red);
+        color: var(--eck-white);
+        border: 0px solid transparent;
+    }
+
+    .tablebody3 {
+        background-color: var(--eck-blue);
+        color: var(--eck-white);
+    }
+
+    .tablebutton3 {
+        padding: 0px;
+        margin: 0px;
+        background-color: var(--eck-blue);
+        color: var(--eck-white);
+        border: 0px solid transparent;
+    }
+
+    .tablebody4 {
+        background-color: var(--eck-gray);
+        color: var(--eck-white);
+    }
+
+    .tablebutton4 {
+        padding: 0px;
+        margin: 0px;
+        background-color: var(--eck-gray);
+        color: var(--eck-white);
+        border: 0px solid transparent;
+    }
+
+    div.uppercase {
+        text-transform: uppercase;
+    }
+
+    div.lowercase {
+        text-transform: lowercase;
+    }
+
+    div.capitalize {
+        text-transform: capitalize;
+    }
+
+    .custom-select {
+        display: inline-block;
+        width: 100%;
+        height: calc(2.25rem + 2px);
+        padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--eck-textgray);
+        vertical-align: middle;
+        background: var(--eck-white) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3e%3cpath fill='%236c6c6c' d='M4 5 L0 0 H8 Z'/%3e%3c/svg%3e") right 0.75rem center/8px 10px no-repeat;
+        border: 1px solid var(--eck-titlegray);
+        border-radius: 0.25rem;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.075), 0 1px 4px rgba(0, 0, 0, 0.125);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .custom-select:focus {
+        border-color: var(--eck-green);
+        outline: 0;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.075), 0 1px 4px rgba(0, 0, 0, 0.125);
+    }
+
+    .custom-select option {
+        background-color: var(--eck-white);
+        color: var(--eck-textgray);
+        border: 0px solid transparent;
+        outline: none;
+    }
+
+    .custom-select > option:hover {
+        background-color: var(--eck-lightgreen2);
+        color: var(--eck-navgray);
+        border: 0px solid transparent;
+        outline: none;
+    }
+
+    .selectbox {
+        height: 30px;
+        display: block;
+        width: 90%;
+        height: calc(2.25rem + 2px);
+        padding: 0rem 0rem;
+        font-size: 1rem;
+        font-weight: 200;
+        line-height: 1.5;
+        color: var(--eck-boardgray);
+        background-color: var(--eck-navgray);
+        background-clip: padding-box;
+        border: 0px solid transparent;
+        box-shadow: inset 0 0 0 rgb(0 0 0 / 0%);
+        outline: none;
+    }
+
+    .selectbox:active {
+        border: 0px solid transparent;
+        outline: none;
+    }
+
+    .selectbox:active, .selectbox:hover {
+        border: 0px solid transparent;
+        outline: none;
+    }
+
+    .selectbox:active, .selectbox:hover {
+        border: 0px solid transparent;
+        outline-color: red;
+        outline: none;
+    }
+
+    .selectbox:after {
+        background-color: var(--eck-navgray);
+        color: var(--eck-boardgray);
+        border: 0px solid transparent;
+        outline: none;
+    }
+
+    .form-group {
+        margin-bottom: 0rem;
+    }
+
+    .nav-sidebar > .nav-item {
+        margin-bottom: 0;
+        color: var(--eck-boardgray);
+    }
+
+    #example2_filter input {
+        border: 1px hidden;
+        border-color: var(--eck-white);
+        width: 400px;
+        padding-left: 5px;
+        border-radius: 5px;
+    }
+
+    #example2_filter input {
+        border: 1px hidden;
+        border-color: var(--eck-white);
+        width: 400px;
+        padding-left: 5px;
+        border-radius: 5px;
+    }
+
+    #example2_filter input:focus {
+        outline: none !important;
+        border-color: var(--eck-boardgray);
+        box-shadow: 0 0 10px var(--eck-gray);
+    }
+
+    .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+        color: var(--eck-navgray);
+        font-weight: 500;
+        border-right: 1px solid var(--eck-titlegray);
+        background-color: var(--eck-lightgreen2);
+        z-index: 9999;
+    }
+
+    .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+        color: var(--eck-green);
+     }
+
+    .navbar-light .navbar-nav .nav-link {
+        color: var(--eck-textgray);
+        border-right: 1px solid var(--eck-titlegray);
+    }
+
+    .nav-item:hover {
+        color: var(--eck-navgray);
+        font-weight: 400;
+        background-color: var(--eck-lightgreen3)
+    }
+
+    .navbar-toggler {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 0
+    }
+
+    .arrow {
+        border: solid var(--eck-textgray);
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        margin-left: 8px;
+        padding: 3px;
+    }
+
+    .digital-clock {
+        text-align: center;
+        color: var(--eck-textgray);
+        font-family: 'Roboto Condensed';
+        font-size: 17px;
+    }
+
+    .calendar-day {
+        text-align: center;
+        color: var(--eck-textgray);
+        font-family: 'Roboto Condensed';
+        font-size: 13px;
+    }
+
+    a.nav-link.dropdown-toggle:after {
+        display: none;
+    }
+
+    .navbar-collapse {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
+
+    .createbutton {
+        padding: 0px;
+        margin: 0px;
+        color: var(--eck-blue);
+        margin-top: 0px;
+        border: 0px solid transparent;
+    }
+
+    .nowrapleft {
+        white-space: nowrap;
+        text-align: left;
+    }
+
+    .nowrapright {
+        white-space: nowrap;
+        text-align: right;
+    }
+
+    .nowrapcenter {
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .nowrap{
+        white-space: nowrap;
+    }
+
+    .winbox {
+        border: var(--eck-boardgray) 10px solid;
+        padding: 10px;
+        background-color: var(--eck-white);
+    }
+
+    .info {
+        color: var(--eck-boardgray);
+        font-weight: 200;
+    }
+
+    table.dataTable {
+        clear: both;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        max-width: none;
+        border-spacing: 0px;
+    }
+
+    .dropdown-item.active, .dropdown-item:active {
+        color: #fff;
+        text-decoration: none;
+        background-color: var(--eck-green);
+    }
+
+    table#example2.dataTable tbody tr:hover {
+        background-color: var(--eck-lightgreen3);
+    }
+
+    table#example2.dataTable tbody tr:hover > .sorting_1 {
+        background-color: var(--eck-lightgreen2);
+    }
+
+    table#logbook.dataTable tbody tr:hover {
+        background-color: var(--eck-lightgreen3);
+    }
+
+    table#logbook.dataTable tbody tr:hover > .sorting_1 {
+        background-color: var(--eck-lightgreen2);
+    }
+
+    table#classic.dataTable tbody tr:hover {
+        background-color: var(--eck-lightgreen3);
+    }
+
+    table#classic.dataTable tbody tr:hover > .sorting_1 {
+        background-color: var(--eck-lightgreen2);
+    }
+
+    .nav-sidebar > .nav-item .nav-icon.fa, .nav-sidebar > .nav-item .nav-icon.fas, .nav-sidebar > .nav-item .nav-icon.far, .nav-sidebar > .nav-item .nav-icon.fab, .nav-sidebar > .nav-item .nav-icon.fal, .nav-sidebar > .nav-item .nav-icon.fad, .nav-sidebar > .nav-item .nav-icon.svg-inline--fa, .nav-sidebar > .nav-item .nav-icon.ion {
+        font-size: 1.6rem;
+    }
+
+    .main-sidebar, .main-sidebar::before {
+        width: 53px;
+        left: 0px;
+        display: block;
+        margin-left: 0px;
+    }
+
+    .content-wrapper,
+    .main-footer,
+    .main-header {
+        margin-left: 53px !important;
+    }
+
+    .layout-navbar-fixed.sidebar-mini.sidebar-collapse .wrapper .brand-link,
+    .layout-navbar-fixed.sidebar-mini-md.sidebar-collapse .wrapper .brand-link,
+    .layout-navbar-fixed.sidebar-mini-xs.sidebar-collapse .wrapper .brand-link {
+        height: calc(3.5rem + 1px);
+        width: 53px;
+    }
+
+    .layout-navbar-fixed .wrapper .main-sidebar:hover .brand-link {
+        width: 53px;
+    }
+
+    .layout-navbar-fixed .wrapper .brand-link {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        width: 53px;
+        z-index: 1035;
+    }
+
+    .icon-tip {
+        width: 20.8px;
+        height: 20.8px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .icon-tip .tip-hover {
+        display: none;
+        position: absolute;
+        top: 2px;
+        left: 0;
+        z-index: 9999;
+    }
+
+    .icon-tip:hover .tip-hover {
+        display: inline;
+
+    }
+
+    .icon-clock {
+        width: 18px;
+        height: 18px;
+        position: relative;
+        display: inline-flex;
+        vertical-align: text-bottom;
+    }
+
+    .fc .fc-daygrid-day.fc-day-today {
+        background-color: var(--eck-lightgreen3) !important;
+    }
+
+    input:-webkit-autofill {
+        background-color: rgb(227,238,177) !important;
+    }
+
+    input:disabled {
+        color: var(--eck-navgray);
+        font-weight: 600;
+        max-width: 130px;
+        /*height: 32px*/
+    }
+
+    hr.solid {
+        border-bottom: 0.5px solid var(--eck-titlegray);
+    }
+
+    .nav-tabs {
+        border-bottom: 1px solid var(--eck-titlegray)
+    }
+
+    .nav-tabs .nav-link {
+        padding-top: 7.5px;
+        padding-bottom: 7.5px;
+        text-align: center;
+        color: var(--eck-textgray);
+        font-weight: 500;
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem
+    }
+
+    .nav-tabs .nav-link.active {
+        color: var(--eck-navgray);
+        background-color: var(--eck-lightgreen2);
+        border-color: var(--eck-titlegray);
+        border-bottom-color: var(--eck-lightgreen2);
+        font-weight: 500;
+        z-index: 9999
+    }
+
+    .modal-section-left {
+        float: left
+    }
+
+    .modal-section-right {
+        float: right
+    }
+
+    /*Arrow of DataTables formating*/
+    table.dataTable thead .sorting::before,
+    table.dataTable thead .sorting_asc::before{
+        display: none;
+    }
+
+    table.dataTable thead .sorting_desc::before {
+        display: none;
+    }
+
+    table.dataTable thead .sorting::after,
+    table.dataTable thead .sorting_asc::after {
+        display: none;
+    }
+
+    table.dataTable thead .sorting_desc::after {
+        display: none;
+    }
+
+    table.dataTable thead .sorting {
+        background-image: url('/plugins/datatables/images/sort_both.png');
+        background-repeat: no-repeat;
+        background-position: center right;
+    }
+
+    table.dataTable thead .sorting_asc {
+        background-image: url('/plugins/datatables/images/sort_asc.png');
+        background-repeat: no-repeat;
+        background-position: center right;
+    }
+
+    table.dataTable thead .sorting_asc_disabled {
+        background-image: url('/plugins/datatables/images/sort_asc_disabled.png');
+        background-repeat: no-repeat;
+        background-position: center right;
+    }
+
+    table.dataTable thead .sorting_desc {
+        background-image: url('/plugins/datatables/images/sort_desc.png');
+        background-repeat: no-repeat;
+        background-position: center right;
+    }
+
+    table.dataTable thead .sorting_desc_disabled {
+        background-image: url('/plugins/datatables/images/sort_desc_disabled.png');
+        background-repeat: no-repeat;
+        background-position: center right;
+    }
+</style>

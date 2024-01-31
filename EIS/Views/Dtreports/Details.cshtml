@@ -1,0 +1,1411 @@
+﻿@model EIS.EISModels.Dtreport
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Dtreport</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shift)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shift)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LineId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LineId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNumbers)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNumbers)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RequestfromSql)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RequestfromSql)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentfromSql)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentfromSql)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GoodfromSql)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GoodfromSql)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolfromSql)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolfromSql)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownTimefromSql)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownTimefromSql)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Wtnr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Wtnr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNumberA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNumberA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChangeTimeA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChangeTimeA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNameA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNameA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RequestfromSqla)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RequestfromSqla)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentfromSqla)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentfromSqla)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentKorrA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentKorrA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentMessageA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentMessageA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GoodfromSqla)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GoodfromSqla)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolfromSqla)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolfromSqla)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolkorrA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolkorrA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownTimefromSqla)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownTimefromSqla)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WtnrA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WtnrA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MessageA)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MessageA)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNumberB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNumberB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChangeTimeB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChangeTimeB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNameB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNameB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RequestfromSqlb)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RequestfromSqlb)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentfromSqlb)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentfromSqlb)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentKorrB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentKorrB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentMessageB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentMessageB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GoodfromSqlb)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GoodfromSqlb)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolfromSqlb)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolfromSqlb)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolkorrB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolkorrB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownTimefromSqlb)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownTimefromSqlb)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WtnrB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WtnrB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MessageB)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MessageB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNumberC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNumberC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChangeTimeC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChangeTimeC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNameC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNameC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RequestfromSqlc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RequestfromSqlc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentfromSqlc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentfromSqlc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentKorrC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentKorrC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentMessageC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentMessageC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GoodfromSqlc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GoodfromSqlc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolfromSqlc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolfromSqlc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolkorrC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolkorrC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownTimefromSqlc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownTimefromSqlc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WtnrC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WtnrC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MessageC)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MessageC)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNumberD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNumberD)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChangeTimeD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChangeTimeD)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNameD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNameD)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RequestfromSqld)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RequestfromSqld)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentfromSqld)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentfromSqld)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentKorrD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentKorrD)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentMessageD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentMessageD)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GoodfromSqld)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GoodfromSqld)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolfromSqld)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolfromSqld)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolkorrD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolkorrD)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownTimefromSqld)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownTimefromSqld)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WtnrD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WtnrD)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MessageD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MessageD)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNumberE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNumberE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChangeTimeE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChangeTimeE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeNameE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TypeNameE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RequestfromSqle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RequestfromSqle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentfromSqle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentfromSqle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentKorrE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentKorrE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CurrentMessageE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CurrentMessageE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GoodfromSqle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GoodfromSqle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolfromSqle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolfromSqle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EolkorrE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EolkorrE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownTimefromSqle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownTimefromSqle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WtnrE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WtnrE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MessageE)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MessageE)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SentEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SentEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra4)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra4)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra5)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra5)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra6)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra6)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra7)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra7)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra8)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra8)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra9)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra9)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra10)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra10)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra11)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra11)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra12)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra12)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra13)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra13)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra14)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra14)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNra15)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNra15)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb4)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb4)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb5)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb5)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb6)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb6)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb7)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb7)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb8)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb8)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb9)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb9)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb10)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb10)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb11)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb11)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb12)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb12)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb13)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb13)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb14)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb14)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrb15)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrb15)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc4)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc4)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc5)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc5)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc6)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc6)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc7)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc7)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc8)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc8)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc9)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc9)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc10)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc10)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc11)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc11)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc12)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc12)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc13)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc13)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc14)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc14)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrc15)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrc15)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd4)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd4)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd5)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd5)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd6)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd6)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd7)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd7)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd8)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd8)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd9)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd9)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd10)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd10)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd11)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd11)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd12)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd12)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd13)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd13)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd14)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd14)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNrd15)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNrd15)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre4)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre4)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre5)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre5)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre6)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre6)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre7)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre7)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre8)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre8)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre9)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre9)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre10)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre10)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre11)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre11)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre12)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre12)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre13)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre13)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre14)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre14)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorNre15)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorNre15)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda10Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda10Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda11Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda11Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda12Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda12Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda13Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda13Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda14Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda14Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda15Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda15Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda1Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda1Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda2Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda2Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda3Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda3Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda4Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda4Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda5Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda5Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda6Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda6Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda7Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda7Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda8Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda8Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIda9Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIda9Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb10Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb10Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb11Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb11Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb12Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb12Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb13Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb13Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb14Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb14Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb15Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb15Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb1Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb1Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb2Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb2Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb3Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb3Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb4Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb4Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb5Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb5Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb6Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb6Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb7Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb7Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb8Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb8Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdb9Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdb9Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc10Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc10Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc11Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc11Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc12Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc12Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc13Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc13Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc14Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc14Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc15Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc15Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc1Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc1Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc2Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc2Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc3Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc3Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc4Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc4Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc5Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc5Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc6Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc6Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc7Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc7Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc8Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc8Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdc9Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdc9Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd10Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd10Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd11Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd11Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd12Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd12Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd13Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd13Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd14Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd14Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd15Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd15Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd1Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd1Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd2Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd2Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd3Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd3Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd4Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd4Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd5Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd5Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd6Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd6Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd7Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd7Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd8Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd8Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIdd9Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIdd9Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde10Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde10Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde11Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde11Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde12Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde12Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde13Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde13Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde14Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde14Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde15Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde15Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde1Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde1Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde2Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde2Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde3Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde3Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde4Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde4Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde5Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde5Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde6Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde6Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde7Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde7Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde8Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde8Navigation.Search)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ErrorIde9Navigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ErrorIde9Navigation.Search)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

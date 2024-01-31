@@ -1,0 +1,121 @@
+﻿@*@page
+@model LoginWith2faModel
+@{
+    ViewData["Title"] = "Two-factor authentication";
+}
+
+<h2 style="color: rgba(0,0,0,.9);">@ViewData["Title"]</h2>
+<hr />
+<p style="color: rgba(0,0,0,.9);">Your login is protected with an authenticator app. Enter your authenticator code below.</p>
+<div class="row" style="color: rgba(0,0,0,.9);">
+    <div class="col-md-4">
+        <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+            <input asp-for="RememberMe" type="hidden" />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.TwoFactorCode"></label>
+                <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="off" />
+                <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMachine">
+                        <input asp-for="Input.RememberMachine" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMachine)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
+        </form>
+    </div>
+</div>
+<p style="color: rgba(0,0,0,.9);">
+    Don't have access to your authenticator device? You can
+    <a id="recovery-code-login" asp-page="./LoginWithRecoveryCode" asp-route-returnUrl="@Model.ReturnUrl" style="color: rgba(0,0,0,.9);">log in with a recovery code</a>.
+</p>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+*@
+@page
+@model LoginWith2faModel
+@{
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+    ViewData["Title"] = "Two-factor authentication";
+}
+<style>
+    .input-group > .form-control.valid {
+        background-color: var(--eck-lightgreen3);
+    }
+
+    input:-internal-autofill-selected {
+        appearance: menulist-button;
+        background-image: none !important;
+        background-color: -internal-light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;
+        color: fieldtext !important;
+    }
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@EIS.Resources.Resource.ResourceManager.GetString("Two-factor authentication", System.Globalization.CultureInfo.CurrentCulture)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="row" style="font-family: 'URWDINLight'; font-weight: 200; font-style: normal; font-size: 100%; color: rgba(0,0,0,.9);">
+    <br />
+    <center>
+        <div class="col-xl-4" style="text-align:left;">
+            @*<div class="login-logo">
+            <a href="~/Home"><b>Web</b>TIP</a>
+            <br />
+            <img src="~/images/tip_medium.png" />
+            </div>*@
+            <div class="card" style="border: hidden;background-color: transparent;">
+                <div class="card-body">
+                    <h4>@EIS.Resources.Resource.ResourceManager.GetString("Your login is protected with an authenticator app. Enter your authenticator code below.", System.Globalization.CultureInfo.CurrentCulture)</h4>
+                    <hr />
+                    <form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+                        <input asp-for="RememberMe" type="hidden" />
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Input.TwoFactorCode">@EIS.Resources.Resource.ResourceManager.GetString("Authenticator code", System.Globalization.CultureInfo.CurrentCulture)</label>
+                            <input asp-for="Input.TwoFactorCode" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="Input.TwoFactorCode" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label asp-for="Input.RememberMachine">
+                                    <input asp-for="Input.RememberMachine" />
+                                    @*@Html.DisplayNameFor(m => m.Input.RememberMachine)*@
+                                    @EIS.Resources.Resource.ResourceManager.GetString("Remember this machine", System.Globalization.CultureInfo.CurrentCulture)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-xl-12" style="text-align:left;">
+                                <button type="submit" class="btn btn-classic btn-block float-right" style="width: 150px">@EIS.Resources.Resource.ResourceManager.GetString("Sign In", System.Globalization.CultureInfo.CurrentCulture)</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </center>
+</body>
+</html>
+
+@section Scripts {
+    <style>
+        .card {
+            border: 0px solid;
+            padding: 10px;
+            box-shadow: 0px 0px red;
+        }
+    </style>
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,604 @@
+﻿@using ChartJSCore.Models
+@using EIS.EISModels
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using EIS.Helpers
+@using System.Collections
+@using Microsoft.AspNetCore.Localization
+@using System.Globalization;
+
+@model IEnumerable<EIS.EISModels.Cttable>
+
+@{
+    ViewData["Title"] = "Index";
+    string lineid = (string)ViewData["LineID"];
+    int year = (int)ViewData["Year"];
+    int month = (int)ViewData["Month"];
+    int day = (int)ViewData["Day"];
+    DateTime dt = (DateTime)ViewData["DT"];
+    Chart verticalBarChart = (Chart)ViewData["VerticalBarChart"];
+    Chart lineScatterChart = (Chart)ViewData["LineScatterChart"];
+    Chart paretoChart = (Chart)ViewData["ParetoChart"];
+    //verticalBarChart.Options.Responsive = false;
+    //verticalBarChart.Options.MaintainAspectRatio = false;
+    //lineScatterChart.Options.Responsive = false;
+    //lineScatterChart.Options.MaintainAspectRatio = false;
+    //paretoChart.Options.Responsive = false;
+    //paretoChart.Options.MaintainAspectRatio = false;
+    int goodparts =  (int)ViewData["GoodParts"];
+    int requestparts = (int)ViewData["RequestParts"];
+    float oee = (float)ViewData["OEE"];
+    float monthlyoee = (float)ViewData["MontlyOEE"];
+    float a = (float)ViewData["A"];
+    float p = (float)ViewData["P"];
+    float q = (float)ViewData["Q"];
+    float max = Math.Max(a, Math.Max(p, Math.Max(q, 100)));
+    int hp = 145;
+    int rhp = @hp;
+    string rhpx = rhp.ToString() + "px";
+    int rhp20 = @hp + 20;
+    string rhp20x = rhp20.ToString() + "px";
+    int rhx = (int)((@rhp * @oee) / max); 
+    string rhm = @rhx + "px";
+    string rht = (@rhp - @rhx) + "px";
+    int rhxa = (int)((@rhp * @a) / max);
+    string rhma = @rhxa + "px";
+    string rhta = (@rhp - @rhxa) + "px"; 
+    int rhxp = (int)((@rhp * @p) / max);
+    string rhmp = @rhxp + "px";
+    string rhtp = (@rhp - @rhxp) + "px"; 
+    int rhxq = (int)((@rhp * @q) / max);
+    string rhmq = @rhxq + "px";
+    string rhtq = (@rhp - @rhxq) + "px"; 
+    string shift = (string)ViewData["Shift"];
+    int wp = 660;
+    int rpx = @wp;
+    string rp = @rpx + "px";
+    int wh = 55;
+    int rh = @wh;
+    int r2h = 2*@wh;
+    string rx = @rh + "px";
+    string r2x = @r2h + "px";
+    int badparts = (int)ViewData["BadParts"];
+    int dtparts = (int)ViewData["DTParts"];
+    int efficiencyparts = (int)ViewData["EfficiencyParts"];
+    int charwidth = 8;
+    int chartemp = 2;
+    int bpx = (int)(@requestparts > 0 ? (@wp * @badparts / @requestparts) : 0);
+    int bpt = (int)(@badparts > 0 ? ((@badparts.ToString().Length * @charwidth) + @chartemp) / 1 : 0);
+    int gpx = (int)(@requestparts > 0 ? (@wp * @goodparts / @requestparts) : 0);
+    int gpt = (int)(@goodparts > 0 ? ((@goodparts.ToString().Length * @charwidth) + @chartemp) / 1 : 0);
+    int dtpx = (int)(@requestparts > 0 ? (@wp * @dtparts / @requestparts) : 0);
+    int dtpt = (int)(@dtparts > 0 ? ((@dtparts.ToString().Length * @charwidth) + @chartemp) / 1 : 0);
+    int epxx = @rpx - @gpx - @dtpx - @bpx;
+    int epx = (int)(@epxx);
+    int ept = (int)(@efficiencyparts > 0 ? ((@efficiencyparts.ToString().Length * @charwidth) + @chartemp) / 1 : 0);
+    //while (epx!=epxx)
+    //{
+    //    if (epx > epxx & (bpx - (epx - epxx) > (@badparts > 0 ? ((@badparts.ToString().Length * @charwidth) + @chartemp) / 1 : 0)))
+    //    {
+    //        bpx = bpx - (epx - epxx);
+    //    }
+    //    else
+    //    {
+    //        if (epx > epxx & (dtpx - (epx - epxx) > (@dtparts > 0 ? ((@dtparts.ToString().Length * @charwidth) + @chartemp) / 1 : 0)))
+    //        {
+    //            dtpx = dtpx - (epx - epxx);
+    //        }
+    //        else
+    //        {
+    //            if (epx > epxx & (gpx - (epx - epxx)) > (@goodparts > 0 ? ((@goodparts.ToString().Length * @charwidth) + @chartemp) / 1 : 0))
+    //            {
+    //                gpx = gpx - (epx - epxx);
+    //            }
+    //        }
+    //    }
+    //    epxx = @rpx - @gpx - @dtpx - @bpx;
+    //    epx = (int)(Math.Max(@efficiencyparts > 0 ? ((@efficiencyparts.ToString().Length * @charwidth) + @chartemp) / 1 : 0, @epxx));
+    //}
+    string gp = @gpx + "px";
+    string bp = @bpx + "px";
+    string dtp = @dtpx + "px";
+    string ep = @epx +"px";
+    int diffparts = (int)ViewData["DiffParts"];
+    int dpx = @rpx - @gpx;
+    int dpt = (int)(@diffparts > 0 ? ((@diffparts.ToString().Length * @charwidth) + @chartemp) / 1 : 0);
+    string dp = @dpx + "px";
+    double ppercent = (double)ViewData["ParetoPercent"];
+    double pdthour = (double)ViewData["ParetoDTHour"];
+    double pdthours = (double)ViewData["ParetoDTHours"];
+    Layout = "~/Views/Shared/EISDesign/_Layout.cshtml";
+}
+
+<div id="PlaceHolderHere"></div>
+@if (!SignInManager.IsSignedIn(User))
+{
+    <head>
+        <meta http-equiv="refresh" content="0; url='/Identity/Account/Login'" />
+    </head>
+}
+else
+{
+    <div class="kanbanview">
+        <div class="row" style="margin: 0px 5px">
+            <!-- Quantity-Loss Chart -->
+            <div class="col-xl-5" style="padding: 5px">
+                <div class="card" style="min-height: 210px; height: 20vh">
+                    <div class="card-header border-0" style="padding: 10px 15px 5px 15px">
+                        <h3 class="card-title">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LossChart", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                    </div>
+                    <div class="card-body" id="qualityloss" style="padding: 5px 15px 5px 15px">
+                        <div class="tab-content p-0">
+                            <table height=100px width=100% style="margin: 5px 0px; border: 0px solid transparent; border-collapse: collapse">
+                                <thead>
+                                    <tr>
+                                        <th hidden></th>
+                                        <th hidden></th>
+                                        <th hidden></th>
+                                        <th hidden></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 0">
+                                            @if (@goodparts > 0 & @gpx >= @gpt)
+                                            {
+                                                <div id="gpdiva" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("GoodNumberOfPieces", System.Globalization.CultureInfo.CurrentCulture)): @goodparts" style="width: @gp; height: @rx; background-color: rgba(185,212,60,1); color: white;">&nbsp;@goodparts&nbsp;</div>
+                                            }
+                                            else
+                                            {
+                                                <div id="gpdiva" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("GoodNumberOfPieces", System.Globalization.CultureInfo.CurrentCulture)): @goodparts" style="width: @gp; height: @rx; background-color: rgba(185,212,60,1); color: white;">&nbsp;</div>
+                                            }
+                                            </td>
+                                        <td style="padding: 0">
+                                            @if (@dtparts > 0 & @dtpx >= @dtpt)
+                                            {
+                                                <div id="dtdiv" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DropOutDueToDownTime", System.Globalization.CultureInfo.CurrentCulture)): @dtparts" style="width: @dtp; height: @rx; background-color: rgba(87,94,96,1); color: white;">&nbsp;@dtparts&nbsp;</div>
+                                            }
+                                            else
+                                            {
+                                                <div id="dtdiv" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DropOutDueToDownTime", System.Globalization.CultureInfo.CurrentCulture)): @dtparts" style="width: @dtp; height: @rx; background-color: rgba(87,94,96,1); color: white;">&nbsp;</div>
+                                            }
+                                        </td>
+                                        <td style="padding: 0">
+                                            @if (@efficiencyparts > 0 & @epx >= @ept)
+                                            {
+                                                <div id="efdiv" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("EliminationDueToEfficiency", System.Globalization.CultureInfo.CurrentCulture)): @efficiencyparts" style="width: @ep; height: @rx; background-color: rgba(166,166,166,1); color: white;">&nbsp;@efficiencyparts&nbsp;</div>
+                                            }
+                                            else
+                                            {
+                                                <div id="efdiv" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("EliminationDueToEfficiency", System.Globalization.CultureInfo.CurrentCulture)): @efficiencyparts" style="width: @ep; height: @rx; background-color: rgba(166,166,166,1); color: white;">&nbsp;</div>
+                                            }
+                                        </td>
+                                        <td style="padding: 0">
+                                            @if (@badparts > 0 & @bpx >= @bpt)
+                                            {
+                                                <div id="bpdiv" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("NumberOfRejects", System.Globalization.CultureInfo.CurrentCulture)): @badparts" style="width: @bp; height: @rx; background-color: rgba(192,0,0,1); color: white;">&nbsp;@badparts&nbsp;</div>
+                                            }
+                                            else
+                                            {
+                                                <div id="bpdiv" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("NumberOfRejects", System.Globalization.CultureInfo.CurrentCulture)): @badparts" style="width: @bp; height: @rx; background-color: rgba(192,0,0,1); color: white;">&nbsp;</div>
+                                            }
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0">
+                                            @if (@goodparts > 0 & @gpx >= @gpt)
+                                            {
+                                                <div id="gpdivb" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("GoodNumberOfPieces", System.Globalization.CultureInfo.CurrentCulture)): @goodparts" style="width: @gp; height: @rx; background-color: rgba(185,212,60,1); color: white;">&nbsp;</div>
+                                            }
+                                            else
+                                            {
+                                                <div id="gpdivb" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("GoodNumberOfPieces", System.Globalization.CultureInfo.CurrentCulture)): @goodparts" style="width: @gp; height: @rx; background-color: rgba(185,212,60,1); color: white;">&nbsp;</div>
+                                            }
+                                        </td>
+                                        <td colspan="3"  style="padding: 0">
+                                            @if (@diffparts > 0 & @dpx >= @dpt)
+                                            {
+                                                <div id="dpdiv" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DroppedQuantity", System.Globalization.CultureInfo.CurrentCulture)): @diffparts" style="width: @dp; height: @rx; background-color: rgba(217,217,217,1); color: white;">&nbsp;@diffparts&nbsp;</div>
+                                            }
+                                            else
+                                            {
+                                                <div id="dpdiv" title="@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("DroppedQuantity", System.Globalization.CultureInfo.CurrentCulture)): @diffparts" style="width: @dp; height: @rx; background-color: rgba(217,217,217,1); color: white;">&nbsp;</div>
+                                            }
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="padding: 5px; padding-left: 15px; padding-right: 15px">
+                        <div class="row">
+                            <div class="col-auto nowrapleft">
+                                <img valign="middle" style="width: 10px; height: 10px; background-color: var(--eck-green); min-width:10px;border: 0px solid transparent;"/>
+                                <span valign="top" style="padding-top: 3px; padding-left: 5px;">
+                                    @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("GoodParts", System.Globalization.CultureInfo.CurrentCulture))
+                                </span>
+                            </div>
+                            <div class="col-auto nowrapleft">
+                                <img valign="middle" style="width: 10px; height: 10px; background-color: var(--eck-darkgray); min-width:10px;border: 0px solid transparent;"/>
+                                <span valign="top" style="padding-top: 3px; padding-left: 5px;">
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LossOfDownTime", System.Globalization.CultureInfo.CurrentCulture))
+                                </span>
+                            </div>
+                            <div class="col-auto nowrapleft">
+                                <img valign="middle" style="width: 10px; height: 10px; background-color: var(--eck-gray); min-width:10px;border: 0px solid transparent;"/>
+                                <span valign="top" style="padding-top: 3px; padding-left: 5px;">
+                                    @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("LossOfCycleTime", System.Globalization.CultureInfo.CurrentCulture))
+                                </span>
+                            </div>
+                            <div class="col-auto nowrapleft">
+                                <img valign="middle" style="width: 10px; height: 10px; background-color: var(--eck-red); min-width:10px;border: 0px solid transparent;"/>
+                                <span valign="top" style="padding-top: 3px; padding-left: 5px;">
+                                    @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Scrap", System.Globalization.CultureInfo.CurrentCulture))
+                                </span>
+                            </div>
+                            <div class="col-auto nowrapleft">
+                                <img valign="middle" style="width: 10px; height: 10px; background-color: var(--eck-titlegray); min-width:10px;border: 0px solid transparent;"/>
+                                <span  valign="top" style="padding-top: 3px; padding-left: 5px;">
+                                    @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("TotalLoss", System.Globalization.CultureInfo.CurrentCulture))
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Hourly Good Quantity -->
+            <div class="col-xl-7" style="padding: 5px">
+                <div class="card" style="min-height: 210px; height: 20vh">
+                    <div class="card-header border-0" style="padding-top: 10px; padding-left: 15px; padding-right: 15px; padding-bottom: 5px">
+                        <h3 class="card-title">
+                            @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("HourlyGoodQuantity", System.Globalization.CultureInfo.CurrentCulture))
+                        </h3>
+                    </div>
+                    <div class="card-body chartview" style="padding: 5px 5px 2px 2px">
+                        @*<div class="tab-content p-0" style="height: 155px;">
+                            <canvas id="verticalBarChart" style="font-family: 'Roboto Condensed'; font-weight: 100; font-style: normal; font-size: 100%; margin-bottom: 0px;width: 1050px; min-width: 1050px; height: 155px; min-height: 155px;">
+                            </canvas>
+                        </div>*@
+                        <div class="chart-container" style="position: relative ; height:150px; width:1050px;">
+                            <canvas height="150" width="1050" id="verticalBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="row" style="margin: 0px 5px">
+            <!-- Downtime Logbook -->
+            <div class="col-xl-5" style="padding: 5px">
+                <div class="card" style=" min-height: 355px; height: 36vh">
+                    <div class="card-header border-0" style="padding: 10px 15px 5px 15px">
+                        <h3 class="card-title">
+                            @EIS.Resources.Resource.ResourceManager.GetString("DownTimeLog", System.Globalization.CultureInfo.CurrentCulture)
+                        </h3>
+                    </div>
+                    <div class="card-body table-responsive" style="padding: 5px 15px 10px 15px">
+                        <table id="logbook" class="table table-bordered table-hover table-head-fixed text-nowrap table-sm">
+                            <thead>
+                                <tr class="tableheader">
+                                    <th width="130px">
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("TimeStamp", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th width="60px">
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Downtime", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th width="60px">
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Level", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                    <th width="330px">
+                                        @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("Reason", System.Globalization.CultureInfo.CurrentCulture))
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr class="tablebody">
+                                    <td>
+                                        @{
+                                            DateTime time = new DateTime(item.TimeStamp.Year,item.TimeStamp.Month,item.TimeStamp.Day,item.TimeStamp.Hour,item.TimeStamp.Minute,item.TimeStamp.Second);
+                                        }
+                                        <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit?dtid={item.Id}")">@time.ToString("yyyy-MM-dd HH:mm:ss")</button>
+                                    </td>
+                                    <td>
+                                            @{
+                                                TimeSpan ts = TimeSpan.FromSeconds(item.Downtime.Value);
+                                            }
+                                            @if (item.Downtime.Value > 3600)
+                                            {
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit?dtid={item.Id}")">@ts.ToString("hh':'mm':'ss")</button>
+                                            }
+                                            else
+                                            {
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit?dtid={item.Id}")">@ts.ToString("mm':'ss")</button>
+                                            }
+                                        </td>
+                                    <td>
+                                        <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit?dtid={item.Id}")">@Html.DisplayFor(modelItem => item.AlertLevel)</button>
+                                    </td>
+                                    <td>
+                                        @{
+                                            var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+                                        }
+                                        @if (@requestCulture.RequestCulture.UICulture.Name == "hu-HU")
+                                        {
+                                            @if (@lineid!="ALL Line")
+                                            {
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit?dtid={item.Id}")">@Html.DisplayFor(modelItem => item.Dttypes.Description)</button>
+                                            }
+                                            else
+                                            {
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit?dtid={item.Id}")">@Html.DisplayFor(modelItem => item.LineId)|@Html.DisplayFor(modelItem => item.Dttypes.Description)</button>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @if (@lineid!="ALL Line")
+                                            {
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit?dtid={item.Id}")">@Html.DisplayFor(modelItem => item.Dttypes.DescriptionEn)</button>
+                                            }
+                                            else
+                                            {
+                                                <button id="myButton" type="button" class="btn btn-transparent tablebutton_transparent" data-toggle="ajax-modal" data-target="#addEdit" data-url="@Url.Action($"Edit?dtid={item.Id}")">@Html.DisplayFor(modelItem => item.LineId)|@Html.DisplayFor(modelItem => item.Dttypes.DescriptionEn)</button>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- TOP 10 Downtime Reason -->
+            <div class="col-xl-5" style="padding: 5px">
+                <div class="card" style="min-height: 355px; height: 36vh">
+                    <div class="card-header border-0" style="padding-top: 10px; padding-left: 15px; padding-right: 15px; padding-bottom: 5px">
+                        <h3 class="card-title">
+                            @EIS.Resources.Resource.ResourceManager.GetString("TOP10DownTimeReason", System.Globalization.CultureInfo.CurrentCulture)
+                        </h3>
+                        <div class="card-tools" style="margin-right: 5px">
+                            <h3 class="card-title">
+                                <i class="fa-regular fa-clock ic-w mx-1"></i>
+                                @EIS.Resources.Resource.ResourceManager.GetString("InHours", System.Globalization.CultureInfo.CurrentCulture)
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body chartview" style="padding: 5px 5px 0px 10px">
+                        <div class="chart-container" style="position: relative ; height:250px; width:722px;">
+                            <canvas height="250" width="722" id="paretoChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card-footer" style="padding: 5px; padding-left: 15px; padding-right: 15px">
+                        <div style="margin-bottom: 0px; padding-top: 4px">
+                            @EIS.Resources.Resource.ResourceManager.GetString("SumDownTime", System.Globalization.CultureInfo.CurrentCulture) @pdthours.ToString("f2") @EIS.Resources.Resource.ResourceManager.GetString("Hour", System.Globalization.CultureInfo.CurrentCulture), @EIS.Resources.Resource.ResourceManager.GetString("OfWhich", System.Globalization.CultureInfo.CurrentCulture) @pdthour.ToString("f2") @EIS.Resources.Resource.ResourceManager.GetString("Hour", System.Globalization.CultureInfo.CurrentCulture) (@ppercent.ToString("f2")%) @EIS.Resources.Resource.ResourceManager.GetString("UnknownDownTime", System.Globalization.CultureInfo.CurrentCulture)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- OEE Chart -->
+            <div class="col-xl-2" style="padding: 5px">
+                <div class="card" style="min-height: 355px; height: 36vh">
+                    <div class="card-header border-0" style="padding-top: 10px; padding-left: 15px; padding-right: 15px; padding-bottom: 5px">
+                        <h3 class="card-title">
+                            @EIS.Resources.Resource.ResourceManager.GetString("OEEGauge", System.Globalization.CultureInfo.CurrentCulture)
+                        </h3>
+                    </div>
+                    <div class="card-body chartview" style="padding: 5px 15px 10px 15px">
+                        <div class="chart-container" style="align-items:center; position: relative ; height:250px; width: auto;">
+                            <center>
+                                <table width="245px" style="height:100px;">
+                                    <thead>
+                                        <tr>
+                                            <th hidden></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="progress" style="width:210px; height:95px; margin-top: 5px; margin-bottom: 5px; margin-left: 13px; background-color: var(--eck-white)">
+                                                    <div class="barOverflow">
+                                                        <div class="bar"></div>
+                                                    </div>
+                                                    <h2 style="margin-top: 8px;"><span>@oee.ToString("f2")</span>%
+                                                    </h2>
+                                                </div>
+                                                <style>
+                                                    .progress {
+                                                        position: relative;
+                                                        margin: 12px;
+                                                        float: left;
+                                                        text-align: center;
+                                                        display: unset;
+                                                        height: 1rem;
+                                                        line-height: 1.25;
+                                                        font-size: 1.0rem;
+                                                        background-color: #e9ecef;
+                                                        border-radius: 0.25rem;
+                                                        /*box-shadow: inset 0 0.1rem 0.1rem rgb(0 0 0 / 10%);*/
+                                                    }
+        
+                                                    .barOverflow { /* Wraps the rotating .bar */
+                                                        position: relative;
+                                                        /*overflow: hidden;*/ /* Comment this line to understand the trick */
+                                                        width: 190px;
+                                                        height: 95px; /* Half circle (overflow) */
+                                                        margin-bottom: -45px; /* bring the numbers up */
+                                                    }
+        
+                                                    .bar {
+                                                        position: absolute;
+                                                        top: 0;
+                                                        left: 10px;
+                                                        width: 190px;
+                                                        height: 190px; /* full circle! */
+                                                        border-radius: 50%;
+                                                        box-sizing: border-box;
+                                                        border: 24px solid rgba(240,240,240,1); /* half gray, */
+                                                        border-bottom-color: rgba(185,212,60,1); /* half azure */
+                                                        border-right-color: rgba(185,212,60,1);
+                                                    }
+                                                </style>
+                                                <script type="text/javascript">
+                                                    $(".progress").each(function(){
+          
+                                                        var $bar = $(this).find(".bar");
+                                                        var $val = $(this).find("span");
+                                                        var perc = parseInt( $val.text(), 10);
+                                                        var pperc = parseFloat($val.text()).toFixed(2);
+        
+                                                        $({p:0}).animate({p:perc}, {
+                                                        duration: 30,
+                                                        easing: "swing",
+                                                        step: function(p) {
+                                                            $bar.css({
+                                                            transform: "rotate("+ (45+(Math.min(p,100)*1.8)) +"deg)", // 100%=180° so: ° = % * 1.8
+                                                            // 45 is to add the needed rotation to have the green borders at the bottom
+                                                            });
+                                                            //if (p==perc)
+                                                            //{
+                                                            //    $val.text(pperc);
+                                                            //}
+                                                            //else
+                                                            //{
+                                                            //    $val.text(p|0);
+                                                            //}
+                                                        }
+                                                        });
+                                                    });
+                                                </script>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table width="260px" style="height:@rhp20x;">
+                                    <thead>
+                                        <tr>
+                                            <th hidden></th>
+                                            <th hidden></th>
+                                            <th hidden></th>
+                                            <th hidden></th>
+                                            <th hidden></th>
+                                            <th hidden></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td width="14px" style="vertical-align: bottom; padding: 1px 1px 3px 1px">
+                                                <p style="writing-mode: vertical-lr; transform: rotate(180deg); margin-right: -8px; margin-left: 7px; height: @rhp20; text-transform: uppercase; color: var(--eck-navgray)">@EIS.Resources.Resource.ResourceManager.GetString("AVAILABILITYTXT", System.Globalization.CultureInfo.CurrentCulture)</p>
+                                            </td>
+                                            <td width="24px">
+                                                @a.ToString("f2")%
+                                                <div title="@EIS.Resources.Resource.ResourceManager.GetString("AVAILABILITYTXT", System.Globalization.CultureInfo.CurrentCulture): @a.ToString("f2")%" style="width: 24px; height: @rhta; background-color: rgba(240,240,240,1); color: white;margin-left:0px;text-transform: capitalize;">&nbsp</div>
+                                                <div title="@EIS.Resources.Resource.ResourceManager.GetString("AVAILABILITYTXT", System.Globalization.CultureInfo.CurrentCulture): @a.ToString("f2")%" style="width: 24px; height: @rhma; background-color: rgba(185,212,60,1); color: white;margin-left:0px;text-transform: capitalize;">&nbsp</div>
+                                            </td>
+                                            <td width="14px" style="vertical-align: bottom; padding: 1px 1px 3px 1px">
+                                                <p style="writing-mode: vertical-lr; transform: rotate(180deg); margin-right: -8px; margin-left: 7px; height: @rhp20; text-transform: uppercase; color: var(--eck-navgray)">@EIS.Resources.Resource.ResourceManager.GetString("EFFICIENCYTXT", System.Globalization.CultureInfo.CurrentCulture)</p>
+                                            </td>
+                                            <td width="24px">
+                                                @p.ToString("f2")%
+                                                <div title="@EIS.Resources.Resource.ResourceManager.GetString("EFFICIENCYTXT", System.Globalization.CultureInfo.CurrentCulture): @p.ToString("f2")%" style="width: 24px; height: @rhtp; background-color: rgba(240,240,240,1); color: white;margin-left:0px;text-transform: capitalize;">&nbsp</div>
+                                                <div title="@EIS.Resources.Resource.ResourceManager.GetString("EFFICIENCYTXT", System.Globalization.CultureInfo.CurrentCulture): @p.ToString("f2")%" style="width: 24px; height: @rhmp; background-color: rgba(185,212,60,1); color: white;margin-left:0px;text-transform: capitalize;">&nbsp</div>
+                                            </td>
+                                            <td width="14px" style="vertical-align: bottom; padding: 1px 1px 3px 1px">
+                                                <p style="writing-mode: vertical-lr; transform: rotate(180deg); margin-right: -8px; margin-left: 7px; height: @rhp20; text-transform: uppercase; color: var(--eck-navgray)">@EIS.Resources.Resource.ResourceManager.GetString("QUALITYTXT", System.Globalization.CultureInfo.CurrentCulture)</p>
+                                            </td>
+                                            <td width ="24px">
+                                                @q.ToString("f2")%
+                                                <div title="@EIS.Resources.Resource.ResourceManager.GetString("QUALITYTXT", System.Globalization.CultureInfo.CurrentCulture): @q.ToString("f2")%" style="width: 24px; height: @rhtq; background-color: rgba(240,240,240,1); color: white;margin-left:0px;text-transform: capitalize;">&nbsp</div>
+                                                <div title="@EIS.Resources.Resource.ResourceManager.GetString("QUALITYTXT", System.Globalization.CultureInfo.CurrentCulture): @q.ToString("f2")%" style="width: 24px; height: @rhmq; background-color: rgba(185,212,60,1); color: white;margin-left:0px;text-transform: capitalize;">&nbsp</div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin: 0px 5px">
+            <!-- Monthly OEE Chart -->
+            <div class="col-xl-12" style="padding: 5px">
+                <div class="card" style="min-height: 210px; height: 20vh">
+                    <div class="card-header border-0" style="padding-top: 10px; padding-left: 15px; padding-right: 15px; padding-bottom: 5px">
+                        <h3 class="card-title">
+                            @if (System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "hu")
+                            {
+                                <span style="text-transform:capitalize;">@dt.ToString("MMMM")</span><small>&nbsp;</small>@Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("OEEChart", System.Globalization.CultureInfo.CurrentCulture))
+                            }
+                            else
+                            {
+                                @Html.DisplayName(@EIS.Resources.Resource.ResourceManager.GetString("OEEChart", System.Globalization.CultureInfo.CurrentCulture))<small>&nbsp;</small>@dt.ToString("MMMM")
+                            }
+                        </h3>
+                        <div class="card-tools" style="margin-right: 6px">
+                            <h3 class="card-title" style="font-weight: 500">
+                                <i class="fa-classic fa-chart-area ic-w mx-1"></i>
+                                @monthlyoee.ToString("f2")%
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body chartview" style="padding: 5px 5px 2px 10px">
+                        <div class="chart-container" style="position: relative ; height:158px; width:1810px;">
+                            <canvas height="158" width="1810" id="lineScatterChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/plugins/chart.js/myChart.js"></script>
+    <!-- jQuery Knob -->
+    <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
+
+    <script type="text/javascript">
+        @Html.Raw(verticalBarChart.CreateChartCode("verticalBarChart"));
+    </script>
+    <script type="text/javascript">
+        @Html.Raw(lineScatterChart.CreateChartCode("lineScatterChart"));
+    </script>
+    <script type="text/javascript">
+        @Html.Raw(paretoChart.CreateChartCode("paretoChart"));
+    </script>
+    <script>
+        // variable to store our intervalID
+        let nIntervId;
+         $(document).ready(function() {
+          resetTable();
+          if(!nIntervId)
+          {
+            nIntervalId = setInterval(resetTable, 1000);
+          }
+        })
+
+        window.addEventListener('load', function (event) {
+            resetTable();
+        });
+        window.addEventListener('resize', function (event) {
+            resetTable();
+        });
+
+        function resetTable() {
+            console.log('Client: ' + document.getElementById("qualityloss").clientWidth);
+            var szorzo = (document.getElementById("qualityloss").clientWidth-30)/@wp;
+            //alert('Client: ' + document.getElementById("gpdiva").clientWidth);
+            document.getElementById("gpdiva").style.width = szorzo * @gpx  + "px";
+            document.getElementById("gpdivb").style.width = szorzo * @gpx  + "px";
+            document.getElementById("dtdiv").style.width  = szorzo * @dtpx + "px";
+            document.getElementById("efdiv").style.width  = szorzo * @epx  + "px";
+            document.getElementById("bpdiv").style.width  = szorzo * @bpx  + "px";
+            document.getElementById("dpdiv").style.width  = szorzo * @dpx  + "px";
+            //alert('Client: ' + document.getElementById("gpdiva").clientWidth);
+            clearInterval(nIntervId);
+            // release our intervalID from the variable
+            nIntervId = null;
+        }
+    </script>
+}
